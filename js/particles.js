@@ -208,17 +208,42 @@
         }
     }
 
+    // 从主题配置中获取粒子设置
+    function getParticleConfig() {
+        // 尝试从全局配置中获取粒子设置
+        const configElement = document.querySelector('script[data-particles-config]');
+        let config = {
+            particleCount: 60,
+            particleColor: '#1e88e5',
+            particleSize: 2,
+            lineColor: '#1e88e5',
+            lineWidth: 1,
+            lineDistance: 100,
+            speed: 0.3,
+            opacity: 0.4,
+            mobileOptimized: true
+        };
+
+        if (configElement) {
+            try {
+                const userConfig = JSON.parse(configElement.textContent);
+                config = { ...config, ...userConfig };
+            } catch (e) {
+                console.warn('粒子配置解析失败，使用默认配置');
+            }
+        }
+
+        // 移动端优化
+        if (config.mobileOptimized && window.innerWidth <= 768) {
+            config.particleCount = Math.floor(config.particleCount * 0.6);
+            config.opacity = Math.min(config.opacity * 0.7, 0.3);
+        }
+
+        return config;
+    }
+
     // 粒子系统配置
-    const particleConfig = {
-        particleCount: 60,
-        particleColor: '#1e88e5',
-        particleSize: 2,
-        lineColor: '#1e88e5',
-        lineWidth: 1,
-        lineDistance: 100,
-        speed: 0.3,
-        opacity: 0.4
-    };
+    const particleConfig = getParticleConfig();
 
     // 初始化粒子系统
     let particleSystem = null;
@@ -226,6 +251,13 @@
     function initParticles() {
         // 检查是否已经存在粒子系统
         if (document.getElementById('particle-canvas')) {
+            return;
+        }
+
+        // 检查配置是否启用
+        const configElement = document.querySelector('script[data-particles-config]');
+        if (!configElement) {
+            console.log('粒子效果未启用');
             return;
         }
 
