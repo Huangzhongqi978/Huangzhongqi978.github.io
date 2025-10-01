@@ -213,15 +213,17 @@
         // 尝试从全局配置中获取粒子设置
         const configElement = document.querySelector('script[data-particles-config]');
         let config = {
-            particleCount: 60,
+            particleCount: 80,
             particleColor: '#1e88e5',
             particleSize: 2,
             lineColor: '#1e88e5',
             lineWidth: 1,
-            lineDistance: 100,
-            speed: 0.3,
-            opacity: 0.4,
-            mobileOptimized: true
+            lineDistance: 120,
+            speed: 0.5,
+            opacity: 0.6,
+            mobileOptimized: true,
+            interactive: true,
+            hoverEffect: true
         };
 
         if (configElement) {
@@ -291,6 +293,10 @@
 
     // 导出到全局
     window.ParticleSystem = ParticleSystem;
-    window.particleSystem = particleSystem;
+    
+    // 延迟导出粒子系统实例
+    setTimeout(() => {
+        window.particleSystem = particleSystem;
+    }, 100);
 
 })();
