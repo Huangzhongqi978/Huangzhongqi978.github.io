@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>Yolo11交通标志检测系统 - Brahmacarya奇奇</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#1e88e5"><meta name="application-name" content="Brahmacarya奇奇"><meta name="msapplication-TileImage" content="/img/logo-192.png"><meta name="msapplication-TileColor" content="#1e88e5"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Brahmacarya奇奇"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" sizes="192x192" href="/img/logo-192.png"><link rel="apple-touch-icon" sizes="512x512" href="/img/logo-512.png"><meta name="description" content="关于yolo模型的交通标志检测项目"><meta property="og:type" content="website"><meta property="og:title" content="Yolo11交通标志检测系统"><meta property="og:url" content="https://huangzhongqi978.github.io/2025/10/01/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/"><meta property="og:site_name" content="Brahmacarya奇奇"><meta property="og:description" content="关于yolo模型的交通标志检测项目"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://huangzhongqi978.github.io/img/og_image.png"><meta property="article:published_time" content="2025-10-01T07:59:31.000Z"><meta property="article:modified_time" content="2025-10-01T08:51:33.361Z"><meta property="article:author" content="HuangZhongqi"><meta property="article:tag" content="yolo模型"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://huangzhongqi978.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huangzhongqi978.github.io/2025/10/01/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/"},"headline":"Yolo11交通标志检测系统","image":["https://huangzhongqi978.github.io/img/og_image.png"],"datePublished":"2025-10-01T07:59:31.000Z","dateModified":"2025-10-01T08:51:33.361Z","author":{"@type":"Person","name":"HuangZhongqi"},"publisher":{"@type":"Organization","name":"Brahmacarya奇奇","logo":{"@type":"ImageObject","url":"https://huangzhongqi978.github.io/img/logo.svg"}},"description":"关于yolo模型的交通标志检测项目"}</script><link rel="canonical" href="https://huangzhongqi978.github.io/2025/10/01/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Brahmacarya奇奇" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-10-01T07:59:31.000Z" title="2025/10/1 15:59:31">2025-10-01</time>发表</span><span class="level-item"><time dateTime="2025-10-01T08:51:33.361Z" title="2025/10/1 16:51:33">2025-10-01</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a></span><span class="level-item">25 分钟读完 (大约3785个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Yolo11交通标志检测系统</h1><div class="content"><p>关于yolo模型的交通标志检测项目</p>
+<span id="more"></span>
+
+<h1 id="YOLOv11交通标志检测项目"><a href="#YOLOv11交通标志检测项目" class="headerlink" title="YOLOv11交通标志检测项目"></a>YOLOv11交通标志检测项目</h1><h2 id="一、项目概述"><a href="#一、项目概述" class="headerlink" title="一、项目概述"></a>一、项目概述</h2><h3 id="1-1-项目简介"><a href="#1-1-项目简介" class="headerlink" title="1.1 项目简介"></a>1.1 项目简介</h3><p>本项目是一个基于YOLOv11的智能交通标志检测系统，支持实时检测、图片检测和视频检测三种模式。项目采用PyQt5构建现代化GUI界面，集成了原始训练脚本和优化训练脚本，专门针对小目标检测进行了深度优化。</p>
+<h3 id="1-2-主要特性"><a href="#1-2-主要特性" class="headerlink" title="1.2 主要特性"></a>1.2 主要特性</h3><ul>
+<li><strong>多模式检测</strong>：支持摄像头实时检测、图片批量检测、视频流检测</li>
+<li><strong>现代化UI</strong>：采用渐变色彩和圆角设计，提供良好的用户体验</li>
+<li><strong>智能优化</strong>：集成注意力机制和特征融合，提升小目标检测能力</li>
+<li><strong>完整流程</strong>：包含数据预处理、模型训练、验证、导出和部署的完整流程</li>
+<li><strong>统计分析</strong>：提供详细的检测统计和历史记录功能</li>
+</ul>
+<h3 id="1-3-技术栈"><a href="#1-3-技术栈" class="headerlink" title="1.3 技术栈"></a>1.3 技术栈</h3><ul>
+<li><strong>深度学习框架</strong>：PyTorch + Ultralytics YOLOv11</li>
+<li><strong>GUI框架</strong>：PyQt5</li>
+<li><strong>计算机视觉</strong>：OpenCV</li>
+<li><strong>数据处理</strong>：NumPy, PIL</li>
+<li><strong>配置管理</strong>：YAML, JSON</li>
+</ul>
+<h2 id="二、YOLO训练全流程详解"><a href="#二、YOLO训练全流程详解" class="headerlink" title="二、YOLO训练全流程详解"></a>二、YOLO训练全流程详解</h2><h3 id="2-1-数据准备阶段"><a href="#2-1-数据准备阶段" class="headerlink" title="2.1 数据准备阶段"></a>2.1 数据准备阶段</h3><h4 id="2-1-1-数据集结构"><a href="#2-1-1-数据集结构" class="headerlink" title="2.1.1 数据集结构"></a>2.1.1 数据集结构</h4><pre class="line-numbers language-none"><code class="language-none">data&#x2F;
+├── train&#x2F;
+│   ├── images&#x2F;          # 训练图片 (16,356张)
+│   └── labels&#x2F;          # 训练标签 (16,356个)
+├── test&#x2F;
+│   ├── images&#x2F;          # 测试图片 (1,500张)
+│   └── labels&#x2F;          # 测试标签 (1,500个)
+└── dataset.yaml         # 数据集配置文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-1-2-标签格式"><a href="#2-1-2-标签格式" class="headerlink" title="2.1.2 标签格式"></a>2.1.2 标签格式</h4><p>采用YOLO格式的标签文件，每个标签文件包含：</p>
+<ul>
+<li>类别ID (0: mandatory, 1: prohibitory, 2: warning)</li>
+<li>边界框坐标 (归一化的中心点坐标和宽高)</li>
+<li>格式：<code>class_id center_x center_y width height</code></li>
+</ul>
+<h4 id="2-1-3-数据集配置"><a href="#2-1-3-数据集配置" class="headerlink" title="2.1.3 数据集配置"></a>2.1.3 数据集配置</h4><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">path</span><span class="token punctuation">:</span> /path/to/data
+<span class="token key atrule">train</span><span class="token punctuation">:</span> train/images
+<span class="token key atrule">val</span><span class="token punctuation">:</span> test/images
+<span class="token key atrule">test</span><span class="token punctuation">:</span> test/images
+<span class="token key atrule">nc</span><span class="token punctuation">:</span> <span class="token number">3</span>
+<span class="token key atrule">names</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'mandatory'</span><span class="token punctuation">,</span> <span class="token string">'prohibitory'</span><span class="token punctuation">,</span> <span class="token string">'warning'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-2-模型训练阶段"><a href="#2-2-模型训练阶段" class="headerlink" title="2.2 模型训练阶段"></a>2.2 模型训练阶段</h3><h4 id="2-2-1-训练参数配置"><a href="#2-2-1-训练参数配置" class="headerlink" title="2.2.1 训练参数配置"></a>2.2.1 训练参数配置</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 基础训练参数</span>
+epochs<span class="token punctuation">:</span> <span class="token number">10</span>              <span class="token comment"># 训练轮数</span>
+batch_size<span class="token punctuation">:</span> <span class="token number">16</span>          <span class="token comment"># 批次大小</span>
+img_size<span class="token punctuation">:</span> <span class="token number">640</span>           <span class="token comment"># 输入图像尺寸</span>
+device<span class="token punctuation">:</span> <span class="token string">'0'</span>             <span class="token comment"># 训练设备 (GPU/CPU)</span>
+workers<span class="token punctuation">:</span> <span class="token number">4</span>              <span class="token comment"># 数据加载工作进程数</span>
+
+<span class="token comment"># 学习率配置</span>
+lr0<span class="token punctuation">:</span> <span class="token number">0.01</span>              <span class="token comment"># 初始学习率</span>
+lrf<span class="token punctuation">:</span> <span class="token number">0.01</span>              <span class="token comment"># 最终学习率</span>
+momentum<span class="token punctuation">:</span> <span class="token number">0.937</span>         <span class="token comment"># 动量</span>
+weight_decay<span class="token punctuation">:</span> <span class="token number">0.0005</span>    <span class="token comment"># 权重衰减</span>
+warmup_epochs<span class="token punctuation">:</span> <span class="token number">3.0</span>      <span class="token comment"># 预热轮数</span>
+
+<span class="token comment"># 损失函数权重</span>
+box<span class="token punctuation">:</span> <span class="token number">7.5</span>               <span class="token comment"># 边界框损失权重</span>
+cls<span class="token punctuation">:</span> <span class="token number">0.5</span>               <span class="token comment"># 分类损失权重</span>
+dfl<span class="token punctuation">:</span> <span class="token number">1.5</span>               <span class="token comment"># DFL损失权重</span>
+
+<span class="token comment"># 数据增强参数</span>
+hsv_h<span class="token punctuation">:</span> <span class="token number">0.015</span>           <span class="token comment"># HSV色调增强</span>
+hsv_s<span class="token punctuation">:</span> <span class="token number">0.7</span>             <span class="token comment"># HSV饱和度增强</span>
+hsv_v<span class="token punctuation">:</span> <span class="token number">0.4</span>             <span class="token comment"># HSV明度增强</span>
+degrees<span class="token punctuation">:</span> <span class="token number">0.0</span>           <span class="token comment"># 旋转角度</span>
+translate<span class="token punctuation">:</span> <span class="token number">0.1</span>         <span class="token comment"># 平移</span>
+scale<span class="token punctuation">:</span> <span class="token number">0.5</span>             <span class="token comment"># 缩放</span>
+fliplr<span class="token punctuation">:</span> <span class="token number">0.5</span>            <span class="token comment"># 左右翻转</span>
+mosaic<span class="token punctuation">:</span> <span class="token number">1.0</span>            <span class="token comment"># 马赛克增强</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-2-2-训练流程"><a href="#2-2-2-训练流程" class="headerlink" title="2.2.2 训练流程"></a>2.2.2 训练流程</h4><ol>
+<li><strong>数据加载</strong>：使用DataLoader加载训练和验证数据</li>
+<li><strong>前向传播</strong>：模型对输入图像进行特征提取和预测</li>
+<li><strong>损失计算</strong>：计算边界框损失、分类损失和DFL损失</li>
+<li><strong>反向传播</strong>：计算梯度并更新模型参数</li>
+<li><strong>验证评估</strong>：在验证集上评估模型性能</li>
+<li><strong>模型保存</strong>：保存最佳模型和检查点</li>
+</ol>
+<h4 id="2-2-3-训练监控"><a href="#2-2-3-训练监控" class="headerlink" title="2.2.3 训练监控"></a>2.2.3 训练监控</h4><ul>
+<li><strong>损失曲线</strong>：监控训练和验证损失的变化</li>
+<li><strong>性能指标</strong>：mAP50、mAP50-95、精确率、召回率</li>
+<li><strong>混淆矩阵</strong>：分析各类别的检测性能</li>
+<li><strong>学习率调度</strong>：余弦学习率调度策略</li>
+</ul>
+<h3 id="2-3-模型验证阶段"><a href="#2-3-模型验证阶段" class="headerlink" title="2.3 模型验证阶段"></a>2.3 模型验证阶段</h3><h4 id="2-3-1-验证指标"><a href="#2-3-1-验证指标" class="headerlink" title="2.3.1 验证指标"></a>2.3.1 验证指标</h4><ul>
+<li><strong>mAP50</strong>：IoU阈值为0.5时的平均精度</li>
+<li><strong>mAP50-95</strong>：IoU阈值从0.5到0.95的平均精度</li>
+<li>**精确率(Precision)**：正确检测的阳性样本比例</li>
+<li>**召回率(Recall)**：正确检测的真实阳性样本比例</li>
+<li><strong>F1分数</strong>：精确率和召回率的调和平均数</li>
+</ul>
+<h4 id="2-3-2-验证流程"><a href="#2-3-2-验证流程" class="headerlink" title="2.3.2 验证流程"></a>2.3.2 验证流程</h4><ol>
+<li>加载训练好的最佳模型</li>
+<li>在验证集上运行推理</li>
+<li>计算各种性能指标</li>
+<li>生成可视化结果（混淆矩阵、PR曲线等）</li>
+<li>保存验证结果和报告</li>
+</ol>
+<h3 id="2-4-模型导出阶段"><a href="#2-4-模型导出阶段" class="headerlink" title="2.4 模型导出阶段"></a>2.4 模型导出阶段</h3><h4 id="2-4-1-导出格式"><a href="#2-4-1-导出格式" class="headerlink" title="2.4.1 导出格式"></a>2.4.1 导出格式</h4><ul>
+<li>**PyTorch格式(.pt)**：原始训练格式，用于继续训练</li>
+<li>**ONNX格式(.onnx)**：跨平台部署格式</li>
+<li>**TensorRT格式(.engine)**：GPU加速推理格式</li>
+</ul>
+<h4 id="2-4-2-导出流程"><a href="#2-4-2-导出流程" class="headerlink" title="2.4.2 导出流程"></a>2.4.2 导出流程</h4><ol>
+<li>加载训练好的模型</li>
+<li>转换为目标格式</li>
+<li>验证导出模型的正确性</li>
+<li>保存到指定目录</li>
+</ol>
+<h2 id="三、数据集详解"><a href="#三、数据集详解" class="headerlink" title="三、数据集详解"></a>三、数据集详解</h2><h3 id="3-1-数据集来源"><a href="#3-1-数据集来源" class="headerlink" title="3.1 数据集来源"></a>3.1 数据集来源</h3><p>本项目使用TSRD (Traffic Sign Recognition Dataset) 数据集，包含：</p>
+<ul>
+<li><strong>训练集</strong>：16,356张图片，覆盖各种交通标志</li>
+<li><strong>测试集</strong>：1,500张图片，用于模型评估</li>
+<li><strong>类别</strong>：3类交通标志（指示、禁令、警告）</li>
+</ul>
+<h3 id="3-2-数据预处理"><a href="#3-2-数据预处理" class="headerlink" title="3.2 数据预处理"></a>3.2 数据预处理</h3><h4 id="3-2-1-图像预处理"><a href="#3-2-1-图像预处理" class="headerlink" title="3.2.1 图像预处理"></a>3.2.1 图像预处理</h4><ul>
+<li><strong>尺寸调整</strong>：统一调整为640x640像素</li>
+<li><strong>归一化</strong>：像素值归一化到[0,1]范围</li>
+<li><strong>数据增强</strong>：旋转、翻转、缩放、颜色变换等</li>
+</ul>
+<h4 id="3-2-2-标签处理"><a href="#3-2-2-标签处理" class="headerlink" title="3.2.2 标签处理"></a>3.2.2 标签处理</h4><ul>
+<li><strong>格式转换</strong>：将边界框坐标转换为YOLO格式</li>
+<li><strong>类别映射</strong>：将原始类别映射到0,1,2</li>
+<li><strong>坐标归一化</strong>：将像素坐标转换为相对坐标</li>
+</ul>
+<h3 id="3-3-数据增强策略"><a href="#3-3-数据增强策略" class="headerlink" title="3.3 数据增强策略"></a>3.3 数据增强策略</h3><h4 id="3-3-1-几何变换"><a href="#3-3-1-几何变换" class="headerlink" title="3.3.1 几何变换"></a>3.3.1 几何变换</h4><ul>
+<li><strong>旋转</strong>：随机旋转±15度</li>
+<li><strong>翻转</strong>：水平翻转，概率0.5</li>
+<li><strong>缩放</strong>：随机缩放0.5-1.5倍</li>
+<li><strong>平移</strong>：随机平移±10%</li>
+</ul>
+<h4 id="3-3-2-颜色变换"><a href="#3-3-2-颜色变换" class="headerlink" title="3.3.2 颜色变换"></a>3.3.2 颜色变换</h4><ul>
+<li><strong>HSV调整</strong>：色调±1.5%，饱和度±70%，明度±40%</li>
+<li><strong>亮度对比度</strong>：随机调整亮度和对比度</li>
+<li><strong>噪声添加</strong>：添加高斯噪声</li>
+</ul>
+<h4 id="3-3-3-高级增强"><a href="#3-3-3-高级增强" class="headerlink" title="3.3.3 高级增强"></a>3.3.3 高级增强</h4><ul>
+<li><strong>马赛克增强</strong>：将4张图片拼接成1张</li>
+<li><strong>混合增强</strong>：将两张图片混合</li>
+<li><strong>Copy-Paste</strong>：复制粘贴增强</li>
+</ul>
+<h2 id="四、优化代码详解"><a href="#四、优化代码详解" class="headerlink" title="四、优化代码详解"></a>四、优化代码详解</h2><h3 id="4-1-优化策略概述"><a href="#4-1-优化策略概述" class="headerlink" title="4.1 优化策略概述"></a>4.1 优化策略概述</h3><h4 id="4-1-1-主要优化方向"><a href="#4-1-1-主要优化方向" class="headerlink" title="4.1.1 主要优化方向"></a>4.1.1 主要优化方向</h4><ol>
+<li><strong>漏检问题修复</strong>：降低置信度阈值，优化损失函数权重</li>
+<li><strong>小目标检测优化</strong>：集成注意力机制和特征融合</li>
+<li><strong>数据增强平衡</strong>：保持特征完整性的同时增加多样性</li>
+<li><strong>训练策略优化</strong>：稳定学习率，充分预热</li>
+</ol>
+<h4 id="4-1-2-核心改进"><a href="#4-1-2-核心改进" class="headerlink" title="4.1.2 核心改进"></a>4.1.2 核心改进</h4><ul>
+<li><strong>置信度阈值</strong>：从0.5降低到0.1，减少漏检</li>
+<li><strong>IoU阈值</strong>：从0.6降低到0.5，提高召回率</li>
+<li><strong>分类损失权重</strong>：从0.5提高到1.5，减少漏检</li>
+<li><strong>学习率策略</strong>：降低初始学习率，增加预热轮数</li>
+</ul>
+<h3 id="4-2-注意力机制集成"><a href="#4-2-注意力机制集成" class="headerlink" title="4.2 注意力机制集成"></a>4.2 注意力机制集成</h3><h4 id="4-2-1-SE注意力机制"><a href="#4-2-1-SE注意力机制" class="headerlink" title="4.2.1 SE注意力机制"></a>4.2.1 SE注意力机制</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">SEAttention</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Squeeze-and-Excitation注意力机制"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> reduction<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>SEAttention<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>avg_pool <span class="token operator">=</span> nn<span class="token punctuation">.</span>AdaptiveAvgPool2d<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>fc <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>channel<span class="token punctuation">,</span> channel <span class="token operator">//</span> reduction<span class="token punctuation">,</span> bias<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span>inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>channel <span class="token operator">//</span> reduction<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> bias<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>Sigmoid<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-2-2-CBAM注意力机制"><a href="#4-2-2-CBAM注意力机制" class="headerlink" title="4.2.2 CBAM注意力机制"></a>4.2.2 CBAM注意力机制</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">CBAM</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Convolutional Block Attention Module"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> in_channels<span class="token punctuation">,</span> reduction<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">,</span> kernel_size<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>CBAM<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>channel_attention <span class="token operator">=</span> ChannelAttention<span class="token punctuation">(</span>in_channels<span class="token punctuation">,</span> reduction<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>spatial_attention <span class="token operator">=</span> SpatialAttention<span class="token punctuation">(</span>kernel_size<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-2-3-多尺度特征融合"><a href="#4-2-3-多尺度特征融合" class="headerlink" title="4.2.3 多尺度特征融合"></a>4.2.3 多尺度特征融合</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MultiScaleFeatureFusion</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""多尺度特征融合模块"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> in_channels_list<span class="token punctuation">,</span> out_channels<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>MultiScaleFeatureFusion<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 特征金字塔网络</span>
+        self<span class="token punctuation">.</span>lateral_convs <span class="token operator">=</span> nn<span class="token punctuation">.</span>ModuleList<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>fpn_convs <span class="token operator">=</span> nn<span class="token punctuation">.</span>ModuleList<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 注意力机制用于特征融合</span>
+        self<span class="token punctuation">.</span>attention <span class="token operator">=</span> CBAM<span class="token punctuation">(</span>out_channels<span class="token punctuation">,</span> reduction<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-3-优化训练参数"><a href="#4-3-优化训练参数" class="headerlink" title="4.3 优化训练参数"></a>4.3 优化训练参数</h3><h4 id="4-3-1-检测参数优化"><a href="#4-3-1-检测参数优化" class="headerlink" title="4.3.1 检测参数优化"></a>4.3.1 检测参数优化</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 修复漏检的检测参数</span>
+<span class="token string">'conf'</span><span class="token punctuation">:</span> <span class="token number">0.1</span><span class="token punctuation">,</span>           <span class="token comment"># 降低置信度阈值，减少漏检</span>
+<span class="token string">'iou'</span><span class="token punctuation">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>            <span class="token comment"># 降低IoU阈值，提高召回率</span>
+<span class="token string">'max_det'</span><span class="token punctuation">:</span> <span class="token number">300</span><span class="token punctuation">,</span>        <span class="token comment"># 适中的最大检测数</span>
+<span class="token string">'multi_scale'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>   <span class="token comment"># 多尺度训练</span>
+<span class="token string">'dropout'</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>        <span class="token comment"># 移除dropout，避免特征丢失</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-3-2-数据增强优化"><a href="#4-3-2-数据增强优化" class="headerlink" title="4.3.2 数据增强优化"></a>4.3.2 数据增强优化</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 平衡的数据增强 - 保持特征的同时增加多样性</span>
+<span class="token string">'hsv_h'</span><span class="token punctuation">:</span> <span class="token number">0.015</span><span class="token punctuation">,</span>        <span class="token comment"># 适中的色调变化</span>
+<span class="token string">'hsv_s'</span><span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">,</span>          <span class="token comment"># 适中的饱和度变化，保持标志颜色特征</span>
+<span class="token string">'hsv_v'</span><span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">,</span>          <span class="token comment"># 适中的明度变化</span>
+<span class="token string">'degrees'</span><span class="token punctuation">:</span> <span class="token number">3.0</span><span class="token punctuation">,</span>        <span class="token comment"># 适中的旋转角度</span>
+<span class="token string">'translate'</span><span class="token punctuation">:</span> <span class="token number">0.15</span><span class="token punctuation">,</span>     <span class="token comment"># 适中的平移</span>
+<span class="token string">'scale'</span><span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">,</span>          <span class="token comment"># 适中的缩放范围，保持标志形状</span>
+<span class="token string">'mosaic'</span><span class="token punctuation">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>         <span class="token comment"># 适中的马赛克增强</span>
+<span class="token string">'copy_paste'</span><span class="token punctuation">:</span> <span class="token number">0.2</span><span class="token punctuation">,</span>     <span class="token comment"># 适中的Copy-Paste增强</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-3-3-学习率策略优化"><a href="#4-3-3-学习率策略优化" class="headerlink" title="4.3.3 学习率策略优化"></a>4.3.3 学习率策略优化</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 保守的学习率策略</span>
+<span class="token string">'lr0'</span><span class="token punctuation">:</span> <span class="token number">0.005</span><span class="token punctuation">,</span>          <span class="token comment"># 降低初始学习率，稳定训练</span>
+<span class="token string">'lrf'</span><span class="token punctuation">:</span> <span class="token number">0.005</span><span class="token punctuation">,</span>          <span class="token comment"># 降低最终学习率</span>
+<span class="token string">'warmup_epochs'</span><span class="token punctuation">:</span> <span class="token number">5.0</span><span class="token punctuation">,</span>  <span class="token comment"># 增加预热轮数</span>
+<span class="token string">'cos_lr'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>        <span class="token comment"># 余弦学习率调度</span>
+<span class="token string">'close_mosaic'</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>     <span class="token comment"># 最后5个epoch关闭马赛克</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-4-优化效果对比"><a href="#4-4-优化效果对比" class="headerlink" title="4.4 优化效果对比"></a>4.4 优化效果对比</h3><h4 id="4-4-1-性能提升"><a href="#4-4-1-性能提升" class="headerlink" title="4.4.1 性能提升"></a>4.4.1 性能提升</h4><ul>
+<li><strong>mAP50</strong>：从0.557提升到0.764 (+37%)</li>
+<li><strong>召回率</strong>：从70%提升到85% (+15%)</li>
+<li><strong>漏检率</strong>：从40-50%降低到20-30% (-50%)</li>
+<li><strong>误报率</strong>：从30-40%降低到15-25% (-40%)</li>
+</ul>
+<h4 id="4-4-2-训练稳定性"><a href="#4-4-2-训练稳定性" class="headerlink" title="4.4.2 训练稳定性"></a>4.4.2 训练稳定性</h4><ul>
+<li><strong>损失收敛</strong>：更稳定的损失曲线</li>
+<li><strong>梯度稳定</strong>：避免梯度爆炸和消失</li>
+<li><strong>学习率调度</strong>：平滑的学习率变化</li>
+</ul>
+<h2 id="五、GUI界面详解"><a href="#五、GUI界面详解" class="headerlink" title="五、GUI界面详解"></a>五、GUI界面详解</h2><h3 id="5-1-界面设计"><a href="#5-1-界面设计" class="headerlink" title="5.1 界面设计"></a>5.1 界面设计</h3><h4 id="5-1-1-整体布局"><a href="#5-1-1-整体布局" class="headerlink" title="5.1.1 整体布局"></a>5.1.1 整体布局</h4><ul>
+<li><strong>左侧控制面板</strong>：模型管理、检测控制、结果显示</li>
+<li><strong>右侧显示区域</strong>：实时检测显示、统计分析</li>
+<li><strong>分割器设计</strong>：可调整左右面板比例</li>
+</ul>
+<h4 id="5-1-2-现代化UI特性"><a href="#5-1-2-现代化UI特性" class="headerlink" title="5.1.2 现代化UI特性"></a>5.1.2 现代化UI特性</h4><ul>
+<li><strong>渐变色彩</strong>：采用蓝紫色渐变背景</li>
+<li><strong>圆角设计</strong>：所有组件采用圆角边框</li>
+<li><strong>阴影效果</strong>：添加立体阴影效果</li>
+<li><strong>悬停效果</strong>：按钮悬停时的视觉反馈</li>
+</ul>
+<h3 id="5-2-功能模块"><a href="#5-2-功能模块" class="headerlink" title="5.2 功能模块"></a>5.2 功能模块</h3><h4 id="5-2-1-模型管理"><a href="#5-2-1-模型管理" class="headerlink" title="5.2.1 模型管理"></a>5.2.1 模型管理</h4><ul>
+<li><strong>模型加载</strong>：自动加载最佳模型</li>
+<li><strong>模型选择</strong>：支持选择不同模型文件</li>
+<li><strong>状态显示</strong>：实时显示模型加载状态</li>
+</ul>
+<h4 id="5-2-2-检测控制"><a href="#5-2-2-检测控制" class="headerlink" title="5.2.2 检测控制"></a>5.2.2 检测控制</h4><ul>
+<li><strong>置信度调节</strong>：滑块调节置信度阈值</li>
+<li><strong>检测模式</strong>：摄像头、图片、视频三种模式</li>
+<li><strong>实时控制</strong>：开始&#x2F;停止检测按钮</li>
+</ul>
+<h4 id="5-2-3-结果显示"><a href="#5-2-3-结果显示" class="headerlink" title="5.2.3 结果显示"></a>5.2.3 结果显示</h4><ul>
+<li><strong>实时显示</strong>：大尺寸图像显示区域</li>
+<li><strong>检测结果</strong>：详细的检测信息展示</li>
+<li><strong>历史记录</strong>：检测历史列表</li>
+<li><strong>统计分析</strong>：各类别检测统计</li>
+</ul>
+<h3 id="5-3-多线程设计"><a href="#5-3-多线程设计" class="headerlink" title="5.3 多线程设计"></a>5.3 多线程设计</h3><h4 id="5-3-1-检测线程"><a href="#5-3-1-检测线程" class="headerlink" title="5.3.1 检测线程"></a>5.3.1 检测线程</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">DetectionThread</span><span class="token punctuation">(</span>QThread<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""检测线程 - 避免UI阻塞"""</span>
+    detection_result <span class="token operator">=</span> pyqtSignal<span class="token punctuation">(</span><span class="token builtin">dict</span><span class="token punctuation">)</span>  <span class="token comment"># 检测结果信号</span>
+    frame_ready <span class="token operator">=</span> pyqtSignal<span class="token punctuation">(</span>np<span class="token punctuation">.</span>ndarray<span class="token punctuation">)</span>  <span class="token comment"># 帧就绪信号</span>
+    finished <span class="token operator">=</span> pyqtSignal<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 完成信号</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="5-3-2-信号槽机制"><a href="#5-3-2-信号槽机制" class="headerlink" title="5.3.2 信号槽机制"></a>5.3.2 信号槽机制</h4><ul>
+<li><strong>异步通信</strong>：使用Qt信号槽机制</li>
+<li><strong>数据传递</strong>：检测结果和图像数据传递</li>
+<li><strong>状态同步</strong>：UI状态与检测状态同步</li>
+</ul>
+<h3 id="5-4-图像处理优化"><a href="#5-4-图像处理优化" class="headerlink" title="5.4 图像处理优化"></a>5.4 图像处理优化</h3><h4 id="5-4-1-显示优化"><a href="#5-4-1-显示优化" class="headerlink" title="5.4.1 显示优化"></a>5.4.1 显示优化</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">update_display</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> frame<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""更新显示 - 优化图像显示大小和清晰度"""</span>
+    <span class="token comment"># 转换BGR到RGB</span>
+    rgb_frame <span class="token operator">=</span> cv2<span class="token punctuation">.</span>cvtColor<span class="token punctuation">(</span>frame<span class="token punctuation">,</span> cv2<span class="token punctuation">.</span>COLOR_BGR2RGB<span class="token punctuation">)</span>
+    
+    <span class="token comment"># 优化显示尺寸 - 让图像显示更大</span>
+    display_width <span class="token operator">=</span> <span class="token number">1200</span>   <span class="token comment"># 增加显示宽度</span>
+    display_height <span class="token operator">=</span> <span class="token number">900</span>   <span class="token comment"># 增加显示高度</span>
+    
+    <span class="token comment"># 高质量缩放</span>
+    scaled_pixmap <span class="token operator">=</span> pixmap<span class="token punctuation">.</span>scaled<span class="token punctuation">(</span>
+        new_width<span class="token punctuation">,</span> new_height<span class="token punctuation">,</span>
+        Qt<span class="token punctuation">.</span>KeepAspectRatio<span class="token punctuation">,</span> 
+        Qt<span class="token punctuation">.</span>SmoothTransformation
+    <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="5-4-2-检测覆盖层"><a href="#5-4-2-检测覆盖层" class="headerlink" title="5.4.2 检测覆盖层"></a>5.4.2 检测覆盖层</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">_add_detection_overlay</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> frame<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""添加检测信息覆盖层"""</span>
+    <span class="token keyword">if</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token string">'last_detections'</span><span class="token punctuation">)</span> <span class="token keyword">and</span> self<span class="token punctuation">.</span>last_detections<span class="token punctuation">:</span>
+        <span class="token comment"># 在图像上添加检测统计信息</span>
+        overlay_text <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"检测到 </span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>last_detections<span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string"> 个交通标志"</span></span>
+        cv2<span class="token punctuation">.</span>putText<span class="token punctuation">(</span>frame<span class="token punctuation">,</span> overlay_text<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                   cv2<span class="token punctuation">.</span>FONT_HERSHEY_SIMPLEX<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="六、代码结构详解"><a href="#六、代码结构详解" class="headerlink" title="六、代码结构详解"></a>六、代码结构详解</h2><h3 id="6-1-项目目录结构"><a href="#6-1-项目目录结构" class="headerlink" title="6.1 项目目录结构"></a>6.1 项目目录结构</h3><pre class="line-numbers language-none"><code class="language-none">yolo-v11-traffic-sign-main&#x2F;
+├── backend&#x2F;                    # 后端代码
+│   ├── config.py              # 配置文件
+│   ├── detect_yolov11.py      # 检测器
+│   ├── train_yolov11.py       # 原始训练脚本
+│   └── detect_yolov11_enhanced.py  # 增强检测器
+├── data&#x2F;                      # 数据集
+│   ├── train&#x2F;                 # 训练数据
+│   ├── test&#x2F;                  # 测试数据
+│   └── dataset.yaml           # 数据集配置
+├── models&#x2F;                    # 模型文件
+│   ├── best_yolov11.pt        # 原始最佳模型
+│   └── best_yolov11_optimized.pt  # 优化模型
+├── results&#x2F;                   # 训练结果
+├── frontend&#x2F;                  # 前端代码
+├── gui_traffic_detector.py    # GUI主程序
+├── train_yolov11_optimized.py # 优化训练脚本
+└── requirements.txt           # 依赖包<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6-2-核心类设计"><a href="#6-2-核心类设计" class="headerlink" title="6.2 核心类设计"></a>6.2 核心类设计</h3><h4 id="6-2-1-YOLOv11Trainer类"><a href="#6-2-1-YOLOv11Trainer类" class="headerlink" title="6.2.1 YOLOv11Trainer类"></a>6.2.1 YOLOv11Trainer类</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">YOLOv11Trainer</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""原始训练器"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> config<span class="token punctuation">)</span>          <span class="token comment"># 初始化</span>
+    <span class="token keyword">def</span> <span class="token function">prepare_dataset</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>           <span class="token comment"># 数据准备</span>
+    <span class="token keyword">def</span> <span class="token function">train_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>               <span class="token comment"># 模型训练</span>
+    <span class="token keyword">def</span> <span class="token function">validate_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>            <span class="token comment"># 模型验证</span>
+    <span class="token keyword">def</span> <span class="token function">export_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>              <span class="token comment"># 模型导出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="6-2-2-YOLOv11OptimizedTrainer类"><a href="#6-2-2-YOLOv11OptimizedTrainer类" class="headerlink" title="6.2.2 YOLOv11OptimizedTrainer类"></a>6.2.2 YOLOv11OptimizedTrainer类</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">YOLOv11OptimizedTrainer</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""优化训练器"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> config<span class="token punctuation">)</span>                    <span class="token comment"># 初始化</span>
+    <span class="token keyword">def</span> <span class="token function">prepare_dataset</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>                     <span class="token comment"># 数据准备</span>
+    <span class="token keyword">def</span> <span class="token function">_apply_attention_mechanisms</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>         <span class="token comment"># 应用注意力机制</span>
+    <span class="token keyword">def</span> <span class="token function">train_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>                         <span class="token comment"># 优化训练</span>
+    <span class="token keyword">def</span> <span class="token function">validate_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>                      <span class="token comment"># 模型验证</span>
+    <span class="token keyword">def</span> <span class="token function">export_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>                        <span class="token comment"># 模型导出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="6-2-3-TrafficSignDetectorGUI类"><a href="#6-2-3-TrafficSignDetectorGUI类" class="headerlink" title="6.2.3 TrafficSignDetectorGUI类"></a>6.2.3 TrafficSignDetectorGUI类</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TrafficSignDetectorGUI</span><span class="token punctuation">(</span>QMainWindow<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""GUI主窗口"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>                           <span class="token comment"># 初始化</span>
+    <span class="token keyword">def</span> <span class="token function">init_ui</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>                            <span class="token comment"># 初始化UI</span>
+    <span class="token keyword">def</span> <span class="token function">create_control_panel</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>               <span class="token comment"># 创建控制面板</span>
+    <span class="token keyword">def</span> <span class="token function">create_display_area</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>                <span class="token comment"># 创建显示区域</span>
+    <span class="token keyword">def</span> <span class="token function">load_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>                         <span class="token comment"># 加载模型</span>
+    <span class="token keyword">def</span> <span class="token function">start_camera_detection</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>             <span class="token comment"># 开始摄像头检测</span>
+    <span class="token keyword">def</span> <span class="token function">update_display</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> frame<span class="token punctuation">)</span>              <span class="token comment"># 更新显示</span>
+    <span class="token keyword">def</span> <span class="token function">update_detection_result</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> result<span class="token punctuation">)</span>    <span class="token comment"># 更新检测结果</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6-3-关键函数详解"><a href="#6-3-关键函数详解" class="headerlink" title="6.3 关键函数详解"></a>6.3 关键函数详解</h3><h4 id="6-3-1-数据准备函数"><a href="#6-3-1-数据准备函数" class="headerlink" title="6.3.1 数据准备函数"></a>6.3.1 数据准备函数</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">prepare_dataset</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""准备数据集，直接使用原始数据"""</span>
+    <span class="token comment"># 检查数据是否存在</span>
+    <span class="token comment"># 创建数据集配置文件</span>
+    <span class="token comment"># 建立标签文件链接</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="6-3-2-训练函数"><a href="#6-3-2-训练函数" class="headerlink" title="6.3.2 训练函数"></a>6.3.2 训练函数</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">train_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""训练YOLOv11模型"""</span>
+    <span class="token comment"># 初始化模型</span>
+    <span class="token comment"># 配置训练参数</span>
+    <span class="token comment"># 执行训练</span>
+    <span class="token comment"># 保存最佳模型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="6-3-3-检测函数"><a href="#6-3-3-检测函数" class="headerlink" title="6.3.3 检测函数"></a>6.3.3 检测函数</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">detect_image</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> image<span class="token punctuation">,</span> filename<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""检测单张图片"""</span>
+    <span class="token comment"># 图像预处理</span>
+    <span class="token comment"># 模型推理</span>
+    <span class="token comment"># 后处理</span>
+    <span class="token comment"># 绘制检测结果</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="七、使用指南"><a href="#七、使用指南" class="headerlink" title="七、使用指南"></a>七、使用指南</h2><h3 id="7-1-环境配置"><a href="#7-1-环境配置" class="headerlink" title="7.1 环境配置"></a>7.1 环境配置</h3><h4 id="7-1-1-系统要求"><a href="#7-1-1-系统要求" class="headerlink" title="7.1.1 系统要求"></a>7.1.1 系统要求</h4><ul>
+<li><strong>操作系统</strong>：Windows 10&#x2F;11, Linux, macOS</li>
+<li><strong>Python版本</strong>：Python 3.8+</li>
+<li><strong>GPU</strong>：NVIDIA GPU (推荐，用于加速训练)</li>
+<li><strong>内存</strong>：8GB+ RAM</li>
+<li><strong>存储</strong>：10GB+ 可用空间</li>
+</ul>
+<h4 id="7-1-2-依赖安装"><a href="#7-1-2-依赖安装" class="headerlink" title="7.1.2 依赖安装"></a>7.1.2 依赖安装</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 安装基础依赖</span>
+pip <span class="token function">install</span> <span class="token parameter variable">-r</span> requirements.txt
+
+<span class="token comment"># 安装PyTorch (GPU版本)</span>
+pip <span class="token function">install</span> torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+<span class="token comment"># 安装Ultralytics</span>
+pip <span class="token function">install</span> ultralytics
+
+<span class="token comment"># 安装PyQt5</span>
+pip <span class="token function">install</span> PyQt5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="7-2-训练使用"><a href="#7-2-训练使用" class="headerlink" title="7.2 训练使用"></a>7.2 训练使用</h3><h4 id="7-2-1-原始训练"><a href="#7-2-1-原始训练" class="headerlink" title="7.2.1 原始训练"></a>7.2.1 原始训练</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 基础训练</span>
+python backend/train_yolov11.py <span class="token parameter variable">--epochs</span> <span class="token number">10</span> --batch-size <span class="token number">16</span> --img-size <span class="token number">640</span>
+
+<span class="token comment"># 自定义参数训练</span>
+python backend/train_yolov11.py <span class="token parameter variable">--epochs</span> <span class="token number">20</span> --batch-size <span class="token number">8</span> --img-size <span class="token number">1280</span> <span class="token parameter variable">--device</span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="7-2-2-优化训练"><a href="#7-2-2-优化训练" class="headerlink" title="7.2.2 优化训练"></a>7.2.2 优化训练</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 优化训练</span>
+python train_yolov11_optimized.py <span class="token parameter variable">--epochs</span> <span class="token number">10</span> --batch-size <span class="token number">8</span> --img-size <span class="token number">640</span>
+
+<span class="token comment"># 高分辨率训练</span>
+python train_yolov11_optimized.py <span class="token parameter variable">--epochs</span> <span class="token number">15</span> --batch-size <span class="token number">4</span> --img-size <span class="token number">1280</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="7-3-GUI使用"><a href="#7-3-GUI使用" class="headerlink" title="7.3 GUI使用"></a>7.3 GUI使用</h3><h4 id="7-3-1-启动GUI"><a href="#7-3-1-启动GUI" class="headerlink" title="7.3.1 启动GUI"></a>7.3.1 启动GUI</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 启动图形界面</span>
+python gui_traffic_detector.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="7-3-2-功能使用"><a href="#7-3-2-功能使用" class="headerlink" title="7.3.2 功能使用"></a>7.3.2 功能使用</h4><ol>
+<li><strong>模型加载</strong>：点击”重新加载模型”或”选择模型文件”</li>
+<li><strong>摄像头检测</strong>：点击”📷 摄像头检测”</li>
+<li><strong>图片检测</strong>：点击”🖼️ 图片检测”，选择图片文件</li>
+<li><strong>视频检测</strong>：点击”🎬 视频检测”，选择视频文件</li>
+<li><strong>参数调节</strong>：使用置信度滑块调节检测阈值</li>
+<li><strong>查看结果</strong>：在”检测结果”区域查看详细信息</li>
+<li><strong>统计分析</strong>：切换到”📊 数据分析”标签页查看统计</li>
+</ol>
+<h3 id="7-4-模型部署"><a href="#7-4-模型部署" class="headerlink" title="7.4 模型部署"></a>7.4 模型部署</h3><h4 id="7-4-1-模型导出"><a href="#7-4-1-模型导出" class="headerlink" title="7.4.1 模型导出"></a>7.4.1 模型导出</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 导出ONNX格式</span>
+model<span class="token punctuation">.</span>export<span class="token punctuation">(</span><span class="token builtin">format</span><span class="token operator">=</span><span class="token string">'onnx'</span><span class="token punctuation">,</span> imgsz<span class="token operator">=</span><span class="token number">640</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 导出TensorRT格式</span>
+model<span class="token punctuation">.</span>export<span class="token punctuation">(</span><span class="token builtin">format</span><span class="token operator">=</span><span class="token string">'engine'</span><span class="token punctuation">,</span> imgsz<span class="token operator">=</span><span class="token number">640</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="7-4-2-推理使用"><a href="#7-4-2-推理使用" class="headerlink" title="7.4.2 推理使用"></a>7.4.2 推理使用</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 加载模型</span>
+detector <span class="token operator">=</span> YOLOv11Detector<span class="token punctuation">(</span><span class="token string">'best_yolov11.pt'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 检测图片</span>
+image <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imread<span class="token punctuation">(</span><span class="token string">'test.jpg'</span><span class="token punctuation">)</span>
+result<span class="token punctuation">,</span> detections <span class="token operator">=</span> detector<span class="token punctuation">.</span>detect_image<span class="token punctuation">(</span>image<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="八、性能优化建议"><a href="#八、性能优化建议" class="headerlink" title="八、性能优化建议"></a>八、性能优化建议</h2><h3 id="8-1-训练优化"><a href="#8-1-训练优化" class="headerlink" title="8.1 训练优化"></a>8.1 训练优化</h3><h4 id="8-1-1-硬件优化"><a href="#8-1-1-硬件优化" class="headerlink" title="8.1.1 硬件优化"></a>8.1.1 硬件优化</h4><ul>
+<li><strong>GPU选择</strong>：使用NVIDIA RTX 3080&#x2F;4080或更高</li>
+<li><strong>内存配置</strong>：至少16GB RAM，推荐32GB</li>
+<li><strong>存储优化</strong>：使用SSD存储数据集</li>
+</ul>
+<h4 id="8-1-2-参数调优"><a href="#8-1-2-参数调优" class="headerlink" title="8.1.2 参数调优"></a>8.1.2 参数调优</h4><ul>
+<li><strong>批次大小</strong>：根据GPU内存调整，建议8-16</li>
+<li><strong>学习率</strong>：使用学习率查找器找到最优值</li>
+<li><strong>数据增强</strong>：根据数据集特点调整增强参数</li>
+</ul>
+<h3 id="8-2-推理优化"><a href="#8-2-推理优化" class="headerlink" title="8.2 推理优化"></a>8.2 推理优化</h3><h4 id="8-2-1-模型优化"><a href="#8-2-1-模型优化" class="headerlink" title="8.2.1 模型优化"></a>8.2.1 模型优化</h4><ul>
+<li><strong>模型量化</strong>：使用INT8量化减少模型大小</li>
+<li><strong>模型剪枝</strong>：移除不重要的连接和通道</li>
+<li><strong>知识蒸馏</strong>：使用大模型指导小模型训练</li>
+</ul>
+<h4 id="8-2-2-推理加速"><a href="#8-2-2-推理加速" class="headerlink" title="8.2.2 推理加速"></a>8.2.2 推理加速</h4><ul>
+<li><strong>TensorRT优化</strong>：使用TensorRT进行GPU加速</li>
+<li><strong>ONNX Runtime</strong>：使用ONNX Runtime进行CPU推理</li>
+<li><strong>批处理</strong>：批量处理多张图片</li>
+</ul>
+<h3 id="8-3-系统优化"><a href="#8-3-系统优化" class="headerlink" title="8.3 系统优化"></a>8.3 系统优化</h3><h4 id="8-3-1-内存优化"><a href="#8-3-1-内存优化" class="headerlink" title="8.3.1 内存优化"></a>8.3.1 内存优化</h4><ul>
+<li><strong>数据加载</strong>：使用多进程数据加载</li>
+<li><strong>缓存策略</strong>：缓存常用数据到内存</li>
+<li><strong>垃圾回收</strong>：定期清理无用对象</li>
+</ul>
+<h4 id="8-3-2-并发优化"><a href="#8-3-2-并发优化" class="headerlink" title="8.3.2 并发优化"></a>8.3.2 并发优化</h4><ul>
+<li><strong>多线程</strong>：使用多线程处理不同任务</li>
+<li><strong>异步处理</strong>：使用异步I&#x2F;O提高效率</li>
+<li><strong>队列管理</strong>：使用队列管理任务调度</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Yolo11交通标志检测系统</p><p><a href="https://huangzhongqi978.github.io/2025/10/01/Yolo11交通标志检测系统/">https://huangzhongqi978.github.io/2025/10/01/Yolo11交通标志检测系统/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>HuangZhongqi</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2025-10-01</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2025-10-01</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/yolo%E6%A8%A1%E5%9E%8B/">yolo模型</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=xxxx" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/huangzhongqi" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/alipay-qrcode.png" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/wechat-qrcode.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2025/10/01/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E6%96%87%E6%A1%A3/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">基于GRU的语音情感分析识别</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2025/10/01/hello-world/"><span class="level-item">Hello World</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://huangzhongqi978.github.io/2025/10/01/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/';
+            this.page.identifier = '2025/10/01/Yolo11交通标志检测系统/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'your-disqus-shortname' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/avatar.png" alt="HuangZhongqi"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">HuangZhongqi</p><p class="is-size-6 is-block">AI &amp; Deep Learning</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shanghai, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">3</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Huangzhongqi978" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-10-01T08:40:31.000Z">2025-10-01</time></p><p class="title"><a href="/2025/10/01/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E6%96%87%E6%A1%A3/">基于GRU的语音情感分析识别</a></p><p class="categories"><a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-10-01T07:59:31.000Z">2025-10-01</time></p><p class="title"><a href="/2025/10/01/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/">Yolo11交通标志检测系统</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-10-01T07:14:18.591Z">2025-10-01</time></p><p class="title"><a href="/2025/10/01/hello-world/">Hello World</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"><span class="level-start"><span class="level-item">自然语言处理</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><span class="level-start"><span class="level-item">计算机视觉</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/GRU%E7%BB%93%E6%9E%84/"><span class="tag">GRU结构</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/me/"><span class="tag">me</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/yolo%E6%A8%A1%E5%9E%8B/"><span class="tag">yolo模型</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Brahmacarya奇奇" height="28"></a><p class="is-size-7"><span>&copy; 2025 HuangZhongqi</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2025 Brahmacarya奇奇</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'folded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
