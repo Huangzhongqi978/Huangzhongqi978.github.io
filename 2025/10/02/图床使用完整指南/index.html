@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><!--!--><title>图床使用完整指南 - Brahmacarya奇奇</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#1e88e5"><meta name="application-name" content="Brahmacarya奇奇"><meta name="msapplication-TileImage" content="/img/logo-192.png"><meta name="msapplication-TileColor" content="#1e88e5"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Brahmacarya奇奇"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" sizes="192x192" href="/img/logo-192.png"><link rel="apple-touch-icon" sizes="512x512" href="/img/logo-512.png"><meta name="description" content="这篇文章详细介绍如何使用Gitee和GitHub图床来托管博客图片，提升博客性能和管理效率。"><meta property="og:type" content="website"><meta property="og:title" content="图床使用完整指南"><meta property="og:url" content="https://huangzhongqi978.top/2025/10/02/%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/"><meta property="og:site_name" content="Brahmacarya奇奇"><meta property="og:description" content="这篇文章详细介绍如何使用Gitee和GitHub图床来托管博客图片，提升博客性能和管理效率。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://huangzhongqi978.top/img/og_image.png"><meta property="article:published_time" content="2025-10-02T08:00:00.000Z"><meta property="article:modified_time" content="2025-10-02T14:23:35.477Z"><meta property="article:author" content="HuangZhongqi"><meta property="article:tag" content="图床"><meta property="article:tag" content="Gitee"><meta property="article:tag" content="GitHub"><meta property="article:tag" content="PicGo"><meta property="article:tag" content="博客"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://huangzhongqi978.top/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huangzhongqi978.top/2025/10/02/%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/"},"headline":"图床使用完整指南","image":["https://huangzhongqi978.top/img/og_image.png"],"datePublished":"2025-10-02T08:00:00.000Z","dateModified":"2025-10-02T14:23:35.477Z","author":{"@type":"Person","name":"HuangZhongqi"},"publisher":{"@type":"Organization","name":"Brahmacarya奇奇","logo":{"@type":"ImageObject","url":"https://huangzhongqi978.top/img/logo.svg"}},"description":"这篇文章详细介绍如何使用Gitee和GitHub图床来托管博客图片，提升博客性能和管理效率。"}</script><link rel="canonical" href="https://huangzhongqi978.top/2025/10/02/%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="/css/modern-effects.css"><link rel="stylesheet" href="/css/dynamic-background.css"><link rel="stylesheet" href="/css/article-toc.css"><link rel="stylesheet" href="/css/fullscreen-reading.css"><link rel="stylesheet" href="/css/navbar-fix.css"><link rel="stylesheet" href="/css/article-actions.css"><link rel="stylesheet" href="/css/custom-layout.css"><link rel="stylesheet" href="/css/sidebar-toc.css"><link rel="stylesheet" href="/css/right-side-toc.css"><link rel="stylesheet" href="/css/widget-toc.css"><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Brahmacarya奇奇" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="LinkedIn" href="https://linkedin.com/in/huangzhongqi"><i class="fab fa-linkedin"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><button class="theme-toggle-btn" id="theme-toggle" title="切换主题"><span class="icon"><i class="fas fa-moon" id="theme-icon"></i></span></button></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-10-02T08:00:00.000Z" title="2025/10/2 16:00:00">2025-10-02</time>发表</span><span class="level-item"><time dateTime="2025-10-02T14:23:35.477Z" title="2025/10/2 22:23:35">2025-10-02</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="level-item">10 分钟读完 (大约1529个字)</span></div></div><div class="article-title-container"><h1 class="title is-3 is-size-4-mobile">图床使用完整指南</h1><div class="article-actions"><button class="button is-small is-ghost article-action-btn" id="article-toc-toggle" title="显示目录"><span class="icon"><i class="fas fa-list-ul"></i></span><span class="action-text">目录</span></button><button class="button is-small is-ghost article-action-btn" id="fullscreen-reading-btn" title="全屏阅读"><span class="icon"><i class="fas fa-expand"></i></span><span class="action-text">全屏</span></button></div></div><div class="content"><p>这篇文章详细介绍如何使用Gitee和GitHub图床来托管博客图片，提升博客性能和管理效率。</p>
+<span id="more"></span>
+
+<h2 id="什么是图床？"><a href="#什么是图床？" class="headerlink" title="什么是图床？"></a>什么是图床？</h2><p>图床是专门用于存储图片的在线服务，它能为你的博客带来以下优势：</p>
+<ul>
+<li>✅ <strong>减少博客体积</strong> - 图片不占用博客存储空间</li>
+<li>✅ <strong>提升加载速度</strong> - 专业CDN加速图片访问</li>
+<li>✅ <strong>跨平台使用</strong> - 一张图片可在多处引用</li>
+<li>✅ <strong>稳定可靠</strong> - 专业服务商提供数据保障</li>
+</ul>
+<h2 id="Gitee图床配置"><a href="#Gitee图床配置" class="headerlink" title="Gitee图床配置"></a>Gitee图床配置</h2><h3 id="第一步：创建Gitee仓库"><a href="#第一步：创建Gitee仓库" class="headerlink" title="第一步：创建Gitee仓库"></a>第一步：创建Gitee仓库</h3><ol>
+<li>访问 <a target="_blank" rel="noopener" href="https://gitee.com/">Gitee官网</a> 并登录</li>
+<li>点击右上角 <strong>+</strong> → <strong>新建仓库</strong></li>
+<li>填写仓库信息：<ul>
+<li>仓库名称：<code>my-images</code></li>
+<li>设置为：<strong>公开</strong> （重要！）</li>
+<li>勾选：<strong>使用Readme文件初始化</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="第二步：获取私人令牌"><a href="#第二步：获取私人令牌" class="headerlink" title="第二步：获取私人令牌"></a>第二步：获取私人令牌</h3><ol>
+<li>点击头像 → <strong>设置</strong></li>
+<li>左侧菜单选择 <strong>私人令牌</strong></li>
+<li>点击 <strong>生成新令牌</strong></li>
+<li>勾选 <code>projects</code> 权限</li>
+<li>复制生成的令牌（只显示一次！）</li>
+</ol>
+<h2 id="PicGo配置"><a href="#PicGo配置" class="headerlink" title="PicGo配置"></a>PicGo配置</h2><h3 id="安装PicGo"><a href="#安装PicGo" class="headerlink" title="安装PicGo"></a>安装PicGo</h3><p>推荐使用包管理器安装：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Windows用户</span>
+winget <span class="token function">install</span> PicGo.PicGo
+
+<span class="token comment"># macOS用户  </span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> picgo
+
+<span class="token comment"># 或从GitHub下载：https://github.com/Molunerfinn/PicGo/releases</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="安装Gitee插件"><a href="#安装Gitee插件" class="headerlink" title="安装Gitee插件"></a>安装Gitee插件</h3><ol>
+<li>打开PicGo</li>
+<li>进入 <strong>插件设置</strong></li>
+<li>搜索 <code>gitee</code></li>
+<li>安装 <code>gitee-uploader</code> 插件</li>
+</ol>
+<h3 id="配置Gitee图床"><a href="#配置Gitee图床" class="headerlink" title="配置Gitee图床"></a>配置Gitee图床</h3><p>进入 <strong>图床设置</strong> → <strong>Gitee图床</strong>，填写：</p>
+<pre class="line-numbers language-none"><code class="language-none">repo: 你的用户名&#x2F;仓库名 (如: zhangsan&#x2F;my-images)
+branch: master
+token: 刚才获取的私人令牌
+path: img&#x2F; (图片存储路径)
+customPath: 留空
+customUrl: 留空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="在文章中使用图片"><a href="#在文章中使用图片" class="headerlink" title="在文章中使用图片"></a>在文章中使用图片</h2><h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3><h4 id="Markdown格式（推荐）"><a href="#Markdown格式（推荐）" class="headerlink" title="Markdown格式（推荐）"></a>Markdown格式（推荐）</h4><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">图片描述</span>](<span class="token url">图片链接</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">项目演示</span>](<span class="token url">https://gitee.com/zhangsan/my-images/raw/master/img/demo.png</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="HTML格式（更灵活）"><a href="#HTML格式（更灵活）" class="headerlink" title="HTML格式（更灵活）"></a>HTML格式（更灵活）</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>图片链接<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>图片描述<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>600<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/zhangsan/my-images/raw/master/img/demo.png<span class="token punctuation">"</span></span> 
+     <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>项目演示<span class="token punctuation">"</span></span> 
+     <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>600<span class="token punctuation">"</span></span> 
+     <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span> <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 4px 8px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.1<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="高级使用技巧"><a href="#高级使用技巧" class="headerlink" title="高级使用技巧"></a>高级使用技巧</h3><h4 id="1-响应式图片"><a href="#1-响应式图片" class="headerlink" title="1. 响应式图片"></a>1. 响应式图片</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/responsive-demo.png<span class="token punctuation">"</span></span> 
+       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>响应式演示<span class="token punctuation">"</span></span> 
+       <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">max-width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-图片组合展示"><a href="#2-图片组合展示" class="headerlink" title="2. 图片组合展示"></a>2. 图片组合展示</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span> <span class="token property">justify-content</span><span class="token punctuation">:</span> space-around<span class="token punctuation">;</span> <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/before.png<span class="token punctuation">"</span></span> 
+       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>优化前<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>45%<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/after.png<span class="token punctuation">"</span></span> 
+       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>优化后<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>45%<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-带说明的图片"><a href="#3-带说明的图片" class="headerlink" title="3. 带说明的图片"></a>3. 带说明的图片</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figure</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span> <span class="token property">margin</span><span class="token punctuation">:</span> 20px 0<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/architecture.png<span class="token punctuation">"</span></span> 
+       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>系统架构图<span class="token punctuation">"</span></span> 
+       <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">max-width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span> <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 4px 12px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.15<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figcaption</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">margin-top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span> #666<span class="token punctuation">;</span> <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+    图1：系统整体架构设计
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figcaption</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figure</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="使用工作流程"><a href="#使用工作流程" class="headerlink" title="使用工作流程"></a>使用工作流程</h2><h3 id="日常使用步骤"><a href="#日常使用步骤" class="headerlink" title="日常使用步骤"></a>日常使用步骤</h3><ol>
+<li><p><strong>准备图片</strong></p>
+<ul>
+<li>优化图片大小（推荐 &lt; 1MB）</li>
+<li>使用有意义的文件名（英文+数字）</li>
+<li>选择合适的格式（jpg&#x2F;png&#x2F;webp）</li>
+</ul>
+</li>
+<li><p><strong>上传图片</strong></p>
+<ul>
+<li>拖拽到PicGo界面</li>
+<li>或使用快捷键 <code>Ctrl+Shift+P</code></li>
+<li>自动上传并复制链接</li>
+</ul>
+</li>
+<li><p><strong>插入文章</strong></p>
+<ul>
+<li>在Markdown中粘贴链接</li>
+<li>添加有意义的alt描述</li>
+<li>调整显示样式</li>
+</ul>
+</li>
+</ol>
+<h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h3><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>快速上传</td>
+<td><code>Ctrl + Shift + P</code></td>
+</tr>
+<tr>
+<td>打开文件选择器</td>
+<td><code>Ctrl + Shift + O</code></td>
+</tr>
+<tr>
+<td>从URL上传</td>
+<td><code>Ctrl + Shift + U</code></td>
+</tr>
+<tr>
+<td>上传剪贴板图片</td>
+<td><code>Ctrl + Shift + C</code></td>
+</tr>
+</tbody></table>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><h3 id="图片命名规范"><a href="#图片命名规范" class="headerlink" title="图片命名规范"></a>图片命名规范</h3><pre class="line-numbers language-none"><code class="language-none"># 好的命名示例
+project-overview.png
+user-interface-design.jpg
+system-architecture-diagram.png
+before-vs-after-comparison.png
+
+# 避免的命名
+图片1.png
+截图.jpg
+IMG_20231002.png<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="文件夹组织"><a href="#文件夹组织" class="headerlink" title="文件夹组织"></a>文件夹组织</h3><pre class="line-numbers language-none"><code class="language-none">img&#x2F;
+├── blog&#x2F;           # 博客相关图片
+│   ├── headers&#x2F;    # 文章头图
+│   ├── content&#x2F;    # 文章内容图片
+│   └── thumbnails&#x2F; # 缩略图
+├── projects&#x2F;       # 项目展示图片
+├── tutorials&#x2F;      # 教程步骤图片
+└── misc&#x2F;          # 其他图片<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="性能优化建议"><a href="#性能优化建议" class="headerlink" title="性能优化建议"></a>性能优化建议</h3><ol>
+<li><p><strong>图片压缩</strong></p>
+<ul>
+<li>使用 <a target="_blank" rel="noopener" href="https://tinypng.com/">TinyPNG</a> 压缩图片</li>
+<li>或使用PicGo插件自动压缩</li>
+</ul>
+</li>
+<li><p><strong>格式选择</strong></p>
+<ul>
+<li>照片：JPEG（.jpg）</li>
+<li>图标&#x2F;插图：PNG（.png）</li>
+<li>动图：GIF或WebP</li>
+</ul>
+</li>
+<li><p><strong>尺寸控制</strong></p>
+<ul>
+<li>博客宽度通常为 800-1200px</li>
+<li>避免上传过大的原图</li>
+</ul>
+</li>
+</ol>
+<h2 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h2><h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="1-图片无法显示"><a href="#1-图片无法显示" class="headerlink" title="1. 图片无法显示"></a>1. 图片无法显示</h4><ul>
+<li>检查Gitee仓库是否为公开状态</li>
+<li>确认图片链接格式正确</li>
+<li>验证图片是否成功上传</li>
+</ul>
+<h4 id="2-PicGo上传失败"><a href="#2-PicGo上传失败" class="headerlink" title="2. PicGo上传失败"></a>2. PicGo上传失败</h4><ul>
+<li>检查网络连接</li>
+<li>验证Token是否正确</li>
+<li>确认仓库路径配置</li>
+</ul>
+<h4 id="3-图片加载慢"><a href="#3-图片加载慢" class="headerlink" title="3. 图片加载慢"></a>3. 图片加载慢</h4><ul>
+<li>考虑使用CDN加速</li>
+<li>压缩图片大小</li>
+<li>选择合适的图片格式</li>
+</ul>
+<h2 id="GitHub图床配置（推荐）"><a href="#GitHub图床配置（推荐）" class="headerlink" title="GitHub图床配置（推荐）"></a>GitHub图床配置（推荐）</h2><p>GitHub图床是更加稳定的选择，兼容性极好：</p>
+<h3 id="第一步：创建GitHub仓库"><a href="#第一步：创建GitHub仓库" class="headerlink" title="第一步：创建GitHub仓库"></a>第一步：创建GitHub仓库</h3><ol>
+<li>访问 <a target="_blank" rel="noopener" href="https://github.com/">GitHub官网</a> 并登录</li>
+<li>点击右上角 <strong>+</strong> → <strong>New repository</strong></li>
+<li>填写仓库信息：<ul>
+<li>Repository name：<code>my-images</code></li>
+<li>设置为：<strong>Public</strong> （重要！）</li>
+<li>勾选：<strong>Initialize this repository with a README</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="第二步：生成GitHub-Token"><a href="#第二步：生成GitHub-Token" class="headerlink" title="第二步：生成GitHub Token"></a>第二步：生成GitHub Token</h3><ol>
+<li>点击头像 → <strong>Settings</strong></li>
+<li>左侧菜单选择 <strong>Developer settings</strong></li>
+<li>点击 <strong>Personal access tokens</strong> → <strong>Tokens (classic)</strong></li>
+<li>点击 <strong>Generate new token</strong> → <strong>Generate new token (classic)</strong></li>
+<li>配置Token：<ul>
+<li>Note: <code>PicGo图床使用</code></li>
+<li>Expiration: <code>No expiration</code></li>
+<li>Scopes: 只勾选 <strong>repo</strong> (完整仓库访问权限)</li>
+</ul>
+</li>
+<li>生成并复制token（以 <code>ghp_</code> 开头）</li>
+</ol>
+<h3 id="第三步：在PicGo中配置GitHub图床"><a href="#第三步：在PicGo中配置GitHub图床" class="headerlink" title="第三步：在PicGo中配置GitHub图床"></a>第三步：在PicGo中配置GitHub图床</h3><ol>
+<li>打开PicGo，进入 <strong>图床设置</strong></li>
+<li>选择 <strong>GitHub图床</strong> （内置，无需插件）</li>
+<li>填写配置：</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">仓库名: 你的GitHub用户名&#x2F;my-images
+分支名: main (或 master)
+Token: 刚才生成的GitHub token
+存储路径: img&#x2F;
+自定义域名: 留空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="GitHub图床优势"><a href="#GitHub图床优势" class="headerlink" title="GitHub图床优势"></a>GitHub图床优势</h3><ul>
+<li>✅ <strong>稳定可靠</strong> - GitHub提供全球CDN</li>
+<li>✅ <strong>无需插件</strong> - PicGo原生支持</li>
+<li>✅ <strong>免费使用</strong> - 单仓库100GB空间</li>
+<li>✅ <strong>版本控制</strong> - 完整的Git管理</li>
+<li>✅ <strong>全球访问</strong> - 世界各地都能访问</li>
+</ul>
+<h3 id="备用方案"><a href="#备用方案" class="headerlink" title="备用方案"></a>备用方案</h3><p>如果需要其他图床选择：</p>
+<ol>
+<li><strong>SM.MS</strong> - 免费图床服务</li>
+<li><strong>七牛云</strong> - 专业付费服务</li>
+<li><strong>阿里云OSS</strong> - 企业级对象存储</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本教程介绍了两种主流图床方案：</p>
+<h3 id="Gitee图床"><a href="#Gitee图床" class="headerlink" title="Gitee图床"></a>Gitee图床</h3><ul>
+<li>🚀 <strong>访问速度快</strong> - 国内服务器，低延迟</li>
+<li>💰 <strong>完全免费</strong> - 无存储和流量限制</li>
+<li>🔧 <strong>配置简单</strong> - PicGo插件支持</li>
+<li>🇨🇳 <strong>本土优势</strong> - 适合中文博客</li>
+</ul>
+<h3 id="GitHub图床（推荐）"><a href="#GitHub图床（推荐）" class="headerlink" title="GitHub图床（推荐）"></a>GitHub图床（推荐）</h3><ul>
+<li>🌍 <strong>全球稳定</strong> - GitHub提供可靠服务</li>
+<li>🔧 <strong>兼容性好</strong> - PicGo原生支持</li>
+<li>📦 <strong>大容量</strong> - 单仓库100GB空间</li>
+<li>🔒 <strong>版本控制</strong> - 完整的Git管理</li>
+</ul>
+<p>通过本教程的配置，你可以：</p>
+<ul>
+<li>大幅减少博客仓库大小</li>
+<li>提升图片加载速度</li>
+<li>实现图片的统一管理</li>
+<li>支持跨平台图片引用</li>
+</ul>
+<p>建议优先选择GitHub图床，稳定性更好。如果国内访问GitHub较慢，可以考虑Gitee作为备选方案。</p>
+<hr>
+<blockquote>
+<p>💡 <strong>小贴士</strong>：记得定期备份重要图片，虽然Gitee很稳定，但多一份备份总是好的！</p>
+</blockquote>
+</div><div class="article-licensing box"><div class="licensing-title"><p>图床使用完整指南</p><p><a href="https://huangzhongqi978.top/2025/10/02/图床使用完整指南/">https://huangzhongqi978.top/2025/10/02/图床使用完整指南/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>HuangZhongqi</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2025-10-02</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2025-10-02</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E5%9B%BE%E5%BA%8A/">图床</a><a class="link-muted mr-2" rel="tag" href="/tags/Gitee/">Gitee</a><a class="link-muted mr-2" rel="tag" href="/tags/GitHub/">GitHub</a><a class="link-muted mr-2" rel="tag" href="/tags/PicGo/">PicGo</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=xxxx" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/alipay-qrcode.png" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/wechat-qrcode.png" alt="微信"></span></a><a class="button donate" data-type="paypal" onclick="document.getElementById(&#039;paypal-donate-form&#039;).submit()"><span class="icon is-small"><i class="fab fa-paypal"></i></span><span>Paypal</span></a><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener" id="paypal-donate-form"><input type="hidden" name="cmd" value="_donations"><input type="hidden" name="business" value="huangzhongqi978@gmail.com"><input type="hidden" name="currency_code" value="USD"></form></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2025/10/01/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E6%96%87%E6%A1%A3/"><span class="level-item">基于GRU的语音情感分析识别</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://huangzhongqi978.top/2025/10/02/%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/';
+            this.page.identifier = '2025/10/02/图床使用完整指南/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'huangzhongqi' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/avatar.png" alt="HuangZhongqi"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">HuangZhongqi</p><p class="is-size-6 is-block">Deep Learning &amp; Computer Vision</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shandong, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">8</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Huangzhongqi978" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="WeChat" href="/img/wechat.png"><i class="fab fa-weixin"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="LinkedIn" href="https://linkedin.com/in/huangzhongqi"><i class="fab fa-linkedin"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Email" href="mailto:huangzhongqi978@gmail.com"><i class="fas fa-envelope"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-10-02T08:00:00.000Z">2025-10-02</time></p><p class="title"><a href="/2025/10/02/%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/">图床使用完整指南</a></p><p class="categories"><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-10-01T08:40:31.000Z">2025-10-01</time></p><p class="title"><a href="/2025/10/01/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E6%96%87%E6%A1%A3/">基于GRU的语音情感分析识别</a></p><p class="categories"><a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-10-01T07:59:31.000Z">2025-10-01</time></p><p class="title"><a href="/2025/10/01/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/">Yolo11交通标志检测系统</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-10-01T07:14:18.591Z">2025-10-01</time></p><p class="title"><a href="/2025/10/01/hello-world/">Hello World</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E6%95%99%E7%A8%8B/"><span class="level-start"><span class="level-item">教程</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"><span class="level-start"><span class="level-item">自然语言处理</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><span class="level-start"><span class="level-item">计算机视觉</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/GRU%E7%BB%93%E6%9E%84/"><span class="tag">GRU结构</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GitHub/"><span class="tag">GitHub</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Gitee/"><span class="tag">Gitee</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PicGo/"><span class="tag">PicGo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/me/"><span class="tag">me</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/yolo%E6%A8%A1%E5%9E%8B/"><span class="tag">yolo模型</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8D%9A%E5%AE%A2/"><span class="tag">博客</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E5%BA%8A/"><span class="tag">图床</span><span class="tag">1</span></a></div></div></div></div></div><!--!--></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Brahmacarya奇奇" height="28"></a><p class="is-size-7"><span>&copy; 2025 HuangZhongqi</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2025 Brahmacarya奇奇</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script><script data-particles-config type="application/json">{"particleCount":80,"particleColor":"#1e88e5","particleSize":2,"lineColor":"#1e88e5","lineWidth":1,"lineDistance":120,"speed":0.5,"opacity":0.6,"mobileOptimized":true,"interactive":true,"hoverEffect":true}</script></script><script data-pjax src="/js/column.js"></script><!--!--><script data-pjax src="/js/main.js" defer></script><script data-pjax src="/js/particles.js" defer></script><script data-pjax src="/js/modern-effects.js" defer></script><script data-pjax src="/js/dynamic-background.js" defer></script><script data-pjax src="/js/article-toc.js" defer></script><script data-pjax src="/js/fullscreen-reading.js" defer></script><script data-pjax src="/js/sidebar-toc.js" defer></script><script data-pjax src="/js/right-side-toc.js" defer></script><script data-pjax src="/js/widget-toc.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
