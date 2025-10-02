@@ -11397,6 +11397,23 @@ figure.highlight .code {
   font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
   font-size: 0.9em;
   line-height: 1.6;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+figure.highlight .code::-webkit-scrollbar {
+  height: 8px;
+}
+figure.highlight .code::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+figure.highlight .code::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+figure.highlight .code::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #5a67d8, #6b46c1);
 }
 figure.highlight .tag,
 figure.highlight .title,
@@ -11404,6 +11421,112 @@ figure.highlight .section {
   display: inherit;
   font: inherit;
   margin: inherit;
+}
+pre.line-numbers {
+  position: relative;
+  padding: 0;
+  margin: 1em 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: #f8f9fa;
+}
+pre.line-numbers code {
+  display: block;
+  padding: 1.5em 1.5em 1.5em 4em;
+  overflow-x: auto;
+  overflow-y: visible;
+  background: transparent;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: #2d3748;
+}
+pre.line-numbers code::-webkit-scrollbar {
+  height: 8px;
+}
+pre.line-numbers code::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+pre.line-numbers code::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+pre.line-numbers code::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #5a67d8, #6b46c1);
+}
+pre.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 3em;
+  background: #e9ecef;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  font-size: 100%;
+  line-height: 1.6;
+  letter-spacing: -1px;
+}
+pre.line-numbers .line-numbers-rows span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+pre.line-numbers .line-numbers-rows span:before {
+  content: counter(linenumber);
+  color: #6c757d;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+pre.line-numbers .copy-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #6c757d;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+pre.line-numbers .copy-button:hover {
+  background: rgba(102,126,234,0.1);
+  color: #667eea;
+  border-color: #667eea;
+}
+pre.line-numbers .copy-button i {
+  font-size: 12px;
+}
+pre[class*="language-"] {
+  position: relative;
+  padding: 0;
+  margin: 1em 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: #f8f9fa !important;
+}
+pre[class*="language-"] code[class*="language-"] {
+  display: block;
+  padding: 1.5em 1.5em 1.5em 4em;
+  overflow-x: auto;
+  overflow-y: visible;
+  background: transparent !important;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace !important;
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: #2d3748;
   padding: inherit;
   background: inherit;
   height: inherit;
@@ -11412,7 +11535,22 @@ figure.highlight .section {
   min-width: inherit;
   border-radius: inherit;
 }
-figure.highlight .number {
+pre[class*="language-"] code[class*="language-"]::-webkit-scrollbar {
+  height: 8px;
+}
+pre[class*="language-"] code[class*="language-"]::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+pre[class*="language-"] code[class*="language-"]::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+pre[class*="language-"] code[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #5a67d8, #6b46c1);
+}
+pre[class*="language-"] .number {
   display: inline !important;
   font-size: inherit !important;
   font-weight: inherit !important;

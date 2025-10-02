@@ -129,24 +129,63 @@ class DynamicBackground {
         // 应用过渡效果
         this.applyTransitionEffect(currentLayer, nextLayer, effect);
         
-        // 重置过渡状态 - 使用更精确的检测
-        setTimeout(() => {
+        // 重置过渡状态 - 使用更可靠的检测
+        const resetTransition = () => {
             this.isTransitioning = false;
             console.log('✅ 过渡完成，可以继续切换');
             console.log(`当前背景索引: ${this.currentIndex + 1}/${layers.length}`);
-        }, this.transitionDuration + 100); // 额外100ms缓冲
+            
+            // 清理过渡效果类
+            setTimeout(() => {
+                const allLayers = document.querySelectorAll('.bg-layer');
+                allLayers.forEach(layer => {
+                    if (layer !== nextLayer) {
+                        layer.classList.remove('fade-out', 'slide-out', 'zoom-out', 'rotate-out');
+                        layer.classList.remove('fade-in', 'slide-in', 'zoom-in', 'rotate-in');
+                    }
+                });
+            }, 100);
+        };
+        
+        // 监听动画结束事件
+        const onAnimationEnd = (e) => {
+            if (e.target === nextLayer && e.animationName.includes('In')) {
+                nextLayer.removeEventListener('animationend', onAnimationEnd);
+                resetTransition();
+            }
+        };
+        
+        nextLayer.addEventListener('animationend', onAnimationEnd);
+        
+        // 备用超时机制
+        setTimeout(() => {
+            nextLayer.removeEventListener('animationend', onAnimationEnd);
+            if (this.isTransitioning) {
+                console.log('⚠️ 使用超时机制重置过渡状态');
+                resetTransition();
+            }
+        }, this.transitionDuration + 200); // 额外200ms缓冲
     }
     
     applyTransitionEffect(currentLayer, nextLayer, effect) {
         console.log(`应用过渡效果: ${effect}`);
         
         // 移除所有过渡效果类
-        currentLayer.classList.remove('fade-out', 'slide-out', 'zoom-out', 'rotate-out');
-        nextLayer.classList.remove('fade-in', 'slide-in', 'zoom-in', 'rotate-in', 'active');
+        const allLayers = document.querySelectorAll('.bg-layer');
+        allLayers.forEach(layer => {
+            layer.classList.remove('fade-out', 'slide-out', 'zoom-out', 'rotate-out');
+            layer.classList.remove('fade-in', 'slide-in', 'zoom-in', 'rotate-in');
+            if (layer !== nextLayer) {
+                layer.classList.remove('active');
+            }
+        });
         
         // 确保下一层是可见的
         nextLayer.style.display = 'block';
         nextLayer.style.opacity = '0';
+        
+        // 强制重绘以确保类被正确移除
+        nextLayer.offsetHeight;
         
         switch (effect) {
             case 'fade':
