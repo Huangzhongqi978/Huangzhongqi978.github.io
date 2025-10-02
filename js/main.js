@@ -68,47 +68,22 @@
             }
         });
 
-        // Prism.js 行号支持 - 检查并修复行号显示
+        // 为 Prism.js 代码块添加行号支持（不影响原有功能）
         $('pre.line-numbers').each(function() {
             const $pre = $(this);
             const $code = $pre.find('code');
             
-            if ($code.length) {
-                // 检查是否已有行号容器
-                let $lineNumbersRows = $code.find('.line-numbers-rows');
-                
-                // 获取代码文本并正确计算行数
+            if ($code.length && !$code.find('.line-numbers-rows').length) {
                 const codeText = $code.text();
+                const lines = codeText.split('\n');
+                const lineCount = lines[lines.length - 1].trim() === '' ? lines.length - 1 : lines.length;
                 
-                // 直接计算行数，不需要移除任何内容
-                let lines = codeText.split('\n');
-                
-                // 如果最后一行是空的，移除它（但保留其他空行）
-                if (lines.length > 0 && lines[lines.length - 1].trim() === '') {
-                    lines = lines.slice(0, -1);
-                }
-                
-                const lineCount = Math.max(1, lines.length);
-                
-                // 如果已有行号容器，检查行数是否匹配
-                if ($lineNumbersRows.length > 0) {
-                    const existingSpans = $lineNumbersRows.find('span').length;
-                    if (existingSpans !== lineCount) {
-                        // 行数不匹配，重新生成
-                        $lineNumbersRows.empty();
-                        for (let i = 0; i < lineCount; i++) {
-                            $lineNumbersRows.append('<span></span>');
-                        }
-                    }
-                } else {
-                    // 没有行号容器，创建新的
+                if (lineCount > 0) {
                     let lineNumbersHtml = '<span aria-hidden="true" class="line-numbers-rows">';
                     for (let i = 0; i < lineCount; i++) {
                         lineNumbersHtml += '<span></span>';
                     }
                     lineNumbersHtml += '</span>';
-                    
-                    // 添加到code元素内部
                     $code.append(lineNumbersHtml);
                 }
             }
