@@ -1,0 +1,295 @@
+/* 右侧固定目录样式 */
+
+/* 文章容器调整 */
+.article-with-toc {
+    position: relative;
+}
+
+/* 右侧目录容器 */
+.right-side-toc {
+    position: absolute;
+    right: -280px; /* 放在文章右侧 */
+    top: 0;
+    width: 250px;
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    max-height: 80vh;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* 当屏幕足够宽时显示右侧目录 */
+@media (min-width: 1200px) {
+    .right-side-toc {
+        display: block;
+    }
+}
+
+@media (max-width: 1199px) {
+    .right-side-toc {
+        display: none;
+    }
+}
+
+/* 确保目录不会被其他元素遮挡 */
+.right-side-toc {
+    z-index: 100;
+}
+
+/* 当目录变为固定定位时的样式 */
+.right-side-toc.sticky {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 200;
+}
+
+/* 深色模式支持 */
+body.dark .right-side-toc {
+    background: #2f3349;
+    border-color: #4a4a4a;
+    color: #b5b5b5;
+}
+
+/* 目录头部 */
+.right-toc-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+body.dark .right-toc-header {
+    background: #363636;
+    border-bottom-color: #4a4a4a;
+}
+
+.right-toc-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+body.dark .right-toc-header h4 {
+    color: #f5f5f5;
+}
+
+.right-toc-header .toc-icon {
+    margin-right: 8px;
+    color: #3273dc;
+}
+
+/* 目录列表 */
+.right-toc-list {
+    max-height: calc(80vh - 60px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+}
+
+.right-toc-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.right-toc-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.right-toc-list::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.right-toc-list::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+body.dark .right-toc-list::-webkit-scrollbar-thumb {
+    background: #555;
+}
+
+body.dark .right-toc-list::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+/* 目录项 */
+.right-toc-item {
+    margin: 0;
+}
+
+.right-toc-item a {
+    display: block;
+    padding: 6px 20px;
+    color: #666;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+    line-height: 1.3;
+    font-size: 13px;
+    position: relative;
+}
+
+.right-toc-item a:hover {
+    background: #f8f9fa;
+    color: #3273dc;
+    border-left-color: #3273dc;
+}
+
+.right-toc-item.active a {
+    background: #e8f4fd;
+    color: #3273dc;
+    border-left-color: #3273dc;
+    font-weight: 500;
+}
+
+/* 深色模式下的目录项 */
+body.dark .right-toc-item a {
+    color: #b5b5b5;
+}
+
+body.dark .right-toc-item a:hover {
+    background: #363636;
+    color: #3273dc;
+}
+
+body.dark .right-toc-item.active a {
+    background: #2f3349;
+    color: #3273dc;
+}
+
+/* 不同级别的标题缩进 */
+.right-toc-level-1 a {
+    padding-left: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.right-toc-level-2 a {
+    padding-left: 30px;
+    font-size: 13px;
+}
+
+.right-toc-level-3 a {
+    padding-left: 40px;
+    font-size: 12px;
+}
+
+.right-toc-level-4 a {
+    padding-left: 50px;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.right-toc-level-5 a {
+    padding-left: 60px;
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.right-toc-level-6 a {
+    padding-left: 70px;
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+/* 当目录固定时的动画 */
+.right-side-toc.sticky {
+    animation: fadeInRight 0.3s ease;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 目录项的悬停效果 */
+.right-toc-item a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, transparent, rgba(50, 115, 220, 0.1));
+    transition: width 0.3s ease;
+}
+
+.right-toc-item a:hover::before {
+    width: 100%;
+}
+
+/* 活跃项的指示器 */
+.right-toc-item.active a::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: #3273dc;
+    border-radius: 50%;
+}
+
+/* 目录数量指示 */
+.right-toc-header .toc-count {
+    margin-left: auto;
+    background: #3273dc;
+    color: white;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: normal;
+}
+
+/* 空状态 */
+.right-toc-empty {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+}
+
+body.dark .right-toc-empty {
+    color: #666;
+}
+
+/* 加载状态 */
+.right-toc-loading {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+}
+
+.right-toc-loading::after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #3273dc;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

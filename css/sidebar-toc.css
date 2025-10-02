@@ -1,0 +1,336 @@
+/* 侧边弹出式目录样式 */
+
+/* 目录切换按钮 */
+.toc-toggle-btn {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: #3273dc;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(50, 115, 220, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    user-select: none;
+}
+
+.toc-toggle-btn:hover {
+    background: #2366d1;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(50, 115, 220, 0.4);
+}
+
+.toc-toggle-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.toc-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff3860;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 10px;
+    min-width: 16px;
+    text-align: center;
+    line-height: 1;
+}
+
+/* 遮罩层 */
+.toc-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1998;
+}
+
+.toc-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 侧边栏 */
+.toc-sidebar {
+    position: absolute;
+    top: 0;
+    right: -400px;
+    width: 350px;
+    min-height: 100vh;
+    background: white;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1999;
+    display: flex;
+    flex-direction: column;
+}
+
+.toc-sidebar.open {
+    right: 0;
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    .toc-sidebar {
+        background: #2f3349;
+        color: #b5b5b5;
+    }
+}
+
+body.dark .toc-sidebar {
+    background: #2f3349;
+    color: #b5b5b5;
+}
+
+/* 侧边栏头部 */
+.toc-sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f8f9fa;
+}
+
+body.dark .toc-sidebar-header {
+    background: #363636;
+    border-bottom-color: #4a4a4a;
+}
+
+.toc-sidebar-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+body.dark .toc-sidebar-header h3 {
+    color: #f5f5f5;
+}
+
+.toc-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    color: #666;
+    transition: all 0.2s ease;
+}
+
+.toc-close-btn:hover {
+    background: #e5e5e5;
+    color: #333;
+}
+
+body.dark .toc-close-btn {
+    color: #b5b5b5;
+}
+
+body.dark .toc-close-btn:hover {
+    background: #4a4a4a;
+    color: #f5f5f5;
+}
+
+/* 目录列表 */
+.toc-sidebar-list {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 0;
+    max-height: calc(100vh - 80px); /* 减去头部高度 */
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+}
+
+.toc-sidebar-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.toc-sidebar-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.toc-sidebar-list::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.toc-sidebar-list::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+body.dark .toc-sidebar-list::-webkit-scrollbar-thumb {
+    background: #555;
+}
+
+body.dark .toc-sidebar-list::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+.toc-item {
+    margin: 0;
+}
+
+.toc-item a {
+    display: block;
+    padding: 8px 20px;
+    color: #666;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+    line-height: 1.4;
+}
+
+.toc-item a:hover {
+    background: #f8f9fa;
+    color: #3273dc;
+    border-left-color: #3273dc;
+}
+
+.toc-item.active a {
+    background: #e8f4fd;
+    color: #3273dc;
+    border-left-color: #3273dc;
+    font-weight: 500;
+}
+
+/* 深色模式下的目录项 */
+body.dark .toc-item a {
+    color: #b5b5b5;
+}
+
+body.dark .toc-item a:hover {
+    background: #363636;
+    color: #3273dc;
+}
+
+body.dark .toc-item.active a {
+    background: #2f3349;
+    color: #3273dc;
+}
+
+/* 不同级别的标题缩进 */
+.toc-level-1 a {
+    padding-left: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.toc-level-2 a {
+    padding-left: 30px;
+    font-size: 13px;
+}
+
+.toc-level-3 a {
+    padding-left: 40px;
+    font-size: 12px;
+}
+
+.toc-level-4 a {
+    padding-left: 50px;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.toc-level-5 a {
+    padding-left: 60px;
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.toc-level-6 a {
+    padding-left: 70px;
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .toc-toggle-btn {
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .toc-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+    
+    .toc-sidebar.open {
+        right: 0;
+    }
+}
+
+/* 滚动条样式 */
+.toc-sidebar-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.toc-sidebar-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.toc-sidebar-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.toc-sidebar-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+body.dark .toc-sidebar-list::-webkit-scrollbar-track {
+    background: #2f3349;
+}
+
+body.dark .toc-sidebar-list::-webkit-scrollbar-thumb {
+    background: #4a4a4a;
+}
+
+body.dark .toc-sidebar-list::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a;
+}
+
+/* 动画效果 */
+.toc-item a {
+    position: relative;
+    overflow: hidden;
+}
+
+.toc-item a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, transparent, rgba(50, 115, 220, 0.1));
+    transition: width 0.3s ease;
+}
+
+.toc-item a:hover::before {
+    width: 100%;
+}
+
+/* 侧边栏打开时的状态 */
+body.toc-sidebar-open {
+    /* 允许页面滚动，侧边栏跟随滚动 */
+}

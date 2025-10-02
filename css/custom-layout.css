@@ -1,0 +1,184 @@
+/* 自定义布局样式 - 模仿图片中的三栏布局效果 */
+
+/* 整体布局优化 */
+.container {
+    max-width: 1200px;
+}
+
+/* 左侧边栏样式优化 */
+.column.is-4-tablet.is-4-desktop.is-3-widescreen.order-1 {
+    width: 280px !important;
+    flex: none;
+}
+
+/* 主内容区域 */
+.column.is-8-tablet.is-8-desktop.is-6-widescreen.order-2 {
+    flex: 1;
+    min-width: 0;
+}
+
+/* 右侧边栏 */
+.column.is-4-tablet.is-4-desktop.is-3-widescreen.order-3 {
+    width: 280px !important;
+    flex: none;
+}
+
+/* 个人资料卡片优化 */
+.widget[data-type="profile"] {
+    margin-bottom: 1.5rem;
+}
+
+.widget[data-type="profile"] .card-content {
+    padding: 1.5rem;
+}
+
+/* 头像样式 */
+.widget[data-type="profile"] .avatar {
+    border: 3px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.widget[data-type="profile"] .avatar:hover {
+    transform: scale(1.05);
+    border-color: #1e88e5;
+}
+
+/* 统计信息样式 */
+.widget[data-type="profile"] .level.is-mobile {
+    margin-bottom: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.widget[data-type="profile"] .level-item .title {
+    color: #1e88e5;
+    font-weight: 600;
+}
+
+.widget[data-type="profile"] .level-item .heading {
+    color: #666;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 关注按钮样式 */
+.widget[data-type="profile"] .button.is-primary {
+    background: linear-gradient(45deg, #1e88e5, #42a5f5);
+    border: none;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    transition: all 0.3s ease;
+}
+
+.widget[data-type="profile"] .button.is-primary:hover {
+    background: linear-gradient(45deg, #1976d2, #1e88e5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+}
+
+/* 社交链接样式 */
+.widget[data-type="profile"] .level.is-mobile.is-multiline .level-item {
+    margin: 0.25rem;
+}
+
+.widget[data-type="profile"] .button.is-transparent {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.widget[data-type="profile"] .button.is-transparent:hover {
+    background: #1e88e5;
+    color: white;
+    border-color: #1e88e5;
+    transform: translateY(-2px);
+}
+
+/* 右侧小部件样式 */
+.column.order-3 .widget {
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* 右侧边栏小部件样式优化 */
+.column.order-3 .widget {
+    margin-bottom: 1.5rem;
+}
+
+.column.order-3 .widget .card-content {
+    padding: 1.25rem;
+}
+
+/* 右侧小部件容器优化 */
+.column.order-3 {
+    padding-left: 1rem;
+}
+
+/* 右侧栏小部件间距优化 */
+.column.order-3 .widget + .widget {
+    margin-top: 2rem;
+}
+
+/* 小部件标题样式 */
+.widget .card-header-title {
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 1023px) {
+    .column.is-4-tablet.is-4-desktop.is-3-widescreen.order-1,
+    .column.is-4-tablet.is-4-desktop.is-3-widescreen.order-3 {
+        width: 100% !important;
+    }
+    
+    .widget[data-type="profile"],
+    .column.order-3 .widget {
+        position: static;
+    }
+}
+
+/* 文章列表样式优化 */
+.card.article {
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.card.article:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* 文章标题样式 */
+.card.article .card-content .title {
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+}
+
+.card.article .card-content .title a {
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.card.article .card-content .title a:hover {
+    color: #1e88e5;
+}
+
+/* 文章元信息样式 */
+.card.article .article-meta {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.card.article .article-meta .tag {
+    margin-right: 0.5rem;
+    margin-bottom: 0.25rem;
+}
