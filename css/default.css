@@ -11392,8 +11392,8 @@ pre.line-numbers {
   border: 1px solid rgba(0,0,0,0.1);
   background: #f8f9fa;
   font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
-  font-size: 0.9em;
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.4;
 }
 pre.line-numbers > code {
   position: relative;
@@ -11410,6 +11410,8 @@ pre.line-numbers > code {
   user-select: none;
   counter-reset: linenumber;
   background: #e9ecef;
+  font-size: 11px;
+  line-height: 1.4;
 }
 .line-numbers-rows > span {
   pointer-events: none;
@@ -11418,8 +11420,9 @@ pre.line-numbers > code {
   padding-right: 0.8em;
   text-align: right;
   color: #6c757d;
-  font-size: 0.9em;
-  line-height: 1.6;
+  font-size: 11px;
+  line-height: 18.2px;
+  height: 18.2px;
 }
 .line-numbers-rows > span:before {
   content: counter(linenumber);
