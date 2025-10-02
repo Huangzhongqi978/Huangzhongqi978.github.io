@@ -325,6 +325,48 @@
     font-size: 12px;
 }
 
+/* Prism.js 行号样式 */
+.fullscreen-content pre.line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+.fullscreen-content pre.line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.fullscreen-content .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #e2e8f0;
+    user-select: none;
+    counter-reset: linenumber;
+    background: #f1f5f9;
+    padding: 1.5em 0.8em;
+}
+
+.fullscreen-content .line-numbers-rows > span {
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
+    line-height: 1.6;
+    color: #94a3b8;
+    font-family: 'Fira Code', 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    text-align: right;
+}
+
+.fullscreen-content .line-numbers-rows > span:before {
+    content: counter(linenumber);
+}
+
 .fullscreen-content figure.highlight .code {
     padding: 16px;
     background: #f7fafc;
@@ -424,6 +466,16 @@
 }
 
 .fullscreen-content.theme-dark figure.highlight .line-number {
+    color: #a0aec0;
+}
+
+/* Prism.js 深色主题行号样式 */
+.fullscreen-content.theme-dark .line-numbers-rows {
+    background: #4a5568;
+    border-right-color: #718096;
+}
+
+.fullscreen-content.theme-dark .line-numbers-rows > span {
     color: #a0aec0;
 }
 
