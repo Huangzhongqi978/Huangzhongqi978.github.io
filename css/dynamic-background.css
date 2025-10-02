@@ -22,12 +22,14 @@
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0;
-    transition: opacity 2s ease-in-out;
+    /* 移除CSS transition，避免与animation冲突 */
 }
 
 /* 当前显示的背景层 */
 .bg-layer.active {
     opacity: 1;
+    /* 确保活动层在最上面 */
+    z-index: 1;
 }
 
 /* 背景遮罩层 */
@@ -156,13 +158,15 @@ body {
     }
 }
 
-/* 淡入淡出过渡效果 */
+/* 淡入淡出过渡效果 - 优化时间和缓动 */
 .fade-in {
-    animation: fadeIn 2s ease-in-out forwards;
+    animation: fadeIn 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 2;
 }
 
 .fade-out {
-    animation: fadeOut 2s ease-in-out forwards;
+    animation: fadeOut 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 0;
 }
 
 /* 滑动过渡效果 */
@@ -189,11 +193,13 @@ body {
 }
 
 .slide-in {
-    animation: slideInLeft 2s ease-in-out forwards;
+    animation: slideInLeft 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 2;
 }
 
 .slide-out {
-    animation: slideOutRight 2s ease-in-out forwards;
+    animation: slideOutRight 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 0;
 }
 
 /* 缩放过渡效果 */
@@ -220,11 +226,13 @@ body {
 }
 
 .zoom-in {
-    animation: zoomIn 2s ease-in-out forwards;
+    animation: zoomIn 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 2;
 }
 
 .zoom-out {
-    animation: zoomOut 2s ease-in-out forwards;
+    animation: zoomOut 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 0;
 }
 
 /* 旋转过渡效果 */
@@ -251,11 +259,13 @@ body {
 }
 
 .rotate-in {
-    animation: rotateIn 2s ease-in-out forwards;
+    animation: rotateIn 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 2;
 }
 
 .rotate-out {
-    animation: rotateOut 2s ease-in-out forwards;
+    animation: rotateOut 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 0;
 }
 
 /* 背景图片加载状态 */

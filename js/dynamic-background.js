@@ -16,8 +16,8 @@ class DynamicBackground {
         this.currentIndex = 0;
         this.isTransitioning = false;
         this.autoChangeInterval = null;
-        this.autoChangeDelay = 4000; // 4秒自动切换，给过渡更多时间
-        this.transitionDuration = 2000; // 2秒过渡时间
+        this.autoChangeDelay = 5000; // 5秒自动切换，给过渡更多时间
+        this.transitionDuration = 1800; // 1.8秒过渡时间，与CSS动画同步
         this.transitionEffects = ['fade', 'slide', 'zoom', 'rotate']; // 多种过渡效果
         this.currentEffect = 0;
         
@@ -129,8 +129,13 @@ class DynamicBackground {
         // 应用过渡效果
         this.applyTransitionEffect(currentLayer, nextLayer, effect);
         
-        // 重置过渡状态 - 使用更可靠的检测
+        // 简化过渡状态管理，避免重复触发
+        let transitionCompleted = false;
+        
         const resetTransition = () => {
+            if (transitionCompleted) return; // 防止重复执行
+            transitionCompleted = true;
+            
             this.isTransitioning = false;
             console.log('✅ 过渡完成，可以继续切换');
             console.log(`当前背景索引: ${this.currentIndex + 1}/${layers.length}`);
@@ -147,24 +152,10 @@ class DynamicBackground {
             }, 100);
         };
         
-        // 监听动画结束事件
-        const onAnimationEnd = (e) => {
-            if (e.target === nextLayer && e.animationName.includes('In')) {
-                nextLayer.removeEventListener('animationend', onAnimationEnd);
-                resetTransition();
-            }
-        };
-        
-        nextLayer.addEventListener('animationend', onAnimationEnd);
-        
-        // 备用超时机制
+        // 使用更可靠的超时机制，不依赖动画事件
         setTimeout(() => {
-            nextLayer.removeEventListener('animationend', onAnimationEnd);
-            if (this.isTransitioning) {
-                console.log('⚠️ 使用超时机制重置过渡状态');
-                resetTransition();
-            }
-        }, this.transitionDuration + 200); // 额外200ms缓冲
+            resetTransition();
+        }, this.transitionDuration + 100); // 减少缓冲时间
     }
     
     applyTransitionEffect(currentLayer, nextLayer, effect) {
@@ -227,6 +218,12 @@ class DynamicBackground {
     }
     
     startAutoChange() {
+        // 防止重复启动定时器
+        if (this.autoChangeInterval) {
+            console.log('⚠️ 定时器已存在，先清除旧定时器');
+            this.stopAutoChange();
+        }
+        
         console.log('开始自动切换背景，间隔:', this.autoChangeDelay + 'ms');
         this.autoChangeInterval = setInterval(() => {
             console.log('⏰ 自动切换触发，当前索引:', this.currentIndex + 1);
@@ -238,27 +235,49 @@ class DynamicBackground {
         if (this.autoChangeInterval) {
             clearInterval(this.autoChangeInterval);
             this.autoChangeInterval = null;
+            console.log('✅ 定时器已清除');
         }
     }
     
     
     bindEvents() {
+        // 防止重复绑定事件
+        if (this.eventsbound) return;
+        this.eventsbound = true;
+        
         // 页面可见性变化时暂停/恢复
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
+                console.log('📱 页面隐藏，暂停背景切换');
                 this.stopAutoChange();
             } else {
-                this.startAutoChange();
+                console.log('📱 页面显示，恢复背景切换');
+                // 延迟恢复，避免快速切换
+                setTimeout(() => {
+                    this.startAutoChange();
+                }, 500);
             }
         });
         
-        // 窗口失焦时暂停
+        // 窗口失焦时暂停（减少频率，避免过度触发）
+        let blurTimeout;
         window.addEventListener('blur', () => {
-            this.stopAutoChange();
+            blurTimeout = setTimeout(() => {
+                console.log('🔍 窗口失焦，暂停背景切换');
+                this.stopAutoChange();
+            }, 1000); // 1秒后才暂停
         });
         
         window.addEventListener('focus', () => {
-            this.startAutoChange();
+            if (blurTimeout) {
+                clearTimeout(blurTimeout);
+                blurTimeout = null;
+            }
+            console.log('🔍 窗口聚焦，恢复背景切换');
+            // 延迟恢复，避免快速切换
+            setTimeout(() => {
+                this.startAutoChange();
+            }, 500);
         });
     }
     
