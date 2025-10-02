@@ -11289,12 +11289,28 @@ figure.highlight table tr:not(:last-child) td {
 }
 figure.highlight pre {
   padding: 1.5em;
-  overflow: visible;
+  overflow-x: auto;
+  overflow-y: visible;
   margin: 0;
   background: #f8f9fa;
   font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
   font-size: 0.9em;
   line-height: 1.6;
+}
+figure.highlight pre::-webkit-scrollbar {
+  height: 8px;
+}
+figure.highlight pre::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+figure.highlight pre::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+figure.highlight pre::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #5a67d8, #6b46c1);
 }
 figure.highlight pre .line,
 figure.highlight pre code .hljs {
@@ -11338,8 +11354,24 @@ figure.highlight figcaption.level .level-right a {
   padding: 0em 0.75em;
 }
 figure.highlight .highlight-body {
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: visible;
   background: #f8f9fa;
+}
+figure.highlight .highlight-body::-webkit-scrollbar {
+  height: 8px;
+}
+figure.highlight .highlight-body::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+figure.highlight .highlight-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+figure.highlight .highlight-body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #5a67d8, #6b46c1);
 }
 figure.highlight .gutter {
   text-align: right;
@@ -11368,7 +11400,6 @@ figure.highlight .code {
 }
 figure.highlight .tag,
 figure.highlight .title,
-figure.highlight .number,
 figure.highlight .section {
   display: inherit;
   font: inherit;
@@ -11380,6 +11411,16 @@ figure.highlight .section {
   vertical-align: inherit;
   min-width: inherit;
   border-radius: inherit;
+}
+figure.highlight .number {
+  display: inline !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  color: inherit !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 pre.line-numbers {
   position: relative;
