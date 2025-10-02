@@ -200,3 +200,148 @@ html {
 .shadow-strong {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
+
+/* ===========================================
+   黑暗模式样式
+   =========================================== */
+
+.dark-theme {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+.dark-theme .glass-morphism {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 黑暗模式下的导航栏 */
+.dark-theme .navbar {
+    background: rgba(26, 26, 26, 0.95) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .navbar-item {
+    color: #ffffff !important;
+}
+
+.dark-theme .navbar-item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 黑暗模式下的卡片 */
+.dark-theme .card {
+    background: rgba(30, 30, 30, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.dark-theme .card-header {
+    background: rgba(40, 40, 40, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .card-content {
+    color: #ffffff;
+}
+
+/* 黑暗模式下的内容区域 */
+.dark-theme .content {
+    color: #ffffff;
+}
+
+.dark-theme .content h1,
+.dark-theme .content h2,
+.dark-theme .content h3,
+.dark-theme .content h4,
+.dark-theme .content h5,
+.dark-theme .content h6 {
+    color: #ffffff;
+}
+
+.dark-theme .content a {
+    color: #4fc3f7;
+}
+
+.dark-theme .content a:hover {
+    color: #81d4fa;
+}
+
+/* 黑暗模式下的代码块 */
+.dark-theme figure.highlight {
+    background: #2d2d2d !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme figure.highlight figcaption {
+    background: #3a3a3a !important;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme figure.highlight pre {
+    background: #2d2d2d !important;
+    color: #ffffff;
+}
+
+.dark-theme figure.highlight .highlight-body {
+    background: #2d2d2d !important;
+}
+
+.dark-theme figure.highlight .gutter {
+    background: #3a3a3a !important;
+    color: #888888;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme figure.highlight .code {
+    background: #2d2d2d !important;
+    color: #ffffff;
+}
+
+/* 黑暗模式下的页脚 */
+.dark-theme .footer {
+    background: rgba(26, 26, 26, 0.95) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* 黑暗模式下的按钮 */
+.dark-theme .button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.dark-theme .button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 主题切换按钮样式 */
+#theme-toggle {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+
+.dark-theme #theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#theme-icon {
+    transition: transform 0.3s ease;
+}
+
+.dark-theme #theme-icon {
+    transform: rotate(180deg);
+}
+

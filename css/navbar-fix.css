@@ -1,0 +1,214 @@
+/**
+ * 导航栏修复样式
+ */
+
+/* 确保导航栏按钮对齐 */
+.navbar-end {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-end .navbar-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* 主题切换按钮样式 */
+#theme-toggle,
+.theme-toggle-btn {
+    background: transparent !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 6px !important;
+    padding: 0.5rem !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 2.5rem !important;
+    height: 2.5rem !important;
+    box-shadow: none !important;
+    outline: none !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+#theme-toggle:hover,
+.theme-toggle-btn:hover {
+    background: rgba(102, 126, 234, 0.1) !important;
+    border-color: #667eea !important;
+    transform: translateY(-1px) !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+}
+
+#theme-toggle .icon,
+.theme-toggle-btn .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-toggle i,
+.theme-toggle-btn i {
+    font-size: 1rem;
+    color: #4a5568;
+    transition: color 0.3s ease;
+}
+
+#theme-toggle:hover i,
+.theme-toggle-btn:hover i {
+    color: #667eea;
+}
+
+/* 确保所有导航栏按钮高度一致 */
+.navbar-end .navbar-item,
+.navbar-end .button,
+.navbar-end .theme-toggle-btn {
+    height: 2.5rem;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 搜索按钮样式 */
+.navbar-end .search {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    min-width: 2.5rem;
+    height: 2.5rem;
+}
+
+.navbar-end .search:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: #667eea;
+    transform: translateY(-1px);
+}
+
+.navbar-end .search i {
+    color: #4a5568;
+    transition: color 0.3s ease;
+}
+
+.navbar-end .search:hover i {
+    color: #667eea;
+}
+
+/* 链接按钮样式 */
+.navbar-end .navbar-item[target="_blank"] {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    text-decoration: none;
+}
+
+.navbar-end .navbar-item[target="_blank"]:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: #667eea;
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+.navbar-end .navbar-item[target="_blank"] i {
+    color: #4a5568;
+    transition: color 0.3s ease;
+}
+
+.navbar-end .navbar-item[target="_blank"]:hover i {
+    color: #667eea;
+}
+
+/* 黑暗模式下的样式 */
+.dark-theme #theme-toggle,
+.dark-theme .theme-toggle-btn {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+}
+
+.dark-theme #theme-toggle:hover,
+.dark-theme .theme-toggle-btn:hover {
+    background: rgba(102, 126, 234, 0.2) !important;
+    border-color: #90cdf4 !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+}
+
+.dark-theme #theme-toggle i,
+.dark-theme .theme-toggle-btn i {
+    color: #e2e8f0;
+}
+
+.dark-theme #theme-toggle:hover i,
+.dark-theme .theme-toggle-btn:hover i {
+    color: #90cdf4;
+}
+
+.dark-theme .navbar-end .search {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .navbar-end .search:hover {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: #90cdf4;
+}
+
+.dark-theme .navbar-end .search i {
+    color: #e2e8f0;
+}
+
+.dark-theme .navbar-end .search:hover i {
+    color: #90cdf4;
+}
+
+.dark-theme .navbar-end .navbar-item[target="_blank"] {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .navbar-end .navbar-item[target="_blank"]:hover {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: #90cdf4;
+}
+
+.dark-theme .navbar-end .navbar-item[target="_blank"] i {
+    color: #e2e8f0;
+}
+
+.dark-theme .navbar-end .navbar-item[target="_blank"]:hover i {
+    color: #90cdf4;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .navbar-end {
+        gap: 0.25rem;
+    }
+    
+    .navbar-end .navbar-item,
+    .navbar-end .button,
+    #theme-toggle,
+    .navbar-end .theme-toggle-btn {
+        min-width: 2rem;
+        height: 2rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    #theme-toggle i,
+    .theme-toggle-btn i,
+    .navbar-end .search i,
+    .navbar-end .navbar-item[target="_blank"] i {
+        font-size: 0.875rem;
+    }
+}

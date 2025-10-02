@@ -68,6 +68,61 @@
             }
         });
 
+        // 确保行号显示 - 兼容Prism.js和Highlight.js
+        // 处理新的Prism.js结构
+        $('pre.line-numbers').each(function() {
+            const $pre = $(this);
+            const $code = $pre.find('code');
+            
+            if ($code.length && !$pre.find('.line-numbers-rows').length) {
+                // 计算代码行数
+                const codeText = $code.text();
+                const lines = codeText.split('\n');
+                // 移除最后的空行（如果存在）
+                const actualLines = lines[lines.length - 1].trim() === '' ? lines.slice(0, -1) : lines;
+                const lineCount = actualLines.length;
+                
+                if (lineCount > 0) {
+                    // 创建Prism.js行号容器
+                    let lineNumbersHtml = '<span aria-hidden="true" class="line-numbers-rows">';
+                    for (let i = 0; i < lineCount; i++) {
+                        lineNumbersHtml += '<span></span>';
+                    }
+                    lineNumbersHtml += '</span>';
+                    
+                    // 添加到code元素内部
+                    $code.append(lineNumbersHtml);
+                }
+            }
+        });
+        
+        // 处理旧的figure.highlight结构（向后兼容）
+        $('figure.highlight').each(function() {
+            const $figure = $(this);
+            
+            // 检查是否已有行号（Prism.js或Highlight.js）
+            if (!$figure.find('.gutter').length && !$figure.hasClass('line-numbers')) {
+                const $code = $figure.find('.code');
+                if ($code.length) {
+                    const codeText = $code.text();
+                    const lines = codeText.split('\n').filter(line => line.trim() !== '');
+                    
+                    if (lines.length > 0) {
+                        // 创建行号容器
+                        let gutterHtml = '<div class="gutter">';
+                        for (let i = 1; i <= lines.length; i++) {
+                            gutterHtml += `<span class="line-number">${i}</span>\n`;
+                        }
+                        gutterHtml += '</div>';
+                        $code.before(gutterHtml);
+                        
+                        // 添加Prism.js兼容类
+                        $figure.addClass('line-numbers');
+                    }
+                }
+            }
+        });
+
 
         const clipboard = config.article.highlight.clipboard;
         const fold = config.article.highlight.fold.trim();

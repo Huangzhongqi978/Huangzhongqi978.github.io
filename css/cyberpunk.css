@@ -11252,13 +11252,20 @@ figure.highlight {
   width: 100%;
   position: relative;
   margin: 1em 0 1em !important;
-  border-radius: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
 }
 figure.highlight.folded .highlight-body {
   height: 0;
 }
 figure.highlight .copy {
   opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+figure.highlight .copy:hover {
+  opacity: 1;
 }
 figure.highlight pre,
 figure.highlight table tr:hover {
@@ -11266,10 +11273,14 @@ figure.highlight table tr:hover {
   background: transparent;
 }
 figure.highlight table {
-  width: auto;
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
 }
 figure.highlight table tr td {
   border: none;
+  padding: 0;
+  vertical-align: top;
 }
 figure.highlight table tr:not(:first-child) td {
   padding-top: 0;
@@ -11278,12 +11289,17 @@ figure.highlight table tr:not(:last-child) td {
   padding-bottom: 0;
 }
 figure.highlight pre {
-  padding: 0;
+  padding: 1.5em;
   overflow: visible;
+  margin: 0;
+  background: #f8f9fa;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
+  font-size: 0.9em;
+  line-height: 1.6;
 }
 figure.highlight pre .line,
 figure.highlight pre code .hljs {
-  line-height: 1.5rem;
+  line-height: 1.6;
 }
 figure.highlight figcaption,
 figure.highlight .gutter {
@@ -11291,9 +11307,14 @@ figure.highlight .gutter {
 }
 figure.highlight figcaption {
   margin: 0 !important;
-  padding: 0.3em 0em 0.3em 0.75em;
+  padding: 0.5em 0.75em;
   font-style: normal;
   font-size: 0.8em;
+  background: #e9ecef;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 figure.highlight figcaption * {
   color: inherit;
@@ -11319,9 +11340,32 @@ figure.highlight figcaption.level .level-right a {
 }
 figure.highlight .highlight-body {
   overflow: auto;
+  background: #f8f9fa;
 }
 figure.highlight .gutter {
   text-align: right;
+  background: #e9ecef;
+  padding: 1.5em 0.5em;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  user-select: none;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: #6c757d;
+  min-width: 3em;
+}
+figure.highlight .gutter .line-number {
+  display: block;
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+}
+figure.highlight .code {
+  padding: 1.5em;
+  background: #f8f9fa;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
+  font-size: 0.9em;
+  line-height: 1.6;
 }
 figure.highlight .tag,
 figure.highlight .title,
@@ -11337,6 +11381,49 @@ figure.highlight .section {
   vertical-align: inherit;
   min-width: inherit;
   border-radius: inherit;
+}
+pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+  margin: 1em 0 1em !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: #f8f9fa;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+pre.line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: -3.8em;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  user-select: none;
+  counter-reset: linenumber;
+  background: #e9ecef;
+}
+.line-numbers-rows > span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+  padding-right: 0.8em;
+  text-align: right;
+  color: #6c757d;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
 }
 figure.highlight.foldable div.level-left {
   cursor: pointer;
