@@ -68,8 +68,7 @@
             }
         });
 
-        // 确保行号显示 - 兼容Prism.js和Highlight.js
-        // 处理新的Prism.js结构
+        // Prism.js 行号支持 - 为使用 line-numbers 类的 pre 元素添加行号
         $('pre.line-numbers').each(function() {
             const $pre = $(this);
             const $code = $pre.find('code');
@@ -95,34 +94,6 @@
                 }
             }
         });
-        
-        // 处理旧的figure.highlight结构（向后兼容）
-        $('figure.highlight').each(function() {
-            const $figure = $(this);
-            
-            // 检查是否已有行号（Prism.js或Highlight.js）
-            if (!$figure.find('.gutter').length && !$figure.hasClass('line-numbers')) {
-                const $code = $figure.find('.code');
-                if ($code.length) {
-                    const codeText = $code.text();
-                    const lines = codeText.split('\n').filter(line => line.trim() !== '');
-                    
-                    if (lines.length > 0) {
-                        // 创建行号容器
-                        let gutterHtml = '<div class="gutter">';
-                        for (let i = 1; i <= lines.length; i++) {
-                            gutterHtml += `<span class="line-number">${i}</span>\n`;
-                        }
-                        gutterHtml += '</div>';
-                        $code.before(gutterHtml);
-                        
-                        // 添加Prism.js兼容类
-                        $figure.addClass('line-numbers');
-                    }
-                }
-            }
-        });
-
 
         const clipboard = config.article.highlight.clipboard;
         const fold = config.article.highlight.fold.trim();
@@ -142,13 +113,27 @@
         });
 
         if (typeof ClipboardJS !== 'undefined' && clipboard) {
+            // 处理 figure.highlight 结构（highlight.js）
             $('figure.highlight').each(function() {
                 const id = 'code-' + Date.now() + (Math.random() * 1000 | 0);
                 const button = '<a href="javascript:;" class="copy" title="Copy" data-clipboard-target="#' + id + ' .code"><i class="fas fa-copy"></i></a>';
                 $(this).attr('id', id);
                 $(this).find('figcaption div.level-right').append(button);
             });
-            new ClipboardJS('.highlight .copy'); // eslint-disable-line no-new
+            
+            // 处理 pre.line-numbers 结构（Prism.js）
+            $('pre.line-numbers').each(function() {
+                const $pre = $(this);
+                if (!$pre.find('.copy-button').length) {
+                    const id = 'prism-code-' + Date.now() + (Math.random() * 1000 | 0);
+                    const button = '<button class="copy-button copy" title="Copy" data-clipboard-target="#' + id + ' code"><i class="fas fa-copy"></i></button>';
+                    $pre.attr('id', id);
+                    $pre.css('position', 'relative');
+                    $pre.append(button);
+                }
+            });
+            
+            new ClipboardJS('.copy'); // eslint-disable-line no-new
         }
 
         if (fold) {

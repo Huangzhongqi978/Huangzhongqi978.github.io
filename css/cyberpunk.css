@@ -11425,6 +11425,25 @@ pre.line-numbers > code {
 .line-numbers-rows > span:before {
   content: counter(linenumber);
 }
+pre.line-numbers .copy-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #666;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+pre.line-numbers .copy-button:hover {
+  background: rgba(255,255,255,0.95);
+  color: #333;
+  border-color: rgba(0,0,0,0.2);
+}
 figure.highlight.foldable div.level-left {
   cursor: pointer;
 }
