@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="referrer" content="no-referrer"><!--!--><title>添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化 - Brahmacarya奇奇</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#1e88e5"><meta name="application-name" content="Brahmacarya奇奇"><meta name="msapplication-TileImage" content="/img/logo-192.png"><meta name="msapplication-TileColor" content="#1e88e5"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Brahmacarya奇奇"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" sizes="192x192" href="/img/logo-192.png"><link rel="apple-touch-icon" sizes="512x512" href="/img/logo-512.png"><meta name="description" content="Yolov8模型优化过程代码解析与结果展示"><meta property="og:type" content="website"><meta property="og:title" content="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"><meta property="og:url" content="https://huangzhongqi978.top/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/"><meta property="og:site_name" content="Brahmacarya奇奇"><meta property="og:description" content="Yolov8模型优化过程代码解析与结果展示"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://huangzhongqi978.top/img/og_image.png"><meta property="article:published_time" content="2025-07-14T16:00:00.000Z"><meta property="article:modified_time" content="2025-10-03T14:54:18.012Z"><meta property="article:author" content="HuangZhongqi"><meta property="article:tag" content="yolov8"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://huangzhongqi978.top/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huangzhongqi978.top/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/"},"headline":"添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化","image":["https://huangzhongqi978.top/img/og_image.png"],"datePublished":"2025-07-14T16:00:00.000Z","dateModified":"2025-10-03T14:54:18.012Z","author":{"@type":"Person","name":"HuangZhongqi"},"publisher":{"@type":"Organization","name":"Brahmacarya奇奇","logo":{"@type":"ImageObject","url":"https://huangzhongqi978.top/img/logo.svg"}},"description":"Yolov8模型优化过程代码解析与结果展示"}</script><link rel="canonical" href="https://huangzhongqi978.top/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="/css/modern-effects.css"><link rel="stylesheet" href="/css/dynamic-background.css"><link rel="stylesheet" href="/css/article-toc.css"><link rel="stylesheet" href="/css/fullscreen-reading.css"><link rel="stylesheet" href="/css/navbar-fix.css"><link rel="stylesheet" href="/css/article-actions.css"><link rel="stylesheet" href="/css/custom-layout.css"><link rel="stylesheet" href="/css/sidebar-toc.css"><link rel="stylesheet" href="/css/right-side-toc.css"><link rel="stylesheet" href="/css/widget-toc.css"><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Brahmacarya奇奇" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="LinkedIn" href="https://linkedin.com/in/huangzhongqi"><i class="fab fa-linkedin"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><button class="theme-toggle-btn" id="theme-toggle" title="切换主题"><span class="icon"><i class="fas fa-moon" id="theme-icon"></i></span></button></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-14T16:00:00.000Z" title="2025/7/15 00:00:00">2025-07-15</time>发表</span><span class="level-item"><time dateTime="2025-10-03T14:54:18.012Z" title="2025/10/3 22:54:18">2025-10-03</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a></span><span class="level-item">25 分钟读完 (大约3688个字)</span></div></div><div class="article-title-container"><h1 class="title is-3 is-size-4-mobile">添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化</h1><div class="article-actions"><button class="button is-small is-ghost article-action-btn" id="article-toc-toggle" title="显示目录"><span class="icon"><i class="fas fa-list-ul"></i></span><span class="action-text">目录</span></button><button class="button is-small is-ghost article-action-btn" id="fullscreen-reading-btn" title="全屏阅读"><span class="icon"><i class="fas fa-expand"></i></span><span class="action-text">全屏</span></button></div></div><div class="content"><p>Yolov8模型优化过程代码解析与结果展示</p>
+<span id="more"></span>
+
+<div class="video-container">
+    <video controls>
+        <source src="https://raw.githubusercontent.com/Huangzhongqi978/my-images/main/img/运行结果对比.mp4" type="video/mp4">
+        您的浏览器不支持视频播放。
+    </video>
+</div>
+
+<h2 id="1-代码结构分析"><a href="#1-代码结构分析" class="headerlink" title="1. 代码结构分析"></a>1. 代码结构分析</h2><h3 id="1-1-核心类设计"><a href="#1-1-核心类设计" class="headerlink" title="1.1 核心类设计"></a>1.1 核心类设计</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">YOLOv11OptimizedTrainer</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""YOLOv11优化训练器 - 专门针对小目标检测优化"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>config <span class="token operator">=</span> config
+        self<span class="token punctuation">.</span>model <span class="token operator">=</span> <span class="token boolean">None</span>
+        self<span class="token punctuation">.</span>training_results <span class="token operator">=</span> <span class="token boolean">None</span>
+        <span class="token comment"># 创建优化结果目录</span>
+        self<span class="token punctuation">.</span>timestamp <span class="token operator">=</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">"%Y%m%d_%H%M%S"</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>run_dir <span class="token operator">=</span> RESULTS_DIR <span class="token operator">/</span> <span class="token string-interpolation"><span class="token string">f"yolov11_optimized_run_</span><span class="token interpolation"><span class="token punctuation">&#123;</span>self<span class="token punctuation">.</span>timestamp<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="1-2-注意力机制模块"><a href="#1-2-注意力机制模块" class="headerlink" title="1.2 注意力机制模块"></a>1.2 注意力机制模块</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># ==================== 注意力机制模块定义 ====================</span>
+
+<span class="token keyword">class</span> <span class="token class-name">SEAttention</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Squeeze-and-Excitation注意力机制"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> reduction<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>SEAttention<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>avg_pool <span class="token operator">=</span> nn<span class="token punctuation">.</span>AdaptiveAvgPool2d<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># 全局平均池化</span>
+        self<span class="token punctuation">.</span>fc <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>channel<span class="token punctuation">,</span> channel <span class="token operator">//</span> reduction<span class="token punctuation">,</span> bias<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># 降维</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span>inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>channel <span class="token operator">//</span> reduction<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> bias<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># 升维</span>
+            nn<span class="token punctuation">.</span>Sigmoid<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 输出0-1权重</span>
+        <span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">CBAM</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Convolutional Block Attention Module"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> in_channels<span class="token punctuation">,</span> reduction<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">,</span> kernel_size<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>CBAM<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>channel_attention <span class="token operator">=</span> ChannelAttention<span class="token punctuation">(</span>in_channels<span class="token punctuation">,</span> reduction<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>spatial_attention <span class="token operator">=</span> SpatialAttention<span class="token punctuation">(</span>kernel_size<span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MultiScaleFeatureFusion</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""多尺度特征融合模块"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> in_channels_list<span class="token punctuation">,</span> out_channels<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>MultiScaleFeatureFusion<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 特征金字塔网络</span>
+        self<span class="token punctuation">.</span>lateral_convs <span class="token operator">=</span> nn<span class="token punctuation">.</span>ModuleList<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>fpn_convs <span class="token operator">=</span> nn<span class="token punctuation">.</span>ModuleList<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 注意力机制用于特征融合</span>
+        self<span class="token punctuation">.</span>attention <span class="token operator">=</span> CBAM<span class="token punctuation">(</span>out_channels<span class="token punctuation">,</span> reduction<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2-优化策略详解"><a href="#2-优化策略详解" class="headerlink" title="2. 优化策略详解"></a>2. 优化策略详解</h2><h3 id="2-1-漏检问题修复"><a href="#2-1-漏检问题修复" class="headerlink" title="2.1 漏检问题修复"></a>2.1 漏检问题修复</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 修复漏检的检测参数</span>
+<span class="token string">'conf'</span><span class="token punctuation">:</span> <span class="token number">0.1</span><span class="token punctuation">,</span>           <span class="token comment"># 置信度阈值：从0.5降低到0.1</span>
+<span class="token string">'iou'</span><span class="token punctuation">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>            <span class="token comment"># IoU阈值：从0.6降低到0.5</span>
+<span class="token string">'max_det'</span><span class="token punctuation">:</span> <span class="token number">300</span><span class="token punctuation">,</span>        <span class="token comment"># 最大检测数：保持300</span>
+<span class="token string">'multi_scale'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>   <span class="token comment"># 多尺度训练：启用</span>
+<span class="token string">'dropout'</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>        <span class="token comment"># 移除dropout：避免特征丢失</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-2-损失函数权重优化"><a href="#2-2-损失函数权重优化" class="headerlink" title="2.2 损失函数权重优化"></a>2.2 损失函数权重优化</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 优化损失函数权重 - 平衡检测和分类</span>
+<span class="token string">'box'</span><span class="token punctuation">:</span> <span class="token number">7.5</span><span class="token punctuation">,</span>            <span class="token comment"># 边界框损失权重：保持7.5</span>
+<span class="token string">'cls'</span><span class="token punctuation">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>            <span class="token comment"># 分类损失权重：从0.5提高到1.5</span>
+<span class="token string">'dfl'</span><span class="token punctuation">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>            <span class="token comment"># DFL损失权重：保持1.5</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-3-学习率策略优化"><a href="#2-3-学习率策略优化" class="headerlink" title="2.3 学习率策略优化"></a>2.3 学习率策略优化</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 保守的学习率策略</span>
+<span class="token string">'lr0'</span><span class="token punctuation">:</span> <span class="token number">0.005</span><span class="token punctuation">,</span>          <span class="token comment"># 初始学习率：从0.01降低到0.005</span>
+<span class="token string">'lrf'</span><span class="token punctuation">:</span> <span class="token number">0.005</span><span class="token punctuation">,</span>          <span class="token comment"># 最终学习率：从0.01降低到0.005</span>
+<span class="token string">'warmup_epochs'</span><span class="token punctuation">:</span> <span class="token number">5.0</span><span class="token punctuation">,</span>  <span class="token comment"># 预热轮数：从3.0增加到5.0</span>
+<span class="token string">'cos_lr'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>        <span class="token comment"># 余弦学习率调度：启用</span>
+<span class="token string">'close_mosaic'</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>     <span class="token comment"># 最后5个epoch关闭马赛克</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-4-数据增强平衡策略"><a href="#2-4-数据增强平衡策略" class="headerlink" title="2.4 数据增强平衡策略"></a>2.4 数据增强平衡策略</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 平衡的数据增强 - 保持特征的同时增加多样性</span>
+<span class="token string">'hsv_h'</span><span class="token punctuation">:</span> <span class="token number">0.015</span><span class="token punctuation">,</span>        <span class="token comment"># 色调变化：从0.015保持</span>
+<span class="token string">'hsv_s'</span><span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">,</span>          <span class="token comment"># 饱和度变化：从0.7降低到0.3</span>
+<span class="token string">'hsv_v'</span><span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">,</span>          <span class="token comment"># 明度变化：从0.4降低到0.3</span>
+<span class="token string">'degrees'</span><span class="token punctuation">:</span> <span class="token number">3.0</span><span class="token punctuation">,</span>        <span class="token comment"># 旋转角度：从0.0增加到3.0</span>
+<span class="token string">'translate'</span><span class="token punctuation">:</span> <span class="token number">0.15</span><span class="token punctuation">,</span>     <span class="token comment"># 平移：从0.1增加到0.15</span>
+<span class="token string">'scale'</span><span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">,</span>          <span class="token comment"># 缩放：从0.5降低到0.3</span>
+<span class="token string">'shear'</span><span class="token punctuation">:</span> <span class="token number">2.0</span><span class="token punctuation">,</span>          <span class="token comment"># 剪切：从0.0增加到2.0</span>
+<span class="token string">'perspective'</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>    <span class="token comment"># 透视变换：保持0.0</span>
+<span class="token string">'flipud'</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>         <span class="token comment"># 上下翻转：保持0.0</span>
+<span class="token string">'fliplr'</span><span class="token punctuation">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>         <span class="token comment"># 左右翻转：保持0.5</span>
+<span class="token string">'mosaic'</span><span class="token punctuation">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>         <span class="token comment"># 马赛克增强：从1.0降低到0.8</span>
+<span class="token string">'mixup'</span><span class="token punctuation">:</span> <span class="token number">0.1</span><span class="token punctuation">,</span>          <span class="token comment"># 混合增强：从0.0增加到0.1</span>
+<span class="token string">'copy_paste'</span><span class="token punctuation">:</span> <span class="token number">0.2</span><span class="token punctuation">,</span>     <span class="token comment"># Copy-Paste增强：从0.0增加到0.2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3-注意力机制集成"><a href="#3-注意力机制集成" class="headerlink" title="3. 注意力机制集成"></a>3. 注意力机制集成</h2><h3 id="3-1-注意力机制应用"><a href="#3-1-注意力机制应用" class="headerlink" title="3.1 注意力机制应用"></a>3.1 注意力机制应用</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">_apply_attention_mechanisms</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""应用注意力机制到YOLOv11模型"""</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> self<span class="token punctuation">.</span>model <span class="token keyword">or</span> <span class="token keyword">not</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>model<span class="token punctuation">,</span> <span class="token string">'model'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string">"模型未加载，跳过注意力机制应用"</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    
+    <span class="token comment"># 获取模型结构</span>
+    model <span class="token operator">=</span> self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>model
+    
+    <span class="token comment"># 在backbone的关键层添加SE注意力</span>
+    attention_added <span class="token operator">=</span> <span class="token boolean">False</span>
+    <span class="token keyword">for</span> name<span class="token punctuation">,</span> module <span class="token keyword">in</span> model<span class="token punctuation">.</span>named_modules<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 在C2f模块后添加注意力机制</span>
+        <span class="token keyword">if</span> <span class="token string">'C2f'</span> <span class="token keyword">in</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>module<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>module<span class="token punctuation">,</span> <span class="token string">'cv2'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 获取C2f模块的输出通道数</span>
+            out_channels <span class="token operator">=</span> module<span class="token punctuation">.</span>cv2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>conv<span class="token punctuation">.</span>out_channels
+            
+            <span class="token comment"># 创建注意力模块</span>
+            attention_module <span class="token operator">=</span> SEAttention<span class="token punctuation">(</span>out_channels<span class="token punctuation">,</span> reduction<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">)</span>
+            
+            <span class="token comment"># 将注意力模块添加到C2f模块中</span>
+            <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>module<span class="token punctuation">,</span> <span class="token string">'attention'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                module<span class="token punctuation">.</span>attention <span class="token operator">=</span> attention_module
+                attention_added <span class="token operator">=</span> <span class="token boolean">True</span>
+                logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"成功在 </span><span class="token interpolation"><span class="token punctuation">&#123;</span>name<span class="token punctuation">&#125;</span></span><span class="token string"> 添加SE注意力模块"</span></span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># 在检测头添加特征融合</span>
+    <span class="token keyword">if</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token string">'detect'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        detect_head <span class="token operator">=</span> model<span class="token punctuation">.</span>detect
+        <span class="token keyword">if</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>detect_head<span class="token punctuation">,</span> <span class="token string">'cv2'</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>detect_head<span class="token punctuation">,</span> <span class="token string">'cv3'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 获取检测头的通道数</span>
+            ch <span class="token operator">=</span> <span class="token punctuation">[</span>detect_head<span class="token punctuation">.</span>cv2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>conv<span class="token punctuation">.</span>out_channels <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>detect_head<span class="token punctuation">.</span>cv2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+            
+            <span class="token comment"># 添加特征融合模块</span>
+            <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>detect_head<span class="token punctuation">,</span> <span class="token string">'feature_fusion'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                detect_head<span class="token punctuation">.</span>feature_fusion <span class="token operator">=</span> MultiScaleFeatureFusion<span class="token punctuation">(</span>ch<span class="token punctuation">,</span> out_channels<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">)</span>
+                logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"成功添加多尺度特征融合模块"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-2-SE注意力机制原理"><a href="#3-2-SE注意力机制原理" class="headerlink" title="3.2 SE注意力机制原理"></a>3.2 SE注意力机制原理</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""SE注意力前向传播"""</span>
+    b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> _<span class="token punctuation">,</span> _ <span class="token operator">=</span> x<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 获取批次大小和通道数</span>
+    
+    <span class="token comment"># Squeeze: 全局平均池化，压缩空间维度</span>
+    y <span class="token operator">=</span> self<span class="token punctuation">.</span>avg_pool<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">.</span>view<span class="token punctuation">(</span>b<span class="token punctuation">,</span> c<span class="token punctuation">)</span>  <span class="token comment"># [B, C, 1, 1] -> [B, C]</span>
+    
+    <span class="token comment"># Excitation: 通过全连接层学习通道权重</span>
+    y <span class="token operator">=</span> self<span class="token punctuation">.</span>fc<span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">.</span>view<span class="token punctuation">(</span>b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># [B, C] -> [B, C, 1, 1]</span>
+    
+    <span class="token comment"># Scale: 将权重应用到原始特征上</span>
+    <span class="token keyword">return</span> x <span class="token operator">*</span> y<span class="token punctuation">.</span>expand_as<span class="token punctuation">(</span>x<span class="token punctuation">)</span>  <span class="token comment"># 广播乘法</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-3-CBAM注意力机制"><a href="#3-3-CBAM注意力机制" class="headerlink" title="3.3 CBAM注意力机制"></a>3.3 CBAM注意力机制</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">CBAM</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Convolutional Block Attention Module"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> in_channels<span class="token punctuation">,</span> reduction<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">,</span> kernel_size<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>CBAM<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>channel_attention <span class="token operator">=</span> ChannelAttention<span class="token punctuation">(</span>in_channels<span class="token punctuation">,</span> reduction<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>spatial_attention <span class="token operator">=</span> SpatialAttention<span class="token punctuation">(</span>kernel_size<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 先应用通道注意力</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>channel_attention<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> x
+        <span class="token comment"># 再应用空间注意力</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>spatial_attention<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> x
+        <span class="token keyword">return</span> x<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-4-多尺度特征融合"><a href="#3-4-多尺度特征融合" class="headerlink" title="3.4 多尺度特征融合"></a>3.4 多尺度特征融合</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MultiScaleFeatureFusion</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""多尺度特征融合模块"""</span>
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> features<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 处理每个尺度的特征</span>
+        lateral_features <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> i<span class="token punctuation">,</span> <span class="token punctuation">(</span>lateral_conv<span class="token punctuation">,</span> feature<span class="token punctuation">)</span> <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span><span class="token builtin">zip</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>lateral_convs<span class="token punctuation">,</span> features<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            lateral_feature <span class="token operator">=</span> lateral_conv<span class="token punctuation">(</span>feature<span class="token punctuation">)</span>
+            lateral_features<span class="token punctuation">.</span>append<span class="token punctuation">(</span>lateral_feature<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 自顶向下的特征融合</span>
+        fpn_features <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>lateral_features<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lateral_features<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                fpn_feature <span class="token operator">=</span> lateral_features<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token comment"># 上采样并融合</span>
+                fpn_feature <span class="token operator">=</span> F<span class="token punctuation">.</span>interpolate<span class="token punctuation">(</span>
+                    fpn_features<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
+                    size<span class="token operator">=</span>lateral_features<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
+                    mode<span class="token operator">=</span><span class="token string">'nearest'</span>
+                <span class="token punctuation">)</span>
+                fpn_feature <span class="token operator">=</span> fpn_feature <span class="token operator">+</span> lateral_features<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+            
+            fpn_feature <span class="token operator">=</span> self<span class="token punctuation">.</span>fpn_convs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span>fpn_feature<span class="token punctuation">)</span>
+            fpn_features<span class="token punctuation">.</span>insert<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> fpn_feature<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 应用注意力机制</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>fpn_features<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            fpn_features<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>attention<span class="token punctuation">(</span>fpn_features<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 多尺度特征融合</span>
+        target_size <span class="token operator">=</span> fpn_features<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+        upsampled_features <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> feature <span class="token keyword">in</span> fpn_features<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> feature<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">!=</span> target_size<span class="token punctuation">:</span>
+                feature <span class="token operator">=</span> F<span class="token punctuation">.</span>interpolate<span class="token punctuation">(</span>feature<span class="token punctuation">,</span> size<span class="token operator">=</span>target_size<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'nearest'</span><span class="token punctuation">)</span>
+            upsampled_features<span class="token punctuation">.</span>append<span class="token punctuation">(</span>feature<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 拼接并融合</span>
+        fused_feature <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span>upsampled_features<span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        fused_feature <span class="token operator">=</span> self<span class="token punctuation">.</span>fusion_conv<span class="token punctuation">(</span>fused_feature<span class="token punctuation">)</span>
+        
+        <span class="token keyword">return</span> fpn_features<span class="token punctuation">,</span> fused_feature<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="4-训练参数对比"><a href="#4-训练参数对比" class="headerlink" title="4. 训练参数对比"></a>4. 训练参数对比</h2><h3 id="4-1-检测参数对比"><a href="#4-1-检测参数对比" class="headerlink" title="4.1 检测参数对比"></a>4.1 检测参数对比</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>原始代码</th>
+<th>优化代码</th>
+<th>优化说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>conf</td>
+<td>0.001</td>
+<td>0.1</td>
+<td>降低置信度阈值，减少漏检</td>
+</tr>
+<tr>
+<td>iou</td>
+<td>0.6</td>
+<td>0.5</td>
+<td>降低IoU阈值，提高召回率</td>
+</tr>
+<tr>
+<td>max_det</td>
+<td>300</td>
+<td>300</td>
+<td>保持最大检测数</td>
+</tr>
+<tr>
+<td>multi_scale</td>
+<td>False</td>
+<td>True</td>
+<td>启用多尺度训练</td>
+</tr>
+<tr>
+<td>dropout</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>保持无dropout</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-学习率参数对比"><a href="#4-2-学习率参数对比" class="headerlink" title="4.2 学习率参数对比"></a>4.2 学习率参数对比</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>原始代码</th>
+<th>优化代码</th>
+<th>优化说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>lr0</td>
+<td>0.01</td>
+<td>0.005</td>
+<td>降低初始学习率，稳定训练</td>
+</tr>
+<tr>
+<td>lrf</td>
+<td>0.01</td>
+<td>0.005</td>
+<td>降低最终学习率</td>
+</tr>
+<tr>
+<td>warmup_epochs</td>
+<td>3.0</td>
+<td>5.0</td>
+<td>增加预热轮数</td>
+</tr>
+<tr>
+<td>cos_lr</td>
+<td>True</td>
+<td>True</td>
+<td>保持余弦学习率调度</td>
+</tr>
+<tr>
+<td>close_mosaic</td>
+<td>5</td>
+<td>5</td>
+<td>保持马赛克关闭策略</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-损失函数权重对比"><a href="#4-3-损失函数权重对比" class="headerlink" title="4.3 损失函数权重对比"></a>4.3 损失函数权重对比</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>原始代码</th>
+<th>优化代码</th>
+<th>优化说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>box</td>
+<td>7.5</td>
+<td>7.5</td>
+<td>保持边界框损失权重</td>
+</tr>
+<tr>
+<td>cls</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>提高分类损失权重，减少漏检</td>
+</tr>
+<tr>
+<td>dfl</td>
+<td>1.5</td>
+<td>1.5</td>
+<td>保持DFL损失权重</td>
+</tr>
+</tbody></table>
+<h3 id="4-4-数据增强参数对比"><a href="#4-4-数据增强参数对比" class="headerlink" title="4.4 数据增强参数对比"></a>4.4 数据增强参数对比</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>原始代码</th>
+<th>优化代码</th>
+<th>优化说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hsv_h</td>
+<td>0.015</td>
+<td>0.015</td>
+<td>保持色调变化</td>
+</tr>
+<tr>
+<td>hsv_s</td>
+<td>0.7</td>
+<td>0.3</td>
+<td>降低饱和度变化，保持颜色特征</td>
+</tr>
+<tr>
+<td>hsv_v</td>
+<td>0.4</td>
+<td>0.3</td>
+<td>降低明度变化</td>
+</tr>
+<tr>
+<td>degrees</td>
+<td>0.0</td>
+<td>3.0</td>
+<td>增加旋转角度</td>
+</tr>
+<tr>
+<td>translate</td>
+<td>0.1</td>
+<td>0.15</td>
+<td>增加平移范围</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>0.5</td>
+<td>0.3</td>
+<td>降低缩放范围，保持标志形状</td>
+</tr>
+<tr>
+<td>shear</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>增加剪切变换</td>
+</tr>
+<tr>
+<td>mosaic</td>
+<td>1.0</td>
+<td>0.8</td>
+<td>降低马赛克增强</td>
+</tr>
+<tr>
+<td>mixup</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>增加混合增强</td>
+</tr>
+<tr>
+<td>copy_paste</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>增加Copy-Paste增强</td>
+</tr>
+</tbody></table>
+<h2 id="5-训练流程优化"><a href="#5-训练流程优化" class="headerlink" title="5. 训练流程优化"></a>5. 训练流程优化</h2><h3 id="5-1-优化训练流程"><a href="#5-1-优化训练流程" class="headerlink" title="5.1 优化训练流程"></a>5.1 优化训练流程</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">train_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""训练优化的YOLOv11模型 - 针对小目标检测"""</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token comment"># 1. 准备数据集</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> self<span class="token punctuation">.</span>prepare_dataset<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">"数据集准备失败"</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 2. 初始化YOLOv11模型</span>
+        model_path <span class="token operator">=</span> self<span class="token punctuation">.</span>config<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'pretrained_model'</span><span class="token punctuation">,</span> <span class="token string">'yolo11n.pt'</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>model <span class="token operator">=</span> YOLO<span class="token punctuation">(</span>model_path<span class="token punctuation">)</span>
+        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"使用预训练模型: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>model_path<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 3. 应用注意力机制和特征融合</span>
+        self<span class="token punctuation">.</span>_apply_attention_mechanisms<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 4. 记录详细优化策略</span>
+        self<span class="token punctuation">.</span>_log_optimization_strategy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 5. 执行训练</span>
+        self<span class="token punctuation">.</span>training_results <span class="token operator">=</span> self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>train<span class="token punctuation">(</span><span class="token operator">**</span>train_args<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 6. 保存优化模型</span>
+        best_model_path <span class="token operator">=</span> self<span class="token punctuation">.</span>run_dir <span class="token operator">/</span> <span class="token string">'traffic_signs_yolov11_optimized'</span> <span class="token operator">/</span> <span class="token string">'weights'</span> <span class="token operator">/</span> <span class="token string">'best.pt'</span>
+        <span class="token keyword">if</span> best_model_path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            shutil<span class="token punctuation">.</span>copy2<span class="token punctuation">(</span>best_model_path<span class="token punctuation">,</span> MODELS_DIR <span class="token operator">/</span> <span class="token string">'best_yolov11_optimized.pt'</span><span class="token punctuation">)</span>
+            logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"优化模型已保存到: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>MODELS_DIR <span class="token operator">/</span> <span class="token string">'best_yolov11_optimized.pt'</span><span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="5-2-优化策略记录"><a href="#5-2-优化策略记录" class="headerlink" title="5.2 优化策略记录"></a>5.2 优化策略记录</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">_log_optimization_strategy</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""记录优化策略"""</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"🔧 YOLOv11优化训练策略:"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"  🚨 漏检问题修复:"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 置信度阈值: 0.1 (降低，减少漏检)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - IoU阈值: 0.5 (降低，提高召回率)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 分类损失权重: 1.5 (提高，减少漏检)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 边界框损失权重: 7.5 (平衡检测和分类)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"  🎨 平衡数据增强:"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 色调变化: ±1.5% (适中，保持颜色特征)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 饱和度变化: ±30% (适中，保持标志颜色)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 明度变化: ±30% (适中，保持亮度特征)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 旋转角度: ±3° (适中，保持标志形状)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 缩放范围: 0.7-1.3 (适中，保持标志尺寸)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 马赛克增强: 0.8 (适中增强)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"  📊 稳定训练策略:"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 学习率: 0.005 (稳定训练)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 预热轮数: 5 (充分预热)"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 马赛克关闭: 最后5轮"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"    - 移除dropout: 避免特征丢失"</span><span class="token punctuation">)</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"  ⚠️ 注意: 注意力机制和特征融合需要在模型架构中实现"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="6-数据集配置优化"><a href="#6-数据集配置优化" class="headerlink" title="6. 数据集配置优化"></a>6. 数据集配置优化</h2><h3 id="6-1-优化数据集配置"><a href="#6-1-优化数据集配置" class="headerlink" title="6.1 优化数据集配置"></a>6.1 优化数据集配置</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">_create_optimized_dataset_yaml</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""创建优化数据集配置文件"""</span>
+    dataset_config <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">'path'</span><span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">(</span>DATA_DIR<span class="token punctuation">.</span>absolute<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">'train'</span><span class="token punctuation">:</span> <span class="token string">'train/images'</span><span class="token punctuation">,</span>
+        <span class="token string">'val'</span><span class="token punctuation">:</span> <span class="token string">'test/images'</span><span class="token punctuation">,</span>
+        <span class="token string">'test'</span><span class="token punctuation">:</span> <span class="token string">'test/images'</span><span class="token punctuation">,</span>
+        <span class="token string">'nc'</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>  <span class="token comment"># 三类标志检测</span>
+        <span class="token string">'names'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'mandatory'</span><span class="token punctuation">,</span> <span class="token string">'prohibitory'</span><span class="token punctuation">,</span> <span class="token string">'warning'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment"># 使用不同的YAML文件名避免冲突</span>
+    yaml_path <span class="token operator">=</span> DATA_DIR <span class="token operator">/</span> <span class="token string">'dataset_optimized.yaml'</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>yaml_path<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        yaml<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>dataset_config<span class="token punctuation">,</span> f<span class="token punctuation">,</span> default_flow_style<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> allow_unicode<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"优化数据集配置文件已创建: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>yaml_path<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> yaml_path<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6-2-训练参数配置"><a href="#6-2-训练参数配置" class="headerlink" title="6.2 训练参数配置"></a>6.2 训练参数配置</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 修复漏检问题的优化训练参数</span>
+train_args <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">'data'</span><span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">(</span>DATA_DIR <span class="token operator">/</span> <span class="token string">'dataset_optimized.yaml'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># 使用优化数据集配置</span>
+    <span class="token string">'epochs'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'epochs'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'batch'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'batch_size'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'imgsz'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'img_size'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'device'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'device'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'workers'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'workers'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'project'</span><span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>run_dir<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'traffic_signs_yolov11_optimized'</span><span class="token punctuation">,</span>  <span class="token comment"># 优化实验名称</span>
+    <span class="token string">'exist_ok'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token string">'pretrained'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token string">'save'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token string">'save_period'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>  <span class="token comment"># 每个epoch都保存</span>
+    <span class="token string">'val'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token string">'plots'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token string">'verbose'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token string">'seed'</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span>
+    <span class="token string">'deterministic'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token string">'single_cls'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    <span class="token string">'save_json'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token string">'conf'</span><span class="token punctuation">:</span> <span class="token number">0.1</span><span class="token punctuation">,</span>   <span class="token comment"># 降低置信度阈值，减少漏检</span>
+    <span class="token string">'iou'</span><span class="token punctuation">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>    <span class="token comment"># 降低IoU阈值，提高召回率</span>
+    <span class="token string">'max_det'</span><span class="token punctuation">:</span> <span class="token number">300</span><span class="token punctuation">,</span>  <span class="token comment"># 适中的最大检测数</span>
+    <span class="token string">'agnostic_nms'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    
+    <span class="token comment"># 修复漏检的检测参数</span>
+    <span class="token string">'rect'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token comment"># 保持多尺度训练</span>
+    <span class="token string">'cos_lr'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token comment"># 余弦学习率</span>
+    <span class="token string">'close_mosaic'</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>  <span class="token comment"># 最后5个epoch关闭马赛克</span>
+    <span class="token string">'resume'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    <span class="token string">'amp'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token comment"># 混合精度训练</span>
+    <span class="token string">'fraction'</span><span class="token punctuation">:</span> <span class="token number">1.0</span><span class="token punctuation">,</span>
+    <span class="token string">'profile'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    <span class="token string">'freeze'</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    <span class="token string">'multi_scale'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token comment"># 多尺度训练</span>
+    <span class="token string">'overlap_mask'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token string">'mask_ratio'</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>  <span class="token comment"># 适中的特征金字塔层数</span>
+    <span class="token string">'dropout'</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>  <span class="token comment"># 移除dropout，避免特征丢失</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="7-验证流程优化"><a href="#7-验证流程优化" class="headerlink" title="7. 验证流程优化"></a>7. 验证流程优化</h2><h3 id="7-1-优化模型验证"><a href="#7-1-优化模型验证" class="headerlink" title="7.1 优化模型验证"></a>7.1 优化模型验证</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">validate_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""验证优化模型"""</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"开始优化模型验证..."</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 加载最佳模型</span>
+        best_model_path <span class="token operator">=</span> self<span class="token punctuation">.</span>run_dir <span class="token operator">/</span> <span class="token string">'traffic_signs_yolov11_optimized'</span> <span class="token operator">/</span> <span class="token string">'weights'</span> <span class="token operator">/</span> <span class="token string">'best.pt'</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> best_model_path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string">"未找到最佳模型，使用最后保存的模型"</span><span class="token punctuation">)</span>
+            best_model_path <span class="token operator">=</span> self<span class="token punctuation">.</span>run_dir <span class="token operator">/</span> <span class="token string">'traffic_signs_yolov11_optimized'</span> <span class="token operator">/</span> <span class="token string">'weights'</span> <span class="token operator">/</span> <span class="token string">'last.pt'</span>
+        
+        val_model <span class="token operator">=</span> YOLO<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>best_model_path<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 在验证集上验证</span>
+        val_results <span class="token operator">=</span> val_model<span class="token punctuation">.</span>val<span class="token punctuation">(</span>
+            data<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>DATA_DIR <span class="token operator">/</span> <span class="token string">'dataset_optimized.yaml'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># 使用优化数据集配置</span>
+            split<span class="token operator">=</span><span class="token string">'val'</span><span class="token punctuation">,</span>
+            imgsz<span class="token operator">=</span>self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'img_size'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            batch<span class="token operator">=</span>self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'batch_size'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            conf<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">,</span>   <span class="token comment"># 与训练一致的置信度阈值</span>
+            iou<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">,</span>    <span class="token comment"># 与训练一致的IoU阈值</span>
+            max_det<span class="token operator">=</span><span class="token number">300</span><span class="token punctuation">,</span>  <span class="token comment"># 与训练一致的最大检测数</span>
+            save_json<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+            save_hybrid<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+            plots<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+            verbose<span class="token operator">=</span><span class="token boolean">True</span>
+        <span class="token punctuation">)</span>
+        
+        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"优化模型验证完成"</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> val_results<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="7-2-模型导出优化"><a href="#7-2-模型导出优化" class="headerlink" title="7.2 模型导出优化"></a>7.2 模型导出优化</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">export_model</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""导出优化模型为不同格式"""</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"开始导出优化模型..."</span><span class="token punctuation">)</span>
+        
+        best_model_path <span class="token operator">=</span> self<span class="token punctuation">.</span>run_dir <span class="token operator">/</span> <span class="token string">'traffic_signs_yolov11_optimized'</span> <span class="token operator">/</span> <span class="token string">'weights'</span> <span class="token operator">/</span> <span class="token string">'best.pt'</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> best_model_path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"未找到训练好的优化模型"</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+        
+        model <span class="token operator">=</span> YOLO<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>best_model_path<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 导出为ONNX格式</span>
+        onnx_path <span class="token operator">=</span> model<span class="token punctuation">.</span>export<span class="token punctuation">(</span><span class="token builtin">format</span><span class="token operator">=</span><span class="token string">'onnx'</span><span class="token punctuation">,</span> imgsz<span class="token operator">=</span>self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'img_size'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"优化ONNX模型已导出: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>onnx_path<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 导出为TensorRT格式（如果支持）</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            trt_path <span class="token operator">=</span> model<span class="token punctuation">.</span>export<span class="token punctuation">(</span><span class="token builtin">format</span><span class="token operator">=</span><span class="token string">'engine'</span><span class="token punctuation">,</span> imgsz<span class="token operator">=</span>self<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'img_size'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"优化TensorRT模型已导出: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>trt_path<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"TensorRT导出跳过: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>e<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+        
+        <span class="token keyword">return</span> <span class="token boolean">True</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="8-性能优化效果"><a href="#8-性能优化效果" class="headerlink" title="8. 性能优化效果"></a>8. 性能优化效果</h2><h3 id="8-1-预期性能提升"><a href="#8-1-预期性能提升" class="headerlink" title="8.1 预期性能提升"></a>8.1 预期性能提升</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 优化前性能（原始代码）</span>
+原始模型性能<span class="token punctuation">:</span>
+<span class="token operator">-</span> mAP50<span class="token punctuation">:</span> <span class="token number">0.557</span>
+<span class="token operator">-</span> 召回率<span class="token punctuation">:</span> <span class="token number">70</span><span class="token operator">%</span>
+<span class="token operator">-</span> 漏检率<span class="token punctuation">:</span> <span class="token number">40</span><span class="token operator">-</span><span class="token number">50</span><span class="token operator">%</span>
+<span class="token operator">-</span> 误报率<span class="token punctuation">:</span> <span class="token number">30</span><span class="token operator">-</span><span class="token number">40</span><span class="token operator">%</span>
+
+<span class="token comment"># 优化后性能（优化代码）</span>
+优化模型性能<span class="token punctuation">:</span>
+<span class="token operator">-</span> mAP50<span class="token punctuation">:</span> <span class="token number">0.764</span> <span class="token punctuation">(</span><span class="token operator">+</span><span class="token number">37</span><span class="token operator">%</span><span class="token punctuation">)</span>
+<span class="token operator">-</span> 召回率<span class="token punctuation">:</span> <span class="token number">85</span><span class="token operator">%</span> <span class="token punctuation">(</span><span class="token operator">+</span><span class="token number">15</span><span class="token operator">%</span><span class="token punctuation">)</span>
+<span class="token operator">-</span> 漏检率<span class="token punctuation">:</span> <span class="token number">20</span><span class="token operator">-</span><span class="token number">30</span><span class="token operator">%</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">50</span><span class="token operator">%</span><span class="token punctuation">)</span>
+<span class="token operator">-</span> 误报率<span class="token punctuation">:</span> <span class="token number">15</span><span class="token operator">-</span><span class="token number">25</span><span class="token operator">%</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">40</span><span class="token operator">%</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="8-2-优化策略效果分析"><a href="#8-2-优化策略效果分析" class="headerlink" title="8.2 优化策略效果分析"></a>8.2 优化策略效果分析</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 1. 漏检问题修复效果</span>
+<span class="token string">'conf'</span><span class="token punctuation">:</span> <span class="token number">0.1</span><span class="token punctuation">,</span>           <span class="token comment"># 置信度阈值降低 → 减少漏检</span>
+<span class="token string">'iou'</span><span class="token punctuation">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>            <span class="token comment"># IoU阈值降低 → 提高召回率</span>
+<span class="token string">'cls'</span><span class="token punctuation">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>            <span class="token comment"># 分类损失权重提高 → 减少漏检</span>
+
+<span class="token comment"># 2. 数据增强平衡效果</span>
+<span class="token string">'hsv_s'</span><span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">,</span>          <span class="token comment"># 饱和度变化降低 → 保持颜色特征</span>
+<span class="token string">'scale'</span><span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">,</span>          <span class="token comment"># 缩放范围降低 → 保持标志形状</span>
+<span class="token string">'mosaic'</span><span class="token punctuation">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>         <span class="token comment"># 马赛克增强降低 → 避免特征破坏</span>
+
+<span class="token comment"># 3. 训练稳定性效果</span>
+<span class="token string">'lr0'</span><span class="token punctuation">:</span> <span class="token number">0.005</span><span class="token punctuation">,</span>          <span class="token comment"># 学习率降低 → 稳定训练</span>
+<span class="token string">'warmup_epochs'</span><span class="token punctuation">:</span> <span class="token number">5.0</span><span class="token punctuation">,</span>  <span class="token comment"># 预热轮数增加 → 充分预热</span>
+<span class="token string">'dropout'</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>        <span class="token comment"># 移除dropout → 避免特征丢失</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="9-使用指南"><a href="#9-使用指南" class="headerlink" title="9. 使用指南"></a>9. 使用指南</h2><h3 id="9-1-基础使用"><a href="#9-1-基础使用" class="headerlink" title="9.1 基础使用"></a>9.1 基础使用</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 使用默认参数训练</span>
+python train_yolov11_optimized.py
+
+<span class="token comment"># 自定义参数训练</span>
+python train_yolov11_optimized.py <span class="token parameter variable">--epochs</span> <span class="token number">15</span> --batch-size <span class="token number">4</span> --img-size <span class="token number">1280</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="9-2-参数说明"><a href="#9-2-参数说明" class="headerlink" title="9.2 参数说明"></a>9.2 参数说明</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token parameter variable">--epochs</span> <span class="token number">10</span>          <span class="token comment"># 训练轮数</span>
+--batch-size <span class="token number">8</span>       <span class="token comment"># 批次大小（1280分辨率建议减小）</span>
+--img-size <span class="token number">640</span>       <span class="token comment"># 输入图像尺寸（优化为1280）</span>
+<span class="token parameter variable">--workers</span> <span class="token number">4</span>          <span class="token comment"># 数据加载工作进程数</span>
+<span class="token parameter variable">--device</span> <span class="token number">0</span>           <span class="token comment"># 训练设备 (0 for GPU, cpu for CPU)</span>
+--pretrained-model yolo11n.pt  <span class="token comment"># 预训练模型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="9-3-训练结果"><a href="#9-3-训练结果" class="headerlink" title="9.3 训练结果"></a>9.3 训练结果</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 训练完成后生成的文件</span>
+models<span class="token operator">/</span>best_yolov11_optimized<span class="token punctuation">.</span>pt          <span class="token comment"># 优化最佳模型</span>
+results<span class="token operator">/</span>yolov11_optimized_run_<span class="token operator">*</span><span class="token operator">/</span>          <span class="token comment"># 优化训练结果目录</span>
+├── traffic_signs_yolov11_optimized<span class="token operator">/</span>
+│   ├── weights<span class="token operator">/</span>
+│   ├── results<span class="token punctuation">.</span>png
+│   ├── confusion_matrix<span class="token punctuation">.</span>png
+│   └── val_batch0_labels<span class="token punctuation">.</span>jpg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="10-优化代码核心改进总结"><a href="#10-优化代码核心改进总结" class="headerlink" title="10. 优化代码核心改进总结"></a>10. 优化代码核心改进总结</h2><h3 id="10-1-架构优化"><a href="#10-1-架构优化" class="headerlink" title="10.1 架构优化"></a>10.1 架构优化</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 1. 注意力机制集成</span>
+<span class="token operator">-</span> SE注意力：通道级别注意力
+<span class="token operator">-</span> CBAM：通道<span class="token operator">+</span>空间注意力
+<span class="token operator">-</span> 多尺度特征融合：FPN结构优化
+
+<span class="token comment"># 2. 模型结构修改</span>
+<span class="token operator">-</span> 在C2f模块后添加SE注意力
+<span class="token operator">-</span> 在检测头添加特征融合
+<span class="token operator">-</span> 动态修改模型架构<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="10-2-参数优化"><a href="#10-2-参数优化" class="headerlink" title="10.2 参数优化"></a>10.2 参数优化</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 1. 检测参数优化</span>
+<span class="token string">'conf'</span><span class="token punctuation">:</span> <span class="token number">0.1</span><span class="token punctuation">,</span>           <span class="token comment"># 降低置信度阈值</span>
+<span class="token string">'iou'</span><span class="token punctuation">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>            <span class="token comment"># 降低IoU阈值</span>
+<span class="token string">'multi_scale'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>   <span class="token comment"># 启用多尺度训练</span>
+
+<span class="token comment"># 2. 学习率策略优化</span>
+<span class="token string">'lr0'</span><span class="token punctuation">:</span> <span class="token number">0.005</span><span class="token punctuation">,</span>          <span class="token comment"># 降低初始学习率</span>
+<span class="token string">'warmup_epochs'</span><span class="token punctuation">:</span> <span class="token number">5.0</span><span class="token punctuation">,</span>  <span class="token comment"># 增加预热轮数</span>
+
+<span class="token comment"># 3. 损失函数权重优化</span>
+<span class="token string">'cls'</span><span class="token punctuation">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>            <span class="token comment"># 提高分类损失权重</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="10-3-数据增强优化"><a href="#10-3-数据增强优化" class="headerlink" title="10.3 数据增强优化"></a>10.3 数据增强优化</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 1. 平衡增强策略</span>
+<span class="token string">'hsv_s'</span><span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">,</span>          <span class="token comment"># 降低饱和度变化</span>
+<span class="token string">'scale'</span><span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">,</span>          <span class="token comment"># 降低缩放范围</span>
+<span class="token string">'mosaic'</span><span class="token punctuation">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>         <span class="token comment"># 降低马赛克增强</span>
+
+<span class="token comment"># 2. 增加多样性</span>
+<span class="token string">'degrees'</span><span class="token punctuation">:</span> <span class="token number">3.0</span><span class="token punctuation">,</span>        <span class="token comment"># 增加旋转角度</span>
+<span class="token string">'copy_paste'</span><span class="token punctuation">:</span> <span class="token number">0.2</span><span class="token punctuation">,</span>     <span class="token comment"># 增加Copy-Paste增强</span>
+<span class="token string">'mixup'</span><span class="token punctuation">:</span> <span class="token number">0.1</span><span class="token punctuation">,</span>          <span class="token comment"># 增加混合增强</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="10-4-训练策略优化"><a href="#10-4-训练策略优化" class="headerlink" title="10.4 训练策略优化"></a>10.4 训练策略优化</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 1. 稳定性提升</span>
+<span class="token string">'dropout'</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>        <span class="token comment"># 移除dropout</span>
+<span class="token string">'cos_lr'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>        <span class="token comment"># 余弦学习率调度</span>
+<span class="token string">'close_mosaic'</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>     <span class="token comment"># 最后5轮关闭马赛克</span>
+
+<span class="token comment"># 2. 小目标检测优化</span>
+<span class="token string">'multi_scale'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>   <span class="token comment"># 多尺度训练</span>
+<span class="token string">'mask_ratio'</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>       <span class="token comment"># 特征金字塔层数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="11-代码逻辑总结"><a href="#11-代码逻辑总结" class="headerlink" title="11. 代码逻辑总结"></a>11. 代码逻辑总结</h2><h3 id="11-1-训练流程"><a href="#11-1-训练流程" class="headerlink" title="11.1 训练流程"></a>11.1 训练流程</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token number">1.</span> 数据准备 → <span class="token number">2.</span> 模型初始化 → <span class="token number">3.</span> 应用注意力机制 → <span class="token number">4.</span> 配置训练参数 → <span class="token number">5.</span> 执行训练 → <span class="token number">6.</span> 保存模型<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="11-2-优化策略"><a href="#11-2-优化策略" class="headerlink" title="11.2 优化策略"></a>11.2 优化策略</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token number">1.</span> 漏检修复：降低置信度和IoU阈值，提高分类损失权重
+<span class="token number">2.</span> 注意力机制：集成SE注意力和CBAM，提升特征表示能力
+<span class="token number">3.</span> 特征融合：多尺度特征融合，增强小目标检测能力
+<span class="token number">4.</span> 数据增强：平衡增强策略，保持特征完整性
+<span class="token number">5.</span> 训练稳定：优化学习率策略，增加预热轮数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="11-3-关键改进"><a href="#11-3-关键改进" class="headerlink" title="11.3 关键改进"></a>11.3 关键改进</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token number">1.</span> 架构改进：动态集成注意力机制和特征融合
+<span class="token number">2.</span> 参数优化：针对小目标检测优化所有关键参数
+<span class="token number">3.</span> 策略优化：平衡数据增强和训练稳定性
+<span class="token number">4.</span> 性能提升：预期mAP50提升<span class="token number">37</span><span class="token operator">%</span>，漏检率降低<span class="token number">50</span><span class="token operator">%</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</div><div class="article-licensing box"><div class="licensing-title"><p>添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化</p><p><a href="https://huangzhongqi978.top/2025/07/15/p2检测头交通检测系统/">https://huangzhongqi978.top/2025/07/15/p2检测头交通检测系统/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>HuangZhongqi</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2025-07-15</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2025-10-03</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/yolov8/">yolov8</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=xxxx" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/alipay-qrcode.png" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/wechat-qrcode.png" alt="微信"></span></a><a class="button donate" data-type="paypal" onclick="document.getElementById(&#039;paypal-donate-form&#039;).submit()"><span class="icon is-small"><i class="fab fa-paypal"></i></span><span>Paypal</span></a><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener" id="paypal-donate-form"><input type="hidden" name="cmd" value="_donations"><input type="hidden" name="business" value="huangzhongqi978@gmail.com"><input type="hidden" name="currency_code" value="USD"></form></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Yolo11交通标志检测系统</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/10/05/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E6%96%87%E6%A1%A3/"><span class="level-item">基于GRU的语音情感分析识别</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://huangzhongqi978.top/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/';
+            this.page.identifier = '2025/07/15/p2检测头交通检测系统/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'huangzhongqi' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/avatar.png" alt="HuangZhongqi"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">HuangZhongqi</p><p class="is-size-6 is-block">Deep Learning &amp; Computer Vision</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shandong, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">8</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Huangzhongqi978" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="WeChat" href="/img/wechat.png"><i class="fab fa-weixin"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="LinkedIn" href="https://linkedin.com/in/huangzhongqi"><i class="fab fa-linkedin"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Email" href="mailto:huangzhongqi978@gmail.com"><i class="fas fa-envelope"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-10-01T07:14:18.591Z">2025-10-01</time></p><p class="title"><a href="/2025/10/01/hello-world/">自我介绍</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-09-10T07:59:31.000Z">2025-09-10</time></p><p class="title"><a href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/">Yolo11交通标志检测系统</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-14T16:00:00.000Z">2025-07-15</time></p><p class="title"><a href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/">添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-10-05T08:40:31.000Z">2024-10-05</time></p><p class="title"><a href="/2024/10/05/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E8%AF%A6%E7%BB%86%E6%96%87%E6%A1%A3/">基于GRU的语音情感分析识别</a></p><p class="categories"><a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-10-02T08:00:00.000Z">2024-10-02</time></p><p class="title"><a href="/2024/10/02/%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/">图床使用完整指南</a></p><p class="categories"><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E6%95%99%E7%A8%8B/"><span class="level-start"><span class="level-item">教程</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"><span class="level-start"><span class="level-item">自然语言处理</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><span class="level-start"><span class="level-item">计算机视觉</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/GRU%E7%BB%93%E6%9E%84/"><span class="tag">GRU结构</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GitHub/"><span class="tag">GitHub</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Gitee/"><span class="tag">Gitee</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PicGo/"><span class="tag">PicGo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/me/"><span class="tag">me</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/yolov8/"><span class="tag">yolov8</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/yolo%E6%A8%A1%E5%9E%8B/"><span class="tag">yolo模型</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E5%BA%8A/"><span class="tag">图床</span><span class="tag">1</span></a></div></div></div></div></div><!--!--></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Brahmacarya奇奇" height="28"></a><p class="is-size-7"><span>&copy; 2025 HuangZhongqi</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2025 Brahmacarya奇奇</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script><script data-particles-config type="application/json">{"particleCount":80,"particleColor":"#1e88e5","particleSize":2,"lineColor":"#1e88e5","lineWidth":1,"lineDistance":120,"speed":0.5,"opacity":0.6,"mobileOptimized":true,"interactive":true,"hoverEffect":true}</script></script><script data-pjax src="/js/column.js"></script><!--!--><script data-pjax src="/js/main.js" defer></script><script data-pjax src="/js/particles.js" defer></script><script data-pjax src="/js/modern-effects.js" defer></script><script data-pjax src="/js/dynamic-background.js" defer></script><script data-pjax src="/js/article-toc.js" defer></script><script data-pjax src="/js/fullscreen-reading.js" defer></script><script data-pjax src="/js/sidebar-toc.js" defer></script><script data-pjax src="/js/right-side-toc.js" defer></script><script data-pjax src="/js/widget-toc.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
