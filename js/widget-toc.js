@@ -234,3 +234,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 导出类供其他脚本使用
 window.WidgetTOC = WidgetTOC;
+
