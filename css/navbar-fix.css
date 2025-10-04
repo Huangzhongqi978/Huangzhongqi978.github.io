@@ -5,8 +5,51 @@
 /* 确保导航栏按钮对齐 */
 .navbar-end {
     display: flex;
-    align-items: center;
+    align-items: flex-start !important;
     gap: 0.5rem;
+    height: 100%;
+    /* 大幅调整右侧图标位置，与左侧文本对齐 */
+    padding-top: 8px !important;
+}
+
+/* 强制所有导航栏右侧元素垂直居中对齐 */
+.navbar-end > * {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    /* 强制所有右侧元素下移与左侧文本对齐 */
+    position: relative !important;
+    top: 6px !important;
+    /* 确保图标内部内容居中 */
+    text-align: center !important;
+}
+
+/* 确保图标完美对齐 */
+.navbar-end i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    /* 大幅调整图标位置与左侧文本对齐 */
+    position: relative;
+    top: 6px !important;
+    /* 确保图标内部居中 */
+    text-align: center !important;
+}
+
+/* 确保所有按钮内容居中对齐 */
+.navbar-end .navbar-item,
+.navbar-end .search,
+.navbar-end .theme-toggle-btn {
+    text-align: center !important;
+    line-height: 1 !important;
+    /* 大幅调整按钮位置与左侧文本对齐 */
+    position: relative;
+    top: 6px !important;
 }
 
 .navbar-end .navbar-item {
@@ -64,15 +107,201 @@
     color: #667eea;
 }
 
+/* 强制所有图标内部内容完美居中 - 使用更具体的选择器 */
+.navbar-end .icon,
+.navbar-end svg,
+.navbar-end img,
+.navbar-end i,
+.navbar-end .fa,
+.navbar-end .fas,
+.navbar-end .far,
+.navbar-end .fab {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+}
+
+/* 特别针对主题切换按钮的图标 - 使用最高优先级 */
+#theme-toggle .icon,
+.theme-toggle-btn .icon,
+#theme-toggle i,
+.theme-toggle-btn i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
+
+/* 强制所有导航栏图标内容居中 */
+.navbar-end * {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* 特别针对FontAwesome图标 */
+.navbar-end .fa,
+.navbar-end .fas,
+.navbar-end .far,
+.navbar-end .fab {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 1em !important;
+    height: 1em !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 终极解决方案：使用transform强制居中所有图标内容 */
+.navbar-end i::before,
+.navbar-end .icon::before,
+.navbar-end .fa::before,
+.navbar-end .fas::before,
+.navbar-end .far::before,
+.navbar-end .fab::before {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 强制所有图标容器为相对定位 */
+.navbar-end i,
+.navbar-end .icon,
+.navbar-end .fa,
+.navbar-end .fas,
+.navbar-end .far,
+.navbar-end .fab {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* 专门针对搜索按钮和链接按钮的图标居中 */
+.navbar-end .search i,
+.navbar-end .navbar-item[target="_blank"] i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    line-height: 1 !important;
+}
+
+/* 强制搜索按钮和链接按钮的容器居中 */
+.navbar-end .search,
+.navbar-end .navbar-item[target="_blank"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    position: relative !important;
+}
+
+/* 终极解决方案：直接针对FontAwesome图标的伪元素 */
+.navbar-end .fas::before,
+.navbar-end .fa::before,
+.navbar-end .far::before,
+.navbar-end .fab::before {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 使用CSS Grid强制居中所有图标 */
+.navbar-end .search,
+.navbar-end .navbar-item[target="_blank"] {
+    display: grid !important;
+    place-items: center !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* 强制所有图标使用Grid居中 */
+.navbar-end i {
+    display: grid !important;
+    place-items: center !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+}
+
+/* 最后的保险：使用table-cell居中 */
+.navbar-end .search,
+.navbar-end .navbar-item[target="_blank"] {
+    display: table-cell !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+}
+
+.navbar-end .search i,
+.navbar-end .navbar-item[target="_blank"] i {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 /* 确保所有导航栏按钮高度一致 */
 .navbar-end .navbar-item,
 .navbar-end .button,
-.navbar-end .theme-toggle-btn {
+.navbar-end .theme-toggle-btn,
+.navbar-end .search {
     height: 2.5rem;
     min-height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
 }
 
 /* 搜索按钮样式 */
@@ -84,6 +313,10 @@
     transition: all 0.3s ease;
     min-width: 2.5rem;
     height: 2.5rem;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
 }
 
 .navbar-end .search:hover {
@@ -111,6 +344,10 @@
     min-width: 2.5rem;
     height: 2.5rem;
     text-decoration: none;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
 }
 
 .navbar-end .navbar-item[target="_blank"]:hover {

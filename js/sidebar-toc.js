@@ -26,8 +26,7 @@ class SidebarTOC {
             return;
         }
 
-        // 创建目录按钮和侧边栏
-        this.createTOCButton();
+        // 创建侧边栏（不创建目录按钮）
         this.createSidebar();
         this.setupEventListeners();
         this.setupScrollTracking();
@@ -131,11 +130,6 @@ class SidebarTOC {
     }
 
     setupEventListeners() {
-        // 打开目录按钮
-        this.tocButton.addEventListener('click', () => {
-            this.openSidebar();
-        });
-
         // 关闭按钮
         const closeBtn = this.sidebar.querySelector('.toc-close-btn');
         closeBtn.addEventListener('click', () => {

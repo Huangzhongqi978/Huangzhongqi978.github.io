@@ -1,0 +1,201 @@
+/* 二维码弹窗样式 (支持QQ和微信) */
+.qr-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.qr-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-content {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    animation: scaleIn 0.3s ease-out forwards;
+    max-width: 95%;
+    max-height: 95%;
+    min-width: 400px;
+    min-height: 500px;
+}
+
+.qr-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.qr-title i {
+    font-size: 2.2rem;
+}
+
+/* QQ图标颜色 */
+.qr-title i.fa-qq {
+    color: #12b7f5;
+}
+
+/* 微信图标颜色 */
+.qr-title i.fa-weixin {
+    color: #07c160;
+}
+
+.qr-image {
+    max-width: 300px;
+    max-height: 300px;
+    width: 280px;
+    height: 280px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    margin: 1.5rem 0;
+    object-fit: contain;
+}
+
+.qr-description {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.qr-close {
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+/* QQ主题色 */
+.qr-modal:has(.fa-qq) .qr-close {
+    background: #12b7f5;
+    box-shadow: 0 4px 12px rgba(18, 183, 245, 0.3);
+}
+
+.qr-modal:has(.fa-qq) .qr-close:hover {
+    background: #0ea5e9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(18, 183, 245, 0.4);
+}
+
+/* 微信主题色 */
+.qr-modal:has(.fa-weixin) .qr-close {
+    background: #07c160;
+    box-shadow: 0 4px 12px rgba(7, 193, 96, 0.3);
+}
+
+.qr-modal:has(.fa-weixin) .qr-close:hover {
+    background: #06ad56;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(7, 193, 96, 0.4);
+}
+
+.qr-close:active {
+    transform: translateY(0);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .qr-content {
+        padding: 2rem;
+        min-width: 320px;
+        min-height: 400px;
+        margin: 1rem;
+    }
+    
+    .qr-title {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .qr-title i {
+        font-size: 1.8rem;
+    }
+    
+    .qr-image {
+        width: 220px;
+        height: 220px;
+        max-width: 220px;
+        max-height: 220px;
+    }
+    
+    .qr-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .qr-close {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .qr-content {
+        padding: 1.5rem;
+        min-width: 280px;
+        min-height: 350px;
+        margin: 0.5rem;
+    }
+    
+    .qr-title {
+        font-size: 1.4rem;
+    }
+    
+    .qr-image {
+        width: 180px;
+        height: 180px;
+        max-width: 180px;
+        max-height: 180px;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { 
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to { 
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 点击外部关闭 */
+.qr-modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
