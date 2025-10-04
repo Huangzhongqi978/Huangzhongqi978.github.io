@@ -17,7 +17,7 @@
     flex: 1;
     min-width: 0;
     max-width: calc(100% - 560px); /* 确保中间区域有足够空间，适应增宽的侧边栏 */
-    margin: 0 3.4rem; /* 减少左右边距，增大中间模块约1/4 */
+    margin: 0 2.6rem; /* 进一步减少左右边距，再增大中间模块1/4 */
 }
 
 /* 右侧边栏 */
@@ -203,7 +203,7 @@
     }
     
     .column.is-8-tablet.is-8-desktop.is-6-widescreen.order-2 {
-        margin: 0 4.5rem; /* 大屏幕下减少边距，增大中间模块约1/4 */
+        margin: 0 3.4rem; /* 大屏幕下进一步减少边距，再增大中间模块1/4 */
         max-width: calc(100% - 600px); /* 大屏幕下适应更宽的侧边栏 */
     }
 }
