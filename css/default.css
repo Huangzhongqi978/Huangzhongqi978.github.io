@@ -12216,3 +12216,6 @@ figure.highlight.foldable div.level-left {
     content: '...';
   }
 }
+footer.footer .level-start p.is-size-7 {
+  font-size: 1.3rem !important;
+}

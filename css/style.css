@@ -12216,3 +12216,9 @@ figure.highlight.foldable div.level-left {
     content: '...';
   }
 }
+/* ---------------------------------
+ *            Custom Footer Styles
+ * --------------------------------- */
+footer.footer .level-start p.is-size-7 {
+  font-size: 1.3rem !important;
+}
