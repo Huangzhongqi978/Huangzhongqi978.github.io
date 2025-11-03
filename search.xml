@@ -1840,6 +1840,62 @@
       </tags>
   </entry>
   <entry>
+    <title>自我介绍(点击最上方About查看更多~)</title>
+    <url>/2023/12/24/hello-world/</url>
+    <content><![CDATA[<p>非常高兴您访问我的网站,您可以点击最上方ABOUT查看我的详细信息~</p>
+<span id="more"></span>
+
+<h1 id="关于我（可以点击About查看更多我的资料-）"><a href="#关于我（可以点击About查看更多我的资料-）" class="headerlink" title="关于我（可以点击About查看更多我的资料~）"></a>关于我（可以点击About查看更多我的资料~）</h1><h2 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h2><ul>
+<li><strong>姓名</strong>：HuangZhongqi黄中奇</li>
+<li><strong>专业</strong>：人工智能</li>
+<li><strong>邮箱</strong>：<a href="mailto:&#104;&#117;&#97;&#x6e;&#103;&#122;&#x68;&#111;&#x6e;&#x67;&#113;&#x69;&#x39;&#55;&#56;&#64;&#x67;&#109;&#x61;&#105;&#108;&#46;&#x63;&#111;&#x6d;">&#104;&#117;&#97;&#x6e;&#103;&#122;&#x68;&#111;&#x6e;&#x67;&#113;&#x69;&#x39;&#55;&#56;&#64;&#x67;&#109;&#x61;&#105;&#108;&#46;&#x63;&#111;&#x6d;</a></li>
+<li><strong>GitHub</strong>：<a href="https://github.com/Huangzhongqi978">https://github.com/Huangzhongqi978</a></li>
+<li><strong>个人博客</strong>：[<a href="https://huangzhongqi978.top/">https://Huangzhongqi978.top</a></li>
+</ul>
+<hr>
+<h2 id="学习课程"><a href="#学习课程" class="headerlink" title="学习课程"></a>学习课程</h2><p>我在人工智能专业期间学习了以下主要课程：</p>
+<ul>
+<li><p><strong>人工智能核心课程</strong></p>
+<ul>
+<li>机器学习</li>
+<li>深度学习</li>
+<li>自然语言处理（NLP）</li>
+<li>计算机视觉（CV）</li>
+<li>强化学习</li>
+<li>大数据分析与处理</li>
+</ul>
+</li>
+<li><p><strong>前沿与实践课程</strong></p>
+<ul>
+<li>机器人与嵌入式系统</li>
+<li>AI 项目实训</li>
+<li>云计算与人工智能平台</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="教育经历"><a href="#教育经历" class="headerlink" title="教育经历"></a>教育经历</h2><p>学习成绩：专业排名加综测排名前2%</p>
+<p>获得证书：CET4、CET6、计算机等级三级、四级证书、华为HCCDA开发者初级认证，华为昇腾C算子开发认证、计算机软件著作权2项、软考中级资格证书</p>
+<hr>
+<h2 id="项目经历（时间关系只整理了部分）"><a href="#项目经历（时间关系只整理了部分）" class="headerlink" title="项目经历（时间关系只整理了部分）"></a>项目经历（时间关系只整理了部分）</h2><p>项目经历<br>基于YOLO铅封锁智能识别系统<br>2023-06 ~ 2023-12<br>YOLO模型的训练与优化<br>项目描述：基于 YOLO 深度目标检测模型，扫描并识别海关集装箱铅封锁，用来保障海关集装箱的安全<br>采集并标注真实现场图像数据 4000+ 张，建立铅封完整等多类目标检测数据集<br>使用 LabelImg 标注工具进行 VOC 格式转换，并编写脚本自动划分训练集、验证集与测试集<br>搭建 Flask 推理接口并集成前端 Web 页面，实现远程图像上传与检测结果可视化展示<br>使用Pytorch深度学习框架进行神经网络的构建与处理，结合预处理模型进行训练，达到了较好的训练效果以及测试结果准确率<br>技术派社区项目<br>2024-01 ~ 2024-06<br>Springboot+Vue前后端全栈开发<br><a href="https://github.com/Huangzhongqi978/jishupai">https://github.com/Huangzhongqi978/jishupai</a><br>项目描述：技术派是一个前后端分离的，面向互联网开发者的技术内容分享与交流平台<br>利用 AOP 切面技术，当系统收到新的消息时(如评论、点赞等)，自动将这些消息发送至 Kafka 消息队列中。接着，通过消费者服务从 Kafka 中取出消息。<br>使用 FastExcel 实现 PUPV 数据的批量导出功能，500 万条数据导出仅需 1 秒，并结合自定义线程池+ CountDownLatch 进行并发处理，导出性能提升近 60 倍。<br>采用 JWT+Redis 的双令牌机制，通过 access token 处理业务请求，refresh token 实现用户无感的令牌刷新。<br>通过 Canal 框架实现了 MySQL与 ElasticSearch 的数据同步，确保了实时搜索的准确性。<br>基于知识图谱的婚姻法智能问答系统<br>2024-07 ~ 2025-12<br>neo4j知识图谱、Django、Vue开发<br><a href="http://1.94.166.251:6799/">http://1.94.166.251:6799</a><br>项目描述：构建一个面向普通用户的婚姻法智能问答系统，前后端分离设计，前端使用 Vue.js 实现用户交互界面，后端基于 Django 构建 RESTful API 并集成知识图谱引擎，支持自然语言问题解析与法律知识推理查询，提升用户对婚姻法条款的理解与获取效率。<br>技术栈：Python（Django REST Framework）、Vue.js、Neo4j、Py2Neo、Element-UI、Gunicorn、Nginx、MySQL<br>通过neo4j图数据库切分婚姻法法律知识的实体与关系类，根据知识图谱的关系网络进行智能问答回复用户问题<br>使用Vue前端和Django后端前后端分离开发，基于RESTful接口规范</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251003220217592.png" referrerpolicy="no-referrer"></p>
+<hr>
+<h2 id="专业技能"><a href="#专业技能" class="headerlink" title="专业技能"></a>专业技能</h2><h3 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h3><p>熟练掌握 Python，掌握 C&#x2F;C++、Java，了解 Shell、SQL</p>
+<h3 id="自然语言处理（NLP）"><a href="#自然语言处理（NLP）" class="headerlink" title="自然语言处理（NLP）"></a>自然语言处理（NLP）</h3><p>熟悉神经网络、CNN、RNN、LSTM、Transformer 等模型，掌握文本分类、情感分析、命名实体识别、文本生成等技术，了解 BERT、GPT 等预训练模型</p>
+<h3 id="计算机视觉"><a href="#计算机视觉" class="headerlink" title="计算机视觉"></a>计算机视觉</h3><p>了解掌握图像滤波（高斯、中值、双边）、边缘检测（Sobel, Canny）、形态学操作、直方图均衡化、图像金字塔、特征提取（SIFT, SURF, ORB），了解掌握YOLO预训练模型。</p>
+<h3 id="框架与工具"><a href="#框架与工具" class="headerlink" title="框架与工具"></a>框架与工具</h3><p>熟练使用 TensorFlow、PyTorch 进行模型搭建与训练；熟悉 Scikit-learn、Pandas、NumPy、Matplotlib 等数据分析与建模工具</p>
+<h3 id="模型优化与部署"><a href="#模型优化与部署" class="headerlink" title="模型优化与部署"></a>模型优化与部署</h3><p>掌握模型调参、交叉验证、性能评估方法；具备 Flask&#x2F;Django + REST API 的模型部署经验</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>熟练使用IDEA，PyCharm，Docker，ChatGPT，Cursor等工具提高开发协作效率，能够使用Git版本控制工具进行团队开发</p>
+<h2 id="荣誉奖项（部分）"><a href="#荣誉奖项（部分）" class="headerlink" title="荣誉奖项（部分）"></a>荣誉奖项（部分）</h2><p>国家奖学金2024-12<br>国家励志奖学金2023-12<br>山东省高等学校省级优秀学生、校级优秀学生、校级优秀团员2024-05<br>全国大学生英语竞赛C类全国三等奖2023-06<br>山东省大学生智能技术应用设计大赛省级二等奖2023-12<br>第十七届国际先进机器人及仿真技术大赛国赛二等奖、山东赛区一等奖2024-07<br>华数杯全国大学生数学建模竞赛本科生组二等奖2024-08<br>山东省大学生高校机器人大赛山东赛区一等奖2024-11<br>第七届泰迪杯数据分析赛本科生组三等奖2024-12<br>MathorCup数学应用挑战赛大数据赛道本科生组二等奖2024-12<br>第十届数维杯全国大学生数学建模竞赛国际赛Meritorious奖2025-01<br>第十一届全国大学生统计建模大赛山东赛区决赛一等奖2025-06<br>第十八届中国大学生计算机设计大赛大数据应用赛道山东赛区决赛三等奖2025-06</p>
+]]></content>
+      <categories>
+        <category>ego</category>
+      </categories>
+      <tags>
+        <tag>me</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Yolo11交通标志检测系统</title>
     <url>/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<p>关于Yolov11模型的交通标志检测项目（本人独立开发，且已申请计算机软件著作权，请勿随意转载）</p>
@@ -2297,62 +2353,6 @@ result<span class="token punctuation">,</span> detections <span class="token ope
       </categories>
       <tags>
         <tag>yolo模型</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自我介绍(点击最上方About查看更多~)</title>
-    <url>/2023/12/24/hello-world/</url>
-    <content><![CDATA[<p>非常高兴您访问我的网站,您可以点击最上方ABOUT查看我的详细信息~</p>
-<span id="more"></span>
-
-<h1 id="关于我（可以点击About查看更多我的资料-）"><a href="#关于我（可以点击About查看更多我的资料-）" class="headerlink" title="关于我（可以点击About查看更多我的资料~）"></a>关于我（可以点击About查看更多我的资料~）</h1><h2 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h2><ul>
-<li><strong>姓名</strong>：HuangZhongqi黄中奇</li>
-<li><strong>专业</strong>：人工智能</li>
-<li><strong>邮箱</strong>：<a href="mailto:&#104;&#x75;&#97;&#110;&#x67;&#x7a;&#104;&#111;&#110;&#x67;&#113;&#x69;&#x39;&#55;&#56;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#104;&#x75;&#97;&#110;&#x67;&#x7a;&#104;&#111;&#110;&#x67;&#113;&#x69;&#x39;&#55;&#56;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a></li>
-<li><strong>GitHub</strong>：<a href="https://github.com/Huangzhongqi978">https://github.com/Huangzhongqi978</a></li>
-<li><strong>个人博客</strong>：[<a href="https://huangzhongqi978.top/">https://Huangzhongqi978.top</a></li>
-</ul>
-<hr>
-<h2 id="学习课程"><a href="#学习课程" class="headerlink" title="学习课程"></a>学习课程</h2><p>我在人工智能专业期间学习了以下主要课程：</p>
-<ul>
-<li><p><strong>人工智能核心课程</strong></p>
-<ul>
-<li>机器学习</li>
-<li>深度学习</li>
-<li>自然语言处理（NLP）</li>
-<li>计算机视觉（CV）</li>
-<li>强化学习</li>
-<li>大数据分析与处理</li>
-</ul>
-</li>
-<li><p><strong>前沿与实践课程</strong></p>
-<ul>
-<li>机器人与嵌入式系统</li>
-<li>AI 项目实训</li>
-<li>云计算与人工智能平台</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="教育经历"><a href="#教育经历" class="headerlink" title="教育经历"></a>教育经历</h2><p>学习成绩：专业排名加综测排名前2%</p>
-<p>获得证书：CET4、CET6、计算机等级三级、四级证书、华为HCCDA开发者初级认证，华为昇腾C算子开发认证、计算机软件著作权2项、软考中级资格证书</p>
-<hr>
-<h2 id="项目经历（时间关系只整理了部分）"><a href="#项目经历（时间关系只整理了部分）" class="headerlink" title="项目经历（时间关系只整理了部分）"></a>项目经历（时间关系只整理了部分）</h2><p>项目经历<br>基于YOLO铅封锁智能识别系统<br>2023-06 ~ 2023-12<br>YOLO模型的训练与优化<br>项目描述：基于 YOLO 深度目标检测模型，扫描并识别海关集装箱铅封锁，用来保障海关集装箱的安全<br>采集并标注真实现场图像数据 4000+ 张，建立铅封完整等多类目标检测数据集<br>使用 LabelImg 标注工具进行 VOC 格式转换，并编写脚本自动划分训练集、验证集与测试集<br>搭建 Flask 推理接口并集成前端 Web 页面，实现远程图像上传与检测结果可视化展示<br>使用Pytorch深度学习框架进行神经网络的构建与处理，结合预处理模型进行训练，达到了较好的训练效果以及测试结果准确率<br>技术派社区项目<br>2024-01 ~ 2024-06<br>Springboot+Vue前后端全栈开发<br><a href="https://github.com/Huangzhongqi978/jishupai">https://github.com/Huangzhongqi978/jishupai</a><br>项目描述：技术派是一个前后端分离的，面向互联网开发者的技术内容分享与交流平台<br>利用 AOP 切面技术，当系统收到新的消息时(如评论、点赞等)，自动将这些消息发送至 Kafka 消息队列中。接着，通过消费者服务从 Kafka 中取出消息。<br>使用 FastExcel 实现 PUPV 数据的批量导出功能，500 万条数据导出仅需 1 秒，并结合自定义线程池+ CountDownLatch 进行并发处理，导出性能提升近 60 倍。<br>采用 JWT+Redis 的双令牌机制，通过 access token 处理业务请求，refresh token 实现用户无感的令牌刷新。<br>通过 Canal 框架实现了 MySQL与 ElasticSearch 的数据同步，确保了实时搜索的准确性。<br>基于知识图谱的婚姻法智能问答系统<br>2024-07 ~ 2025-12<br>neo4j知识图谱、Django、Vue开发<br><a href="http://1.94.166.251:6799/">http://1.94.166.251:6799</a><br>项目描述：构建一个面向普通用户的婚姻法智能问答系统，前后端分离设计，前端使用 Vue.js 实现用户交互界面，后端基于 Django 构建 RESTful API 并集成知识图谱引擎，支持自然语言问题解析与法律知识推理查询，提升用户对婚姻法条款的理解与获取效率。<br>技术栈：Python（Django REST Framework）、Vue.js、Neo4j、Py2Neo、Element-UI、Gunicorn、Nginx、MySQL<br>通过neo4j图数据库切分婚姻法法律知识的实体与关系类，根据知识图谱的关系网络进行智能问答回复用户问题<br>使用Vue前端和Django后端前后端分离开发，基于RESTful接口规范</p>
-<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251003220217592.png" referrerpolicy="no-referrer"></p>
-<hr>
-<h2 id="专业技能"><a href="#专业技能" class="headerlink" title="专业技能"></a>专业技能</h2><h3 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h3><p>熟练掌握 Python，掌握 C&#x2F;C++、Java，了解 Shell、SQL</p>
-<h3 id="自然语言处理（NLP）"><a href="#自然语言处理（NLP）" class="headerlink" title="自然语言处理（NLP）"></a>自然语言处理（NLP）</h3><p>熟悉神经网络、CNN、RNN、LSTM、Transformer 等模型，掌握文本分类、情感分析、命名实体识别、文本生成等技术，了解 BERT、GPT 等预训练模型</p>
-<h3 id="计算机视觉"><a href="#计算机视觉" class="headerlink" title="计算机视觉"></a>计算机视觉</h3><p>了解掌握图像滤波（高斯、中值、双边）、边缘检测（Sobel, Canny）、形态学操作、直方图均衡化、图像金字塔、特征提取（SIFT, SURF, ORB），了解掌握YOLO预训练模型。</p>
-<h3 id="框架与工具"><a href="#框架与工具" class="headerlink" title="框架与工具"></a>框架与工具</h3><p>熟练使用 TensorFlow、PyTorch 进行模型搭建与训练；熟悉 Scikit-learn、Pandas、NumPy、Matplotlib 等数据分析与建模工具</p>
-<h3 id="模型优化与部署"><a href="#模型优化与部署" class="headerlink" title="模型优化与部署"></a>模型优化与部署</h3><p>掌握模型调参、交叉验证、性能评估方法；具备 Flask&#x2F;Django + REST API 的模型部署经验</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>熟练使用IDEA，PyCharm，Docker，ChatGPT，Cursor等工具提高开发协作效率，能够使用Git版本控制工具进行团队开发</p>
-<h2 id="荣誉奖项（部分）"><a href="#荣誉奖项（部分）" class="headerlink" title="荣誉奖项（部分）"></a>荣誉奖项（部分）</h2><p>国家奖学金2024-12<br>国家励志奖学金2023-12<br>山东省高等学校省级优秀学生、校级优秀学生、校级优秀团员2024-05<br>全国大学生英语竞赛C类全国三等奖2023-06<br>山东省大学生智能技术应用设计大赛省级二等奖2023-12<br>第十七届国际先进机器人及仿真技术大赛国赛二等奖、山东赛区一等奖2024-07<br>华数杯全国大学生数学建模竞赛本科生组二等奖2024-08<br>山东省大学生高校机器人大赛山东赛区一等奖2024-11<br>第七届泰迪杯数据分析赛本科生组三等奖2024-12<br>MathorCup数学应用挑战赛大数据赛道本科生组二等奖2024-12<br>第十届数维杯全国大学生数学建模竞赛国际赛Meritorious奖2025-01<br>第十一届全国大学生统计建模大赛山东赛区决赛一等奖2025-06<br>第十八届中国大学生计算机设计大赛大数据应用赛道山东赛区决赛三等奖2025-06</p>
-]]></content>
-      <categories>
-        <category>ego</category>
-      </categories>
-      <tags>
-        <tag>me</tag>
       </tags>
   </entry>
   <entry>
@@ -3212,692 +3212,6 @@ results<span class="token operator">/</span>yolov11_optimized_run_<span class="t
         <tag>LLM</tag>
         <tag>NLP</tag>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客使用图床教程</title>
-    <url>/2024/10/02/%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p>这篇文章详细介绍如何使用Gitee和GitHub图床来托管博客图片，提升博客性能和管理效率。</p>
-<span id="more"></span>
-
-<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/%E6%9F%B4%E7%8A%AC.jpg" referrerpolicy="no-referrer"></p>
-<h2 id="什么是图床？"><a href="#什么是图床？" class="headerlink" title="什么是图床？"></a>什么是图床？</h2><p>图床是专门用于存储图片的在线服务，它能为你的博客带来以下优势：</p>
-<ul>
-<li>✅ <strong>减少博客体积</strong> - 图片不占用博客存储空间</li>
-<li>✅ <strong>提升加载速度</strong> - 专业CDN加速图片访问</li>
-<li>✅ <strong>跨平台使用</strong> - 一张图片可在多处引用</li>
-<li>✅ <strong>稳定可靠</strong> - 专业服务商提供数据保障</li>
-</ul>
-<h2 id="Gitee图床配置"><a href="#Gitee图床配置" class="headerlink" title="Gitee图床配置"></a>Gitee图床配置</h2><h3 id="第一步：创建Gitee仓库"><a href="#第一步：创建Gitee仓库" class="headerlink" title="第一步：创建Gitee仓库"></a>第一步：创建Gitee仓库</h3><ol>
-<li>访问 <a href="https://gitee.com/">Gitee官网</a> 并登录</li>
-<li>点击右上角 <strong>+</strong> → <strong>新建仓库</strong></li>
-<li>填写仓库信息：<ul>
-<li>仓库名称：<code>my-images</code></li>
-<li>设置为：<strong>公开</strong> （重要！）</li>
-<li>勾选：<strong>使用Readme文件初始化</strong></li>
-</ul>
-</li>
-</ol>
-<h3 id="第二步：获取私人令牌"><a href="#第二步：获取私人令牌" class="headerlink" title="第二步：获取私人令牌"></a>第二步：获取私人令牌</h3><ol>
-<li>点击头像 → <strong>设置</strong></li>
-<li>左侧菜单选择 <strong>私人令牌</strong></li>
-<li>点击 <strong>生成新令牌</strong></li>
-<li>勾选 <code>projects</code> 权限</li>
-<li>复制生成的令牌（只显示一次！）</li>
-</ol>
-<h2 id="PicGo配置"><a href="#PicGo配置" class="headerlink" title="PicGo配置"></a>PicGo配置</h2><h3 id="安装PicGo"><a href="#安装PicGo" class="headerlink" title="安装PicGo"></a>安装PicGo</h3><p>推荐使用包管理器安装：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Windows用户</span>
-winget <span class="token function">install</span> PicGo.PicGo
-
-<span class="token comment"># macOS用户  </span>
-brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> picgo
-
-<span class="token comment"># 或从GitHub下载：https://github.com/Molunerfinn/PicGo/releases</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="安装Gitee插件"><a href="#安装Gitee插件" class="headerlink" title="安装Gitee插件"></a>安装Gitee插件</h3><ol>
-<li>打开PicGo</li>
-<li>进入 <strong>插件设置</strong></li>
-<li>搜索 <code>gitee</code></li>
-<li>安装 <code>gitee-uploader</code> 插件</li>
-</ol>
-<h3 id="配置Gitee图床"><a href="#配置Gitee图床" class="headerlink" title="配置Gitee图床"></a>配置Gitee图床</h3><p>进入 <strong>图床设置</strong> → <strong>Gitee图床</strong>，填写：</p>
-<pre class="line-numbers language-none"><code class="language-none">repo: 你的用户名&#x2F;仓库名 (如: zhangsan&#x2F;my-images)
-branch: master
-token: 刚才获取的私人令牌
-path: img&#x2F; (图片存储路径)
-customPath: 留空
-customUrl: 留空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="在文章中使用图片"><a href="#在文章中使用图片" class="headerlink" title="在文章中使用图片"></a>在文章中使用图片</h2><h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3><h4 id="Markdown格式（推荐）"><a href="#Markdown格式（推荐）" class="headerlink" title="Markdown格式（推荐）"></a>Markdown格式（推荐）</h4><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">图片描述</span>](<span class="token url">图片链接</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>示例：</p>
-<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">项目演示</span>](<span class="token url">https://gitee.com/zhangsan/my-images/raw/master/img/demo.png</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="HTML格式（更灵活）"><a href="#HTML格式（更灵活）" class="headerlink" title="HTML格式（更灵活）"></a>HTML格式（更灵活）</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>图片链接<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>图片描述<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>600<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>示例：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/zhangsan/my-images/raw/master/img/demo.png<span class="token punctuation">"</span></span> 
-     <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>项目演示<span class="token punctuation">"</span></span> 
-     <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>600<span class="token punctuation">"</span></span> 
-     <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span> <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 4px 8px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.1<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="高级使用技巧"><a href="#高级使用技巧" class="headerlink" title="高级使用技巧"></a>高级使用技巧</h3><h4 id="1-响应式图片"><a href="#1-响应式图片" class="headerlink" title="1. 响应式图片"></a>1. 响应式图片</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/responsive-demo.png<span class="token punctuation">"</span></span> 
-       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>响应式演示<span class="token punctuation">"</span></span> 
-       <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">max-width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="2-图片组合展示"><a href="#2-图片组合展示" class="headerlink" title="2. 图片组合展示"></a>2. 图片组合展示</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span> <span class="token property">justify-content</span><span class="token punctuation">:</span> space-around<span class="token punctuation">;</span> <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/before.png<span class="token punctuation">"</span></span> 
-       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>优化前<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>45%<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/after.png<span class="token punctuation">"</span></span> 
-       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>优化后<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>45%<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="3-带说明的图片"><a href="#3-带说明的图片" class="headerlink" title="3. 带说明的图片"></a>3. 带说明的图片</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figure</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span> <span class="token property">margin</span><span class="token punctuation">:</span> 20px 0<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/architecture.png<span class="token punctuation">"</span></span> 
-       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>系统架构图<span class="token punctuation">"</span></span> 
-       <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">max-width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span> <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 4px 12px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.15<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figcaption</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">margin-top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span> #666<span class="token punctuation">;</span> <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
-    图1：系统整体架构设计
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figcaption</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figure</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="使用工作流程"><a href="#使用工作流程" class="headerlink" title="使用工作流程"></a>使用工作流程</h2><h3 id="日常使用步骤"><a href="#日常使用步骤" class="headerlink" title="日常使用步骤"></a>日常使用步骤</h3><ol>
-<li><p><strong>准备图片</strong></p>
-<ul>
-<li>优化图片大小（推荐 &lt; 1MB）</li>
-<li>使用有意义的文件名（英文+数字）</li>
-<li>选择合适的格式（jpg&#x2F;png&#x2F;webp）</li>
-</ul>
-</li>
-<li><p><strong>上传图片</strong></p>
-<ul>
-<li>拖拽到PicGo界面</li>
-<li>或使用快捷键 <code>Ctrl+Shift+P</code></li>
-<li>自动上传并复制链接</li>
-</ul>
-</li>
-<li><p><strong>插入文章</strong></p>
-<ul>
-<li>在Markdown中粘贴链接</li>
-<li>添加有意义的alt描述</li>
-<li>调整显示样式</li>
-</ul>
-</li>
-</ol>
-<h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h3><table>
-<thead>
-<tr>
-<th>功能</th>
-<th>快捷键</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>快速上传</td>
-<td><code>Ctrl + Shift + P</code></td>
-</tr>
-<tr>
-<td>打开文件选择器</td>
-<td><code>Ctrl + Shift + O</code></td>
-</tr>
-<tr>
-<td>从URL上传</td>
-<td><code>Ctrl + Shift + U</code></td>
-</tr>
-<tr>
-<td>上传剪贴板图片</td>
-<td><code>Ctrl + Shift + C</code></td>
-</tr>
-</tbody></table>
-<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><h3 id="图片命名规范"><a href="#图片命名规范" class="headerlink" title="图片命名规范"></a>图片命名规范</h3><pre class="line-numbers language-none"><code class="language-none"># 好的命名示例
-project-overview.png
-user-interface-design.jpg
-system-architecture-diagram.png
-before-vs-after-comparison.png
-
-# 避免的命名
-图片1.png
-截图.jpg
-IMG_20231002.png<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="文件夹组织"><a href="#文件夹组织" class="headerlink" title="文件夹组织"></a>文件夹组织</h3><pre class="line-numbers language-none"><code class="language-none">img&#x2F;
-├── blog&#x2F;           # 博客相关图片
-│   ├── headers&#x2F;    # 文章头图
-│   ├── content&#x2F;    # 文章内容图片
-│   └── thumbnails&#x2F; # 缩略图
-├── projects&#x2F;       # 项目展示图片
-├── tutorials&#x2F;      # 教程步骤图片
-└── misc&#x2F;          # 其他图片<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="性能优化建议"><a href="#性能优化建议" class="headerlink" title="性能优化建议"></a>性能优化建议</h3><ol>
-<li><p><strong>图片压缩</strong></p>
-<ul>
-<li>使用 <a href="https://tinypng.com/">TinyPNG</a> 压缩图片</li>
-<li>或使用PicGo插件自动压缩</li>
-</ul>
-</li>
-<li><p><strong>格式选择</strong></p>
-<ul>
-<li>照片：JPEG（.jpg）</li>
-<li>图标&#x2F;插图：PNG（.png）</li>
-<li>动图：GIF或WebP</li>
-</ul>
-</li>
-<li><p><strong>尺寸控制</strong></p>
-<ul>
-<li>博客宽度通常为 800-1200px</li>
-<li>避免上传过大的原图</li>
-</ul>
-</li>
-</ol>
-<h2 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h2><h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="1-图片无法显示"><a href="#1-图片无法显示" class="headerlink" title="1. 图片无法显示"></a>1. 图片无法显示</h4><ul>
-<li>检查Gitee仓库是否为公开状态</li>
-<li>确认图片链接格式正确</li>
-<li>验证图片是否成功上传</li>
-</ul>
-<h4 id="2-PicGo上传失败"><a href="#2-PicGo上传失败" class="headerlink" title="2. PicGo上传失败"></a>2. PicGo上传失败</h4><ul>
-<li>检查网络连接</li>
-<li>验证Token是否正确</li>
-<li>确认仓库路径配置</li>
-</ul>
-<h4 id="3-图片加载慢"><a href="#3-图片加载慢" class="headerlink" title="3. 图片加载慢"></a>3. 图片加载慢</h4><ul>
-<li>考虑使用CDN加速</li>
-<li>压缩图片大小</li>
-<li>选择合适的图片格式</li>
-</ul>
-<h2 id="GitHub图床配置（推荐）"><a href="#GitHub图床配置（推荐）" class="headerlink" title="GitHub图床配置（推荐）"></a>GitHub图床配置（推荐）</h2><p>GitHub图床是更加稳定的选择，兼容性极好：</p>
-<h3 id="第一步：创建GitHub仓库"><a href="#第一步：创建GitHub仓库" class="headerlink" title="第一步：创建GitHub仓库"></a>第一步：创建GitHub仓库</h3><ol>
-<li>访问 <a href="https://github.com/">GitHub官网</a> 并登录</li>
-<li>点击右上角 <strong>+</strong> → <strong>New repository</strong></li>
-<li>填写仓库信息：<ul>
-<li>Repository name：<code>my-images</code></li>
-<li>设置为：<strong>Public</strong> （重要！）</li>
-<li>勾选：<strong>Initialize this repository with a README</strong></li>
-</ul>
-</li>
-</ol>
-<h3 id="第二步：生成GitHub-Token"><a href="#第二步：生成GitHub-Token" class="headerlink" title="第二步：生成GitHub Token"></a>第二步：生成GitHub Token</h3><ol>
-<li>点击头像 → <strong>Settings</strong></li>
-<li>左侧菜单选择 <strong>Developer settings</strong></li>
-<li>点击 <strong>Personal access tokens</strong> → <strong>Tokens (classic)</strong></li>
-<li>点击 <strong>Generate new token</strong> → <strong>Generate new token (classic)</strong></li>
-<li>配置Token：<ul>
-<li>Note: <code>PicGo图床使用</code></li>
-<li>Expiration: <code>No expiration</code></li>
-<li>Scopes: 只勾选 <strong>repo</strong> (完整仓库访问权限)</li>
-</ul>
-</li>
-<li>生成并复制token（以 <code>ghp_</code> 开头）</li>
-</ol>
-<h3 id="第三步：在PicGo中配置GitHub图床"><a href="#第三步：在PicGo中配置GitHub图床" class="headerlink" title="第三步：在PicGo中配置GitHub图床"></a>第三步：在PicGo中配置GitHub图床</h3><ol>
-<li>打开PicGo，进入 <strong>图床设置</strong></li>
-<li>选择 <strong>GitHub图床</strong> （内置，无需插件）</li>
-<li>填写配置：</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">仓库名: 你的GitHub用户名&#x2F;my-images
-分支名: main (或 master)
-Token: 刚才生成的GitHub token
-存储路径: img&#x2F;
-自定义域名: 留空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="GitHub图床优势"><a href="#GitHub图床优势" class="headerlink" title="GitHub图床优势"></a>GitHub图床优势</h3><ul>
-<li>✅ <strong>稳定可靠</strong> - GitHub提供全球CDN</li>
-<li>✅ <strong>无需插件</strong> - PicGo原生支持</li>
-<li>✅ <strong>免费使用</strong> - 单仓库100GB空间</li>
-<li>✅ <strong>版本控制</strong> - 完整的Git管理</li>
-<li>✅ <strong>全球访问</strong> - 世界各地都能访问</li>
-</ul>
-<h3 id="备用方案"><a href="#备用方案" class="headerlink" title="备用方案"></a>备用方案</h3><p>如果需要其他图床选择：</p>
-<ol>
-<li><strong>SM.MS</strong> - 免费图床服务</li>
-<li><strong>阿里云OSS</strong> - 企业级对象存储</li>
-<li><strong>腾讯云COS</strong> - 企业级对象存储</li>
-</ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本教程介绍了两种主流图床方案：</p>
-<h3 id="Gitee图床"><a href="#Gitee图床" class="headerlink" title="Gitee图床"></a>Gitee图床</h3><ul>
-<li>🚀 <strong>访问速度快</strong> - 国内服务器，低延迟</li>
-<li>💰 <strong>完全免费</strong> - 无存储和流量限制</li>
-<li>🔧 <strong>配置简单</strong> - PicGo插件支持</li>
-<li>🇨🇳 <strong>本土优势</strong> - 适合中文博客</li>
-</ul>
-<h3 id="GitHub图床（推荐）"><a href="#GitHub图床（推荐）" class="headerlink" title="GitHub图床（推荐）"></a>GitHub图床（推荐）</h3><ul>
-<li>🌍 <strong>全球稳定</strong> - GitHub提供可靠服务</li>
-<li>🔧 <strong>兼容性好</strong> - PicGo原生支持</li>
-<li>📦 <strong>大容量</strong> - 单仓库100GB空间</li>
-<li>🔒 <strong>版本控制</strong> - 完整的Git管理</li>
-</ul>
-<p>通过本教程的配置，你可以：</p>
-<ul>
-<li>大幅减少博客仓库大小</li>
-<li>提升图片加载速度</li>
-<li>实现图片的统一管理</li>
-<li>支持跨平台图片引用</li>
-</ul>
-<p>建议优先选择GitHub图床，稳定性更好。如果国内访问GitHub较慢，可以考虑Gitee作为备选方案。</p>
-<hr>
-<blockquote>
-<p>💡 <strong>小贴士</strong>：记得定期备份重要图片，虽然Gitee很稳定，但多一份备份总是好的！</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>图床</tag>
-        <tag>Gitee</tag>
-        <tag>GitHub</tag>
-        <tag>PicGo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>基于Django+Vue的婚姻法知识图谱问答系统</title>
-    <url>/2025/06/15/%E5%A9%9A%E6%81%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</url>
-    <content><![CDATA[<p>本项目构建了一个集用户管理、内容发布、智能推荐、消息交互于一体的现代化婚恋平台。系统采用前后端分离架构，后端基于Django RESTful API，前端采用Vue.js+Element UI，并集成Neo4j图数据库和百度AI服务，实现了智能化的用户匹配和内容推荐功能。</p>
-<span id="more"></span>
-
-<h2 id="技术架构设计"><a href="#技术架构设计" class="headerlink" title="技术架构设计"></a>技术架构设计</h2><h3 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h3><p>系统采用经典的三层架构模式，结合微服务思想进行模块化设计：</p>
-<ul>
-<li><strong>表现层</strong>：Vue.js + Element UI 响应式前端界面</li>
-<li><strong>业务逻辑层</strong>：Django RESTful API 服务层</li>
-<li><strong>数据持久层</strong>：MySQL + Neo4j 混合数据库架构</li>
-</ul>
-<h3 id="核心技术栈"><a href="#核心技术栈" class="headerlink" title="核心技术栈"></a>核心技术栈</h3><p><strong>后端技术栈：</strong></p>
-<ul>
-<li>Django 2.2.8 - Web框架</li>
-<li>MySQL - 关系型数据库</li>
-<li>Neo4j - 图数据库</li>
-<li>JWT - 身份认证</li>
-<li>百度AI API - 智能问答</li>
-</ul>
-<p><strong>前端技术栈：</strong></p>
-<ul>
-<li>Vue.js 2.6.11 - 前端框架</li>
-<li>Element UI 2.15.6 - UI组件库</li>
-<li>Vue Router 3.5.2 - 路由管理</li>
-<li>Axios 0.21.1 - HTTP客户端</li>
-<li>ECharts 4.8.0 - 数据可视化</li>
-</ul>
-<h2 id="核心功能模块"><a href="#核心功能模块" class="headerlink" title="核心功能模块"></a>核心功能模块</h2><h3 id="1-用户管理系统"><a href="#1-用户管理系统" class="headerlink" title="1. 用户管理系统"></a>1. 用户管理系统</h3><h4 id="数据模型设计"><a href="#数据模型设计" class="headerlink" title="数据模型设计"></a>数据模型设计</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">User</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    uid <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">,</span> default<span class="token operator">=</span>uuid<span class="token punctuation">.</span>uuid4<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 用户唯一标识</span>
-    name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                      <span class="token comment"># 用户姓名</span>
-    username <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                   <span class="token comment"># 用户名</span>
-    password <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                   <span class="token comment"># 加密密码</span>
-    gender <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                      <span class="token comment"># 性别</span>
-    role <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                       <span class="token comment"># 用户角色</span>
-    image <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">1024</span><span class="token punctuation">)</span>                    <span class="token comment"># 头像URL</span>
-    age <span class="token operator">=</span> models<span class="token punctuation">.</span>IntegerField<span class="token punctuation">(</span><span class="token punctuation">)</span>                                  <span class="token comment"># 年龄</span>
-    mobile <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                     <span class="token comment"># 手机号</span>
-    email <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                      <span class="token comment"># 邮箱</span>
-    description <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">1024</span><span class="token punctuation">)</span>              <span class="token comment"># 个人描述</span>
-    deleted <span class="token operator">=</span> models<span class="token punctuation">.</span>IntegerField<span class="token punctuation">(</span>default<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>                     <span class="token comment"># 软删除标记</span>
-    createDate <span class="token operator">=</span> models<span class="token punctuation">.</span>DateField<span class="token punctuation">(</span>auto_now_add<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>             <span class="token comment"># 创建时间</span>
-    updateDate <span class="token operator">=</span> models<span class="token punctuation">.</span>DateField<span class="token punctuation">(</span>auto_now_add<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>             <span class="token comment"># 更新时间</span>
-    operator <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                   <span class="token comment"># 操作员</span>
-
-    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
-        ordering <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'createDate'</span><span class="token punctuation">]</span>
-        db_table <span class="token operator">=</span> <span class="token string">'python_marry_user'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="安全认证机制"><a href="#安全认证机制" class="headerlink" title="安全认证机制"></a>安全认证机制</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">validate_service</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""用户登录验证服务"""</span>
-    data <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>request<span class="token punctuation">)</span>
-    username <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
-    password <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
-    
-    <span class="token comment"># MD5加盐加密</span>
-    md5 <span class="token operator">=</span> hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span>password<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    salt <span class="token operator">=</span> <span class="token string">"$1$asd"</span>  <span class="token comment"># 盐值</span>
-    md5<span class="token punctuation">.</span>update<span class="token punctuation">(</span>salt<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    encrypted_data <span class="token operator">=</span> md5<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    
-    <span class="token comment"># 用户验证</span>
-    _user <span class="token operator">=</span> User<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>username<span class="token operator">=</span>username<span class="token punctuation">,</span> password<span class="token operator">=</span>encrypted_data<span class="token punctuation">,</span> deleted<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    
-    <span class="token keyword">if</span> _user <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
-        <span class="token comment"># JWT Token生成</span>
-        payload <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"username"</span><span class="token punctuation">:</span> username<span class="token punctuation">&#125;</span>
-        _token <span class="token operator">=</span> jwt<span class="token punctuation">.</span>encode<span class="token punctuation">(</span>payload<span class="token operator">=</span>payload<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token string">"tk123"</span><span class="token punctuation">)</span>
-        
-        <span class="token keyword">return</span> JsonResponse<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-            <span class="token string">"success"</span><span class="token punctuation">:</span> <span class="token string">"true"</span><span class="token punctuation">,</span>
-            <span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string">"请求成功"</span><span class="token punctuation">,</span>
-            <span class="token string">"returnCode"</span><span class="token punctuation">:</span> <span class="token string">"200"</span><span class="token punctuation">,</span>
-            <span class="token string">"returnData"</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span>
-                <span class="token string">"logintoken"</span><span class="token punctuation">:</span> _token<span class="token punctuation">,</span>
-                <span class="token string">"user"</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span>
-                    <span class="token string">"id"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span><span class="token builtin">id</span><span class="token punctuation">,</span>
-                    <span class="token string">"uid"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>uid<span class="token punctuation">,</span>
-                    <span class="token string">"name"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
-                    <span class="token string">"username"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>username<span class="token punctuation">,</span>
-                    <span class="token string">"gender"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>gender<span class="token punctuation">,</span>
-                    <span class="token string">"age"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>age<span class="token punctuation">,</span>
-                    <span class="token string">"role"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>role<span class="token punctuation">,</span>
-                    <span class="token string">"mobile"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>mobile<span class="token punctuation">,</span>
-                    <span class="token string">"email"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>email<span class="token punctuation">,</span>
-                    <span class="token string">"image"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>image
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="2-内容管理系统"><a href="#2-内容管理系统" class="headerlink" title="2. 内容管理系统"></a>2. 内容管理系统</h3><h4 id="内容模型设计"><a href="#内容模型设计" class="headerlink" title="内容模型设计"></a>内容模型设计</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Content</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    uid <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">,</span> default<span class="token operator">=</span>uuid<span class="token punctuation">.</span>uuid4<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                       <span class="token comment"># 内容标题</span>
-    classification <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>              <span class="token comment"># 分类ID</span>
-    image <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">1024</span><span class="token punctuation">)</span>                     <span class="token comment"># 封面图片</span>
-    description <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">1024</span><span class="token punctuation">)</span>               <span class="token comment"># 内容描述</span>
-    content <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">1024</span><span class="token punctuation">)</span>                   <span class="token comment"># 正文内容</span>
-    deleted <span class="token operator">=</span> models<span class="token punctuation">.</span>IntegerField<span class="token punctuation">(</span>default<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>                      <span class="token comment"># 软删除标记</span>
-    createDate <span class="token operator">=</span> models<span class="token punctuation">.</span>DateField<span class="token punctuation">(</span>auto_now_add<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>             <span class="token comment"># 创建时间</span>
-    updateDate <span class="token operator">=</span> models<span class="token punctuation">.</span>DateField<span class="token punctuation">(</span>auto_now_add<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>             <span class="token comment"># 更新时间</span>
-    operator <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                   <span class="token comment"># 操作员</span>
-
-    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
-        ordering <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'createDate'</span><span class="token punctuation">]</span>
-        db_table <span class="token operator">=</span> <span class="token string">'python_marry_content'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="分页查询优化"><a href="#分页查询优化" class="headerlink" title="分页查询优化"></a>分页查询优化</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">content_list_service</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""内容列表查询服务 - 支持分页和关联查询"""</span>
-    data <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>request<span class="token punctuation">)</span>
-    _pageSize <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'pageSize'</span><span class="token punctuation">]</span>
-    _currentPage <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'currentPage'</span><span class="token punctuation">]</span>
-    
-    <span class="token comment"># 基础查询</span>
-    <span class="token builtin">list</span> <span class="token operator">=</span> Content<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>deleted<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
-    _list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    
-    <span class="token comment"># 关联查询优化 - 批量获取分类和用户信息</span>
-    classificationList <span class="token operator">=</span> Classification<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>deleted<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
-    userList <span class="token operator">=</span> User<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>deleted<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> role<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
-    
-    <span class="token comment"># 构建映射字典，避免N+1查询问题</span>
-    _classification_dict <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-    _user_dict <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-    
-    <span class="token keyword">for</span> item <span class="token keyword">in</span> classificationList<span class="token punctuation">:</span>
-        _classification_dict<span class="token punctuation">[</span>item<span class="token punctuation">.</span>uid<span class="token punctuation">]</span> <span class="token operator">=</span> item<span class="token punctuation">.</span>name
-    
-    <span class="token keyword">for</span> item <span class="token keyword">in</span> userList<span class="token punctuation">:</span>
-        _user_dict<span class="token punctuation">[</span>item<span class="token punctuation">.</span>uid<span class="token punctuation">]</span> <span class="token operator">=</span> item<span class="token punctuation">.</span>name
-    
-    <span class="token comment"># 数据组装</span>
-    <span class="token keyword">for</span> item <span class="token keyword">in</span> <span class="token builtin">list</span><span class="token punctuation">:</span>
-        rest <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-            <span class="token string">'id'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span><span class="token builtin">id</span><span class="token punctuation">,</span>
-            <span class="token string">'uid'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>uid<span class="token punctuation">,</span>
-            <span class="token string">'name'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
-            <span class="token string">'content'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>content<span class="token punctuation">,</span>
-            <span class="token string">'classification'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>classification<span class="token punctuation">,</span>
-            <span class="token string">'classificationName'</span><span class="token punctuation">:</span> _classification_dict<span class="token punctuation">.</span>get<span class="token punctuation">(</span>item<span class="token punctuation">.</span>classification<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token string">'description'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>description<span class="token punctuation">,</span>
-            <span class="token string">'image'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>image<span class="token punctuation">,</span>
-            <span class="token string">'createDate'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>createDate<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y-%m-%d'</span><span class="token punctuation">)</span> <span class="token keyword">if</span> item<span class="token punctuation">.</span>createDate <span class="token keyword">else</span> <span class="token string">''</span>
-        <span class="token punctuation">&#125;</span>
-        _list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>rest<span class="token punctuation">)</span>
-    
-    <span class="token comment"># 分页逻辑</span>
-    page <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-        <span class="token string">"pageSize"</span><span class="token punctuation">:</span> _pageSize<span class="token punctuation">,</span>
-        <span class="token string">"total"</span><span class="token punctuation">:</span> <span class="token builtin">len</span><span class="token punctuation">(</span>_list<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token string">"currentPage"</span><span class="token punctuation">:</span> _currentPage
-    <span class="token punctuation">&#125;</span>
-    
-    <span class="token keyword">if</span> _pageSize <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        _start <span class="token operator">=</span> <span class="token punctuation">(</span>_currentPage <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> _pageSize
-        _end <span class="token operator">=</span> _currentPage <span class="token operator">*</span> _pageSize
-        _list <span class="token operator">=</span> _list<span class="token punctuation">[</span>_start<span class="token punctuation">:</span> _end<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="3-图数据库集成"><a href="#3-图数据库集成" class="headerlink" title="3. 图数据库集成"></a>3. 图数据库集成</h3><h4 id="Neo4j图数据库连接"><a href="#Neo4j图数据库连接" class="headerlink" title="Neo4j图数据库连接"></a>Neo4j图数据库连接</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MedicalGraph</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""Neo4j图数据库连接类"""</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment"># 图数据库连接配置</span>
-        self<span class="token punctuation">.</span>g <span class="token operator">=</span> Graph<span class="token punctuation">(</span><span class="token string">"bolt://localhost:7687"</span><span class="token punctuation">,</span> auth<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"neo4j"</span><span class="token punctuation">,</span> <span class="token string">"7508929hzq"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    
-    <span class="token keyword">def</span> <span class="token function">create_relationship</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> user1_id<span class="token punctuation">,</span> user2_id<span class="token punctuation">,</span> relationship_type<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""创建用户关系"""</span>
-        query <span class="token operator">=</span> <span class="token triple-quoted-string string">"""
-        MATCH (u1:User &#123;id: $user1_id&#125;)
-        MATCH (u2:User &#123;id: $user2_id&#125;)
-        CREATE (u1)-[r:RELATIONSHIP_TYPE]->(u2)
-        RETURN r
-        """</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>g<span class="token punctuation">.</span>run<span class="token punctuation">(</span>query<span class="token punctuation">,</span> user1_id<span class="token operator">=</span>user1_id<span class="token punctuation">,</span> user2_id<span class="token operator">=</span>user2_id<span class="token punctuation">,</span> 
-                         RELATIONSHIP_TYPE<span class="token operator">=</span>relationship_type<span class="token punctuation">)</span>
-    
-    <span class="token keyword">def</span> <span class="token function">find_recommendations</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> user_id<span class="token punctuation">,</span> limit<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""基于图算法的用户推荐"""</span>
-        query <span class="token operator">=</span> <span class="token triple-quoted-string string">"""
-        MATCH (u:User &#123;id: $user_id&#125;)-[r1:INTEREST]->(i:Interest)
-        MATCH (i)&lt;-[r2:INTEREST]-(other:User)
-        WHERE other.id &lt;> $user_id
-        RETURN other, count(*) as common_interests
-        ORDER BY common_interests DESC
-        LIMIT $limit
-        """</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>g<span class="token punctuation">.</span>run<span class="token punctuation">(</span>query<span class="token punctuation">,</span> user_id<span class="token operator">=</span>user_id<span class="token punctuation">,</span> limit<span class="token operator">=</span>limit<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="4-AI智能问答集成"><a href="#4-AI智能问答集成" class="headerlink" title="4. AI智能问答集成"></a>4. AI智能问答集成</h3><h4 id="百度AI-API集成"><a href="#百度AI-API集成" class="headerlink" title="百度AI API集成"></a>百度AI API集成</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">query</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""百度AI智能问答接口"""</span>
-    url <span class="token operator">=</span> <span class="token string">"https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions_pro?access_token="</span> <span class="token operator">+</span> get_access_token<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    
-    payload <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-        <span class="token string">"messages"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-            <span class="token punctuation">&#123;</span>
-                <span class="token string">"role"</span><span class="token punctuation">:</span> <span class="token string">"user"</span><span class="token punctuation">,</span>
-                <span class="token string">"content"</span><span class="token punctuation">:</span> message
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token string">"temperature"</span><span class="token punctuation">:</span> <span class="token number">0.95</span><span class="token punctuation">,</span>        <span class="token comment"># 创造性参数</span>
-        <span class="token string">"top_p"</span><span class="token punctuation">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>              <span class="token comment"># 核采样参数</span>
-        <span class="token string">"penalty_score"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>         <span class="token comment"># 重复惩罚</span>
-        <span class="token string">"enable_system_memory"</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
-        <span class="token string">"disable_search"</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
-        <span class="token string">"enable_citation"</span><span class="token punctuation">:</span> <span class="token boolean">False</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-    
-    headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">&#125;</span>
-    response <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">,</span> data<span class="token operator">=</span>payload<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> response<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">def</span> <span class="token function">get_access_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""获取百度AI访问令牌"""</span>
-    url <span class="token operator">=</span> <span class="token string">"https://aip.baidubce.com/oauth/2.0/token"</span>
-    params <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-        <span class="token string">"grant_type"</span><span class="token punctuation">:</span> <span class="token string">"client_credentials"</span><span class="token punctuation">,</span> 
-        <span class="token string">"client_id"</span><span class="token punctuation">:</span> API_KEY<span class="token punctuation">,</span> 
-        <span class="token string">"client_secret"</span><span class="token punctuation">:</span> SECRET_KEY
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">return</span> <span class="token builtin">str</span><span class="token punctuation">(</span>requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> params<span class="token operator">=</span>params<span class="token punctuation">)</span><span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"access_token"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="5-前端架构设计"><a href="#5-前端架构设计" class="headerlink" title="5. 前端架构设计"></a>5. 前端架构设计</h3><h4 id="Vue组件化开发"><a href="#Vue组件化开发" class="headerlink" title="Vue组件化开发"></a>Vue组件化开发</h4><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
-  &lt;div id&#x3D;&quot;module&quot;&gt;
-    &lt;el-container&gt;
-      &lt;!-- 左侧导航组件 --&gt;
-      &lt;Nav &#x2F;&gt;
-      &lt;el-container&gt;
-        &lt;!-- 顶部导航栏 --&gt;
-        &lt;el-header style&#x3D;&quot;text-align: right; font-size: 12px&quot;&gt;
-          &lt;el-dropdown&gt;
-            &lt;i class&#x3D;&quot;el-icon-setting&quot; style&#x3D;&quot;margin-right: 15px;&quot;&gt;&lt;&#x2F;i&gt;
-            &lt;el-dropdown-menu slot&#x3D;&quot;dropdown&quot;&gt;
-              &lt;el-dropdown-item @click.native&#x3D;&quot;modifyPassword&quot;&gt;修改密码&lt;&#x2F;el-dropdown-item&gt;
-              &lt;el-dropdown-item @click.native&#x3D;&quot;logout&quot;&gt;退出登录&lt;&#x2F;el-dropdown-item&gt;
-            &lt;&#x2F;el-dropdown-menu&gt;
-          &lt;&#x2F;el-dropdown&gt;
-          &lt;span&gt;&#123;&#123;username&#125;&#125;&nbsp;&nbsp;&lt;&#x2F;span&gt;
-        &lt;&#x2F;el-header&gt;
-        &lt;!-- 主体内容区域 --&gt;
-        &lt;el-main&gt;
-          &lt;Breadcrumb &#x2F;&gt;
-          &lt;br &#x2F;&gt;
-          &lt;router-view &#x2F;&gt;
-        &lt;&#x2F;el-main&gt;
-      &lt;&#x2F;el-container&gt;
-    &lt;&#x2F;el-container&gt;
-  &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-
-&lt;script&gt;
-import Nav from &quot;.&#x2F;Nav&quot;;
-import Breadcrumb from &quot;.&#x2F;Breadcrumb&quot;;
-import cryptoJs from &quot;crypto-js&quot;;
-
-export default &#123;
-  name: &#39;Home&#39;,
-  components: &#123; Nav, Breadcrumb &#125;,
-  data() &#123;
-    return &#123;
-      key: &quot;rest@126.com&quot;,           &#x2F;&#x2F; 加密密钥
-      dialogFormVisible: false,      &#x2F;&#x2F; 对话框显示状态
-      username: &quot;&quot;,                  &#x2F;&#x2F; 当前用户名
-      form: &#123;                        &#x2F;&#x2F; 表单数据
-        oldPassword: &quot;&quot;,
-        newPassword: &quot;&quot;,
-        confirmPassword: &quot;&quot;,
-      &#125;,
-      formLabelWidth: &quot;120px&quot;,
-      user: &#123;&#125;
-    &#125;;
-  &#125;,
-  created() &#123;
-    &#x2F;&#x2F; 从sessionStorage获取用户信息
-    this.username &#x3D; sessionStorage.getItem(&quot;username&quot;);
-    this.user &#x3D; JSON.parse(sessionStorage.getItem(&quot;user&quot;));
-  &#125;,
-  methods: &#123;
-    &#x2F;&#x2F; 密码加密方法
-    encryptDes(message) &#123;
-      const keyHex &#x3D; cryptoJs.enc.Utf8.parse(this.key);
-      const option &#x3D; &#123; 
-        mode: cryptoJs.mode.ECB, 
-        padding: cryptoJs.pad.Pkcs7 
-      &#125;;
-      const encrypted &#x3D; cryptoJs.DES.encrypt(message, keyHex, option);
-      return encrypted.toString();
-    &#125;,
-    
-    &#x2F;&#x2F; 用户登出
-    logout() &#123;
-      sessionStorage.removeItem(&quot;username&quot;);
-      sessionStorage.removeItem(&quot;loginToken&quot;);
-      this.$router.push(&quot;&#x2F;login&quot;);
-    &#125;
-  &#125;
-&#125;;
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="系统架构流程图"><a href="#系统架构流程图" class="headerlink" title="系统架构流程图"></a>系统架构流程图</h2><pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TB
-    A<span class="token text string">[用户请求]</span> <span class="token arrow operator">--></span> B<span class="token text string">[Vue.js前端]</span>
-    B <span class="token arrow operator">--></span> C<span class="token text string">[Axios HTTP请求]</span>
-    C <span class="token arrow operator">--></span> D<span class="token text string">[Django RESTful API]</span>
-    D <span class="token arrow operator">--></span> E<span class="token text string">[业务逻辑层]</span>
-    E <span class="token arrow operator">--></span> F<span class="token text string">[数据访问层]</span>
-    F <span class="token arrow operator">--></span> G<span class="token text string">[MySQL数据库]</span>
-    F <span class="token arrow operator">--></span> H<span class="token text string">[Neo4j图数据库]</span>
-    E <span class="token arrow operator">--></span> I<span class="token text string">[百度AI服务]</span>
-    E <span class="token arrow operator">--></span> J<span class="token text string">[文件上传服务]</span>
-    D <span class="token arrow operator">--></span> K<span class="token text string">[JWT认证]</span>
-    K <span class="token arrow operator">--></span> L<span class="token text string">[响应数据]</span>
-    L <span class="token arrow operator">--></span> B
-    B <span class="token arrow operator">--></span> M<span class="token text string">[Element UI渲染]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="技术亮点与创新"><a href="#技术亮点与创新" class="headerlink" title="技术亮点与创新"></a>技术亮点与创新</h2><h3 id="1-混合数据库架构"><a href="#1-混合数据库架构" class="headerlink" title="1. 混合数据库架构"></a>1. 混合数据库架构</h3><ul>
-<li><strong>关系型数据库</strong>：存储用户基础信息、内容数据等结构化数据</li>
-<li><strong>图数据库</strong>：处理用户关系、兴趣匹配、推荐算法等复杂关系数据</li>
-<li><strong>优势</strong>：充分发挥两种数据库的优势，实现数据的高效存储和查询</li>
-</ul>
-<h3 id="2-智能推荐算法"><a href="#2-智能推荐算法" class="headerlink" title="2. 智能推荐算法"></a>2. 智能推荐算法</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">calculate_similarity_score</span><span class="token punctuation">(</span>user1_interests<span class="token punctuation">,</span> user2_interests<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""计算用户兴趣相似度"""</span>
-    common_interests <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span>user1_interests<span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token builtin">set</span><span class="token punctuation">(</span>user2_interests<span class="token punctuation">)</span>
-    total_interests <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span>user1_interests<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token builtin">set</span><span class="token punctuation">(</span>user2_interests<span class="token punctuation">)</span>
-    
-    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>total_interests<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token number">0</span>
-    
-    <span class="token comment"># Jaccard相似度计算</span>
-    similarity <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>common_interests<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token builtin">len</span><span class="token punctuation">(</span>total_interests<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> similarity <span class="token operator">*</span> <span class="token number">100</span>  <span class="token comment"># 转换为百分比</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="3-安全机制设计"><a href="#3-安全机制设计" class="headerlink" title="3. 安全机制设计"></a>3. 安全机制设计</h3><ul>
-<li><strong>密码加密</strong>：MD5加盐加密，防止彩虹表攻击</li>
-<li><strong>JWT认证</strong>：无状态身份验证，支持跨域访问</li>
-<li><strong>CORS配置</strong>：精确控制跨域请求来源</li>
-<li><strong>软删除</strong>：数据安全删除，支持数据恢复</li>
-</ul>
-<h3 id="4-性能优化策略"><a href="#4-性能优化策略" class="headerlink" title="4. 性能优化策略"></a>4. 性能优化策略</h3><ul>
-<li><strong>分页查询</strong>：避免大数据量查询导致的性能问题</li>
-<li><strong>关联查询优化</strong>：使用字典映射避免N+1查询问题</li>
-<li><strong>缓存机制</strong>：对频繁查询的数据进行缓存</li>
-<li><strong>异步处理</strong>：AI服务调用采用异步处理</li>
-</ul>
-<h2 id="系统优化建议"><a href="#系统优化建议" class="headerlink" title="系统优化建议"></a>系统优化建议</h2><h3 id="1-数据库优化"><a href="#1-数据库优化" class="headerlink" title="1. 数据库优化"></a>1. 数据库优化</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 添加数据库索引</span>
-<span class="token keyword">class</span> <span class="token class-name">User</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment"># ... 其他字段</span>
-    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
-        indexes <span class="token operator">=</span> <span class="token punctuation">[</span>
-            models<span class="token punctuation">.</span>Index<span class="token punctuation">(</span>fields<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            models<span class="token punctuation">.</span>Index<span class="token punctuation">(</span>fields<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'mobile'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            models<span class="token punctuation">.</span>Index<span class="token punctuation">(</span>fields<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'email'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            models<span class="token punctuation">.</span>Index<span class="token punctuation">(</span>fields<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'deleted'</span><span class="token punctuation">,</span> <span class="token string">'createDate'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="2-缓存机制"><a href="#2-缓存机制" class="headerlink" title="2. 缓存机制"></a>2. 缓存机制</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>core<span class="token punctuation">.</span>cache <span class="token keyword">import</span> cache
-
-<span class="token keyword">def</span> <span class="token function">get_user_by_id</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""带缓存的用户查询"""</span>
-    cache_key <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"user_</span><span class="token interpolation"><span class="token punctuation">&#123;</span>user_id<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span>
-    user <span class="token operator">=</span> cache<span class="token punctuation">.</span>get<span class="token punctuation">(</span>cache_key<span class="token punctuation">)</span>
-    
-    <span class="token keyword">if</span> user <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
-        user <span class="token operator">=</span> User<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token builtin">id</span><span class="token operator">=</span>user_id<span class="token punctuation">)</span>
-        cache<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span>cache_key<span class="token punctuation">,</span> user<span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span>  <span class="token comment"># 缓存5分钟</span>
-    
-    <span class="token keyword">return</span> user<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="3-异步任务处理"><a href="#3-异步任务处理" class="headerlink" title="3. 异步任务处理"></a>3. 异步任务处理</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> celery <span class="token keyword">import</span> Celery
-
-app <span class="token operator">=</span> Celery<span class="token punctuation">(</span><span class="token string">'marry_system'</span><span class="token punctuation">)</span>
-
-<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>task</span>
-<span class="token keyword">def</span> <span class="token function">send_recommendation_email</span><span class="token punctuation">(</span>user_id<span class="token punctuation">,</span> recommendations<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""异步发送推荐邮件"""</span>
-    <span class="token comment"># 邮件发送逻辑</span>
-    <span class="token keyword">pass</span>
-
-<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>task</span>
-<span class="token keyword">def</span> <span class="token function">update_user_recommendations</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""异步更新用户推荐列表"""</span>
-    <span class="token comment"># 推荐算法计算</span>
-    <span class="token keyword">pass</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="学习成果总结"><a href="#学习成果总结" class="headerlink" title="学习成果总结"></a>学习成果总结</h2><h3 id="技术技能提升"><a href="#技术技能提升" class="headerlink" title="技术技能提升"></a>技术技能提升</h3><ol>
-<li><strong>全栈开发能力</strong>：掌握了Django+Vue.js前后端分离开发模式</li>
-<li><strong>数据库设计</strong>：学会了关系型数据库与图数据库的混合使用</li>
-<li><strong>API设计</strong>：掌握了RESTful API的设计原则和最佳实践</li>
-<li><strong>安全编程</strong>：理解了Web应用安全机制和加密算法应用</li>
-<li><strong>性能优化</strong>：学会了数据库查询优化和缓存机制设计</li>
-</ol>
-<h3 id="系统设计亮点"><a href="#系统设计亮点" class="headerlink" title="系统设计亮点"></a>系统设计亮点</h3><ol>
-<li><strong>模块化架构</strong>：采用服务层模式，代码结构清晰，易于维护</li>
-<li><strong>智能推荐</strong>：集成图数据库和AI服务，实现智能化用户匹配</li>
-<li><strong>安全可靠</strong>：完善的认证授权机制和数据加密保护</li>
-<li><strong>扩展性强</strong>：模块化设计支持功能快速扩展</li>
-<li><strong>用户体验</strong>：响应式前端设计，提供良好的交互体验</li>
-</ol>
-<h3 id="项目价值"><a href="#项目价值" class="headerlink" title="项目价值"></a>项目价值</h3><p>本系统不仅是一个技术实践项目，更是一个完整的企业级应用解决方案。通过这个项目，深入理解了现代Web应用的架构设计、数据库优化、安全机制等核心技术，为后续的大型项目开发奠定了坚实基础。</p>
-<p>系统采用的技术栈和架构模式都是当前业界的主流选择，具有很强的实用性和学习价值。特别是图数据库和AI服务的集成应用，体现了现代Web应用向智能化方向发展的趋势。</p>
-]]></content>
-      <categories>
-        <category>技术分享</category>
-        <category>全栈开发</category>
-      </categories>
-      <tags>
-        <tag>Vue.js</tag>
-        <tag>Django</tag>
-        <tag>图数据库</tag>
-        <tag>人工智能</tag>
-        <tag>系统架构</tag>
-        <tag>前后端分离</tag>
       </tags>
   </entry>
   <entry>
@@ -5406,6 +4720,692 @@ avg_pooled <span class="token operator">=</span> F<span class="token punctuation
       </categories>
       <tags>
         <tag>GRU结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客使用图床教程</title>
+    <url>/2024/10/02/%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>这篇文章详细介绍如何使用Gitee和GitHub图床来托管博客图片，提升博客性能和管理效率。</p>
+<span id="more"></span>
+
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/%E6%9F%B4%E7%8A%AC.jpg" referrerpolicy="no-referrer"></p>
+<h2 id="什么是图床？"><a href="#什么是图床？" class="headerlink" title="什么是图床？"></a>什么是图床？</h2><p>图床是专门用于存储图片的在线服务，它能为你的博客带来以下优势：</p>
+<ul>
+<li>✅ <strong>减少博客体积</strong> - 图片不占用博客存储空间</li>
+<li>✅ <strong>提升加载速度</strong> - 专业CDN加速图片访问</li>
+<li>✅ <strong>跨平台使用</strong> - 一张图片可在多处引用</li>
+<li>✅ <strong>稳定可靠</strong> - 专业服务商提供数据保障</li>
+</ul>
+<h2 id="Gitee图床配置"><a href="#Gitee图床配置" class="headerlink" title="Gitee图床配置"></a>Gitee图床配置</h2><h3 id="第一步：创建Gitee仓库"><a href="#第一步：创建Gitee仓库" class="headerlink" title="第一步：创建Gitee仓库"></a>第一步：创建Gitee仓库</h3><ol>
+<li>访问 <a href="https://gitee.com/">Gitee官网</a> 并登录</li>
+<li>点击右上角 <strong>+</strong> → <strong>新建仓库</strong></li>
+<li>填写仓库信息：<ul>
+<li>仓库名称：<code>my-images</code></li>
+<li>设置为：<strong>公开</strong> （重要！）</li>
+<li>勾选：<strong>使用Readme文件初始化</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="第二步：获取私人令牌"><a href="#第二步：获取私人令牌" class="headerlink" title="第二步：获取私人令牌"></a>第二步：获取私人令牌</h3><ol>
+<li>点击头像 → <strong>设置</strong></li>
+<li>左侧菜单选择 <strong>私人令牌</strong></li>
+<li>点击 <strong>生成新令牌</strong></li>
+<li>勾选 <code>projects</code> 权限</li>
+<li>复制生成的令牌（只显示一次！）</li>
+</ol>
+<h2 id="PicGo配置"><a href="#PicGo配置" class="headerlink" title="PicGo配置"></a>PicGo配置</h2><h3 id="安装PicGo"><a href="#安装PicGo" class="headerlink" title="安装PicGo"></a>安装PicGo</h3><p>推荐使用包管理器安装：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Windows用户</span>
+winget <span class="token function">install</span> PicGo.PicGo
+
+<span class="token comment"># macOS用户  </span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> picgo
+
+<span class="token comment"># 或从GitHub下载：https://github.com/Molunerfinn/PicGo/releases</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="安装Gitee插件"><a href="#安装Gitee插件" class="headerlink" title="安装Gitee插件"></a>安装Gitee插件</h3><ol>
+<li>打开PicGo</li>
+<li>进入 <strong>插件设置</strong></li>
+<li>搜索 <code>gitee</code></li>
+<li>安装 <code>gitee-uploader</code> 插件</li>
+</ol>
+<h3 id="配置Gitee图床"><a href="#配置Gitee图床" class="headerlink" title="配置Gitee图床"></a>配置Gitee图床</h3><p>进入 <strong>图床设置</strong> → <strong>Gitee图床</strong>，填写：</p>
+<pre class="line-numbers language-none"><code class="language-none">repo: 你的用户名&#x2F;仓库名 (如: zhangsan&#x2F;my-images)
+branch: master
+token: 刚才获取的私人令牌
+path: img&#x2F; (图片存储路径)
+customPath: 留空
+customUrl: 留空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="在文章中使用图片"><a href="#在文章中使用图片" class="headerlink" title="在文章中使用图片"></a>在文章中使用图片</h2><h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3><h4 id="Markdown格式（推荐）"><a href="#Markdown格式（推荐）" class="headerlink" title="Markdown格式（推荐）"></a>Markdown格式（推荐）</h4><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">图片描述</span>](<span class="token url">图片链接</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">项目演示</span>](<span class="token url">https://gitee.com/zhangsan/my-images/raw/master/img/demo.png</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="HTML格式（更灵活）"><a href="#HTML格式（更灵活）" class="headerlink" title="HTML格式（更灵活）"></a>HTML格式（更灵活）</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>图片链接<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>图片描述<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>600<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/zhangsan/my-images/raw/master/img/demo.png<span class="token punctuation">"</span></span> 
+     <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>项目演示<span class="token punctuation">"</span></span> 
+     <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>600<span class="token punctuation">"</span></span> 
+     <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span> <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 4px 8px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.1<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="高级使用技巧"><a href="#高级使用技巧" class="headerlink" title="高级使用技巧"></a>高级使用技巧</h3><h4 id="1-响应式图片"><a href="#1-响应式图片" class="headerlink" title="1. 响应式图片"></a>1. 响应式图片</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/responsive-demo.png<span class="token punctuation">"</span></span> 
+       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>响应式演示<span class="token punctuation">"</span></span> 
+       <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">max-width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-图片组合展示"><a href="#2-图片组合展示" class="headerlink" title="2. 图片组合展示"></a>2. 图片组合展示</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span> <span class="token property">justify-content</span><span class="token punctuation">:</span> space-around<span class="token punctuation">;</span> <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/before.png<span class="token punctuation">"</span></span> 
+       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>优化前<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>45%<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/after.png<span class="token punctuation">"</span></span> 
+       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>优化后<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>45%<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-带说明的图片"><a href="#3-带说明的图片" class="headerlink" title="3. 带说明的图片"></a>3. 带说明的图片</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figure</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span> <span class="token property">margin</span><span class="token punctuation">:</span> 20px 0<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://gitee.com/你的用户名/my-images/raw/master/img/architecture.png<span class="token punctuation">"</span></span> 
+       <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>系统架构图<span class="token punctuation">"</span></span> 
+       <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">max-width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span> <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 4px 12px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.15<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figcaption</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">margin-top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span> #666<span class="token punctuation">;</span> <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+    图1：系统整体架构设计
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figcaption</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figure</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="使用工作流程"><a href="#使用工作流程" class="headerlink" title="使用工作流程"></a>使用工作流程</h2><h3 id="日常使用步骤"><a href="#日常使用步骤" class="headerlink" title="日常使用步骤"></a>日常使用步骤</h3><ol>
+<li><p><strong>准备图片</strong></p>
+<ul>
+<li>优化图片大小（推荐 &lt; 1MB）</li>
+<li>使用有意义的文件名（英文+数字）</li>
+<li>选择合适的格式（jpg&#x2F;png&#x2F;webp）</li>
+</ul>
+</li>
+<li><p><strong>上传图片</strong></p>
+<ul>
+<li>拖拽到PicGo界面</li>
+<li>或使用快捷键 <code>Ctrl+Shift+P</code></li>
+<li>自动上传并复制链接</li>
+</ul>
+</li>
+<li><p><strong>插入文章</strong></p>
+<ul>
+<li>在Markdown中粘贴链接</li>
+<li>添加有意义的alt描述</li>
+<li>调整显示样式</li>
+</ul>
+</li>
+</ol>
+<h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h3><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>快速上传</td>
+<td><code>Ctrl + Shift + P</code></td>
+</tr>
+<tr>
+<td>打开文件选择器</td>
+<td><code>Ctrl + Shift + O</code></td>
+</tr>
+<tr>
+<td>从URL上传</td>
+<td><code>Ctrl + Shift + U</code></td>
+</tr>
+<tr>
+<td>上传剪贴板图片</td>
+<td><code>Ctrl + Shift + C</code></td>
+</tr>
+</tbody></table>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><h3 id="图片命名规范"><a href="#图片命名规范" class="headerlink" title="图片命名规范"></a>图片命名规范</h3><pre class="line-numbers language-none"><code class="language-none"># 好的命名示例
+project-overview.png
+user-interface-design.jpg
+system-architecture-diagram.png
+before-vs-after-comparison.png
+
+# 避免的命名
+图片1.png
+截图.jpg
+IMG_20231002.png<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="文件夹组织"><a href="#文件夹组织" class="headerlink" title="文件夹组织"></a>文件夹组织</h3><pre class="line-numbers language-none"><code class="language-none">img&#x2F;
+├── blog&#x2F;           # 博客相关图片
+│   ├── headers&#x2F;    # 文章头图
+│   ├── content&#x2F;    # 文章内容图片
+│   └── thumbnails&#x2F; # 缩略图
+├── projects&#x2F;       # 项目展示图片
+├── tutorials&#x2F;      # 教程步骤图片
+└── misc&#x2F;          # 其他图片<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="性能优化建议"><a href="#性能优化建议" class="headerlink" title="性能优化建议"></a>性能优化建议</h3><ol>
+<li><p><strong>图片压缩</strong></p>
+<ul>
+<li>使用 <a href="https://tinypng.com/">TinyPNG</a> 压缩图片</li>
+<li>或使用PicGo插件自动压缩</li>
+</ul>
+</li>
+<li><p><strong>格式选择</strong></p>
+<ul>
+<li>照片：JPEG（.jpg）</li>
+<li>图标&#x2F;插图：PNG（.png）</li>
+<li>动图：GIF或WebP</li>
+</ul>
+</li>
+<li><p><strong>尺寸控制</strong></p>
+<ul>
+<li>博客宽度通常为 800-1200px</li>
+<li>避免上传过大的原图</li>
+</ul>
+</li>
+</ol>
+<h2 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h2><h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="1-图片无法显示"><a href="#1-图片无法显示" class="headerlink" title="1. 图片无法显示"></a>1. 图片无法显示</h4><ul>
+<li>检查Gitee仓库是否为公开状态</li>
+<li>确认图片链接格式正确</li>
+<li>验证图片是否成功上传</li>
+</ul>
+<h4 id="2-PicGo上传失败"><a href="#2-PicGo上传失败" class="headerlink" title="2. PicGo上传失败"></a>2. PicGo上传失败</h4><ul>
+<li>检查网络连接</li>
+<li>验证Token是否正确</li>
+<li>确认仓库路径配置</li>
+</ul>
+<h4 id="3-图片加载慢"><a href="#3-图片加载慢" class="headerlink" title="3. 图片加载慢"></a>3. 图片加载慢</h4><ul>
+<li>考虑使用CDN加速</li>
+<li>压缩图片大小</li>
+<li>选择合适的图片格式</li>
+</ul>
+<h2 id="GitHub图床配置（推荐）"><a href="#GitHub图床配置（推荐）" class="headerlink" title="GitHub图床配置（推荐）"></a>GitHub图床配置（推荐）</h2><p>GitHub图床是更加稳定的选择，兼容性极好：</p>
+<h3 id="第一步：创建GitHub仓库"><a href="#第一步：创建GitHub仓库" class="headerlink" title="第一步：创建GitHub仓库"></a>第一步：创建GitHub仓库</h3><ol>
+<li>访问 <a href="https://github.com/">GitHub官网</a> 并登录</li>
+<li>点击右上角 <strong>+</strong> → <strong>New repository</strong></li>
+<li>填写仓库信息：<ul>
+<li>Repository name：<code>my-images</code></li>
+<li>设置为：<strong>Public</strong> （重要！）</li>
+<li>勾选：<strong>Initialize this repository with a README</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="第二步：生成GitHub-Token"><a href="#第二步：生成GitHub-Token" class="headerlink" title="第二步：生成GitHub Token"></a>第二步：生成GitHub Token</h3><ol>
+<li>点击头像 → <strong>Settings</strong></li>
+<li>左侧菜单选择 <strong>Developer settings</strong></li>
+<li>点击 <strong>Personal access tokens</strong> → <strong>Tokens (classic)</strong></li>
+<li>点击 <strong>Generate new token</strong> → <strong>Generate new token (classic)</strong></li>
+<li>配置Token：<ul>
+<li>Note: <code>PicGo图床使用</code></li>
+<li>Expiration: <code>No expiration</code></li>
+<li>Scopes: 只勾选 <strong>repo</strong> (完整仓库访问权限)</li>
+</ul>
+</li>
+<li>生成并复制token（以 <code>ghp_</code> 开头）</li>
+</ol>
+<h3 id="第三步：在PicGo中配置GitHub图床"><a href="#第三步：在PicGo中配置GitHub图床" class="headerlink" title="第三步：在PicGo中配置GitHub图床"></a>第三步：在PicGo中配置GitHub图床</h3><ol>
+<li>打开PicGo，进入 <strong>图床设置</strong></li>
+<li>选择 <strong>GitHub图床</strong> （内置，无需插件）</li>
+<li>填写配置：</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">仓库名: 你的GitHub用户名&#x2F;my-images
+分支名: main (或 master)
+Token: 刚才生成的GitHub token
+存储路径: img&#x2F;
+自定义域名: 留空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="GitHub图床优势"><a href="#GitHub图床优势" class="headerlink" title="GitHub图床优势"></a>GitHub图床优势</h3><ul>
+<li>✅ <strong>稳定可靠</strong> - GitHub提供全球CDN</li>
+<li>✅ <strong>无需插件</strong> - PicGo原生支持</li>
+<li>✅ <strong>免费使用</strong> - 单仓库100GB空间</li>
+<li>✅ <strong>版本控制</strong> - 完整的Git管理</li>
+<li>✅ <strong>全球访问</strong> - 世界各地都能访问</li>
+</ul>
+<h3 id="备用方案"><a href="#备用方案" class="headerlink" title="备用方案"></a>备用方案</h3><p>如果需要其他图床选择：</p>
+<ol>
+<li><strong>SM.MS</strong> - 免费图床服务</li>
+<li><strong>阿里云OSS</strong> - 企业级对象存储</li>
+<li><strong>腾讯云COS</strong> - 企业级对象存储</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本教程介绍了两种主流图床方案：</p>
+<h3 id="Gitee图床"><a href="#Gitee图床" class="headerlink" title="Gitee图床"></a>Gitee图床</h3><ul>
+<li>🚀 <strong>访问速度快</strong> - 国内服务器，低延迟</li>
+<li>💰 <strong>完全免费</strong> - 无存储和流量限制</li>
+<li>🔧 <strong>配置简单</strong> - PicGo插件支持</li>
+<li>🇨🇳 <strong>本土优势</strong> - 适合中文博客</li>
+</ul>
+<h3 id="GitHub图床（推荐）"><a href="#GitHub图床（推荐）" class="headerlink" title="GitHub图床（推荐）"></a>GitHub图床（推荐）</h3><ul>
+<li>🌍 <strong>全球稳定</strong> - GitHub提供可靠服务</li>
+<li>🔧 <strong>兼容性好</strong> - PicGo原生支持</li>
+<li>📦 <strong>大容量</strong> - 单仓库100GB空间</li>
+<li>🔒 <strong>版本控制</strong> - 完整的Git管理</li>
+</ul>
+<p>通过本教程的配置，你可以：</p>
+<ul>
+<li>大幅减少博客仓库大小</li>
+<li>提升图片加载速度</li>
+<li>实现图片的统一管理</li>
+<li>支持跨平台图片引用</li>
+</ul>
+<p>建议优先选择GitHub图床，稳定性更好。如果国内访问GitHub较慢，可以考虑Gitee作为备选方案。</p>
+<hr>
+<blockquote>
+<p>💡 <strong>小贴士</strong>：记得定期备份重要图片，虽然Gitee很稳定，但多一份备份总是好的！</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>图床</tag>
+        <tag>Gitee</tag>
+        <tag>GitHub</tag>
+        <tag>PicGo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于Django+Vue的婚姻法知识图谱问答系统</title>
+    <url>/2025/06/15/%E5%A9%9A%E6%81%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<p>本项目构建了一个集用户管理、内容发布、智能推荐、消息交互于一体的现代化婚恋平台。系统采用前后端分离架构，后端基于Django RESTful API，前端采用Vue.js+Element UI，并集成Neo4j图数据库和百度AI服务，实现了智能化的用户匹配和内容推荐功能。</p>
+<span id="more"></span>
+
+<h2 id="技术架构设计"><a href="#技术架构设计" class="headerlink" title="技术架构设计"></a>技术架构设计</h2><h3 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h3><p>系统采用经典的三层架构模式，结合微服务思想进行模块化设计：</p>
+<ul>
+<li><strong>表现层</strong>：Vue.js + Element UI 响应式前端界面</li>
+<li><strong>业务逻辑层</strong>：Django RESTful API 服务层</li>
+<li><strong>数据持久层</strong>：MySQL + Neo4j 混合数据库架构</li>
+</ul>
+<h3 id="核心技术栈"><a href="#核心技术栈" class="headerlink" title="核心技术栈"></a>核心技术栈</h3><p><strong>后端技术栈：</strong></p>
+<ul>
+<li>Django 2.2.8 - Web框架</li>
+<li>MySQL - 关系型数据库</li>
+<li>Neo4j - 图数据库</li>
+<li>JWT - 身份认证</li>
+<li>百度AI API - 智能问答</li>
+</ul>
+<p><strong>前端技术栈：</strong></p>
+<ul>
+<li>Vue.js 2.6.11 - 前端框架</li>
+<li>Element UI 2.15.6 - UI组件库</li>
+<li>Vue Router 3.5.2 - 路由管理</li>
+<li>Axios 0.21.1 - HTTP客户端</li>
+<li>ECharts 4.8.0 - 数据可视化</li>
+</ul>
+<h2 id="核心功能模块"><a href="#核心功能模块" class="headerlink" title="核心功能模块"></a>核心功能模块</h2><h3 id="1-用户管理系统"><a href="#1-用户管理系统" class="headerlink" title="1. 用户管理系统"></a>1. 用户管理系统</h3><h4 id="数据模型设计"><a href="#数据模型设计" class="headerlink" title="数据模型设计"></a>数据模型设计</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">User</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    uid <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">,</span> default<span class="token operator">=</span>uuid<span class="token punctuation">.</span>uuid4<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 用户唯一标识</span>
+    name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                      <span class="token comment"># 用户姓名</span>
+    username <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                   <span class="token comment"># 用户名</span>
+    password <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                   <span class="token comment"># 加密密码</span>
+    gender <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                      <span class="token comment"># 性别</span>
+    role <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                       <span class="token comment"># 用户角色</span>
+    image <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">1024</span><span class="token punctuation">)</span>                    <span class="token comment"># 头像URL</span>
+    age <span class="token operator">=</span> models<span class="token punctuation">.</span>IntegerField<span class="token punctuation">(</span><span class="token punctuation">)</span>                                  <span class="token comment"># 年龄</span>
+    mobile <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                     <span class="token comment"># 手机号</span>
+    email <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                      <span class="token comment"># 邮箱</span>
+    description <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">1024</span><span class="token punctuation">)</span>              <span class="token comment"># 个人描述</span>
+    deleted <span class="token operator">=</span> models<span class="token punctuation">.</span>IntegerField<span class="token punctuation">(</span>default<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>                     <span class="token comment"># 软删除标记</span>
+    createDate <span class="token operator">=</span> models<span class="token punctuation">.</span>DateField<span class="token punctuation">(</span>auto_now_add<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>             <span class="token comment"># 创建时间</span>
+    updateDate <span class="token operator">=</span> models<span class="token punctuation">.</span>DateField<span class="token punctuation">(</span>auto_now_add<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>             <span class="token comment"># 更新时间</span>
+    operator <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                   <span class="token comment"># 操作员</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
+        ordering <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'createDate'</span><span class="token punctuation">]</span>
+        db_table <span class="token operator">=</span> <span class="token string">'python_marry_user'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="安全认证机制"><a href="#安全认证机制" class="headerlink" title="安全认证机制"></a>安全认证机制</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">validate_service</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""用户登录验证服务"""</span>
+    data <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>request<span class="token punctuation">)</span>
+    username <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+    password <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+    
+    <span class="token comment"># MD5加盐加密</span>
+    md5 <span class="token operator">=</span> hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span>password<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    salt <span class="token operator">=</span> <span class="token string">"$1$asd"</span>  <span class="token comment"># 盐值</span>
+    md5<span class="token punctuation">.</span>update<span class="token punctuation">(</span>salt<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    encrypted_data <span class="token operator">=</span> md5<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># 用户验证</span>
+    _user <span class="token operator">=</span> User<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>username<span class="token operator">=</span>username<span class="token punctuation">,</span> password<span class="token operator">=</span>encrypted_data<span class="token punctuation">,</span> deleted<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">if</span> _user <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        <span class="token comment"># JWT Token生成</span>
+        payload <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"username"</span><span class="token punctuation">:</span> username<span class="token punctuation">&#125;</span>
+        _token <span class="token operator">=</span> jwt<span class="token punctuation">.</span>encode<span class="token punctuation">(</span>payload<span class="token operator">=</span>payload<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token string">"tk123"</span><span class="token punctuation">)</span>
+        
+        <span class="token keyword">return</span> JsonResponse<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+            <span class="token string">"success"</span><span class="token punctuation">:</span> <span class="token string">"true"</span><span class="token punctuation">,</span>
+            <span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string">"请求成功"</span><span class="token punctuation">,</span>
+            <span class="token string">"returnCode"</span><span class="token punctuation">:</span> <span class="token string">"200"</span><span class="token punctuation">,</span>
+            <span class="token string">"returnData"</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span>
+                <span class="token string">"logintoken"</span><span class="token punctuation">:</span> _token<span class="token punctuation">,</span>
+                <span class="token string">"user"</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span>
+                    <span class="token string">"id"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span><span class="token builtin">id</span><span class="token punctuation">,</span>
+                    <span class="token string">"uid"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>uid<span class="token punctuation">,</span>
+                    <span class="token string">"name"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+                    <span class="token string">"username"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>username<span class="token punctuation">,</span>
+                    <span class="token string">"gender"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>gender<span class="token punctuation">,</span>
+                    <span class="token string">"age"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>age<span class="token punctuation">,</span>
+                    <span class="token string">"role"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>role<span class="token punctuation">,</span>
+                    <span class="token string">"mobile"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>mobile<span class="token punctuation">,</span>
+                    <span class="token string">"email"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>email<span class="token punctuation">,</span>
+                    <span class="token string">"image"</span><span class="token punctuation">:</span> _user<span class="token punctuation">.</span>image
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-内容管理系统"><a href="#2-内容管理系统" class="headerlink" title="2. 内容管理系统"></a>2. 内容管理系统</h3><h4 id="内容模型设计"><a href="#内容模型设计" class="headerlink" title="内容模型设计"></a>内容模型设计</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Content</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    uid <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">,</span> default<span class="token operator">=</span>uuid<span class="token punctuation">.</span>uuid4<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                       <span class="token comment"># 内容标题</span>
+    classification <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>              <span class="token comment"># 分类ID</span>
+    image <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">1024</span><span class="token punctuation">)</span>                     <span class="token comment"># 封面图片</span>
+    description <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">1024</span><span class="token punctuation">)</span>               <span class="token comment"># 内容描述</span>
+    content <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">1024</span><span class="token punctuation">)</span>                   <span class="token comment"># 正文内容</span>
+    deleted <span class="token operator">=</span> models<span class="token punctuation">.</span>IntegerField<span class="token punctuation">(</span>default<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>                      <span class="token comment"># 软删除标记</span>
+    createDate <span class="token operator">=</span> models<span class="token punctuation">.</span>DateField<span class="token punctuation">(</span>auto_now_add<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>             <span class="token comment"># 创建时间</span>
+    updateDate <span class="token operator">=</span> models<span class="token punctuation">.</span>DateField<span class="token punctuation">(</span>auto_now_add<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>             <span class="token comment"># 更新时间</span>
+    operator <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>                   <span class="token comment"># 操作员</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
+        ordering <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'createDate'</span><span class="token punctuation">]</span>
+        db_table <span class="token operator">=</span> <span class="token string">'python_marry_content'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="分页查询优化"><a href="#分页查询优化" class="headerlink" title="分页查询优化"></a>分页查询优化</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">content_list_service</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""内容列表查询服务 - 支持分页和关联查询"""</span>
+    data <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>request<span class="token punctuation">)</span>
+    _pageSize <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'pageSize'</span><span class="token punctuation">]</span>
+    _currentPage <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'currentPage'</span><span class="token punctuation">]</span>
+    
+    <span class="token comment"># 基础查询</span>
+    <span class="token builtin">list</span> <span class="token operator">=</span> Content<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>deleted<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+    _list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    
+    <span class="token comment"># 关联查询优化 - 批量获取分类和用户信息</span>
+    classificationList <span class="token operator">=</span> Classification<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>deleted<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+    userList <span class="token operator">=</span> User<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>deleted<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> role<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># 构建映射字典，避免N+1查询问题</span>
+    _classification_dict <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    _user_dict <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> classificationList<span class="token punctuation">:</span>
+        _classification_dict<span class="token punctuation">[</span>item<span class="token punctuation">.</span>uid<span class="token punctuation">]</span> <span class="token operator">=</span> item<span class="token punctuation">.</span>name
+    
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> userList<span class="token punctuation">:</span>
+        _user_dict<span class="token punctuation">[</span>item<span class="token punctuation">.</span>uid<span class="token punctuation">]</span> <span class="token operator">=</span> item<span class="token punctuation">.</span>name
+    
+    <span class="token comment"># 数据组装</span>
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> <span class="token builtin">list</span><span class="token punctuation">:</span>
+        rest <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">'id'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span><span class="token builtin">id</span><span class="token punctuation">,</span>
+            <span class="token string">'uid'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>uid<span class="token punctuation">,</span>
+            <span class="token string">'name'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+            <span class="token string">'content'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>content<span class="token punctuation">,</span>
+            <span class="token string">'classification'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>classification<span class="token punctuation">,</span>
+            <span class="token string">'classificationName'</span><span class="token punctuation">:</span> _classification_dict<span class="token punctuation">.</span>get<span class="token punctuation">(</span>item<span class="token punctuation">.</span>classification<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">'description'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>description<span class="token punctuation">,</span>
+            <span class="token string">'image'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>image<span class="token punctuation">,</span>
+            <span class="token string">'createDate'</span><span class="token punctuation">:</span> item<span class="token punctuation">.</span>createDate<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y-%m-%d'</span><span class="token punctuation">)</span> <span class="token keyword">if</span> item<span class="token punctuation">.</span>createDate <span class="token keyword">else</span> <span class="token string">''</span>
+        <span class="token punctuation">&#125;</span>
+        _list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>rest<span class="token punctuation">)</span>
+    
+    <span class="token comment"># 分页逻辑</span>
+    page <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">"pageSize"</span><span class="token punctuation">:</span> _pageSize<span class="token punctuation">,</span>
+        <span class="token string">"total"</span><span class="token punctuation">:</span> <span class="token builtin">len</span><span class="token punctuation">(</span>_list<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">"currentPage"</span><span class="token punctuation">:</span> _currentPage
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">if</span> _pageSize <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        _start <span class="token operator">=</span> <span class="token punctuation">(</span>_currentPage <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> _pageSize
+        _end <span class="token operator">=</span> _currentPage <span class="token operator">*</span> _pageSize
+        _list <span class="token operator">=</span> _list<span class="token punctuation">[</span>_start<span class="token punctuation">:</span> _end<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-图数据库集成"><a href="#3-图数据库集成" class="headerlink" title="3. 图数据库集成"></a>3. 图数据库集成</h3><h4 id="Neo4j图数据库连接"><a href="#Neo4j图数据库连接" class="headerlink" title="Neo4j图数据库连接"></a>Neo4j图数据库连接</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MedicalGraph</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Neo4j图数据库连接类"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 图数据库连接配置</span>
+        self<span class="token punctuation">.</span>g <span class="token operator">=</span> Graph<span class="token punctuation">(</span><span class="token string">"bolt://localhost:7687"</span><span class="token punctuation">,</span> auth<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"neo4j"</span><span class="token punctuation">,</span> <span class="token string">"7508929hzq"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">create_relationship</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> user1_id<span class="token punctuation">,</span> user2_id<span class="token punctuation">,</span> relationship_type<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""创建用户关系"""</span>
+        query <span class="token operator">=</span> <span class="token triple-quoted-string string">"""
+        MATCH (u1:User &#123;id: $user1_id&#125;)
+        MATCH (u2:User &#123;id: $user2_id&#125;)
+        CREATE (u1)-[r:RELATIONSHIP_TYPE]->(u2)
+        RETURN r
+        """</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>g<span class="token punctuation">.</span>run<span class="token punctuation">(</span>query<span class="token punctuation">,</span> user1_id<span class="token operator">=</span>user1_id<span class="token punctuation">,</span> user2_id<span class="token operator">=</span>user2_id<span class="token punctuation">,</span> 
+                         RELATIONSHIP_TYPE<span class="token operator">=</span>relationship_type<span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">find_recommendations</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> user_id<span class="token punctuation">,</span> limit<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""基于图算法的用户推荐"""</span>
+        query <span class="token operator">=</span> <span class="token triple-quoted-string string">"""
+        MATCH (u:User &#123;id: $user_id&#125;)-[r1:INTEREST]->(i:Interest)
+        MATCH (i)&lt;-[r2:INTEREST]-(other:User)
+        WHERE other.id &lt;> $user_id
+        RETURN other, count(*) as common_interests
+        ORDER BY common_interests DESC
+        LIMIT $limit
+        """</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>g<span class="token punctuation">.</span>run<span class="token punctuation">(</span>query<span class="token punctuation">,</span> user_id<span class="token operator">=</span>user_id<span class="token punctuation">,</span> limit<span class="token operator">=</span>limit<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-AI智能问答集成"><a href="#4-AI智能问答集成" class="headerlink" title="4. AI智能问答集成"></a>4. AI智能问答集成</h3><h4 id="百度AI-API集成"><a href="#百度AI-API集成" class="headerlink" title="百度AI API集成"></a>百度AI API集成</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">query</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""百度AI智能问答接口"""</span>
+    url <span class="token operator">=</span> <span class="token string">"https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions_pro?access_token="</span> <span class="token operator">+</span> get_access_token<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    payload <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+        <span class="token string">"messages"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token string">"role"</span><span class="token punctuation">:</span> <span class="token string">"user"</span><span class="token punctuation">,</span>
+                <span class="token string">"content"</span><span class="token punctuation">:</span> message
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token string">"temperature"</span><span class="token punctuation">:</span> <span class="token number">0.95</span><span class="token punctuation">,</span>        <span class="token comment"># 创造性参数</span>
+        <span class="token string">"top_p"</span><span class="token punctuation">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>              <span class="token comment"># 核采样参数</span>
+        <span class="token string">"penalty_score"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>         <span class="token comment"># 重复惩罚</span>
+        <span class="token string">"enable_system_memory"</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+        <span class="token string">"disable_search"</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+        <span class="token string">"enable_citation"</span><span class="token punctuation">:</span> <span class="token boolean">False</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    
+    headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">&#125;</span>
+    response <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">,</span> data<span class="token operator">=</span>payload<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> response<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">get_access_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""获取百度AI访问令牌"""</span>
+    url <span class="token operator">=</span> <span class="token string">"https://aip.baidubce.com/oauth/2.0/token"</span>
+    params <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">"grant_type"</span><span class="token punctuation">:</span> <span class="token string">"client_credentials"</span><span class="token punctuation">,</span> 
+        <span class="token string">"client_id"</span><span class="token punctuation">:</span> API_KEY<span class="token punctuation">,</span> 
+        <span class="token string">"client_secret"</span><span class="token punctuation">:</span> SECRET_KEY
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token builtin">str</span><span class="token punctuation">(</span>requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> params<span class="token operator">=</span>params<span class="token punctuation">)</span><span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"access_token"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="5-前端架构设计"><a href="#5-前端架构设计" class="headerlink" title="5. 前端架构设计"></a>5. 前端架构设计</h3><h4 id="Vue组件化开发"><a href="#Vue组件化开发" class="headerlink" title="Vue组件化开发"></a>Vue组件化开发</h4><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
+  &lt;div id&#x3D;&quot;module&quot;&gt;
+    &lt;el-container&gt;
+      &lt;!-- 左侧导航组件 --&gt;
+      &lt;Nav &#x2F;&gt;
+      &lt;el-container&gt;
+        &lt;!-- 顶部导航栏 --&gt;
+        &lt;el-header style&#x3D;&quot;text-align: right; font-size: 12px&quot;&gt;
+          &lt;el-dropdown&gt;
+            &lt;i class&#x3D;&quot;el-icon-setting&quot; style&#x3D;&quot;margin-right: 15px;&quot;&gt;&lt;&#x2F;i&gt;
+            &lt;el-dropdown-menu slot&#x3D;&quot;dropdown&quot;&gt;
+              &lt;el-dropdown-item @click.native&#x3D;&quot;modifyPassword&quot;&gt;修改密码&lt;&#x2F;el-dropdown-item&gt;
+              &lt;el-dropdown-item @click.native&#x3D;&quot;logout&quot;&gt;退出登录&lt;&#x2F;el-dropdown-item&gt;
+            &lt;&#x2F;el-dropdown-menu&gt;
+          &lt;&#x2F;el-dropdown&gt;
+          &lt;span&gt;&#123;&#123;username&#125;&#125;&nbsp;&nbsp;&lt;&#x2F;span&gt;
+        &lt;&#x2F;el-header&gt;
+        &lt;!-- 主体内容区域 --&gt;
+        &lt;el-main&gt;
+          &lt;Breadcrumb &#x2F;&gt;
+          &lt;br &#x2F;&gt;
+          &lt;router-view &#x2F;&gt;
+        &lt;&#x2F;el-main&gt;
+      &lt;&#x2F;el-container&gt;
+    &lt;&#x2F;el-container&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import Nav from &quot;.&#x2F;Nav&quot;;
+import Breadcrumb from &quot;.&#x2F;Breadcrumb&quot;;
+import cryptoJs from &quot;crypto-js&quot;;
+
+export default &#123;
+  name: &#39;Home&#39;,
+  components: &#123; Nav, Breadcrumb &#125;,
+  data() &#123;
+    return &#123;
+      key: &quot;rest@126.com&quot;,           &#x2F;&#x2F; 加密密钥
+      dialogFormVisible: false,      &#x2F;&#x2F; 对话框显示状态
+      username: &quot;&quot;,                  &#x2F;&#x2F; 当前用户名
+      form: &#123;                        &#x2F;&#x2F; 表单数据
+        oldPassword: &quot;&quot;,
+        newPassword: &quot;&quot;,
+        confirmPassword: &quot;&quot;,
+      &#125;,
+      formLabelWidth: &quot;120px&quot;,
+      user: &#123;&#125;
+    &#125;;
+  &#125;,
+  created() &#123;
+    &#x2F;&#x2F; 从sessionStorage获取用户信息
+    this.username &#x3D; sessionStorage.getItem(&quot;username&quot;);
+    this.user &#x3D; JSON.parse(sessionStorage.getItem(&quot;user&quot;));
+  &#125;,
+  methods: &#123;
+    &#x2F;&#x2F; 密码加密方法
+    encryptDes(message) &#123;
+      const keyHex &#x3D; cryptoJs.enc.Utf8.parse(this.key);
+      const option &#x3D; &#123; 
+        mode: cryptoJs.mode.ECB, 
+        padding: cryptoJs.pad.Pkcs7 
+      &#125;;
+      const encrypted &#x3D; cryptoJs.DES.encrypt(message, keyHex, option);
+      return encrypted.toString();
+    &#125;,
+    
+    &#x2F;&#x2F; 用户登出
+    logout() &#123;
+      sessionStorage.removeItem(&quot;username&quot;);
+      sessionStorage.removeItem(&quot;loginToken&quot;);
+      this.$router.push(&quot;&#x2F;login&quot;);
+    &#125;
+  &#125;
+&#125;;
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="系统架构流程图"><a href="#系统架构流程图" class="headerlink" title="系统架构流程图"></a>系统架构流程图</h2><pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TB
+    A<span class="token text string">[用户请求]</span> <span class="token arrow operator">--></span> B<span class="token text string">[Vue.js前端]</span>
+    B <span class="token arrow operator">--></span> C<span class="token text string">[Axios HTTP请求]</span>
+    C <span class="token arrow operator">--></span> D<span class="token text string">[Django RESTful API]</span>
+    D <span class="token arrow operator">--></span> E<span class="token text string">[业务逻辑层]</span>
+    E <span class="token arrow operator">--></span> F<span class="token text string">[数据访问层]</span>
+    F <span class="token arrow operator">--></span> G<span class="token text string">[MySQL数据库]</span>
+    F <span class="token arrow operator">--></span> H<span class="token text string">[Neo4j图数据库]</span>
+    E <span class="token arrow operator">--></span> I<span class="token text string">[百度AI服务]</span>
+    E <span class="token arrow operator">--></span> J<span class="token text string">[文件上传服务]</span>
+    D <span class="token arrow operator">--></span> K<span class="token text string">[JWT认证]</span>
+    K <span class="token arrow operator">--></span> L<span class="token text string">[响应数据]</span>
+    L <span class="token arrow operator">--></span> B
+    B <span class="token arrow operator">--></span> M<span class="token text string">[Element UI渲染]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="技术亮点与创新"><a href="#技术亮点与创新" class="headerlink" title="技术亮点与创新"></a>技术亮点与创新</h2><h3 id="1-混合数据库架构"><a href="#1-混合数据库架构" class="headerlink" title="1. 混合数据库架构"></a>1. 混合数据库架构</h3><ul>
+<li><strong>关系型数据库</strong>：存储用户基础信息、内容数据等结构化数据</li>
+<li><strong>图数据库</strong>：处理用户关系、兴趣匹配、推荐算法等复杂关系数据</li>
+<li><strong>优势</strong>：充分发挥两种数据库的优势，实现数据的高效存储和查询</li>
+</ul>
+<h3 id="2-智能推荐算法"><a href="#2-智能推荐算法" class="headerlink" title="2. 智能推荐算法"></a>2. 智能推荐算法</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">calculate_similarity_score</span><span class="token punctuation">(</span>user1_interests<span class="token punctuation">,</span> user2_interests<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""计算用户兴趣相似度"""</span>
+    common_interests <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span>user1_interests<span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token builtin">set</span><span class="token punctuation">(</span>user2_interests<span class="token punctuation">)</span>
+    total_interests <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span>user1_interests<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token builtin">set</span><span class="token punctuation">(</span>user2_interests<span class="token punctuation">)</span>
+    
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>total_interests<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+    
+    <span class="token comment"># Jaccard相似度计算</span>
+    similarity <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>common_interests<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token builtin">len</span><span class="token punctuation">(</span>total_interests<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> similarity <span class="token operator">*</span> <span class="token number">100</span>  <span class="token comment"># 转换为百分比</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-安全机制设计"><a href="#3-安全机制设计" class="headerlink" title="3. 安全机制设计"></a>3. 安全机制设计</h3><ul>
+<li><strong>密码加密</strong>：MD5加盐加密，防止彩虹表攻击</li>
+<li><strong>JWT认证</strong>：无状态身份验证，支持跨域访问</li>
+<li><strong>CORS配置</strong>：精确控制跨域请求来源</li>
+<li><strong>软删除</strong>：数据安全删除，支持数据恢复</li>
+</ul>
+<h3 id="4-性能优化策略"><a href="#4-性能优化策略" class="headerlink" title="4. 性能优化策略"></a>4. 性能优化策略</h3><ul>
+<li><strong>分页查询</strong>：避免大数据量查询导致的性能问题</li>
+<li><strong>关联查询优化</strong>：使用字典映射避免N+1查询问题</li>
+<li><strong>缓存机制</strong>：对频繁查询的数据进行缓存</li>
+<li><strong>异步处理</strong>：AI服务调用采用异步处理</li>
+</ul>
+<h2 id="系统优化建议"><a href="#系统优化建议" class="headerlink" title="系统优化建议"></a>系统优化建议</h2><h3 id="1-数据库优化"><a href="#1-数据库优化" class="headerlink" title="1. 数据库优化"></a>1. 数据库优化</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 添加数据库索引</span>
+<span class="token keyword">class</span> <span class="token class-name">User</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ... 其他字段</span>
+    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
+        indexes <span class="token operator">=</span> <span class="token punctuation">[</span>
+            models<span class="token punctuation">.</span>Index<span class="token punctuation">(</span>fields<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            models<span class="token punctuation">.</span>Index<span class="token punctuation">(</span>fields<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'mobile'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            models<span class="token punctuation">.</span>Index<span class="token punctuation">(</span>fields<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'email'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            models<span class="token punctuation">.</span>Index<span class="token punctuation">(</span>fields<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'deleted'</span><span class="token punctuation">,</span> <span class="token string">'createDate'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-缓存机制"><a href="#2-缓存机制" class="headerlink" title="2. 缓存机制"></a>2. 缓存机制</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>core<span class="token punctuation">.</span>cache <span class="token keyword">import</span> cache
+
+<span class="token keyword">def</span> <span class="token function">get_user_by_id</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""带缓存的用户查询"""</span>
+    cache_key <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"user_</span><span class="token interpolation"><span class="token punctuation">&#123;</span>user_id<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span>
+    user <span class="token operator">=</span> cache<span class="token punctuation">.</span>get<span class="token punctuation">(</span>cache_key<span class="token punctuation">)</span>
+    
+    <span class="token keyword">if</span> user <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        user <span class="token operator">=</span> User<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token builtin">id</span><span class="token operator">=</span>user_id<span class="token punctuation">)</span>
+        cache<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span>cache_key<span class="token punctuation">,</span> user<span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span>  <span class="token comment"># 缓存5分钟</span>
+    
+    <span class="token keyword">return</span> user<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-异步任务处理"><a href="#3-异步任务处理" class="headerlink" title="3. 异步任务处理"></a>3. 异步任务处理</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> celery <span class="token keyword">import</span> Celery
+
+app <span class="token operator">=</span> Celery<span class="token punctuation">(</span><span class="token string">'marry_system'</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>task</span>
+<span class="token keyword">def</span> <span class="token function">send_recommendation_email</span><span class="token punctuation">(</span>user_id<span class="token punctuation">,</span> recommendations<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""异步发送推荐邮件"""</span>
+    <span class="token comment"># 邮件发送逻辑</span>
+    <span class="token keyword">pass</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>task</span>
+<span class="token keyword">def</span> <span class="token function">update_user_recommendations</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""异步更新用户推荐列表"""</span>
+    <span class="token comment"># 推荐算法计算</span>
+    <span class="token keyword">pass</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="学习成果总结"><a href="#学习成果总结" class="headerlink" title="学习成果总结"></a>学习成果总结</h2><h3 id="技术技能提升"><a href="#技术技能提升" class="headerlink" title="技术技能提升"></a>技术技能提升</h3><ol>
+<li><strong>全栈开发能力</strong>：掌握了Django+Vue.js前后端分离开发模式</li>
+<li><strong>数据库设计</strong>：学会了关系型数据库与图数据库的混合使用</li>
+<li><strong>API设计</strong>：掌握了RESTful API的设计原则和最佳实践</li>
+<li><strong>安全编程</strong>：理解了Web应用安全机制和加密算法应用</li>
+<li><strong>性能优化</strong>：学会了数据库查询优化和缓存机制设计</li>
+</ol>
+<h3 id="系统设计亮点"><a href="#系统设计亮点" class="headerlink" title="系统设计亮点"></a>系统设计亮点</h3><ol>
+<li><strong>模块化架构</strong>：采用服务层模式，代码结构清晰，易于维护</li>
+<li><strong>智能推荐</strong>：集成图数据库和AI服务，实现智能化用户匹配</li>
+<li><strong>安全可靠</strong>：完善的认证授权机制和数据加密保护</li>
+<li><strong>扩展性强</strong>：模块化设计支持功能快速扩展</li>
+<li><strong>用户体验</strong>：响应式前端设计，提供良好的交互体验</li>
+</ol>
+<h3 id="项目价值"><a href="#项目价值" class="headerlink" title="项目价值"></a>项目价值</h3><p>本系统不仅是一个技术实践项目，更是一个完整的企业级应用解决方案。通过这个项目，深入理解了现代Web应用的架构设计、数据库优化、安全机制等核心技术，为后续的大型项目开发奠定了坚实基础。</p>
+<p>系统采用的技术栈和架构模式都是当前业界的主流选择，具有很强的实用性和学习价值。特别是图数据库和AI服务的集成应用，体现了现代Web应用向智能化方向发展的趋势。</p>
+]]></content>
+      <categories>
+        <category>技术分享</category>
+        <category>全栈开发</category>
+      </categories>
+      <tags>
+        <tag>Vue.js</tag>
+        <tag>Django</tag>
+        <tag>图数据库</tag>
+        <tag>人工智能</tag>
+        <tag>系统架构</tag>
+        <tag>前后端分离</tag>
       </tags>
   </entry>
   <entry>
