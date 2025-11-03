@@ -2524,7 +2524,7 @@ pre[class*='language-'] .token.italic {
   flex: 1 auto;
   margin: 0 auto;
   padding: 40px 15px;
-  max-width: 70%;
+  max-width: 80%;
   width: 100%;
 }
 @media screen and (max-width: 900px) {

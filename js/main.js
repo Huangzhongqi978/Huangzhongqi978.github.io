@@ -829,6 +829,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * 处理 Gitee 图片防盗链
    * 为所有 Gitee 图片添加 referrerPolicy="no-referrer" 属性
    * 移除可能存在的 crossorigin 属性以避免 CORS 问题
+   * 同时处理 CSS background-image 中的 Gitee 图片
    */
   const fixGiteeImageReferrer = () => {
     const processImage = (img) => {
@@ -843,6 +844,67 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
+    // 处理 CSS background-image 中的 Gitee 图片
+    const processBackgroundImages = () => {
+      // 使用 Set 来存储已处理的图片 URL，避免重复处理
+      const processedUrls = new Set()
+      
+      // 首先检查内联样式中包含 gitee.com 的元素（性能更好）
+      const elementsWithStyle = document.querySelectorAll('[style*="background-image"], [style*="gitee.com"]')
+      
+      elementsWithStyle.forEach(element => {
+        const inlineStyle = element.getAttribute('style') || ''
+        const bgMatch = inlineStyle.match(/background-image:\s*url\(['"]?([^'")]+)['"]?\)/i)
+        
+        if (bgMatch && bgMatch[1] && bgMatch[1].includes('gitee.com')) {
+          const imageUrl = bgMatch[1]
+          if (!processedUrls.has(imageUrl)) {
+            processedUrls.add(imageUrl)
+            
+            // 创建隐藏的 Image 对象预加载，确保图片能正确加载
+            // 由于 CSS 不支持 referrerPolicy，依赖全局 meta referrer policy
+            const img = new Image()
+            img.referrerPolicy = 'no-referrer'
+            img.onload = () => {
+              // 图片加载成功，确保元素背景图片正常显示
+              const currentBg = window.getComputedStyle(element).backgroundImage
+              if (!currentBg || currentBg === 'none' || !currentBg.includes(imageUrl)) {
+                element.style.backgroundImage = `url(${imageUrl})`
+              }
+            }
+            img.onerror = () => {
+              console.warn('Gitee 背景图片加载失败:', imageUrl)
+            }
+            img.src = imageUrl
+          }
+        }
+      })
+      
+      // 检查特定元素的计算样式（如 header、footer 等常用背景容器）
+      const bgContainers = document.querySelectorAll('#page-header, #web_bg, #footer, header, [id*="header"], [id*="bg"]')
+      bgContainers.forEach(element => {
+        try {
+          const computedStyle = window.getComputedStyle(element)
+          const bgImage = computedStyle.backgroundImage
+          if (bgImage && bgImage !== 'none') {
+            const urlMatch = bgImage.match(/url\(['"]?([^'")]+)['"]?\)/i)
+            if (urlMatch && urlMatch[1] && urlMatch[1].includes('gitee.com')) {
+              const imageUrl = urlMatch[1]
+              if (!processedUrls.has(imageUrl)) {
+                processedUrls.add(imageUrl)
+                // 预加载图片以确保能正确加载
+                const img = new Image()
+                img.referrerPolicy = 'no-referrer'
+                img.src = imageUrl
+              }
+            }
+          }
+        } catch (e) {
+          // 忽略可能的样式读取错误
+        }
+      })
+    }
+    
     const processImages = () => {
       // 处理所有图片（包括已加载和懒加载）
       document.querySelectorAll('img').forEach(img => {
@@ -854,14 +916,25 @@ document.addEventListener('DOMContentLoaded', () => {
           processImage(img)
         }
       })
+      
+      // 处理 CSS background-image 中的 Gitee 图片
+      processBackgroundImages()
     }
     
     // 立即执行一次
     processImages()
     
+    // 延迟执行一次，确保 DOM 完全加载后再处理背景图片
+    setTimeout(() => {
+      processBackgroundImages()
+    }, 100)
+    
     // 在 PJAX 导航完成后也执行
     btf.addGlobalFn('pjaxComplete', () => {
       processImages()
+      setTimeout(() => {
+        processBackgroundImages()
+      }, 100)
     }, 'fixGiteeImage')
     
     // 监听懒加载图片加载完成事件

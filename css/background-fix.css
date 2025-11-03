@@ -32,10 +32,12 @@ main#content-inner.layout {
   background: transparent !important;
 }
 
-/* 确保 footer 背景透明，让网站背景图片透过来 */
+/* 确保 footer 背景半透明，让网站背景图片透过来，同时保持可读性 */
 #footer {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
 }
 
 #footer:before {

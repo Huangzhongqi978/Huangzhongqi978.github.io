@@ -1,0 +1,32 @@
+/* 确保 header 在没有顶部图片时背景完全透明 - 覆盖主题默认的紫色背景 */
+#page-header.not-top-img,
+header#page-header.not-top-img {
+  background-color: transparent !important;
+  background: transparent !important;
+  background-image: none !important;
+  background-size: unset !important;
+  background-position: unset !important;
+  background-repeat: unset !important;
+}
+
+/* 覆盖所有可能的内联样式和计算样式 */
+#page-header.not-top-img[style],
+header#page-header.not-top-img[style] {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* 确保没有背景图片时，header 完全透明 */
+#page-header.not-top-img:not([style*="background-image"]) {
+  background-color: transparent !important;
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* 针对深色模式也设置透明 */
+html[data-theme="dark"] #page-header.not-top-img,
+html[data-theme="dark"] header#page-header.not-top-img {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
