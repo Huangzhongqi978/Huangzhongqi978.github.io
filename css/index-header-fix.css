@@ -1,0 +1,10 @@
+/* 修复首页背景图片显示问题 - 当有背景图片时，背景色设为透明 */
+#page-header.full_page {
+  background-color: transparent !important;
+}
+
+/* 确保背景图片正确显示 */
+#page-header.full_page[style*="background-image"] {
+  background-color: transparent !important;
+}
+

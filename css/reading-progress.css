@@ -1,0 +1,54 @@
+/* 阅读进度条样式 */
+#reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  z-index: 9999;
+  background: linear-gradient(
+    90deg,
+    #ff6b6b,
+    #ee5a52,
+    #ffa07a,
+    #ffd700,
+    #98fb98,
+    #20b2aa,
+    #87ceeb,
+    #4682b4,
+    #9370db,
+    #ba55d3,
+    #ff69b4,
+    #ff1493
+  );
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease infinite;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: width 0.1s ease-out;
+}
+
+/* 彩色渐变动画 */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 暗色模式下的调整 */
+[data-theme='dark'] #reading-progress-bar {
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  #reading-progress-bar {
+    height: 2px;
+  }
+}
+

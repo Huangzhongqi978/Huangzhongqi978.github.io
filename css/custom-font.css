@@ -1,0 +1,89 @@
+/* 增大网站标题字体 */
+#site-title {
+  font-size: 2.2em !important; /* 从1.85em增大到2.2em */
+}
+
+@media (min-width: 768px) {
+  #site-title {
+    font-size: 3.4em !important; /* 从2.85em增大到3.4em */
+  }
+}
+
+/* 增大副标题字体 */
+#site-subtitle {
+  font-size: 1.35em !important; /* 从1.15em增大到1.35em */
+}
+
+@media (min-width: 768px) {
+  #site-subtitle {
+    font-size: 2.0em !important; /* 从1.72em增大到2.0em */
+  }
+}
+
+/* 增大文章标题字体 */
+.article-container h1 {
+  font-size: 2.0em !important;
+  line-height: 1.5;
+}
+
+.article-container h2 {
+  font-size: 1.75em !important;
+  line-height: 1.5;
+}
+
+.article-container h3 {
+  font-size: 1.5em !important;
+  line-height: 1.5;
+}
+
+.article-container h4 {
+  font-size: 1.35em !important;
+  line-height: 1.5;
+}
+
+.article-container h5 {
+  font-size: 1.2em !important;
+  line-height: 1.5;
+}
+
+.article-container h6 {
+  font-size: 1.1em !important;
+  line-height: 1.5;
+}
+
+/* 增大文章标题字体 - 兼容butterfly主题 */
+#article-container h1,
+.post-container h1,
+.container h1 {
+  font-size: 2.0em !important;
+}
+
+#article-container h2,
+.post-container h2,
+.container h2 {
+  font-size: 1.75em !important;
+}
+
+#article-container h3,
+.post-container h3,
+.container h3 {
+  font-size: 1.5em !important;
+}
+
+#article-container h4,
+.post-container h4,
+.container h4 {
+  font-size: 1.35em !important;
+}
+
+#article-container h5,
+.post-container h5,
+.container h5 {
+  font-size: 1.2em !important;
+}
+
+#article-container h6,
+.post-container h6,
+.container h6 {
+  font-size: 1.1em !important;
+}
