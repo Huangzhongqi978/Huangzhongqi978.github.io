@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://huangzhongqi978.top/tags/cpp.html</loc>
+    
+    <lastmod>2025-11-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://huangzhongqi978.top/2023/07/10/c++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98%E7%BB%83%E4%B9%A0/</loc>
+    
+    <lastmod>2025-11-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://huangzhongqi978.top/2024/10/02/%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/</loc>
+    
+    <lastmod>2025-11-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://huangzhongqi978.top/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/</loc>
     
     <lastmod>2025-11-04</lastmod>
@@ -20,15 +47,6 @@
   </url>
   
   <url>
-    <loc>https://huangzhongqi978.top/2024/10/02/%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/</loc>
-    
-    <lastmod>2025-11-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://huangzhongqi978.top/2025/01/27/AI%E6%99%BA%E8%83%BD%E7%AD%94%E9%A2%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</loc>
     
     <lastmod>2025-11-04</lastmod>
@@ -39,15 +57,6 @@
   
   <url>
     <loc>https://huangzhongqi978.top/categories/</loc>
-    
-    <lastmod>2025-11-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://huangzhongqi978.top/tags/CV.html</loc>
     
     <lastmod>2025-11-03</lastmod>
     
@@ -147,15 +156,6 @@
   
   <url>
     <loc>https://huangzhongqi978.top/tags/C++.html</loc>
-    
-    <lastmod>2025-11-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://huangzhongqi978.top/tags/cpp.html</loc>
     
     <lastmod>2025-11-03</lastmod>
     
@@ -381,6 +381,13 @@
   </url>
   
   <url>
+    <loc>https://huangzhongqi978.top/tags/cpp/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://huangzhongqi978.top/tags/yolo%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -437,6 +444,34 @@
   </url>
   
   <url>
+    <loc>https://huangzhongqi978.top/tags/%E5%9B%BE%E5%BA%8A/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://huangzhongqi978.top/tags/Gitee/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://huangzhongqi978.top/tags/GitHub/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://huangzhongqi978.top/tags/PicGo/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://huangzhongqi978.top/tags/Django/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -466,34 +501,6 @@
   
   <url>
     <loc>https://huangzhongqi978.top/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</loc>
-    <lastmod>2025-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://huangzhongqi978.top/tags/%E5%9B%BE%E5%BA%8A/</loc>
-    <lastmod>2025-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://huangzhongqi978.top/tags/Gitee/</loc>
-    <lastmod>2025-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://huangzhongqi978.top/tags/GitHub/</loc>
-    <lastmod>2025-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://huangzhongqi978.top/tags/PicGo/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -593,14 +600,14 @@
   </url>
   
   <url>
-    <loc>https://huangzhongqi978.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</loc>
+    <loc>https://huangzhongqi978.top/categories/%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://huangzhongqi978.top/categories/ego/</loc>
+    <loc>https://huangzhongqi978.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -614,7 +621,7 @@
   </url>
   
   <url>
-    <loc>https://huangzhongqi978.top/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/</loc>
+    <loc>https://huangzhongqi978.top/categories/ego/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -628,7 +635,7 @@
   </url>
   
   <url>
-    <loc>https://huangzhongqi978.top/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://huangzhongqi978.top/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -649,7 +656,7 @@
   </url>
   
   <url>
-    <loc>https://huangzhongqi978.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/NLP/</loc>
+    <loc>https://huangzhongqi978.top/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -657,6 +664,13 @@
   
   <url>
     <loc>https://huangzhongqi978.top/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/AI%E5%BA%94%E7%94%A8/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://huangzhongqi978.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/NLP/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

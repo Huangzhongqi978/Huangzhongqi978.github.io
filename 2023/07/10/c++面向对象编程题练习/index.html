@@ -1,0 +1,2121 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><meta name="referrer" content="no-referrer"><title>C++面向对象程序设计编程题 | 奇点智库 SingularityMind</title><meta name="author" content="HuangZhongqi"><meta name="copyright" content="HuangZhongqi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f5f0fa"><meta name="description" content="c++面向对象编程题精选收录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++面向对象程序设计编程题">
+<meta property="og:url" content="https://huangzhongqi978.top/2023/07/10/c++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98%E7%BB%83%E4%B9%A0/">
+<meta property="og:site_name" content="奇点智库 SingularityMind">
+<meta property="og:description" content="c++面向对象编程题精选收录">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/huangzhongqi776/my-images/raw/master/20251104230155332.png">
+<meta property="article:published_time" content="2023-07-10T07:59:31.000Z">
+<meta property="article:modified_time" content="2025-11-04T15:16:56.895Z">
+<meta property="article:author" content="HuangZhongqi">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/huangzhongqi776/my-images/raw/master/20251104230155332.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "C++面向对象程序设计编程题",
+  "url": "https://huangzhongqi978.top/2023/07/10/c++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98%E7%BB%83%E4%B9%A0/",
+  "image": "https://gitee.com/huangzhongqi776/my-images/raw/master/20251104230155332.png",
+  "datePublished": "2023-07-10T07:59:31.000Z",
+  "dateModified": "2025-11-04T15:16:56.895Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "HuangZhongqi",
+      "url": "https://huangzhongqi978.top"
+    }
+  ]
+}</script><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/img/logo.png"><link rel="icon" type="image/png" sizes="16x16" href="/img/logo.png"><link rel="icon" type="image/png" href="/img/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/img/logo.png"><link rel="apple-touch-icon" href="/img/logo.png"><link rel="canonical" href="https://huangzhongqi978.top/2023/07/10/c++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98%E7%BB%83%E4%B9%A0/"><link rel="preconnect" href="//unpkg.com"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="/css/qr-modal.css"><link rel="stylesheet" href="/css/reading-progress.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        try {
+          const parsed = JSON.parse(itemStr)
+          // 如果是新格式（包含 value 和 expiry）
+          if (parsed && typeof parsed === 'object' && 'value' in parsed) {
+            if ('expiry' in parsed && Date.now() > parsed.expiry) {
+              localStorage.removeItem(key)
+              return undefined
+            }
+            return parsed.value
+          }
+          // 如果是旧格式（纯字符串），直接返回
+          return parsed
+        } catch (e) {
+          // 如果不是有效的 JSON，可能是旧格式的字符串值，直接返回
+          return itemStr
+        }
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#2d0a3d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f5f0fa')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C++面向对象程序设计编程题',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}
+window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile: false };</script><link rel="stylesheet" href="/css/custom-font.css"><link rel="stylesheet" href="/css/index-header-fix.css"><link rel="stylesheet" href="/css/background-fix.css"><link rel="stylesheet" href="/css/header-transparent.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/bg.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20251104230155332.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">奇点智库 SingularityMind</span></a><a class="nav-page-title" href="/"><span class="site-name">C++面向对象程序设计编程题</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">C++面向对象程序设计编程题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-10T07:59:31.000Z" title="发表于 2023-07-10 15:59:31">2023-07-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-04T15:16:56.895Z" title="更新于 2025-11-04 23:16:56">2025-11-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/">自学笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">9.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>50分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>c++面向对象编程题精选收录</p>
+<span id="more"></span>
+
+<h1 id="c-面向对象程序设计"><a href="#c-面向对象程序设计" class="headerlink" title="c++面向对象程序设计"></a>c++面向对象程序设计</h1><h2 id="1-函数"><a href="#1-函数" class="headerlink" title="1.函数"></a>1.函数</h2><p>(1)编写一个函数，计算直角坐标系中点 a(x0，y0)到点 b(x1，y1)的距离。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+
+double calculateDistance(double x0, double y0, double x1, double y1) &#123;
+    return sqrt((x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0));
+&#125;
+
+int main() &#123;
+    double x0, y0, x1, y1;
+    cin &gt;&gt; x0 &gt;&gt; y0 &gt;&gt; x1 &gt;&gt; y1;
+    cout &lt;&lt; calculateDistance(x0, y0, x1, y1) &lt;&lt; endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(2)求 a!+b!+c!的值，其中求n!要用一个函数实现，通过主函数输入a，b和c的值，并在主函数中输出计算的结果。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+
+long long factorial(int n) &#123;
+    if (n &#x3D;&#x3D; 0 || n &#x3D;&#x3D; 1) &#123;
+        return 1;
+    &#125;
+    long long result &#x3D; 1;
+    for (int i &#x3D; 2; i &lt;&#x3D; n; ++i) &#123;
+        result *&#x3D; i;
+    &#125;
+    return result;
+&#125;
+
+int main() &#123;
+    int a, b, c;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    cout &lt;&lt; factorial(a) + factorial(b) + factorial(c) &lt;&lt; endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>(3)编写一个函数。该函数读入一个整数，并判断这个整数是否为一个回文数字。例如4，44，434，4334，43534都是回文数字。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+
+bool isPalindrome(int num) &#123;
+    int original &#x3D; num, reversed &#x3D; 0, remainder;
+    while (num !&#x3D; 0) &#123;
+        remainder &#x3D; num % 10;
+        reversed &#x3D; reversed * 10 + remainder;
+        num &#x2F;&#x3D; 10;
+    &#125;
+    return original &#x3D;&#x3D; reversed;
+&#125;
+
+int main() &#123;
+    int num;
+    cin &gt;&gt; num;
+    if (isPalindrome(num)) &#123;
+        cout &lt;&lt; num &lt;&lt; &quot; 是回文数&quot; &lt;&lt; endl;
+    &#125; else &#123;
+        cout &lt;&lt; num &lt;&lt; &quot; 不是回文数&quot; &lt;&lt; endl;
+    &#125;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(4)编写一个程序，为选修3，4和5门课程的学生计算平均分，其中求平均分要用重载函数实现。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+
+double average(int a, int b, int c) &#123;
+    return (a + b + c) &#x2F; 3.0;
+&#125;
+
+double average(double a, double b, double c) &#123;
+    return (a + b + c) &#x2F; 3.0;
+&#125;
+
+int main() &#123;
+    int choice;
+    cin &gt;&gt; choice;
+    
+    if (choice &#x3D;&#x3D; 1) &#123;
+        int a, b, c;
+        cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+        cout &lt;&lt; average(a, b, c) &lt;&lt; endl;
+    &#125; else if (choice &#x3D;&#x3D; 2) &#123;
+        double a, b, c;
+        cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+        cout &lt;&lt; average(a, b, c) &lt;&lt; endl;
+    &#125;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(5)用递归方法将一个整数n转换成字符串。例如，输入512，应输出字符串”512”</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+std::string intToString(int n) &#123;
+    if (n &#x3D;&#x3D; 0) return &quot;0&quot;;  
+    if (n &lt; 0) return &quot;-&quot; + intToString(-n);  
+    if (n &lt; 10) return std::string(1, &#39;0&#39; + n);  
+    return intToString(n &#x2F; 10) + std::string(1, &#39;0&#39; + n % 10);  
+&#125;
+
+int main() &#123;
+    int n;
+    cin &gt;&gt; n;
+    cout &lt;&lt; intToString(n) &lt;&lt; endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(6)编写一个函数。该函数读入一个整数，然后将这个整数上每个位的数字按照相反的<br>顺序输出。例如输入的整数为12345，输出结果为54321。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+
+void reverseNumber(int n) &#123;
+    while (n !&#x3D; 0) &#123;
+        cout &lt;&lt; n % 10;
+        n &#x2F;&#x3D; 10;
+    &#125;
+&#125;
+
+int main() &#123;
+    int n;
+    cin &gt;&gt; n;
+    reverseNumber(n);
+    cout &lt;&lt; endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(7)输入3个数字，数字可以为整形或浮点型，分别编写函数来求解3个数字的最大值最小值和平均值，要求在主函数中完成数字的输入和计算结果的输出。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+template &lt;typename T&gt;
+T findMax(T a, T b, T c) &#123;
+    return std::max(&#123;a, b, c&#125;);
+&#125;
+
+template &lt;typename T&gt;
+T findMin(T a, T b, T c) &#123;
+    return std::min(&#123;a, b, c&#125;);
+&#125;
+
+template &lt;typename T&gt;
+double findAverage(T a, T b, T c) &#123;
+    return (a + b + c) &#x2F; 3.0;
+&#125;
+
+int main() &#123;
+    int type;
+    cin &gt;&gt; type;
+
+    if (type &#x3D;&#x3D; 1) &#123;
+        int a, b, c;
+        cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+        cout &lt;&lt; findMax(a, b, c) &lt;&lt; endl;
+        cout &lt;&lt; findMin(a, b, c) &lt;&lt; endl;
+        cout &lt;&lt; findAverage(a, b, c) &lt;&lt; endl;
+    &#125; else if (type &#x3D;&#x3D; 2) &#123;
+        double a, b, c;
+        cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+        cout &lt;&lt; findMax(a, b, c) &lt;&lt; endl;
+        cout &lt;&lt; findMin(a, b, c) &lt;&lt; endl;
+        cout &lt;&lt; findAverage(a, b, c) &lt;&lt; endl;
+    &#125;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="2-构造数据类型"><a href="#2-构造数据类型" class="headerlink" title="2.构造数据类型"></a>2.构造数据类型</h2><p>(1)编写函数，完成指定二维数组(3*3)的转置，即行列对换。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+
+void transpose(int arr[3][3]) &#123;
+    int temp[3][3];
+    for (int i &#x3D; 0; i &lt; 3; ++i) &#123;
+        for (int j &#x3D; 0; j &lt; 3; ++j) &#123;
+            temp[j][i] &#x3D; arr[i][j];
+        &#125;
+    &#125;
+    &#x2F;&#x2F; 输出转置后的数组
+    cout &lt;&lt; &quot;转置后的数组: &quot; &lt;&lt; endl;
+    for (int i &#x3D; 0; i &lt; 3; ++i) &#123;
+        for (int j &#x3D; 0; j &lt; 3; ++j) &#123;
+            cout &lt;&lt; temp[i][j] &lt;&lt; &quot; &quot;;
+        &#125;
+        cout &lt;&lt; endl;
+    &#125;
+&#125;
+
+int main() &#123;
+    int arr[3][3] &#x3D; &#123;&#123;1, 2, 3&#125;, &#123;4, 5, 6&#125;, &#123;7, 8, 9&#125;&#125;;
+    transpose(arr);
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(2)编写一个程序，要求当输入一个数字月份时，程序输出该月的英文名称。例如输入5 时，程序输出“May”，要求用指针数组实现。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+
+void printMonthName(int month) &#123;
+    const char* months[] &#x3D; &#123;&quot;&quot;, &quot;January&quot;, &quot;February&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;August&quot;, &quot;September&quot;, &quot;October&quot;, &quot;November&quot;, &quot;December&quot;&#125;;
+    if (month &gt;&#x3D; 1 &amp;&amp; month &lt;&#x3D; 12) &#123;
+        cout &lt;&lt; months[month] &lt;&lt; endl;
+    &#125; else &#123;
+        cout &lt;&lt; &quot;无效月份&quot; &lt;&lt; endl;
+    &#125;
+&#125;
+
+int main() &#123;
+    int month;
+    cout &lt;&lt; &quot;请输入月份(1-12): &quot;;
+    cin &gt;&gt; month;
+    printMonthName(month);
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(3)编写一个程序，要求分别输入5个学生的3科成绩，并输出平均成绩最高的学生的姓名及各科成绩。要求用结构体数组实现。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+struct Student &#123;
+    string name;
+    int scores[3];
+    double average;
+&#125;;
+
+void calculateAverage(Student&amp; student) &#123;
+    student.average &#x3D; (student.scores[0] + student.scores[1] + student.scores[2]) &#x2F; 3.0;
+&#125;
+
+int main() &#123;
+    Student students[5];
+    double maxAverage &#x3D; 0;
+    int maxIndex &#x3D; 0;
+
+    &#x2F;&#x2F; 输入5个学生的姓名和成绩
+    for (int i &#x3D; 0; i &lt; 5; ++i) &#123;
+        cout &lt;&lt; &quot;请输入学生 &quot; &lt;&lt; i + 1 &lt;&lt; &quot; 的姓名: &quot;;
+        cin &gt;&gt; students[i].name;
+        cout &lt;&lt; &quot;请输入学生 &quot; &lt;&lt; i + 1 &lt;&lt; &quot; 的三科成绩: &quot;;
+        cin &gt;&gt; students[i].scores[0] &gt;&gt; students[i].scores[1] &gt;&gt; students[i].scores[2];
+        calculateAverage(students[i]);
+        if (students[i].average &gt; maxAverage) &#123;
+            maxAverage &#x3D; students[i].average;
+            maxIndex &#x3D; i;
+        &#125;
+    &#125;
+
+    &#x2F;&#x2F; 输出平均成绩最高的学生
+    cout &lt;&lt; &quot;平均成绩最高的学生是: &quot; &lt;&lt; students[maxIndex].name &lt;&lt; endl;
+    cout &lt;&lt; &quot;各科成绩: &quot; &lt;&lt; students[maxIndex].scores[0] &lt;&lt; &quot; &quot; &lt;&lt; students[maxIndex].scores[1] &lt;&lt; &quot; &quot; &lt;&lt; students[maxIndex].scores[2] &lt;&lt; endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(4)编写一个程序，实现方程式的相加。例如，输入以下两个方程式:</p>
+<p>12a+4b-5c&#x3D;7</p>
+<p>2a-8b+3c-6<br>相加之后有:<br>14a-4b-2c&#x3D;13<br>要求用字符数组实现。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+
+void addEquations(char* eq1, char* eq2, char* result) &#123;
+    int a1, b1, c1, d1;
+    int a2, b2, c2, d2;
+    sscanf(eq1, &quot;%da+%db+%dc&#x3D;%d&quot;, &amp;a1, &amp;b1, &amp;c1, &amp;d1);
+    sscanf(eq2, &quot;%da+%db+%dc&#x3D;%d&quot;, &amp;a2, &amp;b2, &amp;c2, &amp;d2);
+    
+    int a &#x3D; a1 + a2;
+    int b &#x3D; b1 + b2;
+    int c &#x3D; c1 + c2;
+    int d &#x3D; d1 + d2;
+    
+    sprintf(result, &quot;%da+%db+%dc&#x3D;%d&quot;, a, b, c, d);
+&#125;
+
+int main() &#123;
+    char eq1[] &#x3D; &quot;12a+4b-5c&#x3D;7&quot;;
+    char eq2[] &#x3D; &quot;2a-8b+3c-6&quot;;
+    char result[100];
+    
+    addEquations(eq1, eq2, result);
+    
+    cout &lt;&lt; &quot;相加之后有: &quot; &lt;&lt; result &lt;&lt; endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(5)编写一个函数，利用指针将一个字符串反向输出。编写相应的主函数对其进行调用,在主函数中完成原始数据的输入和结果输出。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+
+void reverseString(char* str) &#123;
+    int length &#x3D; 0;
+    while (str[length] !&#x3D; &#39;\0&#39;) &#123;
+        length++;
+    &#125;
+    
+    for (int i &#x3D; length - 1; i &gt;&#x3D; 0; --i) &#123;
+        cout &lt;&lt; str[i];
+    &#125;
+    cout &lt;&lt; endl;
+&#125;
+
+int main() &#123;
+    char str[100];
+    cout &lt;&lt; &quot;请输入字符串: &quot;;
+    cin &gt;&gt; str;
+    reverseString(str);
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(6)编写一个函数，统计并返回一行文字中所有的字母、数字、空格及其他字符的个数,同时编写相应的主函数,在主函数中能接收用户输入的一行文本,然后调用上面定义的函数,并在主函数中输出各种字符的个数。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+
+void countCharacters(const char* text, int&amp; letters, int&amp; digits, int&amp; spaces, int&amp; others) &#123;
+    letters &#x3D; digits &#x3D; spaces &#x3D; others &#x3D; 0;
+    while (*text) &#123;
+        if (isalpha(*text)) &#123;
+            letters++;
+        &#125; else if (isdigit(*text)) &#123;
+            digits++;
+        &#125; else if (isspace(*text)) &#123;
+            spaces++;
+        &#125; else &#123;
+            others++;
+        &#125;
+        text++;
+    &#125;
+&#125;
+
+int main() &#123;
+    char text[100];
+    cout &lt;&lt; &quot;请输入一行文本: &quot;;
+    cin.getline(text, 100);
+
+    int letters, digits, spaces, others;
+    countCharacters(text, letters, digits, spaces, others);
+    
+    cout &lt;&lt; &quot;字母: &quot; &lt;&lt; letters &lt;&lt; endl;
+    cout &lt;&lt; &quot;数字: &quot; &lt;&lt; digits &lt;&lt; endl;
+    cout &lt;&lt; &quot;空格: &quot; &lt;&lt; spaces &lt;&lt; endl;
+    cout &lt;&lt; &quot;其他字符: &quot; &lt;&lt; others &lt;&lt; endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="3-面向对象编程"><a href="#3-面向对象编程" class="headerlink" title="3. 面向对象编程"></a>3. 面向对象编程</h2><p>(1)定义一个圆类 Circle,在其中包含1个数据成员表示半径,3个成员函数分别实现半径的输面积的计算和半径、面积的输出，并编写相应的 main 函数测试该类。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+class Circle &#123;
+private:
+    double radius;
+
+public:
+    &#x2F;&#x2F; 构造函数
+    Circle(double r) : radius(r) &#123;&#125;
+
+    &#x2F;&#x2F; 计算面积
+    double calculateArea() &#123;
+        return 3.14159 * radius * radius;
+    &#125;
+
+    &#x2F;&#x2F; 输出半径和面积
+    void printInfo() &#123;
+        cout &lt;&lt; &quot;半径: &quot; &lt;&lt; radius &lt;&lt; endl;
+        cout &lt;&lt; &quot;面积: &quot; &lt;&lt; calculateArea() &lt;&lt; endl;
+    &#125;
+&#125;;
+
+int main() &#123;
+    double r;
+    cout &lt;&lt; &quot;请输入圆的半径: &quot;;
+    cin &gt;&gt; r;
+
+    Circle c(r);
+    c.printInfo();
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(2)以下是一个学生类(Student)的类定义部分。请完成相应的类的实现部分，并编写相应的main 函数测试相应的功能。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream.h&gt;
+class Student
+&#123; 
+
+ private:
+​	int number;
+​	char name[20];
+​	Date birth;
+public:
+​	Student;
+​	Student(int n,char *m,Date d):
+​	Student(const Student &amp;s);
+​	~Student();
+​	void setnumber(int n);
+​	void setname(char *s):
+​	void setbirth(Date d);
+​	void printstudent();
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+struct Date &#123;
+    int day, month, year;
+&#125;;
+
+class Student &#123;
+private:
+    int number;
+    char name[20];
+    Date birth;
+
+public:
+    &#x2F;&#x2F; 构造函数
+    Student(int n, char* m, Date d) &#123;
+        number &#x3D; n;
+        strcpy(name, m);
+        birth &#x3D; d;
+    &#125;
+
+    &#x2F;&#x2F; 拷贝构造函数
+    Student(const Student&amp; s) &#123;
+        number &#x3D; s.number;
+        strcpy(name, s.name);
+        birth &#x3D; s.birth;
+    &#125;
+
+    &#x2F;&#x2F; 析构函数
+    ~Student() &#123;&#125;
+
+    &#x2F;&#x2F; 设置学号
+    void setNumber(int n) &#123;
+        number &#x3D; n;
+    &#125;
+
+    &#x2F;&#x2F; 设置姓名
+    void setName(char* s) &#123;
+        strcpy(name, s);
+    &#125;
+
+    &#x2F;&#x2F; 设置出生日期
+    void setBirth(Date d) &#123;
+        birth &#x3D; d;
+    &#125;
+
+    &#x2F;&#x2F; 输出学生信息
+    void printStudent() &#123;
+        cout &lt;&lt; &quot;学号: &quot; &lt;&lt; number &lt;&lt; endl;
+        cout &lt;&lt; &quot;姓名: &quot; &lt;&lt; name &lt;&lt; endl;
+        cout &lt;&lt; &quot;出生日期: &quot; &lt;&lt; birth.day &lt;&lt; &quot;&#x2F;&quot; &lt;&lt; birth.month &lt;&lt; &quot;&#x2F;&quot; &lt;&lt; birth.year &lt;&lt; endl;
+    &#125;
+&#125;;
+
+int main() &#123;
+    Date birthDate &#x3D; &#123;15, 8, 2000&#125;;
+    Student s(12345, &quot;张三&quot;, birthDate);
+    s.printStudent();
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(3)设计一个点类Point,其中包含点的坐标x和y两个数据成员,并设计两个友元函数分别计算两点间的水平距离和垂直距离。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+class Point &#123;
+private:
+    double x, y;
+
+public:
+    &#x2F;&#x2F; 构造函数
+    Point(double xCoord, double yCoord) : x(xCoord), y(yCoord) &#123;&#125;
+
+    &#x2F;&#x2F; 友元函数声明
+    friend double horizontalDistance(const Point&amp; p1, const Point&amp; p2);
+    friend double verticalDistance(const Point&amp; p1, const Point&amp; p2);
+&#125;;
+
+&#x2F;&#x2F; 计算水平距离
+double horizontalDistance(const Point&amp; p1, const Point&amp; p2) &#123;
+    return abs(p1.x - p2.x);
+&#125;
+
+&#x2F;&#x2F; 计算垂直距离
+double verticalDistance(const Point&amp; p1, const Point&amp; p2) &#123;
+    return abs(p1.y - p2.y);
+&#125;
+
+int main() &#123;
+    Point p1(3, 4), p2(7, 10);
+
+    cout &lt;&lt; &quot;水平距离: &quot; &lt;&lt; horizontalDistance(p1, p2) &lt;&lt; endl;
+    cout &lt;&lt; &quot;垂直距离: &quot; &lt;&lt; verticalDistance(p1, p2) &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="4-继承和派生"><a href="#4-继承和派生" class="headerlink" title="4.继承和派生"></a>4.继承和派生</h2><p>(1)分别定义一个日期类和时间类，然后派生出一个新的日期时间类。请以继承方式实现该类。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+&#x2F;&#x2F; 日期类
+class Date &#123;
+private:
+    int day, month, year;
+
+public:
+    Date(int d, int m, int y) : day(d), month(m), year(y) &#123;&#125;
+
+    void printDate() &#123;
+        cout &lt;&lt; &quot;日期: &quot; &lt;&lt; day &lt;&lt; &quot;&#x2F;&quot; &lt;&lt; month &lt;&lt; &quot;&#x2F;&quot; &lt;&lt; year &lt;&lt; endl;
+    &#125;
+&#125;;
+
+&#x2F;&#x2F; 时间类
+class Time &#123;
+private:
+    int hour, minute, second;
+
+public:
+    Time(int h, int m, int s) : hour(h), minute(m), second(s) &#123;&#125;
+
+    void printTime() &#123;
+        cout &lt;&lt; &quot;时间: &quot; &lt;&lt; hour &lt;&lt; &quot;:&quot; &lt;&lt; minute &lt;&lt; &quot;:&quot; &lt;&lt; second &lt;&lt; endl;
+    &#125;
+&#125;;
+
+&#x2F;&#x2F; 日期时间类，通过继承 Date 和 Time
+class DateTime : public Date, public Time &#123;
+public:
+    DateTime(int d, int m, int y, int h, int min, int s)
+        : Date(d, m, y), Time(h, min, s) &#123;&#125;
+
+    void printDateTime() &#123;
+        printDate();
+        printTime();
+    &#125;
+&#125;;
+
+int main() &#123;
+    DateTime dt(12, 9, 2023, 14, 30, 45);
+    dt.printDateTime();
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(2)在例7-16 的基础上，由 Student 类和 Teacher 类派生出一个描述在职读书的教师的<br>类，并编写出相应的测试代码。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+&#x2F;&#x2F; 学生类
+class Student &#123;
+protected:
+    string name;
+    int age;
+
+public:
+    Student(string n, int a) : name(n), age(a) &#123;&#125;
+
+    virtual void printInfo() &#123;
+        cout &lt;&lt; &quot;姓名: &quot; &lt;&lt; name &lt;&lt; endl;
+        cout &lt;&lt; &quot;年龄: &quot; &lt;&lt; age &lt;&lt; endl;
+    &#125;
+&#125;;
+
+&#x2F;&#x2F; 教师类
+class Teacher : public Student &#123;
+protected:
+    string subject;
+
+public:
+    Teacher(string n, int a, string sub) : Student(n, a), subject(sub) &#123;&#125;
+
+    void printInfo() override &#123;
+        Student::printInfo();
+        cout &lt;&lt; &quot;科目: &quot; &lt;&lt; subject &lt;&lt; endl;
+    &#125;
+&#125;;
+
+&#x2F;&#x2F; 在职读书教师类
+class InServiceStudentTeacher : public Teacher &#123;
+private:
+    string studyProgram;
+
+public:
+    InServiceStudentTeacher(string n, int a, string sub, string study) 
+        : Teacher(n, a, sub), studyProgram(study) &#123;&#125;
+
+    void printInfo() override &#123;
+        Teacher::printInfo();
+        cout &lt;&lt; &quot;学习项目: &quot; &lt;&lt; studyProgram &lt;&lt; endl;
+    &#125;
+&#125;;
+
+int main() &#123;
+    InServiceStudentTeacher teacher(&quot;李老师&quot;, 35, &quot;数学&quot;, &quot;硕士研究生&quot;);
+    teacher.printInfo();
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(3)设计一个抽象类，并由它派生出圆柱体、球体和正方体3个类，实现计算圆柱体,球体和正方体表面积和体积;要求按照运行时多态性的方法设计主函数，进行测试。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+&#x2F;&#x2F; 抽象类：形状
+class Shape &#123;
+public:
+    virtual double area() &#x3D; 0;  &#x2F;&#x2F; 计算表面积
+    virtual double volume() &#x3D; 0; &#x2F;&#x2F; 计算体积
+    virtual ~Shape() &#123;&#125;
+&#125;;
+
+&#x2F;&#x2F; 圆柱体类
+class Cylinder : public Shape &#123;
+private:
+    double radius, height;
+
+public:
+    Cylinder(double r, double h) : radius(r), height(h) &#123;&#125;
+
+    double area() override &#123;
+        return 2 * M_PI * radius * (radius + height);  &#x2F;&#x2F; 圆柱表面积
+    &#125;
+
+    double volume() override &#123;
+        return M_PI * radius * radius * height;  &#x2F;&#x2F; 圆柱体积
+    &#125;
+&#125;;
+
+&#x2F;&#x2F; 球体类
+class Sphere : public Shape &#123;
+private:
+    double radius;
+
+public:
+    Sphere(double r) : radius(r) &#123;&#125;
+
+    double area() override &#123;
+        return 4 * M_PI * radius * radius;  &#x2F;&#x2F; 球体表面积
+    &#125;
+
+    double volume() override &#123;
+        return (4.0 &#x2F; 3) * M_PI * radius * radius * radius;  &#x2F;&#x2F; 球体积
+    &#125;
+&#125;;
+
+&#x2F;&#x2F; 正方体类
+class Cube : public Shape &#123;
+private:
+    double side;
+
+public:
+    Cube(double s) : side(s) &#123;&#125;
+
+    double area() override &#123;
+        return 6 * side * side;  &#x2F;&#x2F; 正方体表面积
+    &#125;
+
+    double volume() override &#123;
+        return side * side * side;  &#x2F;&#x2F; 正方体积
+    &#125;
+&#125;;
+
+int main() &#123;
+    Shape* shape;
+
+    &#x2F;&#x2F; 测试圆柱体
+    shape &#x3D; new Cylinder(5, 10);
+    cout &lt;&lt; &quot;圆柱体表面积: &quot; &lt;&lt; shape-&gt;area() &lt;&lt; endl;
+    cout &lt;&lt; &quot;圆柱体体积: &quot; &lt;&lt; shape-&gt;volume() &lt;&lt; endl;
+
+    &#x2F;&#x2F; 测试球体
+    shape &#x3D; new Sphere(5);
+    cout &lt;&lt; &quot;球体表面积: &quot; &lt;&lt; shape-&gt;area() &lt;&lt; endl;
+    cout &lt;&lt; &quot;球体体积: &quot; &lt;&lt; shape-&gt;volume() &lt;&lt; endl;
+
+    &#x2F;&#x2F; 测试正方体
+    shape &#x3D; new Cube(4);
+    cout &lt;&lt; &quot;正方体表面积: &quot; &lt;&lt; shape-&gt;area() &lt;&lt; endl;
+    cout &lt;&lt; &quot;正方体体积: &quot; &lt;&lt; shape-&gt;volume() &lt;&lt; endl;
+
+    delete shape;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="5-运算符重载"><a href="#5-运算符重载" class="headerlink" title="5.运算符重载"></a>5.运算符重载</h2><p>(1)在例 8-1的基础上，设计一个表示复数的类 Complex，并在该类中对运算符“+”、“-”、“*”、“&#x2F;”和“&#x3D;”进行重载，以实现两个复数的加、减、乘、除以及赋值运算。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+class Complex &#123;
+private:
+    double real, imag; &#x2F;&#x2F; 实部和虚部
+
+public:
+    &#x2F;&#x2F; 构造函数
+    Complex(double r &#x3D; 0, double i &#x3D; 0) : real(r), imag(i) &#123;&#125;
+
+    &#x2F;&#x2F; 运算符重载：加法
+    Complex operator+(const Complex&amp; c) &#123;
+        return Complex(real + c.real, imag + c.imag);
+    &#125;
+
+    &#x2F;&#x2F; 运算符重载：减法
+    Complex operator-(const Complex&amp; c) &#123;
+        return Complex(real - c.real, imag - c.imag);
+    &#125;
+
+    &#x2F;&#x2F; 运算符重载：乘法
+    Complex operator*(const Complex&amp; c) &#123;
+        return Complex(real * c.real - imag * c.imag, real * c.imag + imag * c.real);
+    &#125;
+
+    &#x2F;&#x2F; 运算符重载：除法
+    Complex operator&#x2F;(const Complex&amp; c) &#123;
+        double denom &#x3D; c.real * c.real + c.imag * c.imag;
+        return Complex((real * c.real + imag * c.imag) &#x2F; denom, (imag * c.real - real * c.imag) &#x2F; denom);
+    &#125;
+
+    &#x2F;&#x2F; 运算符重载：赋值
+    Complex&amp; operator&#x3D;(const Complex&amp; c) &#123;
+        if (this !&#x3D; &amp;c) &#123; &#x2F;&#x2F; 防止自赋值
+            real &#x3D; c.real;
+            imag &#x3D; c.imag;
+        &#125;
+        return *this;
+    &#125;
+
+    &#x2F;&#x2F; 输出复数
+    void print() const &#123;
+        cout &lt;&lt; real &lt;&lt; &quot; + &quot; &lt;&lt; imag &lt;&lt; &quot;i&quot; &lt;&lt; endl;
+    &#125;
+&#125;;
+
+int main() &#123;
+    Complex c1(4, 5), c2(2, 3), result;
+
+    cout &lt;&lt; &quot;c1: &quot;;
+    c1.print();
+    cout &lt;&lt; &quot;c2: &quot;;
+    c2.print();
+
+    result &#x3D; c1 + c2;
+    cout &lt;&lt; &quot;c1 + c2: &quot;;
+    result.print();
+
+    result &#x3D; c1 - c2;
+    cout &lt;&lt; &quot;c1 - c2: &quot;;
+    result.print();
+
+    result &#x3D; c1 * c2;
+    cout &lt;&lt; &quot;c1 * c2: &quot;;
+    result.print();
+
+    result &#x3D; c1 &#x2F; c2;
+    cout &lt;&lt; &quot;c1 &#x2F; c2: &quot;;
+    result.print();
+
+    Complex c3;
+    c3 &#x3D; c1; &#x2F;&#x2F; 测试赋值运算符
+    cout &lt;&lt; &quot;c3 &#x3D; c1: &quot;;
+    c3.print();
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(2)设计一个类来实现重载自加运算符的两种形式，即前缀运算符++a 和后缀运算符 a++。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+class Counter &#123;
+private:
+    int value;
+
+public:
+    &#x2F;&#x2F; 构造函数
+    Counter(int v &#x3D; 0) : value(v) &#123;&#125;
+
+    &#x2F;&#x2F; 前缀自加运算符重载
+    Counter&amp; operator++() &#123;
+        ++value;
+        return *this;
+    &#125;
+
+    &#x2F;&#x2F; 后缀自加运算符重载
+    Counter operator++(int) &#123;
+        Counter temp &#x3D; *this;
+        ++value;
+        return temp;
+    &#125;
+
+    &#x2F;&#x2F; 输出当前值
+    void print() const &#123;
+        cout &lt;&lt; &quot;当前值: &quot; &lt;&lt; value &lt;&lt; endl;
+    &#125;
+&#125;;
+
+int main() &#123;
+    Counter c1(5), c2(10);
+
+    &#x2F;&#x2F; 前缀自加
+    cout &lt;&lt; &quot;c1: &quot;;
+    c1.print();
+    ++c1;  &#x2F;&#x2F; 前缀自加
+    cout &lt;&lt; &quot;c1 after ++: &quot;;
+    c1.print();
+
+    &#x2F;&#x2F; 后缀自加
+    cout &lt;&lt; &quot;c2: &quot;;
+    c2.print();
+    c2++;  &#x2F;&#x2F; 后缀自加
+    cout &lt;&lt; &quot;c2 after c2++: &quot;;
+    c2.print();
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="6-模板"><a href="#6-模板" class="headerlink" title="6. 模板"></a>6. 模板</h2><p>(1)在例9-4的基础上，继续实现单向链表类模板中能够实现节点的插入、删除、排序等的成员函数。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+&#x2F;&#x2F; 单向链表节点类
+template &lt;typename T&gt;
+class Node &#123;
+public:
+    T data;         &#x2F;&#x2F; 数据部分
+    Node* next;     &#x2F;&#x2F; 指向下一个节点的指针
+
+    Node(T val) : data(val), next(nullptr) &#123;&#125;
+&#125;;
+
+&#x2F;&#x2F; 单向链表类模板
+template &lt;typename T&gt;
+class LinkedList &#123;
+private:
+    Node&lt;T&gt;* head;
+
+public:
+    &#x2F;&#x2F; 构造函数
+    LinkedList() : head(nullptr) &#123;&#125;
+
+    &#x2F;&#x2F; 析构函数
+    ~LinkedList() &#123;
+        Node&lt;T&gt;* current &#x3D; head;
+        while (current !&#x3D; nullptr) &#123;
+            Node&lt;T&gt;* nextNode &#x3D; current-&gt;next;
+            delete current;
+            current &#x3D; nextNode;
+        &#125;
+    &#125;
+
+    &#x2F;&#x2F; 插入节点
+    void insert(T val) &#123;
+        Node&lt;T&gt;* newNode &#x3D; new Node&lt;T&gt;(val);
+        newNode-&gt;next &#x3D; head;
+        head &#x3D; newNode;
+    &#125;
+
+    &#x2F;&#x2F; 删除指定节点
+    void remove(T val) &#123;
+        Node&lt;T&gt;* current &#x3D; head;
+        Node&lt;T&gt;* prev &#x3D; nullptr;
+
+        &#x2F;&#x2F; 找到节点
+        while (current !&#x3D; nullptr &amp;&amp; current-&gt;data !&#x3D; val) &#123;
+            prev &#x3D; current;
+            current &#x3D; current-&gt;next;
+        &#125;
+
+        if (current &#x3D;&#x3D; nullptr) &#123;
+            cout &lt;&lt; &quot;元素 &quot; &lt;&lt; val &lt;&lt; &quot; 不存在!&quot; &lt;&lt; endl;
+            return;
+        &#125;
+
+        &#x2F;&#x2F; 删除节点
+        if (prev &#x3D;&#x3D; nullptr) &#123;
+            head &#x3D; current-&gt;next;  &#x2F;&#x2F; 删除头节点
+        &#125; else &#123;
+            prev-&gt;next &#x3D; current-&gt;next;
+        &#125;
+        delete current;
+    &#125;
+
+    &#x2F;&#x2F; 打印链表
+    void print() &#123;
+        Node&lt;T&gt;* current &#x3D; head;
+        while (current !&#x3D; nullptr) &#123;
+            cout &lt;&lt; current-&gt;data &lt;&lt; &quot; &quot;;
+            current &#x3D; current-&gt;next;
+        &#125;
+        cout &lt;&lt; endl;
+    &#125;
+
+    &#x2F;&#x2F; 排序链表（使用冒泡排序）
+    void sort() &#123;
+        if (head &#x3D;&#x3D; nullptr) return;
+        bool swapped;
+        do &#123;
+            swapped &#x3D; false;
+            Node&lt;T&gt;* current &#x3D; head;
+            while (current !&#x3D; nullptr &amp;&amp; current-&gt;next !&#x3D; nullptr) &#123;
+                if (current-&gt;data &gt; current-&gt;next-&gt;data) &#123;
+                    swap(current-&gt;data, current-&gt;next-&gt;data);
+                    swapped &#x3D; true;
+                &#125;
+                current &#x3D; current-&gt;next;
+            &#125;
+        &#125; while (swapped);
+    &#125;
+&#125;;
+
+int main() &#123;
+    LinkedList&lt;int&gt; list;
+    
+    list.insert(3);
+    list.insert(1);
+    list.insert(4);
+    list.insert(5);
+    list.insert(2);
+    
+    cout &lt;&lt; &quot;原始链表: &quot;;
+    list.print();
+    
+    list.remove(4);  &#x2F;&#x2F; 删除元素 4
+    cout &lt;&lt; &quot;删除元素 4 后: &quot;;
+    list.print();
+    
+    list.sort();  &#x2F;&#x2F; 排序链表
+    cout &lt;&lt; &quot;排序后的链表: &quot;;
+    list.print();
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>(2)设计一个函数模板，实现在一个给定的有序数组中查找给定的元素值是否存在，如果存在则输出该元素在数组中的下标值，如果未找到，则输出-1，并编写相应的程序测试该函数模板。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+&#x2F;&#x2F; 函数模板：在有序数组中查找元素
+template &lt;typename T&gt;
+int binarySearch(T arr[], int size, T value) &#123;
+    int left &#x3D; 0, right &#x3D; size - 1;
+    while (left &lt;&#x3D; right) &#123;
+        int mid &#x3D; left + (right - left) &#x2F; 2;
+        
+        if (arr[mid] &#x3D;&#x3D; value) &#123;
+            return mid;  &#x2F;&#x2F; 找到元素，返回下标
+        &#125; else if (arr[mid] &lt; value) &#123;
+            left &#x3D; mid + 1;
+        &#125; else &#123;
+            right &#x3D; mid - 1;
+        &#125;
+    &#125;
+    return -1;  &#x2F;&#x2F; 未找到元素，返回 -1
+&#125;
+
+int main() &#123;
+    int arr[] &#x3D; &#123;1, 2, 3, 4, 5, 6, 7, 8, 9, 10&#125;;
+    int size &#x3D; sizeof(arr) &#x2F; sizeof(arr[0]);
+    int value;
+
+    cout &lt;&lt; &quot;请输入要查找的元素: &quot;;
+    cin &gt;&gt; value;
+
+    int index &#x3D; binarySearch(arr, size, value);
+    
+    if (index !&#x3D; -1) &#123;
+        cout &lt;&lt; &quot;元素 &quot; &lt;&lt; value &lt;&lt; &quot; 在数组中的下标是: &quot; &lt;&lt; index &lt;&lt; endl;
+    &#125; else &#123;
+        cout &lt;&lt; &quot;元素 &quot; &lt;&lt; value &lt;&lt; &quot; 不存在于数组中!&quot; &lt;&lt; endl;
+    &#125;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="7-文件"><a href="#7-文件" class="headerlink" title="7.文件"></a>7.文件</h2><p>(1)编写程序，打开指定的一个文本文件，并能在其中每一行的前面加上行号和一个空格符。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+void addLineNumbers(const string&amp; inputFile, const string&amp; outputFile) &#123;
+    ifstream inFile(inputFile);
+    ofstream outFile(outputFile);
+    
+    if (!inFile) &#123;
+        cout &lt;&lt; &quot;无法打开输入文件!&quot; &lt;&lt; endl;
+        return;
+    &#125;
+
+    if (!outFile) &#123;
+        cout &lt;&lt; &quot;无法打开输出文件!&quot; &lt;&lt; endl;
+        return;
+    &#125;
+
+    string line;
+    int lineNumber &#x3D; 1;
+    while (getline(inFile, line)) &#123;
+        outFile &lt;&lt; lineNumber &lt;&lt; &quot; &quot; &lt;&lt; line &lt;&lt; endl;
+        lineNumber++;
+    &#125;
+
+    inFile.close();
+    outFile.close();
+&#125;
+
+int main() &#123;
+    string inputFile, outputFile;
+    cout &lt;&lt; &quot;请输入输入文件名: &quot;;
+    cin &gt;&gt; inputFile;
+    cout &lt;&lt; &quot;请输入输出文件名: &quot;;
+    cin &gt;&gt; outputFile;
+
+    addLineNumbers(inputFile, outputFile);
+
+    cout &lt;&lt; &quot;文件处理完成!&quot; &lt;&lt; endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>(2)编写程序，统计一篇英文文章中英文单词的个数以及文章的总行数。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+#include &lt;cctype&gt;
+using namespace std;
+
+bool isWordCharacter(char c) &#123;
+    return isalpha(c) || c &#x3D;&#x3D; &#39;\&#39;&#39;;
+&#125;
+
+int countWords(const string&amp; line) &#123;
+    int wordCount &#x3D; 0;
+    bool inWord &#x3D; false;
+    for (char c : line) &#123;
+        if (isWordCharacter(c)) &#123;
+            if (!inWord) &#123;
+                inWord &#x3D; true;
+                wordCount++;
+            &#125;
+        &#125; else &#123;
+            inWord &#x3D; false;
+        &#125;
+    &#125;
+    return wordCount;
+&#125;
+
+void countWordsAndLines(const string&amp; filename) &#123;
+    ifstream inFile(filename);
+    
+    if (!inFile) &#123;
+        cout &lt;&lt; &quot;无法打开文件!&quot; &lt;&lt; endl;
+        return;
+    &#125;
+
+    string line;
+    int totalLines &#x3D; 0;
+    int totalWords &#x3D; 0;
+    
+    while (getline(inFile, line)) &#123;
+        totalLines++;
+        totalWords +&#x3D; countWords(line);
+    &#125;
+
+    inFile.close();
+
+    cout &lt;&lt; &quot;文章的总行数: &quot; &lt;&lt; totalLines &lt;&lt; endl;
+    cout &lt;&lt; &quot;文章中的单词总数: &quot; &lt;&lt; totalWords &lt;&lt; endl;
+&#125;
+
+int main() &#123;
+    string filename;
+    cout &lt;&lt; &quot;请输入文章文件名: &quot;;
+    cin &gt;&gt; filename;
+
+    countWordsAndLines(filename);
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>(3)编写程序，完成两个文件的连接操作。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+void concatenateFiles(const string&amp; file1, const string&amp; file2, const string&amp; outputFile) &#123;
+    ifstream inFile1(file1);
+    ifstream inFile2(file2);
+    ofstream outFile(outputFile);
+    
+    if (!inFile1 || !inFile2) &#123;
+        cout &lt;&lt; &quot;无法打开输入文件!&quot; &lt;&lt; endl;
+        return;
+    &#125;
+
+    if (!outFile) &#123;
+        cout &lt;&lt; &quot;无法打开输出文件!&quot; &lt;&lt; endl;
+        return;
+    &#125;
+
+    string line;
+    
+    &#x2F;&#x2F; 先写入第一个文件的内容
+    while (getline(inFile1, line)) &#123;
+        outFile &lt;&lt; line &lt;&lt; endl;
+    &#125;
+
+    &#x2F;&#x2F; 然后写入第二个文件的内容
+    while (getline(inFile2, line)) &#123;
+        outFile &lt;&lt; line &lt;&lt; endl;
+    &#125;
+
+    inFile1.close();
+    inFile2.close();
+    outFile.close();
+&#125;
+
+int main() &#123;
+    string file1, file2, outputFile;
+    cout &lt;&lt; &quot;请输入第一个文件名: &quot;;
+    cin &gt;&gt; file1;
+    cout &lt;&lt; &quot;请输入第二个文件名: &quot;;
+    cin &gt;&gt; file2;
+    cout &lt;&lt; &quot;请输入输出文件名: &quot;;
+    cin &gt;&gt; outputFile;
+
+    concatenateFiles(file1, file2, outputFile);
+
+    cout &lt;&lt; &quot;文件连接完成!&quot; &lt;&lt; endl;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="8-STL库"><a href="#8-STL库" class="headerlink" title="8.STL库"></a>8.STL库</h2><p>(1)编写程序，利用 string 类提供的成员函数来完成字符串的查找与替换。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+void findAndReplace(string&amp; str, const string&amp; oldSubstr, const string&amp; newSubstr) &#123;
+    size_t pos &#x3D; 0;
+    while ((pos &#x3D; str.find(oldSubstr, pos)) !&#x3D; string::npos) &#123;
+        str.replace(pos, oldSubstr.length(), newSubstr);
+        pos +&#x3D; newSubstr.length(); &#x2F;&#x2F; 移动到替换后的位置
+    &#125;
+&#125;
+
+int main() &#123;
+    string str;
+    string oldSubstr, newSubstr;
+
+    cout &lt;&lt; &quot;请输入原始字符串: &quot;;
+    getline(cin, str);
+    cout &lt;&lt; &quot;请输入要查找的子字符串: &quot;;
+    getline(cin, oldSubstr);
+    cout &lt;&lt; &quot;请输入替换的子字符串: &quot;;
+    getline(cin, newSubstr);
+
+    findAndReplace(str, oldSubstr, newSubstr);
+    
+    cout &lt;&lt; &quot;替换后的字符串: &quot; &lt;&lt; str &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(2)编写程序，利用 string 类完成一个字符串的逆序输出。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+void reverseString(string&amp; str) &#123;
+    reverse(str.begin(), str.end());  &#x2F;&#x2F; 使用 STL 提供的 reverse 函数
+&#125;
+
+int main() &#123;
+    string str;
+    
+    cout &lt;&lt; &quot;请输入字符串: &quot;;
+    getline(cin, str);
+
+    reverseString(str);
+    
+    cout &lt;&lt; &quot;逆序后的字符串: &quot; &lt;&lt; str &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(3)编写程序，利用vector 容器输入若干个 string 类数据元素，将其排序后输出。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() &#123;
+    vector&lt;string&gt; strVec;
+    string str;
+    int n;
+
+    cout &lt;&lt; &quot;请输入字符串的数量: &quot;;
+    cin &gt;&gt; n;
+    cin.ignore();  &#x2F;&#x2F; 忽略前面的换行符
+
+    cout &lt;&lt; &quot;请输入 &quot; &lt;&lt; n &lt;&lt; &quot; 个字符串: &quot; &lt;&lt; endl;
+    for (int i &#x3D; 0; i &lt; n; ++i) &#123;
+        getline(cin, str);
+        strVec.push_back(str);
+    &#125;
+
+    sort(strVec.begin(), strVec.end());  &#x2F;&#x2F; 对 vector 中的字符串进行排序
+
+    cout &lt;&lt; &quot;排序后的字符串: &quot; &lt;&lt; endl;
+    for (const string&amp; s : strVec) &#123;
+        cout &lt;&lt; s &lt;&lt; endl;
+    &#125;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(4)编写程序，利用输入、输出迭代器，将一个文件中的内容添加到另一个文件的尾部。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;iterator&gt;
+#include &lt;string&gt;
+using namespace std;
+
+void appendFileContents(const string&amp; inputFile, const string&amp; outputFile) &#123;
+    ifstream inFile(inputFile);
+    ofstream outFile(outputFile, ios::app);  &#x2F;&#x2F; 以追加模式打开输出文件
+    
+    if (!inFile) &#123;
+        cout &lt;&lt; &quot;无法打开输入文件!&quot; &lt;&lt; endl;
+        return;
+    &#125;
+
+    if (!outFile) &#123;
+        cout &lt;&lt; &quot;无法打开输出文件!&quot; &lt;&lt; endl;
+        return;
+    &#125;
+
+    &#x2F;&#x2F; 使用输入迭代器读取输入文件内容并使用输出迭代器写入输出文件
+    copy(istream_iterator&lt;string&gt;(inFile), istream_iterator&lt;string&gt;(), ostream_iterator&lt;string&gt;(outFile, &quot;\n&quot;));
+
+    inFile.close();
+    outFile.close();
+&#125;
+
+int main() &#123;
+    string inputFile, outputFile;
+
+    cout &lt;&lt; &quot;请输入输入文件名: &quot;;
+    cin &gt;&gt; inputFile;
+    cout &lt;&lt; &quot;请输入输出文件名: &quot;;
+    cin &gt;&gt; outputFile;
+
+    appendFileContents(inputFile, outputFile);
+
+    cout &lt;&lt; &quot;文件内容已成功追加!&quot; &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<h2 id="9-异常"><a href="#9-异常" class="headerlink" title="9.异常"></a>9.异常</h2><p>(1)编写一个程序，采用异常处理的方法，对数组的标错误进行显示</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;stdexcept&gt;  &#x2F;&#x2F; 引入 std::out_of_range
+using namespace std;
+
+void accessArrayElement(int* arr, int size, int index) &#123;
+    if (index &lt; 0 || index &gt;&#x3D; size) &#123;
+        throw out_of_range(&quot;数组下标越界错误！&quot;);
+    &#125;
+    cout &lt;&lt; &quot;数组元素: &quot; &lt;&lt; arr[index] &lt;&lt; endl;
+&#125;
+
+int main() &#123;
+    int arr[] &#x3D; &#123;1, 2, 3, 4, 5&#125;;
+    int size &#x3D; sizeof(arr) &#x2F; sizeof(arr[0]);
+
+    int index;
+    cout &lt;&lt; &quot;请输入数组下标: &quot;;
+    cin &gt;&gt; index;
+
+    try &#123;
+        accessArrayElement(arr, size, index);
+    &#125; catch (const out_of_range&amp; e) &#123;
+        cout &lt;&lt; &quot;错误: &quot; &lt;&lt; e.what() &lt;&lt; endl;
+    &#125;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(2)编写一个程序，采用异常处理的方法，在指定文件不存在时显示出错信息，文件存在时显示文件的基本信息。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;stdexcept&gt;  &#x2F;&#x2F; 引入 std::ifstream 和 std::runtime_error
+#include &lt;string&gt;
+using namespace std;
+
+void checkFileExistence(const string&amp; filename) &#123;
+    ifstream file(filename);
+    if (!file) &#123;
+        throw runtime_error(&quot;文件不存在或无法打开！&quot;);
+    &#125;
+
+    string line;
+    cout &lt;&lt; &quot;文件存在！文件内容如下：&quot; &lt;&lt; endl;
+
+    &#x2F;&#x2F; 显示文件的基本信息（这里只是显示文件内容示例）
+    while (getline(file, line)) &#123;
+        cout &lt;&lt; line &lt;&lt; endl;
+    &#125;
+    file.close();
+&#125;
+
+int main() &#123;
+    string filename;
+    cout &lt;&lt; &quot;请输入文件名: &quot;;
+    cin &gt;&gt; filename;
+
+    try &#123;
+        checkFileExistence(filename);
+    &#125; catch (const runtime_error&amp; e) &#123;
+        cout &lt;&lt; &quot;错误: &quot; &lt;&lt; e.what() &lt;&lt; endl;
+    &#125;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="10-基础分支"><a href="#10-基础分支" class="headerlink" title="10.基础分支"></a>10.基础分支</h2><p>(1)编写程序，提示用户输入三角形的三条边长，判断该三角形是否为直角三角形，若是则输出结果以及三角形面积。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+bool isRightTriangle(double a, double b, double c) &#123;
+    &#x2F;&#x2F; 判断是否为直角三角形
+    return (a * a + b * b &#x3D;&#x3D; c * c) || (a * a + c * c &#x3D;&#x3D; b * b) || (b * b + c * c &#x3D;&#x3D; a * a);
+&#125;
+
+double areaOfTriangle(double a, double b, double c) &#123;
+    &#x2F;&#x2F; 使用海伦公式计算三角形面积
+    double s &#x3D; (a + b + c) &#x2F; 2;  &#x2F;&#x2F; 半周长
+    return sqrt(s * (s - a) * (s - b) * (s - c));  &#x2F;&#x2F; 面积
+&#125;
+
+int main() &#123;
+    double a, b, c;
+    
+    cout &lt;&lt; &quot;请输入三角形的三条边长: &quot;;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+
+    &#x2F;&#x2F; 判断是否为直角三角形
+    if (isRightTriangle(a, b, c)) &#123;
+        cout &lt;&lt; &quot;该三角形是直角三角形!&quot; &lt;&lt; endl;
+        double area &#x3D; areaOfTriangle(a, b, c);
+        cout &lt;&lt; &quot;直角三角形的面积为: &quot; &lt;&lt; area &lt;&lt; endl;
+    &#125; else &#123;
+        cout &lt;&lt; &quot;该三角形不是直角三角形!&quot; &lt;&lt; endl;
+    &#125;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(2)编写程序，求解各种数据类型的存储长度并显示出来，在其中找出存储长度最大和最小的两种数据类型并输出。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;climits&gt;  &#x2F;&#x2F; 提供数据类型的限制
+using namespace std;
+
+int main() &#123;
+    cout &lt;&lt; &quot;数据类型的存储长度（单位：字节）：&quot; &lt;&lt; endl;
+    
+    cout &lt;&lt; &quot;char: &quot; &lt;&lt; sizeof(char) &lt;&lt; &quot; byte(s)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;short: &quot; &lt;&lt; sizeof(short) &lt;&lt; &quot; byte(s)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;int: &quot; &lt;&lt; sizeof(int) &lt;&lt; &quot; byte(s)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;long: &quot; &lt;&lt; sizeof(long) &lt;&lt; &quot; byte(s)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;long long: &quot; &lt;&lt; sizeof(long long) &lt;&lt; &quot; byte(s)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;float: &quot; &lt;&lt; sizeof(float) &lt;&lt; &quot; byte(s)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;double: &quot; &lt;&lt; sizeof(double) &lt;&lt; &quot; byte(s)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;long double: &quot; &lt;&lt; sizeof(long double) &lt;&lt; &quot; byte(s)&quot; &lt;&lt; endl;
+
+    &#x2F;&#x2F; 找出最大和最小的存储长度
+    size_t maxSize &#x3D; 0, minSize &#x3D; SIZE_MAX;
+    string maxType, minType;
+
+    &#x2F;&#x2F; 比较不同数据类型的大小
+    if (sizeof(char) &lt; minSize) &#123; minSize &#x3D; sizeof(char); minType &#x3D; &quot;char&quot;; &#125;
+    if (sizeof(short) &lt; minSize) &#123; minSize &#x3D; sizeof(short); minType &#x3D; &quot;short&quot;; &#125;
+    if (sizeof(int) &lt; minSize) &#123; minSize &#x3D; sizeof(int); minType &#x3D; &quot;int&quot;; &#125;
+    if (sizeof(long) &lt; minSize) &#123; minSize &#x3D; sizeof(long); minType &#x3D; &quot;long&quot;; &#125;
+    if (sizeof(long long) &lt; minSize) &#123; minSize &#x3D; sizeof(long long); minType &#x3D; &quot;long long&quot;; &#125;
+    if (sizeof(float) &lt; minSize) &#123; minSize &#x3D; sizeof(float); minType &#x3D; &quot;float&quot;; &#125;
+    if (sizeof(double) &lt; minSize) &#123; minSize &#x3D; sizeof(double); minType &#x3D; &quot;double&quot;; &#125;
+    if (sizeof(long double) &lt; minSize) &#123; minSize &#x3D; sizeof(long double); minType &#x3D; &quot;long double&quot;; &#125;
+
+    if (sizeof(char) &gt; maxSize) &#123; maxSize &#x3D; sizeof(char); maxType &#x3D; &quot;char&quot;; &#125;
+    if (sizeof(short) &gt; maxSize) &#123; maxSize &#x3D; sizeof(short); maxType &#x3D; &quot;short&quot;; &#125;
+    if (sizeof(int) &gt; maxSize) &#123; maxSize &#x3D; sizeof(int); maxType &#x3D; &quot;int&quot;; &#125;
+    if (sizeof(long) &gt; maxSize) &#123; maxSize &#x3D; sizeof(long); maxType &#x3D; &quot;long&quot;; &#125;
+    if (sizeof(long long) &gt; maxSize) &#123; maxSize &#x3D; sizeof(long long); maxType &#x3D; &quot;long long&quot;; &#125;
+    if (sizeof(float) &gt; maxSize) &#123; maxSize &#x3D; sizeof(float); maxType &#x3D; &quot;float&quot;; &#125;
+    if (sizeof(double) &gt; maxSize) &#123; maxSize &#x3D; sizeof(double); maxType &#x3D; &quot;double&quot;; &#125;
+    if (sizeof(long double) &gt; maxSize) &#123; maxSize &#x3D; sizeof(long double); maxType &#x3D; &quot;long double&quot;; &#125;
+
+    cout &lt;&lt; &quot;\n存储长度最小的数据类型: &quot; &lt;&lt; minType &lt;&lt; &quot; (&quot; &lt;&lt; minSize &lt;&lt; &quot; byte(s))&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;存储长度最大的 数据类型: &quot; &lt;&lt; maxType &lt;&lt; &quot; (&quot; &lt;&lt; maxSize &lt;&lt; &quot; byte(s))&quot; &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(3)编写程序输入一个华氏温度，将其转换为摄氏温度并输出。已知华氏温度转换为摄氏温度的计算公式如下:<br>C&#x3D;(F-32)*5&#x2F;9<br>其中，F 为华氏温度，C为摄氏温度。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int main() &#123;
+    double fahrenheit, celsius;
+    
+    cout &lt;&lt; &quot;请输入华氏温度: &quot;;
+    cin &gt;&gt; fahrenheit;
+
+    &#x2F;&#x2F; 华氏温度转摄氏温度
+    celsius &#x3D; (fahrenheit - 32) * 5 &#x2F; 9;
+
+    cout &lt;&lt; &quot;对应的摄氏温度为: &quot; &lt;&lt; celsius &lt;&lt; &quot;°C&quot; &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(4)编写程序输入一个十进制表示的正整数，将其转化为二进制表示并输出结果。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+using namespace std;
+
+void decimalToBinary(int n) &#123;
+    stack&lt;int&gt; binaryStack;
+    
+    while (n &gt; 0) &#123;
+        binaryStack.push(n % 2);
+        n &#x3D; n &#x2F; 2;
+    &#125;
+
+    cout &lt;&lt; &quot;二进制表示: &quot;;
+    while (!binaryStack.empty()) &#123;
+        cout &lt;&lt; binaryStack.top();
+        binaryStack.pop();
+    &#125;
+    cout &lt;&lt; endl;
+&#125;
+
+int main() &#123;
+    int num;
+
+    cout &lt;&lt; &quot;请输入一个十进制正整数: &quot;;
+    cin &gt;&gt; num;
+
+    if (num &lt;&#x3D; 0) &#123;
+        cout &lt;&lt; &quot;请输入一个正整数!&quot; &lt;&lt; endl;
+    &#125; else &#123;
+        decimalToBinary(num);
+    &#125;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="11-基础循环"><a href="#11-基础循环" class="headerlink" title="11.基础循环"></a>11.基础循环</h2><p>(1)编写程序，计算1~100所有3的倍数的数的和。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int main() &#123;
+    int sum &#x3D; 0;
+
+    for (int i &#x3D; 1; i &lt;&#x3D; 100; i++) &#123;
+        if (i % 3 &#x3D;&#x3D; 0) &#123;
+            sum +&#x3D; i;
+        &#125;
+    &#125;
+
+    cout &lt;&lt; &quot;1~100 所有 3 的倍数的和是: &quot; &lt;&lt; sum &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(2)编写程序，用户输入一些整数，该程序分别计算出所有奇数和所有偶数之和，并输出它们。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int main() &#123;
+    int num;
+    int oddSum &#x3D; 0, evenSum &#x3D; 0;
+
+    cout &lt;&lt; &quot;请输入整数，输入 0 结束: &quot;;
+    while (true) &#123;
+        cin &gt;&gt; num;
+        if (num &#x3D;&#x3D; 0) break;
+        
+        if (num % 2 &#x3D;&#x3D; 0) &#123;
+            evenSum +&#x3D; num;
+        &#125; else &#123;
+            oddSum +&#x3D; num;
+        &#125;
+    &#125;
+
+    cout &lt;&lt; &quot;奇数和: &quot; &lt;&lt; oddSum &lt;&lt; endl;
+    cout &lt;&lt; &quot;偶数和: &quot; &lt;&lt; evenSum &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(3)编写程序，求解输入两个正整数的最大公约数和最小公倍数。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int gcd(int a, int b) &#123;
+    while (b !&#x3D; 0) &#123;
+        int temp &#x3D; b;
+        b &#x3D; a % b;
+        a &#x3D; temp;
+    &#125;
+    return a;
+&#125;
+
+int lcm(int a, int b) &#123;
+    return (a * b) &#x2F; gcd(a, b);
+&#125;
+
+int main() &#123;
+    int a, b;
+    
+    cout &lt;&lt; &quot;请输入两个正整数: &quot;;
+    cin &gt;&gt; a &gt;&gt; b;
+
+    cout &lt;&lt; &quot;最大公约数: &quot; &lt;&lt; gcd(a, b) &lt;&lt; endl;
+    cout &lt;&lt; &quot;最小公倍数: &quot; &lt;&lt; lcm(a, b) &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(4)编写程序计算10个正整数的平均值、方差以及标准方差。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+int main() &#123;
+    int numbers[10];
+    int sum &#x3D; 0;
+
+    cout &lt;&lt; &quot;请输入 10 个正整数: &quot;;
+    for (int i &#x3D; 0; i &lt; 10; i++) &#123;
+        cin &gt;&gt; numbers[i];
+        sum +&#x3D; numbers[i];
+    &#125;
+
+    double mean &#x3D; sum &#x2F; 10.0;
+
+    double variance &#x3D; 0;
+    for (int i &#x3D; 0; i &lt; 10; i++) &#123;
+        variance +&#x3D; pow(numbers[i] - mean, 2);
+    &#125;
+    variance &#x2F;&#x3D; 10;
+
+    double stdDeviation &#x3D; sqrt(variance);
+
+    cout &lt;&lt; &quot;平均值: &quot; &lt;&lt; mean &lt;&lt; endl;
+    cout &lt;&lt; &quot;方差: &quot; &lt;&lt; variance &lt;&lt; endl;
+    cout &lt;&lt; &quot;标准方差: &quot; &lt;&lt; stdDeviation &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(5)输入4个字母，并反向显示这些字母。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int main() &#123;
+    char letters[4];
+
+    cout &lt;&lt; &quot;请输入 4 个字母: &quot;;
+    for (int i &#x3D; 0; i &lt; 4; i++) &#123;
+        cin &gt;&gt; letters[i];
+    &#125;
+
+    cout &lt;&lt; &quot;反向显示字母: &quot;;
+    for (int i &#x3D; 3; i &gt;&#x3D; 0; i--) &#123;
+        cout &lt;&lt; letters[i];
+    &#125;
+    cout &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(6)输出所有的“水仙花数”。“水仙花数”是指一个3位数，其各位数字的立方和等于该数本身。例如，153 为一个水仙花数，因为153&#x3D;1+5+3。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+int main() &#123;
+    cout &lt;&lt; &quot;所有水仙花数: &quot;;
+    for (int i &#x3D; 100; i &lt; 1000; i++) &#123;
+        int hundreds &#x3D; i &#x2F; 100;
+        int tens &#x3D; (i &#x2F; 10) % 10;
+        int ones &#x3D; i % 10;
+
+        if (pow(hundreds, 3) + pow(tens, 3) + pow(ones, 3) &#x3D;&#x3D; i) &#123;
+            cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+        &#125;
+    &#125;
+    cout &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(7)求∑n!(即 1!+2!+…+50!)。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+long long factorial(int n) &#123;
+    long long result &#x3D; 1;
+    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;
+        result *&#x3D; i;
+    &#125;
+    return result;
+&#125;
+
+int main() &#123;
+    long long sum &#x3D; 0;
+    for (int i &#x3D; 1; i &lt;&#x3D; 50; i++) &#123;
+        sum +&#x3D; factorial(i);
+    &#125;
+
+    cout &lt;&lt; &quot;1! + 2! + ... + 50! 的和为: &quot; &lt;&lt; sum &lt;&lt; endl;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<p>(8)编写程序求一元二次方程 ax’+bx+c&#x3D;0 的解。<br>该方程的解分为以下几种情况:<br>① b-4ac&#x3D;0，有两个相等的实根;</p>
+<p>② b’-4ac&gt;0，有两个不等的实根;<br>③ b’-4ac&lt;0，无实根:<br>④ a&#x3D;0，不是二次方程。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+int main() &#123;
+    double a, b, c;
+    cout &lt;&lt; &quot;请输入一元二次方程的系数 a, b, c: &quot;;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+
+    if (a &#x3D;&#x3D; 0) &#123;
+        cout &lt;&lt; &quot;这不是一元二次方程!&quot; &lt;&lt; endl;
+        return 0;
+    &#125;
+
+    double discriminant &#x3D; b * b - 4 * a * c;  &#x2F;&#x2F; 判别式
+
+    if (discriminant &gt; 0) &#123;
+        double root1 &#x3D; (-b + sqrt(discriminant)) &#x2F; (2 * a);
+        double root2 &#x3D; (-b - sqrt(discriminant)) &#x2F; (2 * a);
+        cout &lt;&lt; &quot;方程有两个不等的实根: &quot; &lt;&lt; root1 &lt;&lt; &quot; 和 &quot; &lt;&lt; root2 &lt;&lt; endl;
+    &#125; else if (discriminant &#x3D;&#x3D; 0) &#123;
+        double root &#x3D; -b &#x2F; (2 * a);
+        cout &lt;&lt; &quot;方程有两个相等的实根: &quot; &lt;&lt; root &lt;&lt; endl;
+    &#125; else &#123;
+        cout &lt;&lt; &quot;方程没有实根!&quot; &lt;&lt; endl;
+    &#125;
+
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(9)编写程序，用循环语句打印如下图案。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251104161433671.png" referrerpolicy="no-referrer"></p>
+<p>(10)编写程序，输入年月日信息，并输出这一天为这一年的第几天，注意闰年问题。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+&#x2F;&#x2F; 函数声明
+bool isLeapYear(int year);
+int dayOfYear(int year, int month, int day);
+
+int main() &#123;
+    int year, month, day;
+    
+    &#x2F;&#x2F; 输入年月日
+    cout &lt;&lt; &quot;请输入年月日（格式：年 月 日）：&quot;;
+    cin &gt;&gt; year &gt;&gt; month &gt;&gt; day;
+    
+    &#x2F;&#x2F; 计算并输出结果
+    int result &#x3D; dayOfYear(year, month, day);
+    cout &lt;&lt; year &lt;&lt; &quot;年&quot; &lt;&lt; month &lt;&lt; &quot;月&quot; &lt;&lt; day &lt;&lt; &quot;日是这一年的第&quot; &lt;&lt; result &lt;&lt; &quot;天&quot; &lt;&lt; endl;
+    
+    return 0;
+&#125;
+
+&#x2F;&#x2F; 判断是否为闰年
+bool isLeapYear(int year) &#123;
+    return (year % 4 &#x3D;&#x3D; 0 &amp;&amp; year % 100 !&#x3D; 0) || (year % 400 &#x3D;&#x3D; 0);
+&#125;
+
+&#x2F;&#x2F; 计算某一天是该年的第几天
+int dayOfYear(int year, int month, int day) &#123;
+    &#x2F;&#x2F; 每月天数数组，索引0不用
+    int daysInMonth[] &#x3D; &#123;0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31&#125;;
+    
+    &#x2F;&#x2F; 如果是闰年，二月有29天
+    if (isLeapYear(year)) &#123;
+        daysInMonth[2] &#x3D; 29;
+    &#125;
+    
+    int totalDays &#x3D; 0;
+    
+    &#x2F;&#x2F; 累加前几个月的天数
+    for (int i &#x3D; 1; i &lt; month; i++) &#123;
+        totalDays +&#x3D; daysInMonth[i];
+    &#125;
+    
+    &#x2F;&#x2F; 加上当前月的天数
+    totalDays +&#x3D; day;
+    
+    return totalDays;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>(11)编写程序，由用户输入x值，计算函数值并输出。函数如下所示。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251104161501388.png" referrerpolicy="no-referrer"></p>
+<p>(12)鸡兔同笼问题。若鸡免共有100只脚，利用循环计算鸡兔各几只。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int main() &#123;
+    int totalFeet &#x3D; 100;
+    
+    cout &lt;&lt; &quot;鸡兔同笼问题（总脚数100）：&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;可能的解有：&quot; &lt;&lt; endl;
+    
+    &#x2F;&#x2F; 循环遍历可能的鸡的数量
+    for (int chicken &#x3D; 0; chicken &lt;&#x3D; 50; chicken++) &#123;
+        int rabbit &#x3D; (totalFeet - 2 * chicken) &#x2F; 4;
+        
+        &#x2F;&#x2F; 检查是否满足条件：总脚数为100，且鸡兔数量均为非负整数
+        if (2 * chicken + 4 * rabbit &#x3D;&#x3D; totalFeet &amp;&amp; rabbit &gt;&#x3D; 0) &#123;
+            cout &lt;&lt; &quot;鸡：&quot; &lt;&lt; chicken &lt;&lt; &quot;只，兔：&quot; &lt;&lt; rabbit &lt;&lt; &quot;只&quot; &lt;&lt; endl;
+        &#125;
+    &#125;
+    
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top">HuangZhongqi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top/2023/07/10/c++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98%E7%BB%83%E4%B9%A0/">https://huangzhongqi978.top/2023/07/10/c++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98%E7%BB%83%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://huangzhongqi978.top" target="_blank">奇点智库 SingularityMind</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/cpp/">C++</a></div><div class="post-share"><div class="social-share" data-image="https://gitee.com/huangzhongqi776/my-images/raw/master/20251104230155332.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>如果觉得文章不错，欢迎打赏支持！</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/alipay-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay-qrcode.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/img/wechat-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat-qrcode.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2023/12/24/hello-world/" title="自我介绍(点击最上方About查看更多~)"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161713923.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" referrerpolicy="no-referrer"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">自我介绍(点击最上方About查看更多~)</div></div><div class="info-2"><div class="info-item-1">非常高兴您访问我的网站,您可以点击最上方ABOUT查看我的详细信息~   关于我（可以点击About查看更多我的资料~）个人信息 姓名：HuangZhongqi黄中奇 专业：人工智能 邮箱：&#104;&#117;&#97;&#x6e;&#103;&#122;&#104;&#111;&#x6e;&#103;&#113;&#x69;&#57;&#55;&#x38;&#x40;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109; GitHub：https://github.com/Huangzhongqi978 个人博客：[https://Huangzhongqi978.top   学习课程我在人工智能专业期间学习了以下主要课程：  人工智能核心课程  机器学习 深度学习 自然语言处理（NLP） 计算机视觉（CV） 强化学习 大数据分析与处理   前沿与实践课程  机器人与嵌入式系统 AI 项目实训 云计算与人工智能平台     教育经历学习成绩：专业排名加综测排名前2% 获得证书：CET4、CET6、计算机等级三级、四级证书、华...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="author-info-name">HuangZhongqi</div><div class="author-info-description">Deep Learning & Computer Vision</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Huangzhongqi978" target="_blank" title="GitHub"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter" style="color: #1da1f2;"></i></a><a class="social-icon" href="https://linkedin.com/in/huangzhongqi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color: #0077b5;"></i></a><a class="social-icon" href="mailto:huangzhongqi978@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="WeChat" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125834859.png" data-qr-type="WeChat"><i class="fab fa-weixin" style="color: #07c160;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="QQ" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125800207.png" data-qr-type="QQ"><i class="fab fa-qq" style="color: #12b7f5;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">奇点智库 - 人工智能技术博客与文档，分享深度学习、NLP、计算机视觉技术</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.</span> <span class="toc-text">c++面向对象程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">1.函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9E%84%E9%80%A0%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">2.构造数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">3. 面向对象编程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BB%A7%E6%89%BF%E5%92%8C%E6%B4%BE%E7%94%9F"><span class="toc-number">1.4.</span> <span class="toc-text">4.继承和派生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">1.5.</span> <span class="toc-text">5.运算符重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.6.</span> <span class="toc-text">6. 模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%96%87%E4%BB%B6"><span class="toc-number">1.7.</span> <span class="toc-text">7.文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-STL%E5%BA%93"><span class="toc-number">1.8.</span> <span class="toc-text">8.STL库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%BC%82%E5%B8%B8"><span class="toc-number">1.9.</span> <span class="toc-text">9.异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%9F%BA%E7%A1%80%E5%88%86%E6%94%AF"><span class="toc-number">1.10.</span> <span class="toc-text">10.基础分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E5%9F%BA%E7%A1%80%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.11.</span> <span class="toc-text">11.基础循环</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="Yolo11交通标志检测系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005131157954.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Yolo11交通标志检测系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="Yolo11交通标志检测系统">Yolo11交通标志检测系统</a><time datetime="2025-09-10T07:59:31.000Z" title="发表于 2025-09-10 15:59:31">2025-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/05/technical_report/" title="基于LLM和RAG的领克汽车智能问答系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于LLM和RAG的领克汽车智能问答系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/05/technical_report/" title="基于LLM和RAG的领克汽车智能问答系统">基于LLM和RAG的领克汽车智能问答系统</a><time datetime="2025-09-05T05:59:31.000Z" title="发表于 2025-09-05 13:59:31">2025-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161622681.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化">添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化</a><time datetime="2025-07-14T16:00:00.000Z" title="发表于 2025-07-15 00:00:00">2025-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/15/%E5%A9%9A%E6%81%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="基于Django+Vue的婚姻法知识图谱问答系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161244190.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于Django+Vue的婚姻法知识图谱问答系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/06/15/%E5%A9%9A%E6%81%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="基于Django+Vue的婚姻法知识图谱问答系统">基于Django+Vue的婚姻法知识图谱问答系统</a><time datetime="2025-06-15T02:30:00.000Z" title="发表于 2025-06-15 10:30:00">2025-06-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/27/AI%E6%99%BA%E8%83%BD%E7%AD%94%E9%A2%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="基于Spring Cloud与Vue3的AI智能答题系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162047789.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于Spring Cloud与Vue3的AI智能答题系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/01/27/AI%E6%99%BA%E8%83%BD%E7%AD%94%E9%A2%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="基于Spring Cloud与Vue3的AI智能答题系统">基于Spring Cloud与Vue3的AI智能答题系统</a><time datetime="2025-01-27T02:00:00.000Z" title="发表于 2025-01-27 10:00:00">2025-01-27</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20251104230155332.png);"><div class="footer-other"><div class="footer-copyright"></div><div class="footer_custom_text"><div style="line-height: 1.8;">
+  <div>© 2025 HuangZhongqi</div>
+  <div style="margin-top: 8px;">
+    <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">
+      <img src="/img/gongxin.png" alt="ICP备案" style="height: 16px; vertical-align: middle; margin-right: 4px;">ICP备案鲁ICP备2025190459号
+    </a>
+  </div>
+  <div style="margin-top: 8px;">
+    <a href="http://www.beian.gov.cn" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">
+      <img src="/img/备案图标.png" alt="公安备案" style="height: 16px; vertical-align: middle; margin-right: 4px;">公安备案鲁公网安备37028102001667号
+    </a>
+  </div>
+  <div style="margin-top: 8px;">Copyright © 2022 - 2025 Huang Zhongqi. All Rights Reserved. 黄中奇版权所有</div>
+</div>
+</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><script src="/js/qr-modal.js"></script><script src="/js/reading-progress.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'Huangzhongqi978/blog-commnts',
+      'data-repo-id': 'R_kgDOQOt6kA',
+      'data-category-id': 'DIC_kwDOQOt6kM4CxaSm',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script src="/js/mouse-trail.js"></script><script src="/js/background-check.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script id="click-show-text" src="https://unpkg.com/butterfly-extsrc@1.1.6/dist/click-show-text.min.js" data-mobile="false" data-text="好棒！,加油！,很棒！,点赞！,太棒了！,优秀！,精彩！,赞！" data-fontsize="15px" data-random="true" async="async"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.1"></script></div></div></body></html>
