@@ -832,6 +832,78 @@ document.addEventListener('DOMContentLoaded', () => {
    * 同时处理 CSS background-image 中的 Gitee 图片
    */
   const fixGiteeImageReferrer = () => {
+    // 全局 Gitee 图片 URL 缓存（避免重复处理）
+    const giteeImageCache = new Map()
+    
+    // 通过 img + canvas 获取图片并转换为 blob URL，绕过防盗链和 CORS
+    const loadGiteeImageAsBlob = async (url) => {
+      if (giteeImageCache.has(url)) {
+        return giteeImageCache.get(url)
+      }
+      
+      return new Promise((resolve) => {
+        try {
+          // 使用 img 标签加载图片，配合 referrerPolicy 绕过防盗链
+          const img = new Image()
+          img.referrerPolicy = 'no-referrer'
+          // 不设置 crossOrigin，避免 CORS 检查
+          
+          img.onload = () => {
+            try {
+              // 将图片绘制到 canvas，然后转换为 blob
+              const canvas = document.createElement('canvas')
+              canvas.width = img.naturalWidth || img.width
+              canvas.height = img.naturalHeight || img.height
+              
+              const ctx = canvas.getContext('2d')
+              
+              // 尝试绘制图片（如果 canvas 被污染，这里可能会抛出错误）
+              try {
+                ctx.drawImage(img, 0, 0)
+              } catch (drawError) {
+                // Canvas 被污染，无法读取数据，回退到使用原 URL
+                resolve(null)
+                return
+              }
+              
+              // 将 canvas 转换为 blob
+              // 注意：如果 Canvas 被污染，toBlob 可能会抛出同步错误
+              try {
+                canvas.toBlob((blob) => {
+                  if (blob) {
+                    const blobUrl = URL.createObjectURL(blob)
+                    giteeImageCache.set(url, blobUrl)
+                    resolve(blobUrl)
+                  } else {
+                    // canvas 转换失败（可能是被污染），回退到使用原 URL
+                    resolve(null)
+                  }
+                }, 'image/png')
+              } catch (toBlobError) {
+                // Canvas 被污染，toBlob 抛出错误，回退到使用原 URL
+                resolve(null)
+              }
+            } catch (error) {
+              // 其他错误，回退到使用原 URL
+              resolve(null)
+            }
+          }
+          
+          img.onerror = () => {
+            // 图片加载失败，回退到使用原 URL
+            resolve(null)
+          }
+          
+          // 开始加载图片
+          img.src = url
+        } catch (error) {
+          // 处理异常，回退到使用原 URL
+          resolve(null)
+        }
+      })
+    }
+    
+    // 处理单个图片元素
     const processImage = (img) => {
       // 确保移除 crossorigin 属性（可能导致 CORS 错误）
       if (img.hasAttribute('crossorigin')) {
@@ -842,61 +914,105 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!img.hasAttribute('referrerpolicy')) {
         img.setAttribute('referrerpolicy', 'no-referrer')
       }
+      
+      // 如果是 Gitee 图片，尝试使用 blob URL
+      const src = img.src || img.getAttribute('src') || ''
+      const lazySrc = img.getAttribute('data-lazy-src') || ''
+      const imageUrl = src || lazySrc
+      
+      if (imageUrl && imageUrl.includes('gitee.com') && !imageUrl.startsWith('blob:')) {
+        loadGiteeImageAsBlob(imageUrl).then(blobUrl => {
+          if (blobUrl) {
+            if (src) img.src = blobUrl
+            if (lazySrc) img.setAttribute('data-lazy-src', blobUrl)
+          }
+        }).catch(() => {
+          // 如果 blob 方式失败，保持原 URL，依赖 meta referrer policy
+        })
+      }
     }
     
     // 处理 CSS background-image 中的 Gitee 图片
     const processBackgroundImages = () => {
-      // 使用 Set 来存储已处理的图片 URL，避免重复处理
-      const processedUrls = new Set()
+      const processedElements = new Set()
       
-      // 首先检查内联样式中包含 gitee.com 的元素（性能更好）
+      // 处理内联样式中的背景图片
       const elementsWithStyle = document.querySelectorAll('[style*="background-image"], [style*="gitee.com"]')
       
       elementsWithStyle.forEach(element => {
+        if (processedElements.has(element)) return
+        
         const inlineStyle = element.getAttribute('style') || ''
         const bgMatch = inlineStyle.match(/background-image:\s*url\(['"]?([^'")]+)['"]?\)/i)
         
-        if (bgMatch && bgMatch[1] && bgMatch[1].includes('gitee.com')) {
+        if (bgMatch && bgMatch[1] && bgMatch[1].includes('gitee.com') && !bgMatch[1].startsWith('blob:')) {
           const imageUrl = bgMatch[1]
-          if (!processedUrls.has(imageUrl)) {
-            processedUrls.add(imageUrl)
-            
-            // 创建隐藏的 Image 对象预加载，确保图片能正确加载
-            // 由于 CSS 不支持 referrerPolicy，依赖全局 meta referrer policy
-            const img = new Image()
-            img.referrerPolicy = 'no-referrer'
-            img.onload = () => {
-              // 图片加载成功，确保元素背景图片正常显示
-              const currentBg = window.getComputedStyle(element).backgroundImage
-              if (!currentBg || currentBg === 'none' || !currentBg.includes(imageUrl)) {
-                element.style.backgroundImage = `url(${imageUrl})`
+          processedElements.add(element)
+          
+          // 使用 img + canvas 方式转换为 blob
+          loadGiteeImageAsBlob(imageUrl).then(blobUrl => {
+            if (blobUrl) {
+              const currentStyle = element.getAttribute('style') || ''
+              const newStyle = currentStyle.replace(
+                /background-image:\s*url\(['"]?[^'")]+['"]?\)/i,
+                `background-image: url(${blobUrl})`
+              )
+              element.setAttribute('style', newStyle || `background-image: url(${blobUrl})`)
+            } else {
+              // 如果 blob 方式失败，使用 Image 预加载来"预热"图片缓存
+              // 不设置 crossOrigin，避免 CORS 错误
+              const img = new Image()
+              img.referrerPolicy = 'no-referrer'
+              img.onload = () => {
+                // 图片加载成功，说明可以访问，保持原 URL（依赖 meta referrer policy）
+                // 刷新背景图片以确保显示
+                const currentStyle = element.getAttribute('style') || ''
+                if (!currentStyle.includes(imageUrl)) {
+                  element.style.backgroundImage = `url("${imageUrl}")`
+                }
               }
+              img.onerror = () => {
+                console.warn('Gitee 背景图片加载失败:', imageUrl)
+              }
+              img.src = imageUrl
             }
-            img.onerror = () => {
-              console.warn('Gitee 背景图片加载失败:', imageUrl)
-            }
-            img.src = imageUrl
-          }
+          })
         }
       })
       
       // 检查特定元素的计算样式（如 header、footer 等常用背景容器）
       const bgContainers = document.querySelectorAll('#page-header, #web_bg, #footer, header, [id*="header"], [id*="bg"]')
       bgContainers.forEach(element => {
+        if (processedElements.has(element)) return
+        
         try {
           const computedStyle = window.getComputedStyle(element)
           const bgImage = computedStyle.backgroundImage
           if (bgImage && bgImage !== 'none') {
             const urlMatch = bgImage.match(/url\(['"]?([^'")]+)['"]?\)/i)
-            if (urlMatch && urlMatch[1] && urlMatch[1].includes('gitee.com')) {
+            if (urlMatch && urlMatch[1] && urlMatch[1].includes('gitee.com') && !urlMatch[1].startsWith('blob:')) {
               const imageUrl = urlMatch[1]
-              if (!processedUrls.has(imageUrl)) {
-                processedUrls.add(imageUrl)
-                // 预加载图片以确保能正确加载
-                const img = new Image()
-                img.referrerPolicy = 'no-referrer'
-                img.src = imageUrl
-              }
+              processedElements.add(element)
+              
+              // 使用 img + canvas 方式转换为 blob
+              loadGiteeImageAsBlob(imageUrl).then(blobUrl => {
+                if (blobUrl) {
+                  element.style.backgroundImage = `url(${blobUrl})`
+                } else {
+                  // 如果 blob 方式失败，使用 Image 预加载来"预热"图片缓存
+                  // 不设置 crossOrigin，避免 CORS 错误
+                  const img = new Image()
+                  img.referrerPolicy = 'no-referrer'
+                  img.onload = () => {
+                    // 图片加载成功，说明可以访问，保持原 URL（依赖 meta referrer policy）
+                    element.style.backgroundImage = `url("${imageUrl}")`
+                  }
+                  img.onerror = () => {
+                    console.warn('Gitee 背景图片加载失败:', imageUrl)
+                  }
+                  img.src = imageUrl
+                }
+              })
             }
           }
         } catch (e) {
@@ -924,10 +1040,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // 立即执行一次
     processImages()
     
-    // 延迟执行一次，确保 DOM 完全加载后再处理背景图片
+    // 延迟执行多次，确保 DOM 完全加载后再处理背景图片
+    // 背景图片可能在多个时机设置，需要多次检查
     setTimeout(() => {
       processBackgroundImages()
     }, 100)
+    
+    setTimeout(() => {
+      processBackgroundImages()
+    }, 300)
+    
+    setTimeout(() => {
+      processBackgroundImages()
+    }, 500)
+    
+    // 在 window.onload 时再执行一次
+    window.addEventListener('load', () => {
+      processBackgroundImages()
+    })
     
     // 在 PJAX 导航完成后也执行
     btf.addGlobalFn('pjaxComplete', () => {
@@ -935,6 +1065,9 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         processBackgroundImages()
       }, 100)
+      setTimeout(() => {
+        processBackgroundImages()
+      }, 300)
     }, 'fixGiteeImage')
     
     // 监听懒加载图片加载完成事件
@@ -992,6 +1125,58 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     
     imgObserver.observe(document.body, { childList: true, subtree: true })
+    
+    // 监听背景图片元素的 style 属性变化（特别是 #web_bg）
+    const bgObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+          const element = mutation.target
+          // 检查是否是背景图片容器
+          if (element.id === 'web_bg' || 
+              element.id === 'page-header' || 
+              element.id === 'footer' ||
+              element.id.includes('header') ||
+              element.id.includes('bg')) {
+            const inlineStyle = element.getAttribute('style') || ''
+            if (inlineStyle.includes('gitee.com') || inlineStyle.includes('background-image')) {
+              // 延迟处理，避免频繁触发
+              setTimeout(() => {
+                processBackgroundImages()
+              }, 50)
+            }
+          }
+        }
+      })
+    })
+    
+    // 观察所有可能的背景图片容器
+    const bgContainers = document.querySelectorAll('#web_bg, #page-header, #footer, header, [id*="header"], [id*="bg"]')
+    bgContainers.forEach(element => {
+      bgObserver.observe(element, { attributes: true, attributeFilter: ['style'] })
+    })
+    
+    // 监听新添加的背景容器
+    const bgContainerObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) { // Element node
+            if (node.id === 'web_bg' || 
+                node.id === 'page-header' || 
+                node.id === 'footer' ||
+                node.id?.includes('header') ||
+                node.id?.includes('bg')) {
+              bgObserver.observe(node, { attributes: true, attributeFilter: ['style'] })
+              // 立即处理一次
+              setTimeout(() => {
+                processBackgroundImages()
+              }, 50)
+            }
+          }
+        })
+      })
+    })
+    
+    bgContainerObserver.observe(document.body, { childList: true, subtree: true })
   }
 
   const lazyloadImg = () => {
