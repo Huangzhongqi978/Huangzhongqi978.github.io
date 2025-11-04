@@ -48,9 +48,29 @@
         img.onload = function() {
           console.log('✓ 背景图片加载成功！');
         };
-        img.onerror = function() {
-          console.error('❌ 背景图片加载失败！URL可能无效或无法访问。');
-          console.error('请检查图片URL:', imageUrl);
+        img.onerror = function(e) {
+          console.error('❌ 背景图片加载失败！');
+          console.error('图片URL:', imageUrl);
+          
+          // 检查是否是 SSL 证书错误
+          if (imageUrl.startsWith('https://')) {
+            console.warn('⚠️ 检测到 HTTPS 协议，可能是 SSL 证书问题');
+            console.warn('可能的原因：');
+            console.warn('  1. SSL 证书域名不匹配（ERR_CERT_COMMON_NAME_INVALID）');
+            console.warn('  2. 证书已过期或无效');
+            console.warn('  3. 自签名证书未正确配置');
+            console.warn('');
+            console.warn('💡 解决方案：');
+            console.warn('  1. 检查并修复 SSL 证书配置');
+            console.warn('  2. 临时方案：在配置文件中将 https:// 改为 http://');
+            console.warn('  3. 使用其他图床服务（如 GitHub、Gitee、七牛云等）');
+            console.warn('  4. 联系服务器管理员修复证书问题');
+          } else {
+            console.error('可能的原因：');
+            console.error('  1. URL 无效或图片不存在');
+            console.error('  2. 服务器无法访问');
+            console.error('  3. CORS 跨域问题');
+          }
         };
         img.src = imageUrl;
       }

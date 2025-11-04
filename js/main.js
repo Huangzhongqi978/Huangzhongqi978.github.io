@@ -934,10 +934,30 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 处理 CSS background-image 中的 Gitee 图片
     const processBackgroundImages = () => {
+      // 快速检查：如果页面上没有 Gitee 图片，直接返回（避免不必要的 DOM 查询）
+      if (!document.querySelector('[style*="gitee.com"], #web_bg[style*="gitee"], #page-header[style*="gitee"]')) {
+        // 检查计算样式中的 Gitee 图片（需要更深入的检查）
+        const bgContainers = document.querySelectorAll('#web_bg, #page-header')
+        let hasGiteeImage = false
+        for (const element of bgContainers) {
+          try {
+            const computedStyle = window.getComputedStyle(element)
+            const bgImage = computedStyle.backgroundImage
+            if (bgImage && bgImage.includes('gitee.com')) {
+              hasGiteeImage = true
+              break
+            }
+          } catch (e) {
+            // 忽略样式读取错误
+          }
+        }
+        if (!hasGiteeImage) return
+      }
+      
       const processedElements = new Set()
       
-      // 处理内联样式中的背景图片
-      const elementsWithStyle = document.querySelectorAll('[style*="background-image"], [style*="gitee.com"]')
+      // 处理内联样式中的背景图片（只处理包含 gitee.com 的元素，减少不必要的查询）
+      const elementsWithStyle = document.querySelectorAll('[style*="gitee.com"]')
       
       elementsWithStyle.forEach(element => {
         if (processedElements.has(element)) return
@@ -1127,6 +1147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     imgObserver.observe(document.body, { childList: true, subtree: true })
     
     // 监听背景图片元素的 style 属性变化（特别是 #web_bg）
+    // 只处理 Gitee 图片，避免干扰其他图床的正常加载
     const bgObserver = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
@@ -1138,7 +1159,8 @@ document.addEventListener('DOMContentLoaded', () => {
               element.id.includes('header') ||
               element.id.includes('bg')) {
             const inlineStyle = element.getAttribute('style') || ''
-            if (inlineStyle.includes('gitee.com') || inlineStyle.includes('background-image')) {
+            // 只处理 Gitee 图片，避免干扰其他图床
+            if (inlineStyle.includes('gitee.com')) {
               // 延迟处理，避免频繁触发
               setTimeout(() => {
                 processBackgroundImages()
@@ -1166,10 +1188,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 node.id?.includes('header') ||
                 node.id?.includes('bg')) {
               bgObserver.observe(node, { attributes: true, attributeFilter: ['style'] })
-              // 立即处理一次
-              setTimeout(() => {
-                processBackgroundImages()
-              }, 50)
+              // 只处理 Gitee 图片，检查 style 属性中是否包含 gitee.com
+              const inlineStyle = node.getAttribute('style') || ''
+              if (inlineStyle.includes('gitee.com')) {
+                setTimeout(() => {
+                  processBackgroundImages()
+                }, 50)
+              }
             }
           }
         })
