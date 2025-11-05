@@ -88,5 +88,29 @@
   font-size: 1.1em !important;
 }
 
+/* 设置文章内容字体大小为16px */
+.container,
+#article-container,
+.post-container,
+.post-content {
+  font-size: 16px !important;
+}
 
+/* 设置代码字体大小为16px */
+.container code,
+.container pre,
+.container pre code,
+.container figure.highlight pre,
+.container figure.highlight code,
+#article-container code,
+#article-container pre,
+.post-container code,
+.post-container pre {
+  font-size: 16px !important;
+}
 
+/* 确保代码块中的代码也是16px */
+.container figure.highlight .highlight-tools,
+.container figure.highlight figcaption {
+  font-size: 16px !important;
+}
