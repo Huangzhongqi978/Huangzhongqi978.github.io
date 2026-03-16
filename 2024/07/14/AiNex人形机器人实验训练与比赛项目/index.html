@@ -1,0 +1,623 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><meta name="referrer" content="no-referrer"><title>AiNex人形机器人实验训练与比赛项目 | 奇点智库 SingularityMind</title><meta name="author" content="HuangZhongqi"><meta name="copyright" content="HuangZhongqi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f5f0fa"><meta name="description" content="AiNex人形机器人实验训练与比赛项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AiNex人形机器人实验训练与比赛项目">
+<meta property="og:url" content="https://huangzhongqi978.top/2024/07/14/AiNex%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AE%9E%E9%AA%8C%E8%AE%AD%E7%BB%83%E4%B8%8E%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE/">
+<meta property="og:site_name" content="奇点智库 SingularityMind">
+<meta property="og:description" content="AiNex人形机器人实验训练与比赛项目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316191755813.png">
+<meta property="article:published_time" content="2024-07-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-16T11:35:43.547Z">
+<meta property="article:author" content="HuangZhongqi">
+<meta property="article:tag" content="Ros">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316191755813.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AiNex人形机器人实验训练与比赛项目",
+  "url": "https://huangzhongqi978.top/2024/07/14/AiNex%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AE%9E%E9%AA%8C%E8%AE%AD%E7%BB%83%E4%B8%8E%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE/",
+  "image": "https://gitee.com/huangzhongqi776/my-images/raw/master/20260316191755813.png",
+  "datePublished": "2024-07-13T16:00:00.000Z",
+  "dateModified": "2026-03-16T11:35:43.547Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "HuangZhongqi",
+      "url": "https://huangzhongqi978.top"
+    }
+  ]
+}</script><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/img/logo.png"><link rel="icon" type="image/png" sizes="16x16" href="/img/logo.png"><link rel="icon" type="image/png" href="/img/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/img/logo.png"><link rel="apple-touch-icon" href="/img/logo.png"><link rel="canonical" href="https://huangzhongqi978.top/2024/07/14/AiNex%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AE%9E%E9%AA%8C%E8%AE%AD%E7%BB%83%E4%B8%8E%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE/"><link rel="preconnect" href="//unpkg.com"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@6.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/qr-modal.css"><link rel="stylesheet" href="/css/reading-progress.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        try {
+          const parsed = JSON.parse(itemStr)
+          // 如果是新格式（包含 value 和 expiry）
+          if (parsed && typeof parsed === 'object' && 'value' in parsed) {
+            if ('expiry' in parsed && Date.now() > parsed.expiry) {
+              localStorage.removeItem(key)
+              return undefined
+            }
+            return parsed.value
+          }
+          // 如果是旧格式（纯字符串），直接返回
+          return parsed
+        } catch (e) {
+          // 如果不是有效的 JSON，可能是旧格式的字符串值，直接返回
+          return itemStr
+        }
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#2d0a3d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f5f0fa')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'AiNex人形机器人实验训练与比赛项目',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}
+window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile: false };</script><link rel="stylesheet" href="/css/custom-font.css"><link rel="stylesheet" href="/css/index-header-fix.css"><link rel="stylesheet" href="/css/background-fix.css"><link rel="stylesheet" href="/css/header-transparent.css"><link rel="stylesheet" href="/css/text-colors.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/bg.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20260316191755813.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">奇点智库 SingularityMind</span></a><a class="nav-page-title" href="/"><span class="site-name">AiNex人形机器人实验训练与比赛项目</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">AiNex人形机器人实验训练与比赛项目</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-13T16:00:00.000Z" title="发表于 2024-07-14 00:00:00">2024-07-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-16T11:35:43.547Z" title="更新于 2026-03-16 19:35:43">2026-03-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>AiNex人形机器人实验训练与比赛项目</p>
+<span id="more"></span>
+
+<h2 id="比赛背景介绍"><a href="#比赛背景介绍" class="headerlink" title="比赛背景介绍"></a>比赛背景介绍</h2><p>目前，国家已经将人工智能提升至国家重要战略层面，人工智能领域中的机器学习、视觉识别技术在智慧交通、智能生产和智慧社区都得到了广泛的应用，为了进一步推动该技术的研究进展，增强学生的创新意识和思维能力，挖掘机器视觉在人工智能应用领域的潜力，我们专门设定了AI 视觉机器人识别赛场景，利用视觉识别、图像回传、深度学习及机器人运动学算法等技术来来驯化机器人，从而让机器人能快速到达目的地，高效完成各项任务。本赛题主要是为了考察选手的编程与调试和应用等综合技能，引导高等院校关注机器视觉识别技术发展趋势和产业应用方向，促进产教互动、校企融合，增强高等学校学生的新技术学习能力和就业竞争力，为新一代高科技人工智能技术产业培养高级应用型人才。</p>
+<h2 id="比赛科目一：视觉人形机器人任务挑战赛"><a href="#比赛科目一：视觉人形机器人任务挑战赛" class="headerlink" title="比赛科目一：视觉人形机器人任务挑战赛"></a>比赛科目一：视觉人形机器人任务挑战赛</h2><p>视觉人形机器人任务挑战赛：在比赛场地上智能视觉仿人机器人从起点出发，采用视觉识别自主巡线、自主动作、足式行走（禁止轮式、履带等滚转式移动方法）完成比赛任务。赛道包括自主跨栏、上下台阶、自主搬运和视觉巡线这几个项目区域，在最短时间内完成指定赛道项目，且得分最高的队伍取得优胜。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316192239604.png" referrerpolicy="no-referrer"></p>
+<h2 id="场地尺寸"><a href="#场地尺寸" class="headerlink" title="场地尺寸"></a>场地尺寸</h2><p>1、场地图尺寸：长<em>宽3000mm×3000mm，循迹黑线宽度为30mm；<br>2、栅栏尺寸：长</em>宽<em>高400mm</em>50mm<em>100mm，厚度10mm；<br>3、台阶尺寸：长</em>宽<em>高400mm</em>200mm<em>30mm；<br>4、小方块尺寸：长</em>宽<em>高35mm</em>35mm*35mm；</p>
+<h2 id="场地材质"><a href="#场地材质" class="headerlink" title="场地材质"></a>场地材质</h2><p>1、场地图建议材质为哑光无纺布；<br>2、台阶和栅栏材质均为雪弗板；</p>
+<p>3、栅栏表面为蓝色；台阶表面为白色，台阶短边两端贴有红色线，中间贴<br>有黑色线，线宽17mm；<br>4、方块为绿色EVA 海绵。</p>
+<h2 id="场地标识"><a href="#场地标识" class="headerlink" title="场地标识"></a>场地标识</h2><p>1、起点线和终点线明显横向黑线（长<em>宽200mm</em>30mm）标识；</p>
+<h2 id="制作方法"><a href="#制作方法" class="headerlink" title="制作方法"></a>制作方法</h2><p>1、建议到当地建材市场购买长<em>宽3000mm×3000mm 的哑光无纺布；<br>2、建议购买或自制一个长</em>宽<em>高400mm</em>100mm<em>50mm 木头栅栏；<br>3、建议购买或自制一个长</em>宽<em>高400mm</em>200mm<em>30mm 木头台阶；<br>4、建议购买2 个绿色EVA 海绵（长</em>宽<em>高35mm</em>35mm*35mm）；</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316192436627.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316192519419.png" referrerpolicy="no-referrer"></p>
+<h2 id="比赛最终场地效果图"><a href="#比赛最终场地效果图" class="headerlink" title="比赛最终场地效果图"></a>比赛最终场地效果图</h2><p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316192617269.png" referrerpolicy="no-referrer"></p>
+<blockquote>
+<p>1、场地图纸上的标识值，是理论值。承办单位加工制作并提供使用的实际<br>场地，是与图纸上的标识值有轻微差异的。我们允许实际场地的场地宽度、<br>平台长度、斜面坡度等实际数值，与图纸的标识值有略微的不同；<br>2、场地的平台和地图，可能会出现比较轻微的不平坦情况；<br>3、参赛队设计制作机器人的时候，应充分考虑到这些因素对比赛成绩的影<br>响。</p>
+</blockquote>
+<h2 id="比赛要求"><a href="#比赛要求" class="headerlink" title="比赛要求"></a>比赛要求</h2><p>1、机器人面向起跑线后，裁判发令计时开始，启动机器人；<br>2、每支队伍有且仅有一次上场机会，完成比赛时间越短，完成度越高，得分越高；<br>3、自主跨栏：机器人通过视觉识别栅栏，完成自主跨栏任务，跨栏过程机器人摔倒无法自动起立、出界或无法跨越栅栏，可以向裁判请求跳过项目或者扶正机器人，并按照规则扣分，共3 次机会，过程中计时继续；<br>4、上下台阶：机器人通过视觉识台阶，自主完成上、下台阶动作，上下台阶过程中出现机器人摔倒、出界或无法自主上下台阶，可以向裁判请求跳过项目或者扶正机器人，并按照规则进行扣分，共3 次机会，过程中计时继续；<br>5、自主搬运：机器人通过视觉识别方块，然后通过手掌开合进行抓取，并将其搬到终点位置的放置区，抓取前方块必须在虚线框内，搬运过程中方块必须始终在手上，如果中途掉落则视为没有搬运该方块，方块必须放到终点的放置区（方块的任意部位都在放置区内），否则视为没有搬运该方块，可以向裁判请求跳过项目，并按照规则进行扣分，机器人在搬运过程中出现摔倒或偏离轨道，可以向裁判申请扶正机器人，并按照规则进行扣分，共3 次机会，过程中计时继续；<br>6、视觉巡线：比赛全程机器人必须通过视觉识别自主巡线完成，机器人在巡线过程中出现摔倒或双脚偏离轨道，可以向裁判申请扶正机器人，并按照规则进行扣分，共3 次机会，过程中计时继续；<br>7、机器人双脚到达放置区，且方块在放置区掉落触地后，计时结束，记录比赛时间，如果没有搬运方块，则机器人到达放置区后计时结束，记录比赛时间（机器人到达放置区指机器人的任意部位都在放置区内，否则扣3分）。</p>
+<h2 id="计分规则"><a href="#计分规则" class="headerlink" title="计分规则"></a>计分规则</h2><p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316192840247.png" referrerpolicy="no-referrer"></p>
+<h2 id="比赛现场"><a href="#比赛现场" class="headerlink" title="比赛现场"></a>比赛现场</h2><p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/c262b167f0d9ac0d800ee91fedcf931.jpg" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/1cfce4bc1aecff7e196705b9db4d124.jpg" referrerpolicy="no-referrer"></p>
+<p>​               </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>项目描述：巡黑线走完全程、跨越栅栏、上下台阶、捡球、将小球放到指定区域，机器人基于树莓派 4B，具备 24 个自由度舵机，支持 OpenCV 与计算机视觉，参加第十七届国际先进机器人及仿真技术大赛。<br>搭建运行环境：在 Ubuntu 18.04 系统下完成 Python 3.8.10 与 ROS Melodic 的安装和配置，使用 MobaXterm 进行远程连接与基础调试。<br>调试运动参数：实操舵机动作组编辑与调用，完成基础行走实验，并对速度、转弯角度、步态周期和行走高度等参数进行调整，理解双足步态与逆运动学的基本原理。<br>调整机器人代码上下台阶时脚掌与台阶的距离以及抬起下降的幅度，解决比赛中机器人上下台阶摔倒的问题，调整机器人比赛抓取球过程掉落问题，以及识别不到小球的问题。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top">HuangZhongqi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top/2024/07/14/AiNex%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AE%9E%E9%AA%8C%E8%AE%AD%E7%BB%83%E4%B8%8E%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE/">https://huangzhongqi978.top/2024/07/14/AiNex%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AE%9E%E9%AA%8C%E8%AE%AD%E7%BB%83%E4%B8%8E%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://huangzhongqi978.top" target="_blank">奇点智库 SingularityMind</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Ros/">Ros</a></div><div class="post-share"><div class="social-share" data-image="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316191755813.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>如果觉得文章不错，欢迎打赏支持！</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/alipay-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay-qrcode.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/img/wechat-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat-qrcode.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/08/15/%E5%9F%BA%E4%BA%8E%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E4%B8%AD%E5%8C%BB%E8%8D%AF%E5%9B%BE%E8%B0%B1%E6%A3%80%E7%B4%A2%E4%B8%8E%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" title="基于知识图谱的中医药图谱检索与问答系统"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316180327084.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" referrerpolicy="no-referrer"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">基于知识图谱的中医药图谱检索与问答系统</div></div><div class="info-2"><div class="info-item-1">基于知识图谱的中医药图谱检索与问答系统   项目介绍基于中医药知识图谱和智能检索的问答系统是一个专门针对中医药知识查询与诊疗辅助场景的Web端智能问答解决方案。该系统以中医药文化传承与临床应用需求为背景，充分利用中医药知识图谱的技术架构，打造了一个功能全面的中医药智慧服务平台。该中医药知识图谱问答系统主要涵盖以下核心功能： （1）中医药实体检索：用户可以通过现代化的Web界面进行中医药相关实体的精准查询，系统将基于Neo4j中医药知识图谱快速检索相关实体信息并展示结构化结果，为中医药学习与临床应用提供专业参考。 （2）诊疗关系推理：系统支持基于图谱的关系推理模式，能够根据用户查询的症状或药物推导出相关的疾病、治疗方案等关联信息，提供系统化的中医药诊疗辅助体验。 （3）图谱可视化展示：系统不仅提供查询结果，还通过ECharts实现中医药知识图谱的动态可视化，用户可以直观查看实体间的复杂关系网络，确保知识关联的透明度和准确性。 （4）中医药数据预处理：支持中医药原始数据的批量导入和预处理，包括实体抽取、关系识别和数据清洗，进行中医药知识的结构化组织和图谱构建。 （5）知识图谱构建管理...</div></div></div></a><a class="pagination-related" href="/2023/12/24/%E5%85%B3%E4%BA%8E%E6%88%91/" title="自我介绍(点击最上方About查看更多~)"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161713923.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" referrerpolicy="no-referrer"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">自我介绍(点击最上方About查看更多~)</div></div><div class="info-2"><div class="info-item-1">非常高兴您访问我的网站,您可以点击最上方ABOUT查看我的详细信息~   关于我（可以点击About查看更多我的资料~）个人信息 姓名：Huang Zhongqi 黄中奇 专业：电子信息-人工智能 邮箱：&#104;&#x75;&#97;&#x6e;&#x67;&#122;&#104;&#x6f;&#x6e;&#103;&#113;&#105;&#57;&#x37;&#56;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;  &#56;&#x36;&#50;&#x32;&#51;&#57;&#53;&#55;&#x36;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#x6d; GitHub： https://github.com/Huangzhongqi978 个人博客：[https://Huangzhongqi978.top   学习课程我在人工智能专业期间学习了以下主要课程：  人工智能核心课程  机器学习 深度学习 自然语言处理（NLP） 计算机视觉（CV） 强化学习 大数据分析与处理...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="author-info-name">HuangZhongqi</div><div class="author-info-description">Deep Learning & Computer Vision</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Huangzhongqi978" target="_blank" title="GitHub"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter" style="color: #1da1f2;"></i></a><a class="social-icon" href="https://linkedin.com/in/huangzhongqi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color: #0077b5;"></i></a><a class="social-icon" href="mailto:huangzhongqi978@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="WeChat" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125834859.png" data-qr-type="WeChat"><i class="fab fa-weixin" style="color: #07c160;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="QQ" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125800207.png" data-qr-type="QQ"><i class="fab fa-qq" style="color: #12b7f5;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">奇点智库 - 人工智能技术博客与文档，分享深度学习、NLP、计算机视觉技术</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%B5%9B%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">比赛背景介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%B5%9B%E7%A7%91%E7%9B%AE%E4%B8%80%EF%BC%9A%E8%A7%86%E8%A7%89%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BB%BB%E5%8A%A1%E6%8C%91%E6%88%98%E8%B5%9B"><span class="toc-number">2.</span> <span class="toc-text">比赛科目一：视觉人形机器人任务挑战赛</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E5%9C%B0%E5%B0%BA%E5%AF%B8"><span class="toc-number">3.</span> <span class="toc-text">场地尺寸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E5%9C%B0%E6%9D%90%E8%B4%A8"><span class="toc-number">4.</span> <span class="toc-text">场地材质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E5%9C%B0%E6%A0%87%E8%AF%86"><span class="toc-number">5.</span> <span class="toc-text">场地标识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">制作方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%B5%9B%E6%9C%80%E7%BB%88%E5%9C%BA%E5%9C%B0%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="toc-number">7.</span> <span class="toc-text">比赛最终场地效果图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%B5%9B%E8%A6%81%E6%B1%82"><span class="toc-number">8.</span> <span class="toc-text">比赛要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E5%88%86%E8%A7%84%E5%88%99"><span class="toc-number">9.</span> <span class="toc-text">计分规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%B5%9B%E7%8E%B0%E5%9C%BA"><span class="toc-number">10.</span> <span class="toc-text">比赛现场</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">11.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/25/%E5%9F%BA%E4%BA%8EOpenCV%E7%9A%84%E6%99%BA%E8%83%BD%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/" title="基于OpenCV的智能图像处理软件"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316182536690.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于OpenCV的智能图像处理软件"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/25/%E5%9F%BA%E4%BA%8EOpenCV%E7%9A%84%E6%99%BA%E8%83%BD%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/" title="基于OpenCV的智能图像处理软件">基于OpenCV的智能图像处理软件</a><time datetime="2025-09-24T16:00:00.000Z" title="发表于 2025-09-25 00:00:00">2025-09-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/15/%E5%9F%BA%E4%BA%8EUNetRes%E7%BB%93%E6%9E%84%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%AE%8B%E5%B7%AE%E6%89%A9%E6%95%A3%E5%9B%BE%E5%83%8F%E5%A4%8D%E5%8E%9F%E7%A0%94%E7%A9%B6/" title="基于UNetRes结构的条件残差扩散图像复原研究"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316105203697.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于UNetRes结构的条件残差扩散图像复原研究"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/15/%E5%9F%BA%E4%BA%8EUNetRes%E7%BB%93%E6%9E%84%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%AE%8B%E5%B7%AE%E6%89%A9%E6%95%A3%E5%9B%BE%E5%83%8F%E5%A4%8D%E5%8E%9F%E7%A0%94%E7%A9%B6/" title="基于UNetRes结构的条件残差扩散图像复原研究">基于UNetRes结构的条件残差扩散图像复原研究</a><time datetime="2025-09-14T16:00:00.000Z" title="发表于 2025-09-15 00:00:00">2025-09-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="基于YOLOv11的交通标志检测系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005131157954.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于YOLOv11的交通标志检测系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="基于YOLOv11的交通标志检测系统">基于YOLOv11的交通标志检测系统</a><time datetime="2025-09-10T07:59:31.000Z" title="发表于 2025-09-10 15:59:31">2025-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" title="基于LLM和RAG的领克汽车智能问答系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于LLM和RAG的领克汽车智能问答系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" title="基于LLM和RAG的领克汽车智能问答系统">基于LLM和RAG的领克汽车智能问答系统</a><time datetime="2025-09-05T05:59:31.000Z" title="发表于 2025-09-05 13:59:31">2025-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161622681.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化">添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化</a><time datetime="2025-07-14T16:00:00.000Z" title="发表于 2025-07-15 00:00:00">2025-07-15</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20260316191755813.png);"><div class="footer-other"><div class="footer-copyright"></div><div class="footer_custom_text"><div style="line-height: 1.8;">
+  <div>© 2025 HuangZhongqi</div>
+  <div style="margin-top: 8px;">
+    <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">
+      <img src="/img/gongxin.png" alt="ICP备案" style="height: 16px; vertical-align: middle; margin-right: 4px;">ICP备案鲁ICP备2025190459号
+    </a>
+  </div>
+  <div style="margin-top: 8px;">
+    <a href="http://www.beian.gov.cn" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">
+      <img src="/img/备案图标.png" alt="公安备案" style="height: 16px; vertical-align: middle; margin-right: 4px;">公安备案鲁公网安备37028102001667号
+    </a>
+  </div>
+  <div style="margin-top: 8px;">Copyright © 2022 - 2025 Huang Zhongqi. All Rights Reserved. 黄中奇版权所有</div>
+</div>
+</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><script src="/js/qr-modal.js"></script><script src="/js/reading-progress.js"></script><script src="/js/tw_cn.js?v=5.5.1"></script><script src="https://unpkg.com/@fancyapps/ui@6.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    // Initialize mermaid if not already initialized
+    if (!window.mermaidInitialized) {
+      mermaid.initialize({ 
+        startOnLoad: false,
+        theme: theme,
+        securityLevel: 'loose'
+      })
+      window.mermaidInitialized = true
+    }
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      if (!mermaidSrc) return
+      
+      // Skip if already rendered
+      if (item.querySelector('svg')) return
+      
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${Date.now()}-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent.trim()
+
+      try {
+        // Try Mermaid v11+ render API first (returns Promise)
+        if (typeof mermaid.render === 'function') {
+          mermaid.render(mermaidID, mermaidDefinition)
+            .then(({ svg }) => {
+              // Clear existing SVG if any
+              const existingSvg = item.querySelector('svg')
+              if (existingSvg) existingSvg.remove()
+              // Insert SVG after the source element
+              mermaidSrc.insertAdjacentHTML('afterend', svg)
+            })
+            .catch(err => {
+              console.error('Mermaid render error:', err)
+              // Fallback: use class-based approach
+              const tempDiv = document.createElement('div')
+              tempDiv.className = 'mermaid'
+              tempDiv.textContent = mermaidSrc.textContent.trim()
+              item.appendChild(tempDiv)
+              if (typeof mermaid.run === 'function') {
+                mermaid.run({ nodes: [tempDiv] })
+              } else if (typeof mermaid.contentLoaded === 'function') {
+                mermaid.contentLoaded()
+              }
+            })
+        } else {
+          // Fallback: use class-based approach for older versions
+          const tempDiv = document.createElement('div')
+          tempDiv.className = 'mermaid'
+          tempDiv.textContent = mermaidSrc.textContent.trim()
+          item.appendChild(tempDiv)
+          if (typeof mermaid.run === 'function') {
+            mermaid.run({ nodes: [tempDiv] })
+          } else if (typeof mermaid.contentLoaded === 'function') {
+            mermaid.contentLoaded()
+          }
+        }
+      } catch (err) {
+        console.error('Mermaid error:', err)
+      }
+    })
+  }
+
+  const codeToMermaid = () => {
+    // Match various code block formats used by Hexo/PrismJS
+    // PrismJS renders as: <pre class="line-numbers"><code class="language-mermaid">
+    // Also support: <pre><code class="mermaid"> or <pre><code class="language-mermaid">
+    const selectors = [
+      '#article-container pre > code.mermaid',
+      '#article-container pre > code[class*="language-mermaid"]',
+      '#article-container pre > code[class*="mermaid"]',
+      '#article-container pre[class*="language-mermaid"] > code',
+      '#article-container pre[class*="mermaid"] > code',
+      '#article-container code.mermaid',
+      '#article-container code[class*="language-mermaid"]',
+      '#article-container code[class*="mermaid"]',
+      // More aggressive selectors
+      '#article-container pre code.language-mermaid',
+      '#article-container pre[class*="language-"] code[class*="mermaid"]',
+      '#article-container .highlight code[class*="mermaid"]',
+      '#article-container figure.highlight code[class*="mermaid"]'
+    ]
+    
+    let codeMermaidEle = []
+    selectors.forEach(selector => {
+      try {
+        const elements = document.querySelectorAll(selector)
+        elements.forEach(el => {
+          // Only add if not already in the array and not already processed
+          if (!codeMermaidEle.includes(el) && !el.closest('.mermaid-wrap')) {
+            codeMermaidEle.push(el)
+          }
+        })
+      } catch (e) {
+        console.warn('[Mermaid] Selector error:', selector, e)
+      }
+    })
+    
+    // Debug: log what we found
+    console.log('[Mermaid] Checking for mermaid code blocks...')
+    console.log('[Mermaid] Found', codeMermaidEle.length, 'potential mermaid code block(s)')
+    
+    if (codeMermaidEle.length === 0) {
+      // Also try to find ALL code blocks to see what's available
+      const allCodeBlocks = document.querySelectorAll('#article-container pre code, #article-container code')
+      console.log('[Mermaid] Total code blocks found:', allCodeBlocks.length)
+      allCodeBlocks.forEach((code, idx) => {
+        if (idx < 5) { // Only log first 5
+          console.log(`[Mermaid] Code block ${idx}:`, {
+            classes: code.className,
+            parent: code.parentElement?.tagName,
+            parentClasses: code.parentElement?.className,
+            text: code.textContent.substring(0, 50)
+          })
+        }
+      })
+      return
+    }
+    
+    console.log(`[Mermaid] Processing ${codeMermaidEle.length} mermaid code block(s)`)
+
+    codeMermaidEle.forEach((ele, idx) => {
+      // Skip if already processed
+      if (ele.closest('.mermaid-wrap')) {
+        console.log(`[Mermaid] Block ${idx} already processed, skipping`)
+        return
+      }
+      
+      // Get the actual code content
+      const codeContent = ele.textContent.trim()
+      if (!codeContent) {
+        console.log(`[Mermaid] Block ${idx} has no content, skipping`)
+        return
+      }
+      
+      console.log(`[Mermaid] Processing block ${idx}:`, {
+        content: codeContent.substring(0, 50) + '...',
+        codeElement: ele.tagName,
+        codeClasses: ele.className,
+        parent: ele.parentElement?.tagName,
+        parentClasses: ele.parentElement?.className
+      })
+      
+      // Find the parent pre element (might be direct parent or ancestor)
+      let preElement = ele.closest('pre')
+      if (!preElement && ele.parentElement && ele.parentElement.tagName === 'PRE') {
+        preElement = ele.parentElement
+      }
+      
+      // Also check for figure.highlight wrapper
+      let figureElement = ele.closest('figure.highlight')
+      let targetElement = figureElement || preElement || ele.parentElement
+      
+      // Create mermaid wrapper
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = codeContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      
+      // Replace the target element
+      if (targetElement) {
+        console.log(`[Mermaid] Replacing element:`, targetElement.tagName, targetElement.className)
+        targetElement.replaceWith(newEle)
+      } else {
+        // Fallback: wrap the code element
+        console.log(`[Mermaid] Fallback: wrapping code element`)
+        ele.parentElement.insertBefore(newEle, ele)
+        ele.remove()
+      }
+    })
+  }
+
+  const loadMermaid = () => {
+    const codeWriteEnabled = false
+    console.log('[Mermaid] loadMermaid called, code_write:', codeWriteEnabled)
+    
+    // Wait a bit for PrismJS to finish rendering code blocks
+    const processMermaid = () => {
+      console.log('[Mermaid] processMermaid called')
+      
+      // When code_write is false, we need to convert code blocks to mermaid
+      if (!codeWriteEnabled) {
+        console.log('[Mermaid] Converting code blocks to mermaid...')
+        codeToMermaid()
+        // Try again after a short delay to catch any late-rendered code blocks
+        setTimeout(() => {
+          console.log('[Mermaid] Retrying code block conversion...')
+          codeToMermaid()
+        }, 100)
+      }
+      
+      const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+      console.log('[Mermaid] Found', $mermaid.length, 'mermaid-wrap elements')
+      
+      if ($mermaid.length === 0) {
+        console.log('[Mermaid] No mermaid-wrap elements found, will retry')
+        return false
+      }
+      
+      const runMermaidFn = () => {
+        console.log('[Mermaid] runMermaidFn called')
+        // Re-check for mermaid elements in case of dynamic content
+        if (!codeWriteEnabled) {
+          codeToMermaid()
+        }
+        const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+        if ($mermaid.length === 0) {
+          console.log('[Mermaid] No mermaid-wrap elements found in runMermaidFn')
+          return
+        }
+        console.log('[Mermaid] Running mermaid render on', $mermaid.length, 'elements')
+        runMermaid($mermaid)
+      }
+      
+      btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+      
+      if (window.loadMermaid && window.mermaid) {
+        console.log('[Mermaid] Mermaid already loaded, running render')
+        runMermaidFn()
+      } else {
+        console.log('[Mermaid] Loading mermaid script...')
+        btf.getScript('https://unpkg.com/mermaid@11.12.0/dist/mermaid.min.js').then(() => {
+          console.log('[Mermaid] Mermaid script loaded successfully')
+          runMermaidFn()
+        }).catch(err => {
+          console.error('[Mermaid] Failed to load Mermaid:', err)
+        })
+      }
+      return true
+    }
+    
+    // Try processing immediately
+    if (!processMermaid()) {
+      // If no mermaid blocks found, try again after a delay (for lazy-loaded content)
+      console.log('[Mermaid] No mermaid blocks found initially, retrying after 500ms')
+      setTimeout(() => {
+        processMermaid()
+      }, 500)
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const applyThemeDefaultsConfig = theme => {
+    if (theme === 'dark-mode') {
+      Chart.defaults.color = "rgba(255, 255, 255, 0.8)"
+      Chart.defaults.borderColor = "rgba(255, 255, 255, 0.2)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    } else {
+      Chart.defaults.color = "rgba(0, 0, 0, 0.8)"
+      Chart.defaults.borderColor = "rgba(0, 0, 0, 0.1)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    }
+  }
+
+  // Recursively traverse the config object and automatically apply theme-specific color schemes
+  const applyThemeConfig = (obj, theme) => {
+    if (typeof obj !== 'object' || obj === null) return
+
+    Object.keys(obj).forEach(key => {
+      const value = obj[key]
+      // If the property is an object and has theme-specific options, apply them
+      if (typeof value === 'object' && value !== null) {
+        if (value[theme]) {
+          obj[key] = value[theme] // Apply the value for the current theme
+        } else {
+          // Recursively process child objects
+          applyThemeConfig(value, theme)
+        }
+      }
+    })
+  }
+
+  const runChartJS = ele => {
+    window.loadChartJS = true
+
+    Array.from(ele).forEach((item, index) => {
+      const chartSrc = item.firstElementChild
+      const chartID = item.getAttribute('data-chartjs-id') || ('chartjs-' + index) // Use custom ID or default ID
+      const width = item.getAttribute('data-width')
+      const existingCanvas = document.getElementById(chartID)
+
+      // If a canvas already exists, remove it to avoid rendering duplicates
+      if (existingCanvas) {
+          existingCanvas.parentNode.remove()
+      }
+
+      const chartDefinition = chartSrc.textContent
+      const canvas = document.createElement('canvas')
+      canvas.id = chartID
+
+      const div = document.createElement('div')
+      div.className = 'chartjs-wrap'
+
+      if (width) {
+        div.style.width = width
+      }
+
+      div.appendChild(canvas)
+      chartSrc.insertAdjacentElement('afterend', div)
+
+      const ctx = document.getElementById(chartID).getContext('2d')
+
+      const config = JSON.parse(chartDefinition)
+
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark-mode' : 'light-mode'
+
+      // Set default styles (initial setup)
+      applyThemeDefaultsConfig(theme)
+
+      // Automatically traverse the config and apply dual-mode color schemes
+      applyThemeConfig(config, theme)
+
+      new Chart(ctx, config)
+    })
+  }
+
+  const loadChartJS = () => {
+    const chartJSEle = document.querySelectorAll('#article-container .chartjs-container')
+    if (chartJSEle.length === 0) return
+
+    window.loadChartJS ? runChartJS(chartJSEle) : btf.getScript('https://unpkg.com/chart.js@4.5.0/dist/chart.umd.js').then(() => runChartJS(chartJSEle))
+  }
+
+  // Listen for theme change events
+  btf.addGlobalFn('themeChange', loadChartJS, 'chartjs')
+  btf.addGlobalFn('encrypt', loadChartJS, 'chartjs')
+
+  window.pjax ? loadChartJS() : document.addEventListener('DOMContentLoaded', loadChartJS)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'Huangzhongqi978/blog-commnts',
+      'data-repo-id': 'R_kgDOQOt6kA',
+      'data-category-id': 'DIC_kwDOQOt6kM4CxaSm',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script src="/js/mouse-trail.js"></script><script src="/js/background-check.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script id="click-show-text" src="https://unpkg.com/butterfly-extsrc@1.1.6/dist/click-show-text.min.js" data-mobile="false" data-text="好棒！,加油！,很棒！,点赞！,太棒了！,优秀！,精彩！,赞！" data-fontsize="15px" data-random="true" async="async"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.1"></script></div></div></body></html>

@@ -1,0 +1,652 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><meta name="referrer" content="no-referrer"><title>基于YOLOv8的苹果分类检测系统 | 奇点智库 SingularityMind</title><meta name="author" content="HuangZhongqi"><meta name="copyright" content="HuangZhongqi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f5f0fa"><meta name="description" content="基于YOLOv8的苹果分类检测系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于YOLOv8的苹果分类检测系统">
+<meta property="og:url" content="https://huangzhongqi978.top/2025/03/15/%E5%9F%BA%E4%BA%8EYOLOv8%E7%9A%84%E8%8B%B9%E6%9E%9C%E5%88%86%E7%B1%BB%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/">
+<meta property="og:site_name" content="奇点智库 SingularityMind">
+<meta property="og:description" content="基于YOLOv8的苹果分类检测系统">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316111708279.png">
+<meta property="article:published_time" content="2025-03-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-16T04:05:06.982Z">
+<meta property="article:author" content="HuangZhongqi">
+<meta property="article:tag" content="图像处理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316111708279.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "基于YOLOv8的苹果分类检测系统",
+  "url": "https://huangzhongqi978.top/2025/03/15/%E5%9F%BA%E4%BA%8EYOLOv8%E7%9A%84%E8%8B%B9%E6%9E%9C%E5%88%86%E7%B1%BB%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/",
+  "image": "https://gitee.com/huangzhongqi776/my-images/raw/master/20260316111708279.png",
+  "datePublished": "2025-03-14T16:00:00.000Z",
+  "dateModified": "2026-03-16T04:05:06.982Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "HuangZhongqi",
+      "url": "https://huangzhongqi978.top"
+    }
+  ]
+}</script><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/img/logo.png"><link rel="icon" type="image/png" sizes="16x16" href="/img/logo.png"><link rel="icon" type="image/png" href="/img/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/img/logo.png"><link rel="apple-touch-icon" href="/img/logo.png"><link rel="canonical" href="https://huangzhongqi978.top/2025/03/15/%E5%9F%BA%E4%BA%8EYOLOv8%E7%9A%84%E8%8B%B9%E6%9E%9C%E5%88%86%E7%B1%BB%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/"><link rel="preconnect" href="//unpkg.com"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@6.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/qr-modal.css"><link rel="stylesheet" href="/css/reading-progress.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        try {
+          const parsed = JSON.parse(itemStr)
+          // 如果是新格式（包含 value 和 expiry）
+          if (parsed && typeof parsed === 'object' && 'value' in parsed) {
+            if ('expiry' in parsed && Date.now() > parsed.expiry) {
+              localStorage.removeItem(key)
+              return undefined
+            }
+            return parsed.value
+          }
+          // 如果是旧格式（纯字符串），直接返回
+          return parsed
+        } catch (e) {
+          // 如果不是有效的 JSON，可能是旧格式的字符串值，直接返回
+          return itemStr
+        }
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#2d0a3d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f5f0fa')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于YOLOv8的苹果分类检测系统',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}
+window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile: false };</script><link rel="stylesheet" href="/css/custom-font.css"><link rel="stylesheet" href="/css/index-header-fix.css"><link rel="stylesheet" href="/css/background-fix.css"><link rel="stylesheet" href="/css/header-transparent.css"><link rel="stylesheet" href="/css/text-colors.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/bg.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20260316111708279.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">奇点智库 SingularityMind</span></a><a class="nav-page-title" href="/"><span class="site-name">基于YOLOv8的苹果分类检测系统</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">基于YOLOv8的苹果分类检测系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-14T16:00:00.000Z" title="发表于 2025-03-15 00:00:00">2025-03-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-16T04:05:06.982Z" title="更新于 2026-03-16 12:05:06">2026-03-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>基于YOLOv8的苹果分类检测系统</p>
+<span id="more"></span>
+
+<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>该系统集成了YOLO分类模型的完整推理框架，包括图像预处理、模型推理、结果后处理和可视化分析等核心功能。系统实现了以下主要功能：首先基于上传的苹果图像，通过Web界面上传到服务器端；然后利用YOLO深度学习模型进行苹果品质分级与缺陷识别，判断苹果为”合格”或”不合格”；并支持多种缺陷类型的精确识别，包括病变、碰伤、腐烂、虫伤、裂果、褶皱、黑斑等七种缺陷类型。用户界面采用现代化的Web界面设计，提供直观的功能导航，包含实时处理进度显示和检测结果对比功能。处理完成后不仅显示清晰的分类结果，还提供专业的可视化对比功能：原图与检测结果对比图、Top-5预测结果展示、批量处理进度监控以及模型状态实时显示，帮助用户直观地理解处理效果和模型性能。整个系统旨在为用户提供一个高效、易用的苹果品质检测工具，在实际应用场景中就能快速识别各种缺陷苹果，提升分选效率。</p>
+<blockquote>
+<p><strong>注释：</strong></p>
+<p><strong>YOLOv8的v8代表的是YOLO模型的一个版本。苹果总共由八个类别，其中合格才是好果，其他均为坏果。</strong></p>
+<p><strong>分类检测是计算机视觉的一种任务，指的是模型可以根据图片划分不同的类别进行检测，然后给出置信度。</strong></p>
+<p><strong>问：为什么原始结果图片还有检测结果图片都为蓝色？</strong></p>
+<p><strong>答：当模型完成推理后，系统会将这些多层特征图进行融合处理，然后通过颜色映射技术将特征强度转化为可视化效果，其中蓝色被选为主色调是因为它在视觉上具有良好的辨识度，能够清晰区分模型关注的不同区域。</strong></p>
+<p><strong>在热力图中，颜色越深的蓝色区域表示模型对该位置的响应越强烈，也就是说模型认为该区域包含越多与其预测结果相关的关键特征信息，比如当检测到苹果存在缺陷时，缺陷区域的特征响应往往比周围健康区域更强，因此显示为更深的蓝色，这样可以帮助用户直观地理解模型是依据哪些区域做出分类判断的，同时也为质量检测人员提供了重要的参考依据，让他们能够快速定位到苹果表面的问题区域。</strong></p>
+</blockquote>
+<h2 id="项目预览"><a href="#项目预览" class="headerlink" title="项目预览"></a>项目预览</h2><p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/2fbecaadc9ed91b71a9b4b2adff661a.png" referrerpolicy="no-referrer"></p>
+<h2 id="系统处理逻辑图"><a href="#系统处理逻辑图" class="headerlink" title="系统处理逻辑图"></a>系统处理逻辑图</h2><blockquote>
+<p>用户启动程序后进入Web主界面，可以看到功能导航系统。栏分别展示统计仪表盘、模型分析和图片检测三种功能选项，点击其中任意一个功能卡片即可进入对应页面进行操作。在图片检测模式下，用户可以通过拖拽或点击的方式上传需要检测的苹果图像，系统会自动将图像上传到服务器并返回原图预览；用户确认图像无误后系统会自动进行模型推理并将结果返回给前端；后端首先通过YOLOv8模型加载函数获取已训练的分类模型，然后根据模型进行图像预测并返回预测结果；预测完成后，系统会将识别出的缺陷类别（如病变、碰伤、腐烂、虫伤、裂果、褶皱、黑斑）与”合格”类别进行比对，判断该苹果是否为坏果，结果图像通过标注绘制函数保存到服务器并将Base64编码返回给前端，同时持久化保存到results目录。前端收到处理结果后，在右侧显示标注后的图像，用户可以直观地看到缺陷区域的标注位置，同时显示Top-5预测结果供用户参考详细分类概率，也可以点击切换查看原图与标注结果的对比细节。</p>
+</blockquote>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/f92bc40320f36d6a7c6e8b511e7e9a0.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/5d79464f5548c15f68b04924abef2a7.png" referrerpolicy="no-referrer"></p>
+<h2 id="项目数据集"><a href="#项目数据集" class="headerlink" title="项目数据集"></a>项目数据集</h2><p>苹果分类检测系统数据集包含8个类别，总计约766张图片，其中训练集约536张（占比约70%），验证集约55张（占比约20%），测试集约55张（占比约10%），各类型分布如下：合格类别约143张用于识别符合销售标准的优质苹果，病变类别约95张用于识别发生病变的苹果，碰伤类别约143张用于识别运输或采摘过程中碰伤的苹果，腐烂类别约95张用于识别腐烂变质的苹果，虫伤类别约143张用于识别被虫害叮咬的苹果，裂果类别约48张用于识别果皮开裂的苹果，褶皱类别约47张用于识别表面褶皱的苹果，黑斑类别约52张用于识别表面有黑斑的苹果，数据集按照70%训练集、20%验证集、10%测试集的比例进行划分，其中训练集占比最大用于模型学习，验证集用于训练过程中调整超参数和早停，测试集用于最终评估模型性能，同时系统确保训练、验证和测试三个子集之间完全分离不存在数据重叠，以保证模型评估结果的真实性和可靠性。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/1c4a030942701dcfd0ec7647361d846.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/0d1e67b05601a98955ec8cece70fc95.png" referrerpolicy="no-referrer"></p>
+<h2 id="项目架构展示"><a href="#项目架构展示" class="headerlink" title="项目架构展示"></a>项目架构展示</h2><p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316113223889.png" referrerpolicy="no-referrer"></p>
+<h2 id="项目功能展示"><a href="#项目功能展示" class="headerlink" title="项目功能展示"></a>项目功能展示</h2><h3 id="前端页面功能"><a href="#前端页面功能" class="headerlink" title="前端页面功能"></a>前端页面功能</h3><p>前端采用现代化的深色主题设计，对测试集上的样本数据进行可视化分析，在类别分布显示饼状图，右侧显示类别准确率，方便用户直观查看结果。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316113739144.png" referrerpolicy="no-referrer"></p>
+<h3 id="坏果编号列表"><a href="#坏果编号列表" class="headerlink" title="坏果编号列表"></a>坏果编号列表</h3><p>在这里用户可以看到坏果编号的信息，比如类别和置信度，如图所示。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/368751a9ea6842b653243323d52d402.png" referrerpolicy="no-referrer"></p>
+<h3 id="模型分析"><a href="#模型分析" class="headerlink" title="模型分析"></a>模型分析</h3><p>在这里可以看到苹果八个类别图片模型检测的效果，比如图片总数还有图片正确分类的结果。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/6b22756f0c04556b39098340d2560ba.png" referrerpolicy="no-referrer"></p>
+<h3 id="图片检测"><a href="#图片检测" class="headerlink" title="图片检测"></a>图片检测</h3><p>图片检测模块用户可以自己选择测试集上的图片进行检测，会实时显示置信度还有结果，正确分类苹果。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/d6adf658319566763b68ec21432ed80.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/e572b7431bf10d71ee874201badc1ac.png" referrerpolicy="no-referrer"></p>
+<h3 id="病变苹果分类检测"><a href="#病变苹果分类检测" class="headerlink" title="病变苹果分类检测"></a>病变苹果分类检测</h3><p>用户选择病变苹果数据集进行检测，可以正确分类病变苹果，如图所示。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/75562809041ec6bf653916e74145094.png" referrerpolicy="no-referrer">                               </p>
+<h3 id="虫伤苹果检测"><a href="#虫伤苹果检测" class="headerlink" title="虫伤苹果检测"></a>虫伤苹果检测</h3><p>用户选择虫伤苹果数据集进行检测，可以正确分类虫伤苹果，如图所示。</p>
+<p> <img src="https://gitee.com/huangzhongqi776/my-images/raw/master/fbca60167c294250c512efeae9a659a.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/5295fc438a2cc56e896f806f04e342b.png" referrerpolicy="no-referrer"></p>
+<h3 id="腐烂苹果检测"><a href="#腐烂苹果检测" class="headerlink" title="腐烂苹果检测"></a>腐烂苹果检测</h3><p>用户选择腐烂苹果数据集进行检测，可以正确分类腐烂苹果，如图所示。</p>
+<p> <img src="https://gitee.com/huangzhongqi776/my-images/raw/master/d8118f68e4d34c64a504f3d7af0d762.png" referrerpolicy="no-referrer"></p>
+<h3 id="合格品苹果检测"><a href="#合格品苹果检测" class="headerlink" title="合格品苹果检测"></a>合格品苹果检测</h3><p>用户选择合格苹果数据集进行检测，可以正确分类合格苹果，如图所示。</p>
+<p> <img src="https://gitee.com/huangzhongqi776/my-images/raw/master/34e6ee12175ce6b76d9395200958523.png" referrerpolicy="no-referrer"></p>
+<h3 id="黑斑苹果检测"><a href="#黑斑苹果检测" class="headerlink" title="黑斑苹果检测"></a>黑斑苹果检测</h3><p>用户选择黑斑苹果数据集进行检测，可以正确分类黑斑苹果，如图所示。</p>
+<p> <img src="https://gitee.com/huangzhongqi776/my-images/raw/master/e39aa7736690c27f79a6a91f5a1e53c.png" referrerpolicy="no-referrer"></p>
+<h3 id="裂果检测"><a href="#裂果检测" class="headerlink" title="裂果检测"></a>裂果检测</h3><p>用户选择裂果苹果数据集进行检测，可以正确分类裂果苹果，如图所示。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/33b063b720dce5945dcb858b020d70c.png" referrerpolicy="no-referrer"></p>
+<h3 id="碰伤苹果检测"><a href="#碰伤苹果检测" class="headerlink" title="碰伤苹果检测"></a>碰伤苹果检测</h3><p>用户选择碰伤苹果数据集进行检测，可以正确分类碰伤苹果，如图所示。</p>
+<p> <img src="https://gitee.com/huangzhongqi776/my-images/raw/master/792f7ba0be4c07710221ae89f579357.png" referrerpolicy="no-referrer"></p>
+<h3 id="褶皱苹果检测"><a href="#褶皱苹果检测" class="headerlink" title="褶皱苹果检测"></a>褶皱苹果检测</h3><p>用户选择褶皱苹果数据集进行检测，可以正确分类褶皱苹果，如图所示。</p>
+<p> <img src="https://gitee.com/huangzhongqi776/my-images/raw/master/e377153b74fa2c75f1ef827bfadd846.png" referrerpolicy="no-referrer"></p>
+<h2 id="模型训练指标图像"><a href="#模型训练指标图像" class="headerlink" title="模型训练指标图像"></a>模型训练指标图像</h2><p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316115833306.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316115857350.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316120136301.png" referrerpolicy="no-referrer"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>苹果分类检测系统的理论基础主要采用了预训练大规模图像数据集的YOLOv8分类模型作为骨干网络，通过迁移学习将ImageNet上学习到的丰富视觉特征迁移到苹果表面缺陷检测任务中，这种方式使得模型能够充分利用大规模预训练数据蕴含的通用视觉知识。在此基础上，系统针对苹果分级这一特定场景进行了任务适配和参数微调，将原始1000类分类输出层替换为针对苹果八种品质状态（合格、病变、碰伤、腐烂、虫伤、裂果、褶皱、黑斑）的八分类输出层，同时保留了YOLOv8网络在特征提取方面的优异性能，包括CSP骨干网络提取的多尺度特征、PANet特征金字塔融合的层次化表示以及空间注意力机制对关键区域的聚焦能力。在训练阶段，系统采用交叉熵损失函数衡量预测概率分布与真实标签之间的差异，通过AdamW优化器动态调整学习率，结合数据增强技术（如随机翻转、颜色抖动、随机裁剪等）扩充训练样本多样性，提高模型对不同拍摄条件下苹果图像的鲁棒性，并通过早停机制防止过拟合。在推理阶段，系统将待检测的苹果图像统一缩放至224×224像素尺寸，输入训练好的分类模型进行前向传播，模型输出各类别的预测概率，通过Softmax函数归一化后选取概率最高的类别作为最终分级结果，同时提供置信度分数用于评估预测的可信程度。整体框架将深度卷积神经网络的强大特征提取能力与迁移学习的知识复用优势巧妙结合，既保留了预训练模型在通用图像理解方面的卓越性能，又通过针对性微调实现了对苹果表面缺陷的高精度识别。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top">HuangZhongqi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top/2025/03/15/%E5%9F%BA%E4%BA%8EYOLOv8%E7%9A%84%E8%8B%B9%E6%9E%9C%E5%88%86%E7%B1%BB%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/">https://huangzhongqi978.top/2025/03/15/%E5%9F%BA%E4%BA%8EYOLOv8%E7%9A%84%E8%8B%B9%E6%9E%9C%E5%88%86%E7%B1%BB%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://huangzhongqi978.top" target="_blank">奇点智库 SingularityMind</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></div><div class="post-share"><div class="social-share" data-image="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316111708279.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>如果觉得文章不错，欢迎打赏支持！</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/alipay-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay-qrcode.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/img/wechat-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat-qrcode.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/15/%E5%9F%BA%E4%BA%8EDjango+Vue%E7%9A%84%E5%A9%9A%E5%A7%BB%E6%B3%95%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" title="基于Django+Vue的婚姻法知识图谱问答系统"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161244190.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" referrerpolicy="no-referrer"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">基于Django+Vue的婚姻法知识图谱问答系统</div></div><div class="info-2"><div class="info-item-1">本项目构建了一个集用户管理、内容发布、智能推荐、消息交互于一体的现代化婚恋平台。系统采用前后端分离架构，后端基于Django RESTful API，前端采用Vue.js+Element UI，并集成Neo4j图数据库和百度AI服务，实现了智能化的用户匹配和内容推荐功能。   技术架构设计整体架构系统采用经典的三层架构模式，结合微服务思想进行模块化设计：  表现层：Vue.js + Element UI 响应式前端界面 业务逻辑层：Django RESTful API 服务层 数据持久层：MySQL + Neo4j 混合数据库架构  核心技术栈后端技术栈：  Django 2.2.8 - Web框架 MySQL - 关系型数据库 Neo4j - 图数据库 JWT - 身份认证 百度AI API - 智能问答  前端技术栈：  Vue.js 2.6.11 - 前端框架 Element UI 2.15.6 - UI组件库 Vue Router 3.5.2 - 路由管理 Axios 0.21.1 - HTTP客户端 ECharts 4.8.0 - 数据可视化  项目展示登陆页面  后台...</div></div></div></a><a class="pagination-related" href="/2025/01/27/AI%E6%99%BA%E8%83%BD%E7%AD%94%E9%A2%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="基于Spring Cloud与Vue3的AI智能答题系统"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162047789.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" referrerpolicy="no-referrer"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">基于Spring Cloud与Vue3的AI智能答题系统</div></div><div class="info-2"><div class="info-item-1">基于Spring Cloud微服务架构的AI智能答题系统，集成了现代分布式技术栈与人工智能能力，为用户提供智能化的面试题练习与AI辅助答题服务。系统采用云原生架构设计，具备高可用、高并发、可扩展的特性。    系统概述本系统是一个基于Spring Cloud微服务架构的AI智能答题平台，旨在为用户提供智能化的面试题练习服务。系统集成了OpenAI大语言模型、阿里云语音合成、分布式消息队列等先进技术，构建了完整的智能答题生态。 核心特性 智能AI答题：集成OpenAI GPT模型，提供智能题目生成与答案评估 多模态交互：支持文本、语音等多种交互方式 分布式架构：基于Spring Cloud微服务架构，支持水平扩展 云原生部署：集成Nacos配置中心、Redis缓存、MinIO对象存储 智能审核：AI自动审核用户提交的题目内容  系统架构设计整体架构图graph TB     %% 用户层     subgraph "用户层"         A[Web前端]         B[移动端H5]         C[微信小程序]     end      %% 网关层     subg...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/09/25/%E5%9F%BA%E4%BA%8EOpenCV%E7%9A%84%E6%99%BA%E8%83%BD%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/" title="基于OpenCV的智能图像处理软件"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316182536690.png" alt="cover" referrerpolicy="no-referrer"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-25</div><div class="info-item-2">基于OpenCV的智能图像处理软件</div></div><div class="info-2"><div class="info-item-1">基于OpenCV的智能图像处理软件    项目介绍本系统运用计算机视觉和数字图像处理相关知识，以实际图像处理需求为出发点，对OpenCV图像处理技术加以运用，构建出一个较为完善的基于OpenCV的图像处理系统。该图像处理系统主要提供以下功能：（1）基础图像处理：用户可以在界面选择基础处理功能，包括图像缩放、旋转、裁剪、亮度对比度调整、颜色空间转换等操作，满足日常图像编辑需求。（2）高级图像处理：系统提供边缘检测、形态学操作、图像分割、傅里叶变换等专业算法，支持Canny边缘检测、腐蚀膨胀、GrabCut分割等高级功能。（3）特效处理功能：系统集成了多种滤镜效果、噪声处理、艺术风格转换等特效模块，提供丰富的创意处理选项，满足不同用户的个性化需求。（4）图像保存功能：系统支持将处理后的图像保存为多种格式，用户可以方便地保存处理结果。（5）撤销重做功能：系统提供撤销和重做操作，用户可以回退到之前的处理状态，提高操作灵活性。（6）参数调节：系统提供直观的参数调节界面，用户可以精确控制各种处理算法的参数，实现个性化的处理效果。（7）错误处理机制：系统具备完善的错误处理功能，当处理过程中出现...</div></div></div></a><a class="pagination-related" href="/2025/09/15/%E5%9F%BA%E4%BA%8EUNetRes%E7%BB%93%E6%9E%84%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%AE%8B%E5%B7%AE%E6%89%A9%E6%95%A3%E5%9B%BE%E5%83%8F%E5%A4%8D%E5%8E%9F%E7%A0%94%E7%A9%B6/" title="基于UNetRes结构的条件残差扩散图像复原研究"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316105203697.png" alt="cover" referrerpolicy="no-referrer"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-15</div><div class="info-item-2">基于UNetRes结构的条件残差扩散图像复原研究</div></div><div class="info-2"><div class="info-item-1">UNetRes结构的条件残差扩散图像复原   项目介绍系统实现了以下主要功能：首先基于上传的模糊图像，通过Web界面上传到服务器端；然后利用U-Net残差扩散模型进行图像重建与去模糊处理，恢复图像的清晰细节；并支持多种退化类型的图像修复，包括通用去模糊、低光照图像增强和天气条件下的图像修复。 用户界面采用现代化的Web界面设计，提供左右分栏布局的直观对比界面，支持图片拖拽上传，包含实时处理进度显示和滑动对比查看功能。处理完成后不仅显示清晰的修复结果，还提供专业的可视化对比功能：原图与修复结果对比图、滑动对比分析图、批量处理进度监控以及模型状态实时显示，帮助用户直观地理解处理效果和模型性能。整个系统旨在为用户提供一个高效、易用的图像去模糊工具，在实际应用场景中就能快速处理各种模糊图像，提升图像质量。  U-Net残差扩散模型是一种深度融合了U-Net架构、残差学习与去噪扩散概率模型的生成式模型。该模型以U-Net作为核心骨干网络，利用其对称的编码器-解码器结构进行多尺度特征提取与空间信息恢复，并通过跳跃连接保留浅层细节以提升生成精度。在U-Net的构建模块中引入残差学习机制，通过拟...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="author-info-name">HuangZhongqi</div><div class="author-info-description">Deep Learning & Computer Vision</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Huangzhongqi978" target="_blank" title="GitHub"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter" style="color: #1da1f2;"></i></a><a class="social-icon" href="https://linkedin.com/in/huangzhongqi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color: #0077b5;"></i></a><a class="social-icon" href="mailto:huangzhongqi978@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="WeChat" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125834859.png" data-qr-type="WeChat"><i class="fab fa-weixin" style="color: #07c160;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="QQ" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125800207.png" data-qr-type="QQ"><i class="fab fa-qq" style="color: #12b7f5;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">奇点智库 - 人工智能技术博客与文档，分享深度学习、NLP、计算机视觉技术</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">项目介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E9%A2%84%E8%A7%88"><span class="toc-number">2.</span> <span class="toc-text">项目预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">系统处理逻辑图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">4.</span> <span class="toc-text">项目数据集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E5%B1%95%E7%A4%BA"><span class="toc-number">5.</span> <span class="toc-text">项目架构展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%B1%95%E7%A4%BA"><span class="toc-number">6.</span> <span class="toc-text">项目功能展示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%8A%9F%E8%83%BD"><span class="toc-number">6.1.</span> <span class="toc-text">前端页面功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%8F%E6%9E%9C%E7%BC%96%E5%8F%B7%E5%88%97%E8%A1%A8"><span class="toc-number">6.2.</span> <span class="toc-text">坏果编号列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%88%86%E6%9E%90"><span class="toc-number">6.3.</span> <span class="toc-text">模型分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E6%A3%80%E6%B5%8B"><span class="toc-number">6.4.</span> <span class="toc-text">图片检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%97%85%E5%8F%98%E8%8B%B9%E6%9E%9C%E5%88%86%E7%B1%BB%E6%A3%80%E6%B5%8B"><span class="toc-number">6.5.</span> <span class="toc-text">病变苹果分类检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%AB%E4%BC%A4%E8%8B%B9%E6%9E%9C%E6%A3%80%E6%B5%8B"><span class="toc-number">6.6.</span> <span class="toc-text">虫伤苹果检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%85%90%E7%83%82%E8%8B%B9%E6%9E%9C%E6%A3%80%E6%B5%8B"><span class="toc-number">6.7.</span> <span class="toc-text">腐烂苹果检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E6%A0%BC%E5%93%81%E8%8B%B9%E6%9E%9C%E6%A3%80%E6%B5%8B"><span class="toc-number">6.8.</span> <span class="toc-text">合格品苹果检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%91%E6%96%91%E8%8B%B9%E6%9E%9C%E6%A3%80%E6%B5%8B"><span class="toc-number">6.9.</span> <span class="toc-text">黑斑苹果检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%82%E6%9E%9C%E6%A3%80%E6%B5%8B"><span class="toc-number">6.10.</span> <span class="toc-text">裂果检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A2%B0%E4%BC%A4%E8%8B%B9%E6%9E%9C%E6%A3%80%E6%B5%8B"><span class="toc-number">6.11.</span> <span class="toc-text">碰伤苹果检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A4%B6%E7%9A%B1%E8%8B%B9%E6%9E%9C%E6%A3%80%E6%B5%8B"><span class="toc-number">6.12.</span> <span class="toc-text">褶皱苹果检测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%8C%87%E6%A0%87%E5%9B%BE%E5%83%8F"><span class="toc-number">7.</span> <span class="toc-text">模型训练指标图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/25/%E5%9F%BA%E4%BA%8EOpenCV%E7%9A%84%E6%99%BA%E8%83%BD%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/" title="基于OpenCV的智能图像处理软件"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316182536690.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于OpenCV的智能图像处理软件"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/25/%E5%9F%BA%E4%BA%8EOpenCV%E7%9A%84%E6%99%BA%E8%83%BD%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/" title="基于OpenCV的智能图像处理软件">基于OpenCV的智能图像处理软件</a><time datetime="2025-09-24T16:00:00.000Z" title="发表于 2025-09-25 00:00:00">2025-09-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/15/%E5%9F%BA%E4%BA%8EUNetRes%E7%BB%93%E6%9E%84%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%AE%8B%E5%B7%AE%E6%89%A9%E6%95%A3%E5%9B%BE%E5%83%8F%E5%A4%8D%E5%8E%9F%E7%A0%94%E7%A9%B6/" title="基于UNetRes结构的条件残差扩散图像复原研究"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316105203697.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于UNetRes结构的条件残差扩散图像复原研究"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/15/%E5%9F%BA%E4%BA%8EUNetRes%E7%BB%93%E6%9E%84%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%AE%8B%E5%B7%AE%E6%89%A9%E6%95%A3%E5%9B%BE%E5%83%8F%E5%A4%8D%E5%8E%9F%E7%A0%94%E7%A9%B6/" title="基于UNetRes结构的条件残差扩散图像复原研究">基于UNetRes结构的条件残差扩散图像复原研究</a><time datetime="2025-09-14T16:00:00.000Z" title="发表于 2025-09-15 00:00:00">2025-09-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="基于YOLOv11的交通标志检测系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005131157954.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于YOLOv11的交通标志检测系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="基于YOLOv11的交通标志检测系统">基于YOLOv11的交通标志检测系统</a><time datetime="2025-09-10T07:59:31.000Z" title="发表于 2025-09-10 15:59:31">2025-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" title="基于LLM和RAG的领克汽车智能问答系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于LLM和RAG的领克汽车智能问答系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" title="基于LLM和RAG的领克汽车智能问答系统">基于LLM和RAG的领克汽车智能问答系统</a><time datetime="2025-09-05T05:59:31.000Z" title="发表于 2025-09-05 13:59:31">2025-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161622681.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化">添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化</a><time datetime="2025-07-14T16:00:00.000Z" title="发表于 2025-07-15 00:00:00">2025-07-15</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20260316111708279.png);"><div class="footer-other"><div class="footer-copyright"></div><div class="footer_custom_text"><div style="line-height: 1.8;">
+  <div>© 2025 HuangZhongqi</div>
+  <div style="margin-top: 8px;">
+    <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">
+      <img src="/img/gongxin.png" alt="ICP备案" style="height: 16px; vertical-align: middle; margin-right: 4px;">ICP备案鲁ICP备2025190459号
+    </a>
+  </div>
+  <div style="margin-top: 8px;">
+    <a href="http://www.beian.gov.cn" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">
+      <img src="/img/备案图标.png" alt="公安备案" style="height: 16px; vertical-align: middle; margin-right: 4px;">公安备案鲁公网安备37028102001667号
+    </a>
+  </div>
+  <div style="margin-top: 8px;">Copyright © 2022 - 2025 Huang Zhongqi. All Rights Reserved. 黄中奇版权所有</div>
+</div>
+</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><script src="/js/qr-modal.js"></script><script src="/js/reading-progress.js"></script><script src="/js/tw_cn.js?v=5.5.1"></script><script src="https://unpkg.com/@fancyapps/ui@6.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    // Initialize mermaid if not already initialized
+    if (!window.mermaidInitialized) {
+      mermaid.initialize({ 
+        startOnLoad: false,
+        theme: theme,
+        securityLevel: 'loose'
+      })
+      window.mermaidInitialized = true
+    }
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      if (!mermaidSrc) return
+      
+      // Skip if already rendered
+      if (item.querySelector('svg')) return
+      
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${Date.now()}-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent.trim()
+
+      try {
+        // Try Mermaid v11+ render API first (returns Promise)
+        if (typeof mermaid.render === 'function') {
+          mermaid.render(mermaidID, mermaidDefinition)
+            .then(({ svg }) => {
+              // Clear existing SVG if any
+              const existingSvg = item.querySelector('svg')
+              if (existingSvg) existingSvg.remove()
+              // Insert SVG after the source element
+              mermaidSrc.insertAdjacentHTML('afterend', svg)
+            })
+            .catch(err => {
+              console.error('Mermaid render error:', err)
+              // Fallback: use class-based approach
+              const tempDiv = document.createElement('div')
+              tempDiv.className = 'mermaid'
+              tempDiv.textContent = mermaidSrc.textContent.trim()
+              item.appendChild(tempDiv)
+              if (typeof mermaid.run === 'function') {
+                mermaid.run({ nodes: [tempDiv] })
+              } else if (typeof mermaid.contentLoaded === 'function') {
+                mermaid.contentLoaded()
+              }
+            })
+        } else {
+          // Fallback: use class-based approach for older versions
+          const tempDiv = document.createElement('div')
+          tempDiv.className = 'mermaid'
+          tempDiv.textContent = mermaidSrc.textContent.trim()
+          item.appendChild(tempDiv)
+          if (typeof mermaid.run === 'function') {
+            mermaid.run({ nodes: [tempDiv] })
+          } else if (typeof mermaid.contentLoaded === 'function') {
+            mermaid.contentLoaded()
+          }
+        }
+      } catch (err) {
+        console.error('Mermaid error:', err)
+      }
+    })
+  }
+
+  const codeToMermaid = () => {
+    // Match various code block formats used by Hexo/PrismJS
+    // PrismJS renders as: <pre class="line-numbers"><code class="language-mermaid">
+    // Also support: <pre><code class="mermaid"> or <pre><code class="language-mermaid">
+    const selectors = [
+      '#article-container pre > code.mermaid',
+      '#article-container pre > code[class*="language-mermaid"]',
+      '#article-container pre > code[class*="mermaid"]',
+      '#article-container pre[class*="language-mermaid"] > code',
+      '#article-container pre[class*="mermaid"] > code',
+      '#article-container code.mermaid',
+      '#article-container code[class*="language-mermaid"]',
+      '#article-container code[class*="mermaid"]',
+      // More aggressive selectors
+      '#article-container pre code.language-mermaid',
+      '#article-container pre[class*="language-"] code[class*="mermaid"]',
+      '#article-container .highlight code[class*="mermaid"]',
+      '#article-container figure.highlight code[class*="mermaid"]'
+    ]
+    
+    let codeMermaidEle = []
+    selectors.forEach(selector => {
+      try {
+        const elements = document.querySelectorAll(selector)
+        elements.forEach(el => {
+          // Only add if not already in the array and not already processed
+          if (!codeMermaidEle.includes(el) && !el.closest('.mermaid-wrap')) {
+            codeMermaidEle.push(el)
+          }
+        })
+      } catch (e) {
+        console.warn('[Mermaid] Selector error:', selector, e)
+      }
+    })
+    
+    // Debug: log what we found
+    console.log('[Mermaid] Checking for mermaid code blocks...')
+    console.log('[Mermaid] Found', codeMermaidEle.length, 'potential mermaid code block(s)')
+    
+    if (codeMermaidEle.length === 0) {
+      // Also try to find ALL code blocks to see what's available
+      const allCodeBlocks = document.querySelectorAll('#article-container pre code, #article-container code')
+      console.log('[Mermaid] Total code blocks found:', allCodeBlocks.length)
+      allCodeBlocks.forEach((code, idx) => {
+        if (idx < 5) { // Only log first 5
+          console.log(`[Mermaid] Code block ${idx}:`, {
+            classes: code.className,
+            parent: code.parentElement?.tagName,
+            parentClasses: code.parentElement?.className,
+            text: code.textContent.substring(0, 50)
+          })
+        }
+      })
+      return
+    }
+    
+    console.log(`[Mermaid] Processing ${codeMermaidEle.length} mermaid code block(s)`)
+
+    codeMermaidEle.forEach((ele, idx) => {
+      // Skip if already processed
+      if (ele.closest('.mermaid-wrap')) {
+        console.log(`[Mermaid] Block ${idx} already processed, skipping`)
+        return
+      }
+      
+      // Get the actual code content
+      const codeContent = ele.textContent.trim()
+      if (!codeContent) {
+        console.log(`[Mermaid] Block ${idx} has no content, skipping`)
+        return
+      }
+      
+      console.log(`[Mermaid] Processing block ${idx}:`, {
+        content: codeContent.substring(0, 50) + '...',
+        codeElement: ele.tagName,
+        codeClasses: ele.className,
+        parent: ele.parentElement?.tagName,
+        parentClasses: ele.parentElement?.className
+      })
+      
+      // Find the parent pre element (might be direct parent or ancestor)
+      let preElement = ele.closest('pre')
+      if (!preElement && ele.parentElement && ele.parentElement.tagName === 'PRE') {
+        preElement = ele.parentElement
+      }
+      
+      // Also check for figure.highlight wrapper
+      let figureElement = ele.closest('figure.highlight')
+      let targetElement = figureElement || preElement || ele.parentElement
+      
+      // Create mermaid wrapper
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = codeContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      
+      // Replace the target element
+      if (targetElement) {
+        console.log(`[Mermaid] Replacing element:`, targetElement.tagName, targetElement.className)
+        targetElement.replaceWith(newEle)
+      } else {
+        // Fallback: wrap the code element
+        console.log(`[Mermaid] Fallback: wrapping code element`)
+        ele.parentElement.insertBefore(newEle, ele)
+        ele.remove()
+      }
+    })
+  }
+
+  const loadMermaid = () => {
+    const codeWriteEnabled = false
+    console.log('[Mermaid] loadMermaid called, code_write:', codeWriteEnabled)
+    
+    // Wait a bit for PrismJS to finish rendering code blocks
+    const processMermaid = () => {
+      console.log('[Mermaid] processMermaid called')
+      
+      // When code_write is false, we need to convert code blocks to mermaid
+      if (!codeWriteEnabled) {
+        console.log('[Mermaid] Converting code blocks to mermaid...')
+        codeToMermaid()
+        // Try again after a short delay to catch any late-rendered code blocks
+        setTimeout(() => {
+          console.log('[Mermaid] Retrying code block conversion...')
+          codeToMermaid()
+        }, 100)
+      }
+      
+      const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+      console.log('[Mermaid] Found', $mermaid.length, 'mermaid-wrap elements')
+      
+      if ($mermaid.length === 0) {
+        console.log('[Mermaid] No mermaid-wrap elements found, will retry')
+        return false
+      }
+      
+      const runMermaidFn = () => {
+        console.log('[Mermaid] runMermaidFn called')
+        // Re-check for mermaid elements in case of dynamic content
+        if (!codeWriteEnabled) {
+          codeToMermaid()
+        }
+        const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+        if ($mermaid.length === 0) {
+          console.log('[Mermaid] No mermaid-wrap elements found in runMermaidFn')
+          return
+        }
+        console.log('[Mermaid] Running mermaid render on', $mermaid.length, 'elements')
+        runMermaid($mermaid)
+      }
+      
+      btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+      
+      if (window.loadMermaid && window.mermaid) {
+        console.log('[Mermaid] Mermaid already loaded, running render')
+        runMermaidFn()
+      } else {
+        console.log('[Mermaid] Loading mermaid script...')
+        btf.getScript('https://unpkg.com/mermaid@11.12.0/dist/mermaid.min.js').then(() => {
+          console.log('[Mermaid] Mermaid script loaded successfully')
+          runMermaidFn()
+        }).catch(err => {
+          console.error('[Mermaid] Failed to load Mermaid:', err)
+        })
+      }
+      return true
+    }
+    
+    // Try processing immediately
+    if (!processMermaid()) {
+      // If no mermaid blocks found, try again after a delay (for lazy-loaded content)
+      console.log('[Mermaid] No mermaid blocks found initially, retrying after 500ms')
+      setTimeout(() => {
+        processMermaid()
+      }, 500)
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const applyThemeDefaultsConfig = theme => {
+    if (theme === 'dark-mode') {
+      Chart.defaults.color = "rgba(255, 255, 255, 0.8)"
+      Chart.defaults.borderColor = "rgba(255, 255, 255, 0.2)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    } else {
+      Chart.defaults.color = "rgba(0, 0, 0, 0.8)"
+      Chart.defaults.borderColor = "rgba(0, 0, 0, 0.1)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    }
+  }
+
+  // Recursively traverse the config object and automatically apply theme-specific color schemes
+  const applyThemeConfig = (obj, theme) => {
+    if (typeof obj !== 'object' || obj === null) return
+
+    Object.keys(obj).forEach(key => {
+      const value = obj[key]
+      // If the property is an object and has theme-specific options, apply them
+      if (typeof value === 'object' && value !== null) {
+        if (value[theme]) {
+          obj[key] = value[theme] // Apply the value for the current theme
+        } else {
+          // Recursively process child objects
+          applyThemeConfig(value, theme)
+        }
+      }
+    })
+  }
+
+  const runChartJS = ele => {
+    window.loadChartJS = true
+
+    Array.from(ele).forEach((item, index) => {
+      const chartSrc = item.firstElementChild
+      const chartID = item.getAttribute('data-chartjs-id') || ('chartjs-' + index) // Use custom ID or default ID
+      const width = item.getAttribute('data-width')
+      const existingCanvas = document.getElementById(chartID)
+
+      // If a canvas already exists, remove it to avoid rendering duplicates
+      if (existingCanvas) {
+          existingCanvas.parentNode.remove()
+      }
+
+      const chartDefinition = chartSrc.textContent
+      const canvas = document.createElement('canvas')
+      canvas.id = chartID
+
+      const div = document.createElement('div')
+      div.className = 'chartjs-wrap'
+
+      if (width) {
+        div.style.width = width
+      }
+
+      div.appendChild(canvas)
+      chartSrc.insertAdjacentElement('afterend', div)
+
+      const ctx = document.getElementById(chartID).getContext('2d')
+
+      const config = JSON.parse(chartDefinition)
+
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark-mode' : 'light-mode'
+
+      // Set default styles (initial setup)
+      applyThemeDefaultsConfig(theme)
+
+      // Automatically traverse the config and apply dual-mode color schemes
+      applyThemeConfig(config, theme)
+
+      new Chart(ctx, config)
+    })
+  }
+
+  const loadChartJS = () => {
+    const chartJSEle = document.querySelectorAll('#article-container .chartjs-container')
+    if (chartJSEle.length === 0) return
+
+    window.loadChartJS ? runChartJS(chartJSEle) : btf.getScript('https://unpkg.com/chart.js@4.5.0/dist/chart.umd.js').then(() => runChartJS(chartJSEle))
+  }
+
+  // Listen for theme change events
+  btf.addGlobalFn('themeChange', loadChartJS, 'chartjs')
+  btf.addGlobalFn('encrypt', loadChartJS, 'chartjs')
+
+  window.pjax ? loadChartJS() : document.addEventListener('DOMContentLoaded', loadChartJS)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'Huangzhongqi978/blog-commnts',
+      'data-repo-id': 'R_kgDOQOt6kA',
+      'data-category-id': 'DIC_kwDOQOt6kM4CxaSm',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script src="/js/mouse-trail.js"></script><script src="/js/background-check.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script id="click-show-text" src="https://unpkg.com/butterfly-extsrc@1.1.6/dist/click-show-text.min.js" data-mobile="false" data-text="好棒！,加油！,很棒！,点赞！,太棒了！,优秀！,精彩！,赞！" data-fontsize="15px" data-random="true" async="async"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.1"></script></div></div></body></html>

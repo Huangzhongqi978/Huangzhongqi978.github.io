@@ -1,19 +1,19 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><meta name="referrer" content="no-referrer"><title>基于Minio+Redis+Springboot+Vue的云盘存储系统 | 奇点智库 SingularityMind</title><meta name="author" content="HuangZhongqi"><meta name="copyright" content="HuangZhongqi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f5f0fa"><meta name="description" content="基于Spring Boot + Vue.js构建的现代化云盘存储系统，集成MinIO对象存储、Redis缓存、MySQL数据库，实现文件上传下载、分享、预览等核心功能，支持QQ第三方登录、文件回收站、视频转码等高级特性。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><meta name="referrer" content="no-referrer"><title>基于Springboot+Vue的云盘存储系统 | 奇点智库 SingularityMind</title><meta name="author" content="HuangZhongqi"><meta name="copyright" content="HuangZhongqi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f5f0fa"><meta name="description" content="基于Spring Boot + Vue.js构建的现代化云盘存储系统，集成MinIO对象存储、Redis缓存、MySQL数据库，实现文件上传下载、分享、预览等核心功能，支持QQ第三方登录、文件回收站、视频转码等高级特性。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于Minio+Redis+Springboot+Vue的云盘存储系统">
-<meta property="og:url" content="https://huangzhongqi978.top/2024/12/24/EasyPan%E4%BA%91%E7%9B%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">
+<meta property="og:title" content="基于Springboot+Vue的云盘存储系统">
+<meta property="og:url" content="https://huangzhongqi978.top/2024/12/24/%E5%9F%BA%E4%BA%8ESpringboot+Vue%E7%9A%84%E4%BA%91%E7%9B%98%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">
 <meta property="og:site_name" content="奇点智库 SingularityMind">
 <meta property="og:description" content="基于Spring Boot + Vue.js构建的现代化云盘存储系统，集成MinIO对象存储、Redis缓存、MySQL数据库，实现文件上传下载、分享、预览等核心功能，支持QQ第三方登录、文件回收站、视频转码等高级特性。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162009784.png">
 <meta property="article:published_time" content="2024-12-24T14:30:00.000Z">
-<meta property="article:modified_time" content="2025-11-03T08:20:20.649Z">
+<meta property="article:modified_time" content="2026-03-16T10:47:19.070Z">
 <meta property="article:author" content="HuangZhongqi">
-<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="Java">
 <meta property="article:tag" content="Vue.js">
+<meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="MinIO">
 <meta property="article:tag" content="Redis">
-<meta property="article:tag" content="MySQL">
 <meta property="article:tag" content="云存储">
 <meta property="article:tag" content="文件管理">
 <meta property="article:tag" content="微服务架构">
@@ -21,11 +21,11 @@
 <meta name="twitter:image" content="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162009784.png"><script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "基于Minio+Redis+Springboot+Vue的云盘存储系统",
-  "url": "https://huangzhongqi978.top/2024/12/24/EasyPan%E4%BA%91%E7%9B%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/",
+  "headline": "基于Springboot+Vue的云盘存储系统",
+  "url": "https://huangzhongqi978.top/2024/12/24/%E5%9F%BA%E4%BA%8ESpringboot+Vue%E7%9A%84%E4%BA%91%E7%9B%98%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/",
   "image": "https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162009784.png",
   "datePublished": "2024-12-24T14:30:00.000Z",
-  "dateModified": "2025-11-03T08:20:20.649Z",
+  "dateModified": "2026-03-16T10:47:19.070Z",
   "author": [
     {
       "@type": "Person",
@@ -33,7 +33,7 @@
       "url": "https://huangzhongqi978.top"
     }
   ]
-}</script><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/img/logo.png"><link rel="icon" type="image/png" sizes="16x16" href="/img/logo.png"><link rel="icon" type="image/png" href="/img/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/img/logo.png"><link rel="apple-touch-icon" href="/img/logo.png"><link rel="canonical" href="https://huangzhongqi978.top/2024/12/24/EasyPan%E4%BA%91%E7%9B%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/"><link rel="preconnect" href="//unpkg.com"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@6.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/qr-modal.css"><link rel="stylesheet" href="/css/reading-progress.css"><script>
+}</script><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/img/logo.png"><link rel="icon" type="image/png" sizes="16x16" href="/img/logo.png"><link rel="icon" type="image/png" href="/img/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/img/logo.png"><link rel="apple-touch-icon" href="/img/logo.png"><link rel="canonical" href="https://huangzhongqi978.top/2024/12/24/%E5%9F%BA%E4%BA%8ESpringboot+Vue%E7%9A%84%E4%BA%91%E7%9B%98%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/"><link rel="preconnect" href="//unpkg.com"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@6.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/qr-modal.css"><link rel="stylesheet" href="/css/reading-progress.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -172,52 +172,555 @@
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '基于Minio+Redis+Springboot+Vue的云盘存储系统',
+  title: '基于Springboot+Vue的云盘存储系统',
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
 }
-window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile: false };</script><link rel="stylesheet" href="/css/custom-font.css"><link rel="stylesheet" href="/css/index-header-fix.css"><link rel="stylesheet" href="/css/background-fix.css"><link rel="stylesheet" href="/css/header-transparent.css"><link rel="stylesheet" href="/css/text-colors.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/bg.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162009784.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">奇点智库 SingularityMind</span></a><a class="nav-page-title" href="/"><span class="site-name">基于Minio+Redis+Springboot+Vue的云盘存储系统</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">基于Minio+Redis+Springboot+Vue的云盘存储系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-24T14:30:00.000Z" title="发表于 2024-12-24 22:30:00">2024-12-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-03T08:20:20.649Z" title="更新于 2025-11-03 16:20:20">2025-11-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>基于Spring Boot + Vue.js构建的现代化云盘存储系统，集成MinIO对象存储、Redis缓存、MySQL数据库，实现文件上传下载、分享、预览等核心功能，支持QQ第三方登录、文件回收站、视频转码等高级特性。</p>
+window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile: false };</script><link rel="stylesheet" href="/css/custom-font.css"><link rel="stylesheet" href="/css/index-header-fix.css"><link rel="stylesheet" href="/css/background-fix.css"><link rel="stylesheet" href="/css/header-transparent.css"><link rel="stylesheet" href="/css/text-colors.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/bg.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162009784.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">奇点智库 SingularityMind</span></a><a class="nav-page-title" href="/"><span class="site-name">基于Springboot+Vue的云盘存储系统</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">基于Springboot+Vue的云盘存储系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-24T14:30:00.000Z" title="发表于 2024-12-24 22:30:00">2024-12-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-16T10:47:19.070Z" title="更新于 2026-03-16 18:47:19">2026-03-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>基于Spring Boot + Vue.js构建的现代化云盘存储系统，集成MinIO对象存储、Redis缓存、MySQL数据库，实现文件上传下载、分享、预览等核心功能，支持QQ第三方登录、文件回收站、视频转码等高级特性。</p>
 <span id="more"></span>
 
-<h2 id="系统架构设计"><a href="#系统架构设计" class="headerlink" title="系统架构设计"></a>系统架构设计</h2><h3 id="技术栈选型"><a href="#技术栈选型" class="headerlink" title="技术栈选型"></a>技术栈选型</h3><p><strong>后端技术栈：</strong></p>
-<ul>
-<li>Spring Boot 2.6.1 - 微服务框架</li>
-<li>MyBatis Plus 3.4.1 - ORM框架</li>
-<li>MySQL 8.0.30 - 关系型数据库</li>
-<li>Redis - 缓存与会话管理</li>
-<li>MinIO - 对象存储服务</li>
-<li>FFmpeg - 视频转码处理</li>
-</ul>
-<p><strong>前端技术栈：</strong></p>
-<ul>
-<li>Vue.js 3.x - 前端框架</li>
-<li>Element Plus - UI组件库</li>
-<li>Axios - HTTP客户端</li>
-<li>Vue Router - 路由管理</li>
-</ul>
-<h3 id="系统架构图"><a href="#系统架构图" class="headerlink" title="系统架构图"></a>系统架构图</h3><pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TB
-    A<span class="token text string">[用户浏览器]</span> <span class="token arrow operator">--></span> B<span class="token text string">[Nginx反向代理]</span>
-    B <span class="token arrow operator">--></span> C<span class="token text string">[Vue.js前端应用]</span>
-    B <span class="token arrow operator">--></span> D<span class="token text string">[Spring Boot后端服务]</span>
-    D <span class="token arrow operator">--></span> E<span class="token text string">[MySQL数据库]</span>
-    D <span class="token arrow operator">--></span> F<span class="token text string">[Redis缓存]</span>
-    D <span class="token arrow operator">--></span> G<span class="token text string">[MinIO对象存储]</span>
-    D <span class="token arrow operator">--></span> H<span class="token text string">[FFmpeg转码服务]</span>
-    
-    <span class="token keyword">subgraph</span> <span class="token string">"核心模块"</span>
-        I<span class="token text string">[用户管理模块]</span>
-        J<span class="token text string">[文件管理模块]</span>
-        K<span class="token text string">[分享管理模块]</span>
-        L<span class="token text string">[回收站模块]</span>
-    <span class="token keyword">end</span>
-    
-    D <span class="token arrow operator">--></span> I
-    D <span class="token arrow operator">--></span> J
-    D <span class="token arrow operator">--></span> K
-    D <span class="token arrow operator">--></span> L<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="核心功能实现"><a href="#核心功能实现" class="headerlink" title="核心功能实现"></a>核心功能实现</h2><h3 id="1-文件存储架构"><a href="#1-文件存储架构" class="headerlink" title="1. 文件存储架构"></a>1. 文件存储架构</h3><p>系统采用<strong>MinIO对象存储</strong>作为主要存储方案，结合<strong>Redis缓存</strong>优化性能：</p>
+<h2 id="系统架构设计"><a href="#系统架构设计" class="headerlink" title="系统架构设计"></a>系统架构设计</h2><h3 id="系统架构图"><a href="#系统架构图" class="headerlink" title="系统架构图"></a>系统架构图</h3><p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316161242873.png" referrerpolicy="no-referrer"></p>
+<h2 id="核心功能实现"><a href="#核心功能实现" class="headerlink" title="核心功能实现"></a>核心功能实现</h2><table>
+<thead>
+<tr>
+<th>模块名称</th>
+<th>主要功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户服务</td>
+<td>处理用户注册、登录、身份验证（JWT）、资料修改、密码找回等功能</td>
+</tr>
+<tr>
+<td>文件服务</td>
+<td>实现文件的上传、分片合并、文件删除、下载、重命名、目录管理等</td>
+</tr>
+<tr>
+<td>分享服务</td>
+<td>用户生成分享链接，设置提取码与有效期，访问权限控制等</td>
+</tr>
+<tr>
+<td>网关服务</td>
+<td>提供统一访问入口，鉴权校验、服务路由转发、防刷接口限流</td>
+</tr>
+<tr>
+<td>管理后台服务</td>
+<td>管理员可查看系统统计、用户活跃度、违规行为、后台文件管理</td>
+</tr>
+<tr>
+<td>注册中心</td>
+<td>管理各服务的注册、发现与健康检查，实现服务间的解耦与动态扩展</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>用途说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring</td>
+<td>单体服务构建</td>
+</tr>
+<tr>
+<td>Spring</td>
+<td>服务治理、网关路由、配置中心</td>
+</tr>
+<tr>
+<td>Nacos</td>
+<td>服务注册与发现</td>
+</tr>
+<tr>
+<td>MinIO</td>
+<td>分布式对象存储</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>数据存储</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>缓存热数据与Token</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td>容器化部署与快速集成</td>
+</tr>
+<tr>
+<td>JWT</td>
+<td>鉴权令牌机制</td>
+</tr>
+<tr>
+<td>RESTful</td>
+<td>微服务之间通信</td>
+</tr>
+</tbody></table>
+<h3 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h3><ol>
+<li>email_code（邮箱验证码表）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>长度</th>
+<th>空</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>email</td>
+<td>varchar</td>
+<td>150</td>
+<td>否</td>
+<td>-</td>
+<td>邮箱</td>
+</tr>
+<tr>
+<td>code</td>
+<td>varchar</td>
+<td>5</td>
+<td>否</td>
+<td>-</td>
+<td>验证码</td>
+</tr>
+<tr>
+<td>status</td>
+<td>tinyint</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>0未用&#x2F;1已用</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>datetime</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>创建时间</td>
+</tr>
+</tbody></table>
+<p>主键：（email，code）</p>
+<ol start="2">
+<li>file_info（文件信息表）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>长度</th>
+<th>空</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>varchar</td>
+<td>15</td>
+<td>否</td>
+<td>-</td>
+<td>文件ID</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>varchar</td>
+<td>15</td>
+<td>否</td>
+<td>-</td>
+<td>用户ID</td>
+</tr>
+<tr>
+<td>file_md5</td>
+<td>varchar</td>
+<td>32</td>
+<td>是</td>
+<td>NULL</td>
+<td>文件MD5值</td>
+</tr>
+<tr>
+<td>file_pid</td>
+<td>varchar</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>父目录ID</td>
+</tr>
+<tr>
+<td>file_size</td>
+<td>bigint</td>
+<td>200</td>
+<td>是</td>
+<td>NULL</td>
+<td>文件大小</td>
+</tr>
+<tr>
+<td>filename</td>
+<td>varchar</td>
+<td>100</td>
+<td>是</td>
+<td>NULL</td>
+<td>文件名</td>
+</tr>
+<tr>
+<td>file_cover</td>
+<td>varchar</td>
+<td>100</td>
+<td>是</td>
+<td>NULL</td>
+<td>文件封面</td>
+</tr>
+<tr>
+<td>file_path</td>
+<td>varchar</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>文件路径</td>
+</tr>
+<tr>
+<td>folder_type</td>
+<td>tinyint</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>0文件&#x2F;1目录</td>
+</tr>
+<tr>
+<td>file_category</td>
+<td>tinyint</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>文件分类1-5</td>
+</tr>
+<tr>
+<td>file_type</td>
+<td>tinyint</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>文件类型1-10</td>
+</tr>
+<tr>
+<td>status</td>
+<td>tinyint</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>转码状态0-2</td>
+</tr>
+<tr>
+<td>recovery_time</td>
+<td>datetime</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>回收站时间</td>
+</tr>
+<tr>
+<td>version</td>
+<td>int</td>
+<td>-</td>
+<td>否</td>
+<td>1</td>
+<td>乐观锁</td>
+</tr>
+<tr>
+<td>deleted</td>
+<td>tinyint</td>
+<td>-</td>
+<td>否</td>
+<td>0</td>
+<td>0正常&#x2F;1回收站</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>datetime</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>update_time</td>
+<td>datetime</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>更新时间</td>
+</tr>
+</tbody></table>
+<p>主键：(id, user_id) 索引：创建时间、用户ID、MD5、父目录等</p>
+<ol start="3">
+<li>file_share（文件分享表）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>长度</th>
+<th>空</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>varchar</td>
+<td>20</td>
+<td>是</td>
+<td>NULL</td>
+<td>分享ID</td>
+</tr>
+<tr>
+<td>file_id</td>
+<td>varchar</td>
+<td>10</td>
+<td>是</td>
+<td>NULL</td>
+<td>文件ID</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>varchar</td>
+<td>10</td>
+<td>是</td>
+<td>NULL</td>
+<td>用户ID</td>
+</tr>
+<tr>
+<td>valid_type</td>
+<td>tinyint</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>有效期类型（0-3）</td>
+</tr>
+<tr>
+<td>code</td>
+<td>varchar</td>
+<td>5</td>
+<td>是</td>
+<td>NULL</td>
+<td>提取码</td>
+</tr>
+<tr>
+<td>browse_count</td>
+<td>int</td>
+<td>-</td>
+<td>否</td>
+<td>0</td>
+<td>浏览次数</td>
+</tr>
+<tr>
+<td>save_count</td>
+<td>int</td>
+<td>-</td>
+<td>否</td>
+<td>0</td>
+<td>保存次数</td>
+</tr>
+<tr>
+<td>download_count</td>
+<td>int</td>
+<td>-</td>
+<td>否</td>
+<td>0</td>
+<td>下载次数</td>
+</tr>
+<tr>
+<td>deleted</td>
+<td>tinyint</td>
+<td>-</td>
+<td>否</td>
+<td>0</td>
+<td>逻辑删除</td>
+</tr>
+<tr>
+<td>version</td>
+<td>int</td>
+<td>-</td>
+<td>否</td>
+<td>1</td>
+<td>乐观锁</td>
+</tr>
+<tr>
+<td>expire_time</td>
+<td>datetime</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>过期时间</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>datetime</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>update_time</td>
+<td>datetime</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>更新时间</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li>user_info（用户信息表）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>长度</th>
+<th>空</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>varchar</td>
+<td>15</td>
+<td>否</td>
+<td>-</td>
+<td>用户ID</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>varchar</td>
+<td>20</td>
+<td>是</td>
+<td>NULL</td>
+<td>昵称</td>
+</tr>
+<tr>
+<td>email</td>
+<td>varchar</td>
+<td>150</td>
+<td>是</td>
+<td>NULL</td>
+<td>邮箱</td>
+</tr>
+<tr>
+<td>qq_open_id</td>
+<td>varchar</td>
+<td>35</td>
+<td>是</td>
+<td>NULL</td>
+<td>QQ openID</td>
+</tr>
+<tr>
+<td>qq_avatar</td>
+<td>varchar</td>
+<td>150</td>
+<td>是</td>
+<td>NULL</td>
+<td>QQ头像</td>
+</tr>
+<tr>
+<td>password</td>
+<td>varchar</td>
+<td>32</td>
+<td>是</td>
+<td>NULL</td>
+<td>密码（MD5）</td>
+</tr>
+<tr>
+<td>last_login_time</td>
+<td>datetime</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>最后登录时间</td>
+</tr>
+<tr>
+<td>use_space</td>
+<td>bigint</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>已用空间（byte）</td>
+</tr>
+<tr>
+<td>total_space</td>
+<td>bigint</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>总空间（byte）</td>
+</tr>
+<tr>
+<td>status</td>
+<td>tinyint</td>
+<td>-</td>
+<td>否</td>
+<td>1</td>
+<td>0禁用&#x2F;1启用</td>
+</tr>
+<tr>
+<td>version</td>
+<td>int</td>
+<td>-</td>
+<td>否</td>
+<td>1</td>
+<td>乐观锁</td>
+</tr>
+<tr>
+<td>deleted</td>
+<td>tinyint</td>
+<td>-</td>
+<td>否</td>
+<td>0</td>
+<td>逻辑删除</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>datetime</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>update_time</td>
+<td>datetime</td>
+<td>-</td>
+<td>是</td>
+<td>NULL</td>
+<td>更新时间</td>
+</tr>
+</tbody></table>
+<p>唯一索引：email、qq_open_id、nickname</p>
+<h3 id="系统功能展示"><a href="#系统功能展示" class="headerlink" title="系统功能展示"></a>系统功能展示</h3><p>注册登录</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316161552938.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316161726247.png" referrerpolicy="no-referrer"></p>
+<p>文件上传与分片合并功能实现</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316161801687.png" referrerpolicy="no-referrer"></p>
+<p>文件分享与提取码功能实现</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316161904295.png" referrerpolicy="no-referrer"></p>
+<p>获取提取码成功页面</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316161920877.png" referrerpolicy="no-referrer"></p>
+<p>文件管理功能实现</p>
+<p>重命名</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316161953431.png" referrerpolicy="no-referrer"></p>
+<p>删除文件夹</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316162005783.png" referrerpolicy="no-referrer"></p>
+<p>管理员后台功能实现</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316162119659.png" referrerpolicy="no-referrer"></p>
+<h3 id="文件存储架构"><a href="#文件存储架构" class="headerlink" title="文件存储架构"></a>文件存储架构</h3><p>系统采用<strong>MinIO对象存储</strong>作为主要存储方案，结合<strong>Redis缓存</strong>优化性能：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * MinIO服务接口 - 文件存储核心服务
  */</span>
@@ -245,7 +748,7 @@ window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile:
 <li><strong>缓存机制</strong>：Redis缓存热点文件元数据</li>
 <li><strong>CDN加速</strong>：静态资源通过Nginx缓存</li>
 </ul>
-<h3 id="2-文件分享机制"><a href="#2-文件分享机制" class="headerlink" title="2. 文件分享机制"></a>2. 文件分享机制</h3><p>实现<strong>安全可控</strong>的文件分享功能，支持提取码和过期时间：</p>
+<h3 id="文件分享机制"><a href="#文件分享机制" class="headerlink" title="文件分享机制"></a>文件分享机制</h3><p>实现<strong>安全可控</strong>的文件分享功能，支持提取码和过期时间：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * 文件分享控制器 - 核心分享逻辑
  */</span>
@@ -327,7 +830,7 @@ window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile:
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="3-用户认证与授权"><a href="#3-用户认证与授权" class="headerlink" title="3. 用户认证与授权"></a>3. 用户认证与授权</h3><p>集成<strong>QQ第三方登录</strong>，实现多种认证方式：</p>
+<h3 id="用户认证与授权"><a href="#用户认证与授权" class="headerlink" title="用户认证与授权"></a>用户认证与授权</h3><p>集成<strong>QQ第三方登录</strong>，实现多种认证方式：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * 用户控制器 - 认证与授权管理
  */</span>
@@ -408,7 +911,7 @@ window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile:
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="4-文件预览系统"><a href="#4-文件预览系统" class="headerlink" title="4. 文件预览系统"></a>4. 文件预览系统</h3><p>支持<strong>多格式文件预览</strong>，包括图片、视频、文档等：</p>
+<h3 id="文件预览系统"><a href="#文件预览系统" class="headerlink" title="文件预览系统"></a>文件预览系统</h3><p>支持<strong>多格式文件预览</strong>，包括图片、视频、文档等：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * 文件预览控制器 - 多格式预览支持
  */</span>
@@ -469,7 +972,7 @@ window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile:
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="5-回收站机制"><a href="#5-回收站机制" class="headerlink" title="5. 回收站机制"></a>5. 回收站机制</h3><p>实现<strong>软删除</strong>和<strong>恢复机制</strong>，保护用户数据：</p>
+<h3 id="回收站机制"><a href="#回收站机制" class="headerlink" title="回收站机制"></a>回收站机制</h3><p>实现<strong>软删除</strong>和<strong>恢复机制</strong>，保护用户数据：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * 回收站控制器 - 文件恢复与彻底删除
  */</span>
@@ -511,7 +1014,7 @@ window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile:
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="系统优化与亮点"><a href="#系统优化与亮点" class="headerlink" title="系统优化与亮点"></a>系统优化与亮点</h2><h3 id="1-性能优化策略"><a href="#1-性能优化策略" class="headerlink" title="1. 性能优化策略"></a>1. 性能优化策略</h3><p><strong>缓存架构设计：</strong></p>
+<h2 id="系统优化与亮点"><a href="#系统优化与亮点" class="headerlink" title="系统优化与亮点"></a>系统优化与亮点</h2><h3 id="性能优化策略"><a href="#性能优化策略" class="headerlink" title="性能优化策略"></a>性能优化策略</h3><p><strong>缓存架构设计：</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * Redis缓存组件 - 多级缓存策略
  */</span>
@@ -543,7 +1046,7 @@ window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile:
 <li><strong>分页查询</strong>：MyBatis Plus分页插件，避免全表扫描</li>
 <li><strong>连接池配置</strong>：HikariCP高性能连接池</li>
 </ul>
-<h3 id="2-安全机制设计"><a href="#2-安全机制设计" class="headerlink" title="2. 安全机制设计"></a>2. 安全机制设计</h3><p><strong>文件访问控制：</strong></p>
+<h3 id="安全机制设计"><a href="#安全机制设计" class="headerlink" title="安全机制设计"></a>安全机制设计</h3><p><strong>文件访问控制：</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * 登录验证切面 - 统一权限控制
  */</span>
@@ -571,7 +1074,7 @@ window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile:
 <li><strong>文件路径</strong>：UUID生成唯一标识</li>
 <li><strong>分享链接</strong>：32位随机字符串</li>
 </ul>
-<h3 id="3-微服务架构设计"><a href="#3-微服务架构设计" class="headerlink" title="3. 微服务架构设计"></a>3. 微服务架构设计</h3><p><strong>模块化设计：</strong></p>
+<h3 id="微服务架构设计"><a href="#微服务架构设计" class="headerlink" title="微服务架构设计"></a>微服务架构设计</h3><p><strong>模块化设计：</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">easypan-server&#x2F;
 ├── common&#x2F;                 # 公共模块
 │   └── common-util&#x2F;        # 工具类库
@@ -581,61 +1084,7 @@ window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile:
 │   ├── mapper&#x2F;           # 数据访问层
 │   └── entity&#x2F;           # 实体类<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>依赖管理：</strong></p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- 父POM统一版本管理 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>springboot.version</span><span class="token punctuation">></span></span>2.6.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>springboot.version</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mysql.version</span><span class="token punctuation">></span></span>8.0.30<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mysql.version</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mybatis-plus.version</span><span class="token punctuation">></span></span>3.4.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mybatis-plus.version</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fastjson.version</span><span class="token punctuation">></span></span>2.0.21<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fastjson.version</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="技术亮点总结"><a href="#技术亮点总结" class="headerlink" title="技术亮点总结"></a>技术亮点总结</h2><h3 id="1-架构设计亮点"><a href="#1-架构设计亮点" class="headerlink" title="1. 架构设计亮点"></a>1. 架构设计亮点</h3><ul>
-<li><strong>分层架构</strong>：Controller-Service-Mapper清晰分层</li>
-<li><strong>模块化设计</strong>：common-util工具库独立打包</li>
-<li><strong>缓存策略</strong>：Redis多级缓存提升性能</li>
-<li><strong>存储分离</strong>：MinIO对象存储 + MySQL元数据</li>
-</ul>
-<h3 id="2-功能实现亮点"><a href="#2-功能实现亮点" class="headerlink" title="2. 功能实现亮点"></a>2. 功能实现亮点</h3><ul>
-<li><strong>分片上传</strong>：支持大文件断点续传</li>
-<li><strong>文件分享</strong>：提取码 + 过期时间双重保护</li>
-<li><strong>第三方登录</strong>：QQ OAuth2.0标准实现</li>
-<li><strong>文件预览</strong>：多格式预览支持</li>
-<li><strong>回收站机制</strong>：软删除 + 恢复功能</li>
-</ul>
-<h3 id="3-性能优化亮点"><a href="#3-性能优化亮点" class="headerlink" title="3. 性能优化亮点"></a>3. 性能优化亮点</h3><ul>
-<li><strong>连接池优化</strong>：HikariCP高性能连接池</li>
-<li><strong>缓存策略</strong>：Redis缓存热点数据</li>
-<li><strong>静态资源</strong>：Nginx缓存 + CDN加速</li>
-<li><strong>数据库优化</strong>：复合索引 + 分页查询</li>
-</ul>
-<h3 id="4-安全机制亮点"><a href="#4-安全机制亮点" class="headerlink" title="4. 安全机制亮点"></a>4. 安全机制亮点</h3><ul>
-<li><strong>权限控制</strong>：AOP切面统一验证</li>
-<li><strong>数据加密</strong>：密码MD5加密存储</li>
-<li><strong>文件隔离</strong>：用户文件路径隔离</li>
-<li><strong>访问控制</strong>：分享链接权限验证</li>
-</ul>
-<h2 id="学习收获与技能提升"><a href="#学习收获与技能提升" class="headerlink" title="学习收获与技能提升"></a>学习收获与技能提升</h2><h3 id="技术能力提升"><a href="#技术能力提升" class="headerlink" title="技术能力提升"></a>技术能力提升</h3><ol>
-<li><strong>Spring Boot微服务架构</strong>：掌握企业级应用开发模式</li>
-<li><strong>对象存储技术</strong>：MinIO分布式存储实践</li>
-<li><strong>缓存架构设计</strong>：Redis多级缓存策略</li>
-<li><strong>第三方集成</strong>：OAuth2.0标准实现</li>
-<li><strong>文件处理技术</strong>：分片上传、转码、预览</li>
-</ol>
-<h3 id="系统设计能力"><a href="#系统设计能力" class="headerlink" title="系统设计能力"></a>系统设计能力</h3><ol>
-<li><strong>架构设计</strong>：分层架构、模块化设计</li>
-<li><strong>性能优化</strong>：缓存策略、数据库优化</li>
-<li><strong>安全设计</strong>：权限控制、数据加密</li>
-<li><strong>用户体验</strong>：文件预览、分享机制</li>
-</ol>
-<h3 id="工程实践能力"><a href="#工程实践能力" class="headerlink" title="工程实践能力"></a>工程实践能力</h3><ol>
-<li><strong>代码规范</strong>：统一异常处理、响应格式</li>
-<li><strong>测试驱动</strong>：单元测试、集成测试</li>
-<li><strong>部署运维</strong>：Docker容器化、Nginx配置</li>
-<li><strong>监控告警</strong>：日志管理、性能监控</li>
-</ol>
-<p>通过EasyPan云盘系统的设计与实现，深入理解了现代Web应用的全栈开发模式，掌握了微服务架构、对象存储、缓存设计等核心技术，为后续大型项目开发奠定了坚实基础。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top">HuangZhongqi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top/2024/12/24/EasyPan%E4%BA%91%E7%9B%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">https://huangzhongqi978.top/2024/12/24/EasyPan%E4%BA%91%E7%9B%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://huangzhongqi978.top" target="_blank">奇点智库 SingularityMind</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Spring-Boot/">Spring Boot</a><a class="post-meta__tags" href="/tags/Vue-js/">Vue.js</a><a class="post-meta__tags" href="/tags/MinIO/">MinIO</a><a class="post-meta__tags" href="/tags/Redis/">Redis</a><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a><a class="post-meta__tags" href="/tags/%E4%BA%91%E5%AD%98%E5%82%A8/">云存储</a><a class="post-meta__tags" href="/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">文件管理</a><a class="post-meta__tags" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">微服务架构</a></div><div class="post-share"><div class="social-share" data-image="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162009784.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>如果觉得文章不错，欢迎打赏支持！</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/alipay-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay-qrcode.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/img/wechat-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat-qrcode.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/01/27/AI%E6%99%BA%E8%83%BD%E7%AD%94%E9%A2%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="基于Spring Cloud与Vue3的AI智能答题系统"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162047789.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" referrerpolicy="no-referrer"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">基于Spring Cloud与Vue3的AI智能答题系统</div></div><div class="info-2"><div class="info-item-1">基于Spring Cloud微服务架构的AI智能答题系统，集成了现代分布式技术栈与人工智能能力，为用户提供智能化的面试题练习与AI辅助答题服务。系统采用云原生架构设计，具备高可用、高并发、可扩展的特性。   系统概述本系统是一个基于Spring Cloud微服务架构的AI智能答题平台，旨在为用户提供智能化的面试题练习服务。系统集成了OpenAI大语言模型、阿里云语音合成、分布式消息队列等先进技术，构建了完整的智能答题生态。 核心特性 智能AI答题：集成OpenAI GPT模型，提供智能题目生成与答案评估 多模态交互：支持文本、语音等多种交互方式 分布式架构：基于Spring Cloud微服务架构，支持水平扩展 云原生部署：集成Nacos配置中心、Redis缓存、MinIO对象存储 智能审核：AI自动审核用户提交的题目内容  系统架构设计整体架构图graph TB     %% 用户层     subgraph "用户层"         A[Web前端]         B[移动端H5]         C[微信小程序]     end      %% 网关层     subgr...</div></div></div></a><a class="pagination-related" href="/2024/12/19/%E6%B5%B7%E5%85%B3%E9%9B%86%E8%A3%85%E7%AE%B1%E9%93%85%E5%B0%81%E9%94%81%E8%AF%86%E5%88%AB%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="YOLOv8海关集装箱铅封锁识别系统设计与实现"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161133558.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" referrerpolicy="no-referrer"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">YOLOv8海关集装箱铅封锁识别系统设计与实现</div></div><div class="info-2"><div class="info-item-1">模型海关集装箱铅封锁识别   海关集装箱铅封锁识别系统设计与实现系统概述本系统基于YOLOv8深度学习框架，结合PyQt5图形界面技术，构建了一套完整的海关集装箱铅封锁自动识别系统。系统采用端到端的深度学习架构，能够对图片、视频和实时摄像头输入进行高精度目标检测，实现铅封锁的自动识别、定位和结果可视化展示。该系统在海关监管领域具有重要的实用价值，能够显著提升集装箱安全检查的效率和准确性。 系统架构设计整体架构系统采用分层模块化设计，遵循软件工程的最佳实践，主要包含以下核心模块：  模型推理模块：基于YOLOv8的目标检测引擎，负责深度学习模型的加载、推理和结果解析 用户界面模块：PyQt5构建的图形用户界面，提供直观的人机交互体验 图像处理模块：OpenCV图像预处理和后处理，包括图像增强、格式转换和可视化渲染 数据管理模块：检测结果的存储和管理，支持多种数据格式的导入导出 多线程处理模块：异步视频处理和保存，确保界面响应性和处理效率 配置管理模块：系统参数和模型配置的统一管理 异常处理模块：完善的错误处理和资源管理机制  技术栈 深度学习框架：YOLOv8 (Ultralyti...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/06/15/%E5%A9%9A%E6%81%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="基于Django+Vue的婚姻法知识图谱问答系统"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161244190.png" alt="cover" referrerpolicy="no-referrer"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-15</div><div class="info-item-2">基于Django+Vue的婚姻法知识图谱问答系统</div></div><div class="info-2"><div class="info-item-1">本项目构建了一个集用户管理、内容发布、智能推荐、消息交互于一体的现代化婚恋平台。系统采用前后端分离架构，后端基于Django RESTful API，前端采用Vue.js+Element UI，并集成Neo4j图数据库和百度AI服务，实现了智能化的用户匹配和内容推荐功能。   技术架构设计整体架构系统采用经典的三层架构模式，结合微服务思想进行模块化设计：  表现层：Vue.js + Element UI 响应式前端界面 业务逻辑层：Django RESTful API 服务层 数据持久层：MySQL + Neo4j 混合数据库架构  核心技术栈后端技术栈：  Django 2.2.8 - Web框架 MySQL - 关系型数据库 Neo4j - 图数据库 JWT - 身份认证 百度AI API - 智能问答  前端技术栈：  Vue.js 2.6.11 - 前端框架 Element UI 2.15.6 - UI组件库 Vue Router 3.5.2 - 路由管理 Axios 0.21.1 - HTTP客户端 ECharts 4.8.0 - 数据可视化  核心功能模块1. 用户管...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="author-info-name">HuangZhongqi</div><div class="author-info-description">Deep Learning & Computer Vision</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Huangzhongqi978" target="_blank" title="GitHub"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter" style="color: #1da1f2;"></i></a><a class="social-icon" href="https://linkedin.com/in/huangzhongqi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color: #0077b5;"></i></a><a class="social-icon" href="mailto:huangzhongqi978@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="WeChat" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125834859.png" data-qr-type="WeChat"><i class="fab fa-weixin" style="color: #07c160;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="QQ" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125800207.png" data-qr-type="QQ"><i class="fab fa-qq" style="color: #12b7f5;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">奇点智库 - 人工智能技术博客与文档，分享深度学习、NLP、计算机视觉技术</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.</span> <span class="toc-text">系统架构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88%E9%80%89%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">技术栈选型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="toc-number">1.2.</span> <span class="toc-text">系统架构图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">核心功能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">1. 文件存储架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E5%88%86%E4%BA%AB%E6%9C%BA%E5%88%B6"><span class="toc-number">2.2.</span> <span class="toc-text">2. 文件分享机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83"><span class="toc-number">2.3.</span> <span class="toc-text">3. 用户认证与授权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%96%87%E4%BB%B6%E9%A2%84%E8%A7%88%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.4.</span> <span class="toc-text">4. 文件预览系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%9B%9E%E6%94%B6%E7%AB%99%E6%9C%BA%E5%88%B6"><span class="toc-number">2.5.</span> <span class="toc-text">5. 回收站机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96%E4%B8%8E%E4%BA%AE%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">系统优化与亮点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5"><span class="toc-number">3.1.</span> <span class="toc-text">1. 性能优化策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.2.</span> <span class="toc-text">2. 安全机制设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.3.</span> <span class="toc-text">3. 微服务架构设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E4%BA%AE%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">技术亮点总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%BA%AE%E7%82%B9"><span class="toc-number">4.1.</span> <span class="toc-text">1. 架构设计亮点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E4%BA%AE%E7%82%B9"><span class="toc-number">4.2.</span> <span class="toc-text">2. 功能实现亮点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%BA%AE%E7%82%B9"><span class="toc-number">4.3.</span> <span class="toc-text">3. 性能优化亮点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E4%BA%AE%E7%82%B9"><span class="toc-number">4.4.</span> <span class="toc-text">4. 安全机制亮点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%94%B6%E8%8E%B7%E4%B8%8E%E6%8A%80%E8%83%BD%E6%8F%90%E5%8D%87"><span class="toc-number">5.</span> <span class="toc-text">学习收获与技能提升</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E8%83%BD%E5%8A%9B%E6%8F%90%E5%8D%87"><span class="toc-number">5.1.</span> <span class="toc-text">技术能力提升</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E8%83%BD%E5%8A%9B"><span class="toc-number">5.2.</span> <span class="toc-text">系统设计能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E8%83%BD%E5%8A%9B"><span class="toc-number">5.3.</span> <span class="toc-text">工程实践能力</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="Yolo11交通标志检测系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005131157954.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Yolo11交通标志检测系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="Yolo11交通标志检测系统">Yolo11交通标志检测系统</a><time datetime="2025-09-10T07:59:31.000Z" title="发表于 2025-09-10 15:59:31">2025-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/05/technical_report/" title="基于LLM和RAG的领克汽车智能问答系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于LLM和RAG的领克汽车智能问答系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/05/technical_report/" title="基于LLM和RAG的领克汽车智能问答系统">基于LLM和RAG的领克汽车智能问答系统</a><time datetime="2025-09-05T05:59:31.000Z" title="发表于 2025-09-05 13:59:31">2025-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161622681.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化">添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化</a><time datetime="2025-07-14T16:00:00.000Z" title="发表于 2025-07-15 00:00:00">2025-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/15/%E5%A9%9A%E6%81%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="基于Django+Vue的婚姻法知识图谱问答系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161244190.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于Django+Vue的婚姻法知识图谱问答系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/06/15/%E5%A9%9A%E6%81%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="基于Django+Vue的婚姻法知识图谱问答系统">基于Django+Vue的婚姻法知识图谱问答系统</a><time datetime="2025-06-15T02:30:00.000Z" title="发表于 2025-06-15 10:30:00">2025-06-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/27/AI%E6%99%BA%E8%83%BD%E7%AD%94%E9%A2%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="基于Spring Cloud与Vue3的AI智能答题系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162047789.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于Spring Cloud与Vue3的AI智能答题系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/01/27/AI%E6%99%BA%E8%83%BD%E7%AD%94%E9%A2%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="基于Spring Cloud与Vue3的AI智能答题系统">基于Spring Cloud与Vue3的AI智能答题系统</a><time datetime="2025-01-27T02:00:00.000Z" title="发表于 2025-01-27 10:00:00">2025-01-27</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162009784.png);"><div class="footer-other"><div class="footer-copyright"></div><div class="footer_custom_text"><div style="line-height: 1.8;">
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top">HuangZhongqi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top/2024/12/24/%E5%9F%BA%E4%BA%8ESpringboot+Vue%E7%9A%84%E4%BA%91%E7%9B%98%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">https://huangzhongqi978.top/2024/12/24/%E5%9F%BA%E4%BA%8ESpringboot+Vue%E7%9A%84%E4%BA%91%E7%9B%98%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://huangzhongqi978.top" target="_blank">奇点智库 SingularityMind</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/Vue-js/">Vue.js</a><a class="post-meta__tags" href="/tags/Spring-Boot/">Spring Boot</a><a class="post-meta__tags" href="/tags/MinIO/">MinIO</a><a class="post-meta__tags" href="/tags/Redis/">Redis</a><a class="post-meta__tags" href="/tags/%E4%BA%91%E5%AD%98%E5%82%A8/">云存储</a><a class="post-meta__tags" href="/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">文件管理</a><a class="post-meta__tags" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">微服务架构</a></div><div class="post-share"><div class="social-share" data-image="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162009784.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>如果觉得文章不错，欢迎打赏支持！</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/alipay-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay-qrcode.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/img/wechat-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat-qrcode.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/01/27/AI%E6%99%BA%E8%83%BD%E7%AD%94%E9%A2%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="基于Spring Cloud与Vue3的AI智能答题系统"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162047789.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" referrerpolicy="no-referrer"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">基于Spring Cloud与Vue3的AI智能答题系统</div></div><div class="info-2"><div class="info-item-1">基于Spring Cloud微服务架构的AI智能答题系统，集成了现代分布式技术栈与人工智能能力，为用户提供智能化的面试题练习与AI辅助答题服务。系统采用云原生架构设计，具备高可用、高并发、可扩展的特性。    系统概述本系统是一个基于Spring Cloud微服务架构的AI智能答题平台，旨在为用户提供智能化的面试题练习服务。系统集成了OpenAI大语言模型、阿里云语音合成、分布式消息队列等先进技术，构建了完整的智能答题生态。 核心特性 智能AI答题：集成OpenAI GPT模型，提供智能题目生成与答案评估 多模态交互：支持文本、语音等多种交互方式 分布式架构：基于Spring Cloud微服务架构，支持水平扩展 云原生部署：集成Nacos配置中心、Redis缓存、MinIO对象存储 智能审核：AI自动审核用户提交的题目内容  系统架构设计整体架构图graph TB     %% 用户层     subgraph "用户层"         A[Web前端]         B[移动端H5]         C[微信小程序]     end      %% 网关层     subg...</div></div></div></a><a class="pagination-related" href="/2024/12/19/%E5%9F%BA%E4%BA%8EmT5%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BF%83%E7%90%86%E9%97%AE%E9%A2%98%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="基于mT5模型的心理问题问答系统设计与实现"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161358606.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" referrerpolicy="no-referrer"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">基于mT5模型的心理问题问答系统设计与实现</div></div><div class="info-2"><div class="info-item-1">系统概述本项目构建了一个基于mT5多语言Transformer的心理问答系统，融合了知识图谱、大语言模型API的多层响应策略。系统通过prompt引导的序列到序列学习，实现了对心理疾病相关问题的智能回答，并具备多轮对话、上下文记忆等高级功能。   核心技术架构1. 多层级响应策略系统采用三层响应机制，确保问题得到准确回答： def process_question(self, question, is_repeat=False):     """三层响应策略：训练模型 → 知识图谱 → 大语言模型API"""     # 1. 优先使用训练好的mT5模型     if self.qa_model:         try:             model_answer = self.qa_model.predict(question)             if model_answer and model_answer != "抱歉，我现在无法回答这个问题。":                 return model_answer         except Exce...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/01/27/AI%E6%99%BA%E8%83%BD%E7%AD%94%E9%A2%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="基于Spring Cloud与Vue3的AI智能答题系统"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162047789.png" alt="cover" referrerpolicy="no-referrer"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-27</div><div class="info-item-2">基于Spring Cloud与Vue3的AI智能答题系统</div></div><div class="info-2"><div class="info-item-1">基于Spring Cloud微服务架构的AI智能答题系统，集成了现代分布式技术栈与人工智能能力，为用户提供智能化的面试题练习与AI辅助答题服务。系统采用云原生架构设计，具备高可用、高并发、可扩展的特性。    系统概述本系统是一个基于Spring Cloud微服务架构的AI智能答题平台，旨在为用户提供智能化的面试题练习服务。系统集成了OpenAI大语言模型、阿里云语音合成、分布式消息队列等先进技术，构建了完整的智能答题生态。 核心特性 智能AI答题：集成OpenAI GPT模型，提供智能题目生成与答案评估 多模态交互：支持文本、语音等多种交互方式 分布式架构：基于Spring Cloud微服务架构，支持水平扩展 云原生部署：集成Nacos配置中心、Redis缓存、MinIO对象存储 智能审核：AI自动审核用户提交的题目内容  系统架构设计整体架构图graph TB     %% 用户层     subgraph "用户层"         A[Web前端]         B[移动端H5]         C[微信小程序]     end      %% 网关层     subg...</div></div></div></a><a class="pagination-related" href="/2025/06/15/%E5%9F%BA%E4%BA%8EDjango+Vue%E7%9A%84%E5%A9%9A%E5%A7%BB%E6%B3%95%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" title="基于Django+Vue的婚姻法知识图谱问答系统"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161244190.png" alt="cover" referrerpolicy="no-referrer"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-15</div><div class="info-item-2">基于Django+Vue的婚姻法知识图谱问答系统</div></div><div class="info-2"><div class="info-item-1">本项目构建了一个集用户管理、内容发布、智能推荐、消息交互于一体的现代化婚恋平台。系统采用前后端分离架构，后端基于Django RESTful API，前端采用Vue.js+Element UI，并集成Neo4j图数据库和百度AI服务，实现了智能化的用户匹配和内容推荐功能。   技术架构设计整体架构系统采用经典的三层架构模式，结合微服务思想进行模块化设计：  表现层：Vue.js + Element UI 响应式前端界面 业务逻辑层：Django RESTful API 服务层 数据持久层：MySQL + Neo4j 混合数据库架构  核心技术栈后端技术栈：  Django 2.2.8 - Web框架 MySQL - 关系型数据库 Neo4j - 图数据库 JWT - 身份认证 百度AI API - 智能问答  前端技术栈：  Vue.js 2.6.11 - 前端框架 Element UI 2.15.6 - UI组件库 Vue Router 3.5.2 - 路由管理 Axios 0.21.1 - HTTP客户端 ECharts 4.8.0 - 数据可视化  项目展示登陆页面  后台...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="author-info-name">HuangZhongqi</div><div class="author-info-description">Deep Learning & Computer Vision</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Huangzhongqi978" target="_blank" title="GitHub"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter" style="color: #1da1f2;"></i></a><a class="social-icon" href="https://linkedin.com/in/huangzhongqi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color: #0077b5;"></i></a><a class="social-icon" href="mailto:huangzhongqi978@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="WeChat" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125834859.png" data-qr-type="WeChat"><i class="fab fa-weixin" style="color: #07c160;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="QQ" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125800207.png" data-qr-type="QQ"><i class="fab fa-qq" style="color: #12b7f5;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">奇点智库 - 人工智能技术博客与文档，分享深度学习、NLP、计算机视觉技术</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.</span> <span class="toc-text">系统架构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="toc-number">1.1.</span> <span class="toc-text">系统架构图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">核心功能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.</span> <span class="toc-text">数据库设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E5%B1%95%E7%A4%BA"><span class="toc-number">2.2.</span> <span class="toc-text">系统功能展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%9E%B6%E6%9E%84"><span class="toc-number">2.3.</span> <span class="toc-text">文件存储架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%88%86%E4%BA%AB%E6%9C%BA%E5%88%B6"><span class="toc-number">2.4.</span> <span class="toc-text">文件分享机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83"><span class="toc-number">2.5.</span> <span class="toc-text">用户认证与授权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E9%A2%84%E8%A7%88%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.6.</span> <span class="toc-text">文件预览系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E6%94%B6%E7%AB%99%E6%9C%BA%E5%88%B6"><span class="toc-number">2.7.</span> <span class="toc-text">回收站机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96%E4%B8%8E%E4%BA%AE%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">系统优化与亮点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5"><span class="toc-number">3.1.</span> <span class="toc-text">性能优化策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.2.</span> <span class="toc-text">安全机制设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.3.</span> <span class="toc-text">微服务架构设计</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/25/%E5%9F%BA%E4%BA%8EOpenCV%E7%9A%84%E6%99%BA%E8%83%BD%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/" title="基于OpenCV的智能图像处理软件"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316182536690.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于OpenCV的智能图像处理软件"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/25/%E5%9F%BA%E4%BA%8EOpenCV%E7%9A%84%E6%99%BA%E8%83%BD%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/" title="基于OpenCV的智能图像处理软件">基于OpenCV的智能图像处理软件</a><time datetime="2025-09-24T16:00:00.000Z" title="发表于 2025-09-25 00:00:00">2025-09-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/15/%E5%9F%BA%E4%BA%8EUNetRes%E7%BB%93%E6%9E%84%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%AE%8B%E5%B7%AE%E6%89%A9%E6%95%A3%E5%9B%BE%E5%83%8F%E5%A4%8D%E5%8E%9F%E7%A0%94%E7%A9%B6/" title="基于UNetRes结构的条件残差扩散图像复原研究"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316105203697.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于UNetRes结构的条件残差扩散图像复原研究"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/15/%E5%9F%BA%E4%BA%8EUNetRes%E7%BB%93%E6%9E%84%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%AE%8B%E5%B7%AE%E6%89%A9%E6%95%A3%E5%9B%BE%E5%83%8F%E5%A4%8D%E5%8E%9F%E7%A0%94%E7%A9%B6/" title="基于UNetRes结构的条件残差扩散图像复原研究">基于UNetRes结构的条件残差扩散图像复原研究</a><time datetime="2025-09-14T16:00:00.000Z" title="发表于 2025-09-15 00:00:00">2025-09-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="基于YOLOv11的交通标志检测系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005131157954.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于YOLOv11的交通标志检测系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="基于YOLOv11的交通标志检测系统">基于YOLOv11的交通标志检测系统</a><time datetime="2025-09-10T07:59:31.000Z" title="发表于 2025-09-10 15:59:31">2025-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" title="基于LLM和RAG的领克汽车智能问答系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于LLM和RAG的领克汽车智能问答系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" title="基于LLM和RAG的领克汽车智能问答系统">基于LLM和RAG的领克汽车智能问答系统</a><time datetime="2025-09-05T05:59:31.000Z" title="发表于 2025-09-05 13:59:31">2025-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161622681.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化">添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化</a><time datetime="2025-07-14T16:00:00.000Z" title="发表于 2025-07-15 00:00:00">2025-07-15</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20251103162009784.png);"><div class="footer-other"><div class="footer-copyright"></div><div class="footer_custom_text"><div style="line-height: 1.8;">
   <div>© 2025 HuangZhongqi</div>
   <div style="margin-top: 8px;">
     <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">

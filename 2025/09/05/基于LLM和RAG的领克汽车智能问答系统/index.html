@@ -1,0 +1,794 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><meta name="referrer" content="no-referrer"><title>基于LLM和RAG的领克汽车智能问答系统 | 奇点智库 SingularityMind</title><meta name="author" content="HuangZhongqi"><meta name="copyright" content="HuangZhongqi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f5f0fa"><meta name="description" content="基于LLM和RAG的领克汽车智能问答系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于LLM和RAG的领克汽车智能问答系统">
+<meta property="og:url" content="https://huangzhongqi978.top/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/">
+<meta property="og:site_name" content="奇点智库 SingularityMind">
+<meta property="og:description" content="基于LLM和RAG的领克汽车智能问答系统">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png">
+<meta property="article:published_time" content="2025-09-05T05:59:31.000Z">
+<meta property="article:modified_time" content="2026-03-16T10:46:26.547Z">
+<meta property="article:author" content="HuangZhongqi">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "基于LLM和RAG的领克汽车智能问答系统",
+  "url": "https://huangzhongqi978.top/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/",
+  "image": "https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png",
+  "datePublished": "2025-09-05T05:59:31.000Z",
+  "dateModified": "2026-03-16T10:46:26.547Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "HuangZhongqi",
+      "url": "https://huangzhongqi978.top"
+    }
+  ]
+}</script><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/img/logo.png"><link rel="icon" type="image/png" sizes="16x16" href="/img/logo.png"><link rel="icon" type="image/png" href="/img/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/img/logo.png"><link rel="apple-touch-icon" href="/img/logo.png"><link rel="canonical" href="https://huangzhongqi978.top/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/"><link rel="preconnect" href="//unpkg.com"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@6.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/qr-modal.css"><link rel="stylesheet" href="/css/reading-progress.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        try {
+          const parsed = JSON.parse(itemStr)
+          // 如果是新格式（包含 value 和 expiry）
+          if (parsed && typeof parsed === 'object' && 'value' in parsed) {
+            if ('expiry' in parsed && Date.now() > parsed.expiry) {
+              localStorage.removeItem(key)
+              return undefined
+            }
+            return parsed.value
+          }
+          // 如果是旧格式（纯字符串），直接返回
+          return parsed
+        } catch (e) {
+          // 如果不是有效的 JSON，可能是旧格式的字符串值，直接返回
+          return itemStr
+        }
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#2d0a3d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f5f0fa')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于LLM和RAG的领克汽车智能问答系统',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}
+window.mouseTrailConfig = { enable: true, lineWidth: 2, trailLength: 20, mobile: false };</script><link rel="stylesheet" href="/css/custom-font.css"><link rel="stylesheet" href="/css/index-header-fix.css"><link rel="stylesheet" href="/css/background-fix.css"><link rel="stylesheet" href="/css/header-transparent.css"><link rel="stylesheet" href="/css/text-colors.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/bg.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">奇点智库 SingularityMind</span></a><a class="nav-page-title" href="/"><span class="site-name">基于LLM和RAG的领克汽车智能问答系统</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/tags/YOLO/"><i class="fa-fw fas fa-eye"></i><span> YOLO</span></a></div><div class="menus_item"><a class="site-page" href="/tags/NLP/"><i class="fa-fw fas fa-language"></i><span> NLP</span></a></div><div class="menus_item"><a class="site-page" href="/tags/LLM/"><i class="fa-fw fas fa-brain"></i><span> LLM</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></div><div class="menus_item"><a class="site-page" href="/tags/Java/"><i class="fa-fw fab fa-java"></i><span> Java</span></a></div><div class="menus_item"><a class="site-page" href="/tags/cpp/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><i class="fa-fw fas fa-camera"></i><span> CV</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">基于LLM和RAG的领克汽车智能问答系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-05T05:59:31.000Z" title="发表于 2025-09-05 13:59:31">2025-09-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-16T10:46:26.547Z" title="更新于 2026-03-16 18:46:26">2026-03-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">大语言模型</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>基于LLM和RAG的领克汽车智能问答系统</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251020215814476.png" referrerpolicy="no-referrer"></p>
+<span id="more"></span>
+
+<h2 id="智能RAG问答系统"><a href="#智能RAG问答系统" class="headerlink" title="智能RAG问答系统"></a>智能RAG问答系统</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>本系统基于检索增强生成（Retrieval-Augmented Generation, RAG）范式构建，面向从非结构化文档（如 PDF）中高效检索信息并生成可溯源回答的应用场景。系统通过“索引—检索—生成”的流水线式技术路线，将文档解析、语义向量化、向量检索与大语言模型（LLM）生成有机整合，既保证答案的事实性与可追踪性，又兼顾在资源受限环境下的易部署与可扩展性。</p>
+<h3 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h3><p>系统遵循经典 RAG 三阶段流程：</p>
+<ul>
+<li>索引（Indexing）：对文档进行结构化解析与清洗，采用定长分块（默认 512 字符，50 字符重叠）保持局部上下文连续性；随后使用 SentenceTransformer 嵌入模型对每个文本块进行向量化，构建基于 FAISS 的高维向量索引，并进行归一化以支持余弦相似度检索。</li>
+<li>检索（Retrieval）：针对用户查询生成查询向量，在向量索引上进行内积检索（归一化后等价于余弦相似度），召回相似度最高的 Top-K 文档片段，并携带相似度分数与元数据返回。</li>
+<li>生成（Generation）：将检索到的文档片段作为可控上下文输入给大语言模型（默认集成讯飞星火 API），在答案生成阶段引导模型严格依据检索证据作答，降低“幻觉”风险，并在缺乏证据时显式说明。</li>
+</ul>
+<h3 id="项目逻辑架构图"><a href="#项目逻辑架构图" class="headerlink" title="项目逻辑架构图"></a>项目逻辑架构图</h3><p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316154536317.png" referrerpolicy="no-referrer"></p>
+<h3 id="项目工程结构展示"><a href="#项目工程结构展示" class="headerlink" title="项目工程结构展示"></a>项目工程结构展示</h3><p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316154641852.png" referrerpolicy="no-referrer"></p>
+<h4 id="预处理过后的文档"><a href="#预处理过后的文档" class="headerlink" title="预处理过后的文档"></a>预处理过后的文档</h4><p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316154716472.png" referrerpolicy="no-referrer"></p>
+<h3 id="主界面展示"><a href="#主界面展示" class="headerlink" title="主界面展示"></a>主界面展示</h3><p>1.示例问答：如何启动方向盘加热？</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316154931890.png" referrerpolicy="no-referrer"></p>
+<p>先看文档pdf当中答案原出处，如下所示。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316154954142.png" referrerpolicy="no-referrer"></p>
+<p>问答系统回复情况如下：</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316155028464.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316155042841.png" referrerpolicy="no-referrer"></p>
+<p>增强型检索rag返回的相似度最高的几个文档如下所示：</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316155100971.png" referrerpolicy="no-referrer"></p>
+<p>2.示例问答：如何开启空调呢？</p>
+<p>先查看原pdf当中的原文出处</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316155132869.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316155143119.png" referrerpolicy="no-referrer"></p>
+<p>查看问答系统回复结果</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316155207823.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316155216097.png" referrerpolicy="no-referrer"></p>
+<p>增强型检索返回的原文余弦相似度最高的文档来源：</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316155229593.png" referrerpolicy="no-referrer"></p>
+<p>用户问答时，后端处理用户请求示意如下图所示。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316155243541.png" referrerpolicy="no-referrer"></p>
+<p>综上所述，系统先把知识库pdf文档进行数据预处理，然后利用向量模型生成向量模型 通过RAG增强型检索以后通过文本向量计算余弦相似度，然后排序知识库里面相似度较高的几位，最后LLM结合文档的内容输出结果，注意，并不是单纯的调用ai直接回复，而是结果文档内容生成最终结果。真正实现了RAG原理以及结合llm生成最终答案给用户。</p>
+<p>训练好的结果保存到了results文件夹下。</p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316155314396.png" referrerpolicy="no-referrer"></p>
+<p><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316155325998.png" referrerpolicy="no-referrer"></p>
+<p>1.LLM模型选择与实现</p>
+<p>该RAG系统采用了讯飞星火大模型作为核心的生成模型，这是一个经过精心设计的架构选择。系统通过SparkModelProxy类实现了对大模型的封装和调用，该类支持多种配置参数包括模型版本，默认为”x1”、温度参数0.7和最大token数2000。在实现层面，系统采用了完善的错误处理机制，包括API密钥验证、请求重试逻辑和响应解析，确保了与外部大模型服务的稳定交互。<br>系统还预留了多模型支持的扩展性，通过配置文件和环境变量的方式管理不同模型的API参数，这种设计使得系统可以灵活切换不同的LLM提供商。在生成阶段，系统将检索到的相关文档作为上下文信息，结合用户问题构建完整的prompt，然后调用星火大模型生成最终答案。这种架构既保证了答案的专业性和准确性，又维持了系统的可维护性和扩展性。<br>2.向量数据库选择与实现</p>
+<p>该系统选择了FAISS作为向量数据库的核心组件，这是一个经过验证的高性能向量相似性搜索库。FAISS提供了多种索引类型支持，系统主要使用了IndexFlatIP（内积索引）来实现精确的相似性搜索，这种索引类型特别适合处理高维向量数据。系统支持CPU和GPU两种计算模式，通过配置参数可以灵活选择计算设备，在资源受限的环境下可以选择CPU模式，而在需要高性能的场景下可以启用GPU加速。<br>向量数据库的实现采用了分层架构设计，底层使用FAISS进行向量存储和检索，上层通过VectorIndex类提供统一的接口封装。系统在构建向量索引时，首先使用SentenceTransformer模型将文本块转换为高维向量表示，然后将这些向量批量添加到FAISS索引中。检索阶段通过search方法实现top-k相似性搜索，返回最相关的文档块及其相似度分数。这种实现方式既保证了检索的准确性，又确保了查询的高效性，能够在毫秒级时间内完成大规模文档的相似性搜索。</p>
+<p>3.RAG架构实现<br>该RAG系统实现了完整的检索增强生成架构，采用了模块化设计理念，将整个系统分解为数据加载、模型构建、训练过程和结果展示四个核心模块。在数据加载模块中，系统通过DataLoader类实现了对PDF文档和问答数据的统一处理，包括文档分块、文本清洗和向量化预处理。模型构建模块通过ModelBuilder类实现了嵌入模型和向量索引的构建，支持多种预训练模型的选择和配置。<br>检索模块是整个RAG架构的核心，系统通过Retriever类实现了基于向量相似性的文档检索功能。该模块接收用户查询，将其转换为向量表示，然后在向量数据库中搜索最相关的文档块，返回top-k个最相似的文档及其相似度分数。生成模块通过Generator类实现了基于检索结果的答案生成，该模块将检索到的相关文档作为上下文信息，结合用户问题构建完整的prompt，然后调用星火大模型生成最终答案。</p>
+<h3 id="系统架构与模块"><a href="#系统架构与模块" class="headerlink" title="系统架构与模块"></a>系统架构与模块</h3><ul>
+<li><p>文档处理（DataLoader &#x2F; 文档处理器）：</p>
+<ul>
+<li>职责：PDF 文本抽取、清洗与分块；维护数据统计信息。</li>
+<li>关键点：句子边界优先分割、重叠窗口设计，兼顾召回与上下文完整性。</li>
+</ul>
+</li>
+<li><p>向量化与索引（ModelBuilder &#x2F; 向量化器）：</p>
+<ul>
+<li>职责：加载 SentenceTransformer 模型（默认 <code>all-MiniLM-L6-v2</code>），批量编码文档块，持久化到 FAISS 向量索引。</li>
+<li>实现：内积索引 <code>faiss.IndexFlatIP</code> + 向量归一化，实现等价余弦相似度检索与高并发读性能。</li>
+</ul>
+</li>
+<li><p>语义检索（Retriever）：</p>
+<ul>
+<li>职责：对查询进行编码与归一化，执行 Top-K 相似度检索，返回片段与分数。</li>
+<li>能力：支持可配置返回数量、相似度阈值与多模型嵌入替换。</li>
+</ul>
+</li>
+<li><p>答案生成（Generator &#x2F; LLM Proxy）：</p>
+<ul>
+<li>职责：将问题与检索上下文拼装为提示词，调用 LLM 生成答案；对异常与超时进行稳健处理。</li>
+<li>默认实现：讯飞星火 API（可通过环境变量与 <code>config.py</code> 配置替换与调参）。</li>
+</ul>
+</li>
+<li><p>训练与评估（TrainingProcess &#x2F; ResultVisualizer，可选）：</p>
+<ul>
+<li>职责：针对问答样本进行嵌入对比学习训练与验证，输出指标可视化与报告。</li>
+<li>指标：检索准确率、相似度分布、回答质量（可扩展主观或客观打分）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="核心算法与实现要点"><a href="#核心算法与实现要点" class="headerlink" title="核心算法与实现要点"></a>核心算法与实现要点</h3><ul>
+<li>文本分块策略：采用定长窗口与重叠控制，结合句号等自然边界优化切分，减少语义截断对召回的影响。</li>
+<li>语义向量化：基于 SentenceTransformer（Transformers + Pooling）生成文本块稠密向量，支持 CPU&#x2F;GPU 透明切换；Batch 编码提升吞吐。</li>
+<li>向量检索：使用 FAISS 内积索引；在入库与查询阶段进行 L2 归一化，使内积等价余弦相似度，取得稳定排序效果。</li>
+<li>提示词工程：在系统消息中约束回答依据检索上下文，缺证据时应说明，降低模型幻觉与越权推理风险。</li>
+<li>稳健性：对外部 API 的网络超时、连接异常、响应格式进行严格校验与降级处理；日志记录贯穿全链路。</li>
+</ul>
+<h3 id="核心代码与实现逻辑"><a href="#核心代码与实现逻辑" class="headerlink" title="核心代码与实现逻辑"></a>核心代码与实现逻辑</h3><p>以下为关键路径的核心实现片段（带行号与文件路径标注，便于交叉定位）：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">_split_text</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> text<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> List<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""将文本分割成块"""</span>
+    chunks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    start <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> start <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        end <span class="token operator">=</span> start <span class="token operator">+</span> self<span class="token punctuation">.</span>chunk_size
+        chunk <span class="token operator">=</span> text<span class="token punctuation">[</span>start<span class="token punctuation">:</span>end<span class="token punctuation">]</span>
+        <span class="token comment"># 尝试在句号处分割</span>
+        <span class="token keyword">if</span> end <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            last_period <span class="token operator">=</span> chunk<span class="token punctuation">.</span>rfind<span class="token punctuation">(</span><span class="token string">'。'</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> last_period <span class="token operator">></span> self<span class="token punctuation">.</span>chunk_size <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">:</span>
+                chunk <span class="token operator">=</span> chunk<span class="token punctuation">[</span><span class="token punctuation">:</span>last_period <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+                end <span class="token operator">=</span> start <span class="token operator">+</span> last_period <span class="token operator">+</span> <span class="token number">1</span>
+        chunks<span class="token punctuation">.</span>append<span class="token punctuation">(</span>chunk<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        start <span class="token operator">=</span> end <span class="token operator">-</span> self<span class="token punctuation">.</span>chunk_overlap
+        <span class="token keyword">if</span> start <span class="token operator">>=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+    <span class="token keyword">return</span> chunks<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>实现逻辑：定长窗口 + 重叠滑动，结合句号边界，兼顾语义连续性与召回覆盖。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">build_vector_index</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> chunks<span class="token punctuation">:</span> List<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    embeddings <span class="token operator">=</span> self<span class="token punctuation">.</span>embedding_model<span class="token punctuation">.</span>encode<span class="token punctuation">(</span>chunks<span class="token punctuation">,</span> show_progress_bar<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>documents <span class="token operator">=</span> <span class="token punctuation">[</span>Document<span class="token punctuation">(</span>content<span class="token operator">=</span>chunk<span class="token punctuation">,</span> metadata<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"id"</span><span class="token punctuation">:</span> i<span class="token punctuation">,</span> <span class="token string">"chunk_id"</span><span class="token punctuation">:</span> i<span class="token punctuation">&#125;</span><span class="token punctuation">,</span> embedding<span class="token operator">=</span>emb<span class="token punctuation">)</span>
+                      <span class="token keyword">for</span> i<span class="token punctuation">,</span> <span class="token punctuation">(</span>chunk<span class="token punctuation">,</span> emb<span class="token punctuation">)</span> <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span><span class="token builtin">zip</span><span class="token punctuation">(</span>chunks<span class="token punctuation">,</span> embeddings<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    self<span class="token punctuation">.</span>dimension <span class="token operator">=</span> embeddings<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    self<span class="token punctuation">.</span>index <span class="token operator">=</span> faiss<span class="token punctuation">.</span>IndexFlatIP<span class="token punctuation">(</span>self<span class="token punctuation">.</span>dimension<span class="token punctuation">)</span>
+    embeddings_normalized <span class="token operator">=</span> embeddings <span class="token operator">/</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>embeddings<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>index<span class="token punctuation">.</span>add<span class="token punctuation">(</span>embeddings_normalized<span class="token punctuation">.</span>astype<span class="token punctuation">(</span><span class="token string">'float32'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>实现逻辑：使用内积索引并进行向量归一化，实现等价余弦相似度检索与稳定排序。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">generate_answer</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> question<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> top_k<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> Dict<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> Any<span class="token punctuation">]</span><span class="token punctuation">:</span>
+    query_embedding <span class="token operator">=</span> self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">[</span>question<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    query_embedding_normalized <span class="token operator">=</span> query_embedding <span class="token operator">/</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>query_embedding<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    scores<span class="token punctuation">,</span> indices <span class="token operator">=</span> self<span class="token punctuation">.</span>vector_index<span class="token punctuation">.</span>search<span class="token punctuation">(</span>query_embedding_normalized<span class="token punctuation">.</span>astype<span class="token punctuation">(</span><span class="token string">'float32'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> top_k<span class="token punctuation">)</span>
+    relevant_docs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> score<span class="token punctuation">,</span> idx <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>scores<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> indices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> idx <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>documents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            doc <span class="token operator">=</span> self<span class="token punctuation">.</span>documents<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>
+            relevant_docs<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+                <span class="token string">'content'</span><span class="token punctuation">:</span> doc<span class="token punctuation">.</span>content<span class="token punctuation">,</span>
+                <span class="token string">'similarity_score'</span><span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token string">'metadata'</span><span class="token punctuation">:</span> doc<span class="token punctuation">.</span>metadata
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    context <span class="token operator">=</span> <span class="token string">"\n\n"</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">[</span>doc<span class="token punctuation">[</span><span class="token string">'content'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> doc <span class="token keyword">in</span> relevant_docs<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    answer <span class="token operator">=</span> self<span class="token punctuation">.</span>llm_proxy<span class="token punctuation">.</span>get_response<span class="token punctuation">(</span>question<span class="token punctuation">,</span> context<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span> <span class="token string">'question'</span><span class="token punctuation">:</span> question<span class="token punctuation">,</span> <span class="token string">'answer'</span><span class="token punctuation">:</span> answer<span class="token punctuation">,</span> <span class="token string">'relevant_docs'</span><span class="token punctuation">:</span> relevant_docs<span class="token punctuation">,</span> <span class="token string">'context'</span><span class="token punctuation">:</span> context <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>实现逻辑：检索-拼接上下文-经 <code>SparkModelProxy</code> 生成答案，输出含溯源证据与相似度的结构化结果。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">SparkModelProxy</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> model<span class="token operator">=</span><span class="token string">"x1"</span><span class="token punctuation">,</span> temperature<span class="token operator">=</span><span class="token number">0.7</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  <span class="token comment"># 环境变量/配置加载</span>
+        self<span class="token punctuation">.</span>_validate_config<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">get_response</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> prompt<span class="token punctuation">,</span> context<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        payload <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"model"</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>model<span class="token punctuation">,</span> <span class="token string">"messages"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"temperature"</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>temperature<span class="token punctuation">,</span> <span class="token string">"max_tokens"</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>max_tokens<span class="token punctuation">&#125;</span>
+        response <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>self<span class="token punctuation">.</span>api_url<span class="token punctuation">,</span> json<span class="token operator">=</span>payload<span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">60</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  <span class="token comment"># 异常处理与内容提取</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>实现逻辑：对外部 LLM API 进行包装，校验配置、统一超时与错误处理，保证生成阶段稳定性。</p>
+<h3 id="数据流与执行流程"><a href="#数据流与执行流程" class="headerlink" title="数据流与执行流程"></a>数据流与执行流程</h3><ol>
+<li>文档导入：上传&#x2F;指定 PDF → 解析文本 → 清洗。</li>
+<li>构建索引：分块 → 语义编码 → 归一化 → 写入 FAISS（持久化存储可选）。</li>
+<li>在线检索：用户问题 → 查询向量 → FAISS Top-K 相似片段。</li>
+<li>结果生成：拼装上下文 → 调用 LLM → 输出答案与溯源片段（含相似度）。</li>
+</ol>
+<h3 id="性能与可扩展性"><a href="#性能与可扩展性" class="headerlink" title="性能与可扩展性"></a>性能与可扩展性</h3><ul>
+<li>资源适配：默认轻量嵌入模型，CPU 模式可运行，适配内存受限环境。</li>
+<li>吞吐优化：批量编码、向量归一化前置、FAISS 批量增量写入；检索阶段 O(1) 量级延迟（取决于索引规模与硬件）。</li>
+<li>可扩展性：<ul>
+<li>嵌入模型可插拔（如 BGE&#x2F;M3E&#x2F;SBERT 家族）。</li>
+<li>检索策略可扩展（重排序、融合检索、多阶段召回）。</li>
+<li>文档类型扩展（DOCX&#x2F;HTML&#x2F;Markdown 等）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="典型限制与改进方向"><a href="#典型限制与改进方向" class="headerlink" title="典型限制与改进方向"></a>典型限制与改进方向</h3><ul>
+<li>领域适配：通用嵌入在特定领域（法务、医疗）可能不足，建议进行领域微调或使用专用模型。</li>
+<li>长上下文：当证据跨片段且跨度较大时，需引入跨段拼接、片段重排或多段摘要以增强可读性与完整性。</li>
+<li>重排序与融合：引入基于交叉编码器的重排序（re-ranking）或稀疏&#x2F;稠密融合（如 BM25 + 向量召回）可进一步提升相关性。</li>
+<li>增量更新：针对动态文档库，建议实现向量索引的增量构建与陈旧片段回收机制。</li>
+</ul>
+<h3 id="技术栈（Tech-Stack）"><a href="#技术栈（Tech-Stack）" class="headerlink" title="技术栈（Tech Stack）"></a>技术栈（Tech Stack）</h3><ul>
+<li>语言与运行时：Python 3.8+</li>
+<li>向量与检索：FAISS（IP 索引，归一化实现余弦相似度）</li>
+<li>嵌入模型：Sentence-Transformers（默认 <code>all-MiniLM-L6-v2</code>）</li>
+<li>文档解析：PyPDF2</li>
+<li>Web 界面：Streamlit</li>
+<li>训练与可视化：Sentence-Transformers、Matplotlib&#x2F;Seaborn</li>
+<li>日志与配置：<code>logging</code>、<code>python-dotenv</code></li>
+<li>外部模型：讯飞星火 API（可替换）</li>
+</ul>
+<h3 id="项目总结"><a href="#项目总结" class="headerlink" title="项目总结"></a>项目总结</h3><ul>
+<li>背景：针对企业 PDF 手册等非结构化知识，构建 RAG 问答系统，提升知识检索与问答效率。</li>
+<li>角色与贡献：<ul>
+<li>主导系统架构与核心模块设计（文档处理、向量索引、检索-生成链路）。</li>
+<li>实现 FAISS 基于向量的高效检索与可溯源答案生成；封装 LLM 代理，完善超时&#x2F;异常处理。</li>
+<li>搭建最小可用 Web 演示与日志监控，形成评估报告与指标可视化。</li>
+</ul>
+</li>
+<li>难点与优化：<ul>
+<li>通过重叠分块与句子边界切分，降低语义截断带来的检索召回损失。</li>
+<li>引入向量归一化与内积索引，获得稳定的余弦相似度排序；批量编码提升吞吐。</li>
+<li>对外部 API 进行健壮封装，处理网络抖动与响应格式异常，保障可用性。</li>
+</ul>
+</li>
+<li>成果：<ul>
+<li>在 CPU 环境下完成端到端方案落地，Top-K 检索与上下文受控生成稳定运行。</li>
+<li>形成技术报告与评估可视化，支持后续领域适配与检索策略升级（如重排序、融合检索）。</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top">HuangZhongqi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://huangzhongqi978.top/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/">https://huangzhongqi978.top/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://huangzhongqi978.top" target="_blank">奇点智库 SingularityMind</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/NLP/">NLP</a><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post-share"><div class="social-share" data-image="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>如果觉得文章不错，欢迎打赏支持！</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/alipay-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay-qrcode.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/img/wechat-qrcode.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat-qrcode.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="基于YOLOv11的交通标志检测系统"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005131157954.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" referrerpolicy="no-referrer"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">基于YOLOv11的交通标志检测系统</div></div><div class="info-2"><div class="info-item-1">基于YOLOv11的交通标志检测系统项目（本人独立开发，且已申请计算机软件著作权，请勿随意转载）               您的浏览器不支持视频播放。      一、项目概述1.1 项目简介本项目是一个基于YOLOv11的智能交通标志检测系统，支持实时检测、图片检测和视频检测三种模式。项目采用PyQt5构建现代化GUI界面，集成了原始训练脚本和优化训练脚本，专门针对小目标检测进行了深度优化。  ​                                                                                    检测系统时序图 1.2 主要特性 多模式检测：支持摄像头实时检测、图片批量检测、视频流检测 现代化UI：采用渐变色彩和圆角设计，提供良好的用户体验 智能优化：集成注意力机制和特征融合，提升小目标检测能力 完整流程：包含数据预处理、模型训练、验证、导出和部署的完整流程 统计分析：提供详细的检测统计和历史记录功能  1.3 技术栈 深度学习框架：PyTorch + Ultralytics YOLOv11  GUI框架：PyQ...</div></div></div></a><a class="pagination-related" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"><img class="cover" src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161622681.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" referrerpolicy="no-referrer"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化</div></div><div class="info-2"><div class="info-item-1">Yolov8模型优化过程代码解析与结果展示             您的浏览器不支持视频播放。  左边是优化过后的代码 右边是未经过优化过后的代码，可以看出，优化过后的模型效果更好，检测效果也有提升，漏检减少。  系统介绍基于YOLO深度学习的智能车辆检测与预警系统是一个专门针对交通监控与车辆安全预警场景的智能检测解决方案。该系统以城市交通安全管理与智能监控需求为背景，充分利用YOLO深度学习模型的技术架构，打造了一个功能全面的车辆智能监控服务平台。该智能车辆检测系统主要涵盖以下核心功能：（1）车辆目标检测：用户可以通过现代化的GUI界面进行实时车辆检测，系统将基于YOLO深度学习模型快速识别视频流中的车辆目标并标注边界框，为交通监控提供精准的车辆识别服务。（2）多目标跟踪：系统支持基于深度学习的多目标跟踪机制，能够为每个检测到的车辆分配唯一ID并持续跟踪其运动轨迹，通过卡尔曼滤波和匈牙利匹配算法确保跟踪的稳定性和准确性。（3）速度估计算法：系统集成了智能速度估计算法，基于车辆在连续帧间的像素位移与时间差计算实时速度，支持km&#x2F;h单位的精准速度测量，为交通执法提供可靠的...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/ff71db1967b4c412f794ffe33ef624f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ referrerpolicy="no-referrer"></div><div class="author-info-name">HuangZhongqi</div><div class="author-info-description">Deep Learning & Computer Vision</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Huangzhongqi978"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Huangzhongqi978" target="_blank" title="GitHub"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter" style="color: #1da1f2;"></i></a><a class="social-icon" href="https://linkedin.com/in/huangzhongqi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color: #0077b5;"></i></a><a class="social-icon" href="mailto:huangzhongqi978@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="WeChat" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125834859.png" data-qr-type="WeChat"><i class="fab fa-weixin" style="color: #07c160;"></i></a><a class="social-icon qr-trigger" href="javascript:void(0)" title="QQ" data-qr-src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005125800207.png" data-qr-type="QQ"><i class="fab fa-qq" style="color: #12b7f5;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">奇点智库 - 人工智能技术博客与文档，分享深度学习、NLP、计算机视觉技术</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%BA%E8%83%BDRAG%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">智能RAG问答系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF"><span class="toc-number">1.2.</span> <span class="toc-text">技术路线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="toc-number">1.3.</span> <span class="toc-text">项目逻辑架构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84%E5%B1%95%E7%A4%BA"><span class="toc-number">1.4.</span> <span class="toc-text">项目工程结构展示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86%E8%BF%87%E5%90%8E%E7%9A%84%E6%96%87%E6%A1%A3"><span class="toc-number">1.4.1.</span> <span class="toc-text">预处理过后的文档</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E7%95%8C%E9%9D%A2%E5%B1%95%E7%A4%BA"><span class="toc-number">1.5.</span> <span class="toc-text">主界面展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%A8%A1%E5%9D%97"><span class="toc-number">1.6.</span> <span class="toc-text">系统架构与模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E8%A6%81%E7%82%B9"><span class="toc-number">1.7.</span> <span class="toc-text">核心算法与实现要点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81%E4%B8%8E%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91"><span class="toc-number">1.8.</span> <span class="toc-text">核心代码与实现逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.9.</span> <span class="toc-text">数据流与执行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%B8%8E%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7"><span class="toc-number">1.10.</span> <span class="toc-text">性能与可扩展性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E9%99%90%E5%88%B6%E4%B8%8E%E6%94%B9%E8%BF%9B%E6%96%B9%E5%90%91"><span class="toc-number">1.11.</span> <span class="toc-text">典型限制与改进方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88%EF%BC%88Tech-Stack%EF%BC%89"><span class="toc-number">1.12.</span> <span class="toc-text">技术栈（Tech Stack）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93"><span class="toc-number">1.13.</span> <span class="toc-text">项目总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/25/%E5%9F%BA%E4%BA%8EOpenCV%E7%9A%84%E6%99%BA%E8%83%BD%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/" title="基于OpenCV的智能图像处理软件"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316182536690.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于OpenCV的智能图像处理软件"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/25/%E5%9F%BA%E4%BA%8EOpenCV%E7%9A%84%E6%99%BA%E8%83%BD%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/" title="基于OpenCV的智能图像处理软件">基于OpenCV的智能图像处理软件</a><time datetime="2025-09-24T16:00:00.000Z" title="发表于 2025-09-25 00:00:00">2025-09-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/15/%E5%9F%BA%E4%BA%8EUNetRes%E7%BB%93%E6%9E%84%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%AE%8B%E5%B7%AE%E6%89%A9%E6%95%A3%E5%9B%BE%E5%83%8F%E5%A4%8D%E5%8E%9F%E7%A0%94%E7%A9%B6/" title="基于UNetRes结构的条件残差扩散图像复原研究"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20260316105203697.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于UNetRes结构的条件残差扩散图像复原研究"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/15/%E5%9F%BA%E4%BA%8EUNetRes%E7%BB%93%E6%9E%84%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%AE%8B%E5%B7%AE%E6%89%A9%E6%95%A3%E5%9B%BE%E5%83%8F%E5%A4%8D%E5%8E%9F%E7%A0%94%E7%A9%B6/" title="基于UNetRes结构的条件残差扩散图像复原研究">基于UNetRes结构的条件残差扩散图像复原研究</a><time datetime="2025-09-14T16:00:00.000Z" title="发表于 2025-09-15 00:00:00">2025-09-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="基于YOLOv11的交通标志检测系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251005131157954.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于YOLOv11的交通标志检测系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/10/Yolo11%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="基于YOLOv11的交通标志检测系统">基于YOLOv11的交通标志检测系统</a><time datetime="2025-09-10T07:59:31.000Z" title="发表于 2025-09-10 15:59:31">2025-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" title="基于LLM和RAG的领克汽车智能问答系统"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于LLM和RAG的领克汽车智能问答系统"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/09/05/%E5%9F%BA%E4%BA%8ELLM%E5%92%8CRAG%E7%9A%84%E9%A2%86%E5%85%8B%E6%B1%BD%E8%BD%A6%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/" title="基于LLM和RAG的领克汽车智能问答系统">基于LLM和RAG的领克汽车智能问答系统</a><time datetime="2025-09-05T05:59:31.000Z" title="发表于 2025-09-05 13:59:31">2025-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"><img src="https://gitee.com/huangzhongqi776/my-images/raw/master/20251103161622681.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化"/ referrerpolicy="no-referrer"></a><div class="content"><a class="title" href="/2025/07/15/p2%E6%A3%80%E6%B5%8B%E5%A4%B4%E4%BA%A4%E9%80%9A%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F/" title="添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化">添加P2检测头与SE机制的YOLOv8交通车辆与道路监检测系统优化</a><time datetime="2025-07-14T16:00:00.000Z" title="发表于 2025-07-15 00:00:00">2025-07-15</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gitee.com/huangzhongqi776/my-images/raw/master/20251103160846304.png);"><div class="footer-other"><div class="footer-copyright"></div><div class="footer_custom_text"><div style="line-height: 1.8;">
+  <div>© 2025 HuangZhongqi</div>
+  <div style="margin-top: 8px;">
+    <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">
+      <img src="/img/gongxin.png" alt="ICP备案" style="height: 16px; vertical-align: middle; margin-right: 4px;">ICP备案鲁ICP备2025190459号
+    </a>
+  </div>
+  <div style="margin-top: 8px;">
+    <a href="http://www.beian.gov.cn" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">
+      <img src="/img/备案图标.png" alt="公安备案" style="height: 16px; vertical-align: middle; margin-right: 4px;">公安备案鲁公网安备37028102001667号
+    </a>
+  </div>
+  <div style="margin-top: 8px;">Copyright © 2022 - 2025 Huang Zhongqi. All Rights Reserved. 黄中奇版权所有</div>
+</div>
+</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><script src="/js/qr-modal.js"></script><script src="/js/reading-progress.js"></script><script src="/js/tw_cn.js?v=5.5.1"></script><script src="https://unpkg.com/@fancyapps/ui@6.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    // Initialize mermaid if not already initialized
+    if (!window.mermaidInitialized) {
+      mermaid.initialize({ 
+        startOnLoad: false,
+        theme: theme,
+        securityLevel: 'loose'
+      })
+      window.mermaidInitialized = true
+    }
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      if (!mermaidSrc) return
+      
+      // Skip if already rendered
+      if (item.querySelector('svg')) return
+      
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${Date.now()}-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent.trim()
+
+      try {
+        // Try Mermaid v11+ render API first (returns Promise)
+        if (typeof mermaid.render === 'function') {
+          mermaid.render(mermaidID, mermaidDefinition)
+            .then(({ svg }) => {
+              // Clear existing SVG if any
+              const existingSvg = item.querySelector('svg')
+              if (existingSvg) existingSvg.remove()
+              // Insert SVG after the source element
+              mermaidSrc.insertAdjacentHTML('afterend', svg)
+            })
+            .catch(err => {
+              console.error('Mermaid render error:', err)
+              // Fallback: use class-based approach
+              const tempDiv = document.createElement('div')
+              tempDiv.className = 'mermaid'
+              tempDiv.textContent = mermaidSrc.textContent.trim()
+              item.appendChild(tempDiv)
+              if (typeof mermaid.run === 'function') {
+                mermaid.run({ nodes: [tempDiv] })
+              } else if (typeof mermaid.contentLoaded === 'function') {
+                mermaid.contentLoaded()
+              }
+            })
+        } else {
+          // Fallback: use class-based approach for older versions
+          const tempDiv = document.createElement('div')
+          tempDiv.className = 'mermaid'
+          tempDiv.textContent = mermaidSrc.textContent.trim()
+          item.appendChild(tempDiv)
+          if (typeof mermaid.run === 'function') {
+            mermaid.run({ nodes: [tempDiv] })
+          } else if (typeof mermaid.contentLoaded === 'function') {
+            mermaid.contentLoaded()
+          }
+        }
+      } catch (err) {
+        console.error('Mermaid error:', err)
+      }
+    })
+  }
+
+  const codeToMermaid = () => {
+    // Match various code block formats used by Hexo/PrismJS
+    // PrismJS renders as: <pre class="line-numbers"><code class="language-mermaid">
+    // Also support: <pre><code class="mermaid"> or <pre><code class="language-mermaid">
+    const selectors = [
+      '#article-container pre > code.mermaid',
+      '#article-container pre > code[class*="language-mermaid"]',
+      '#article-container pre > code[class*="mermaid"]',
+      '#article-container pre[class*="language-mermaid"] > code',
+      '#article-container pre[class*="mermaid"] > code',
+      '#article-container code.mermaid',
+      '#article-container code[class*="language-mermaid"]',
+      '#article-container code[class*="mermaid"]',
+      // More aggressive selectors
+      '#article-container pre code.language-mermaid',
+      '#article-container pre[class*="language-"] code[class*="mermaid"]',
+      '#article-container .highlight code[class*="mermaid"]',
+      '#article-container figure.highlight code[class*="mermaid"]'
+    ]
+    
+    let codeMermaidEle = []
+    selectors.forEach(selector => {
+      try {
+        const elements = document.querySelectorAll(selector)
+        elements.forEach(el => {
+          // Only add if not already in the array and not already processed
+          if (!codeMermaidEle.includes(el) && !el.closest('.mermaid-wrap')) {
+            codeMermaidEle.push(el)
+          }
+        })
+      } catch (e) {
+        console.warn('[Mermaid] Selector error:', selector, e)
+      }
+    })
+    
+    // Debug: log what we found
+    console.log('[Mermaid] Checking for mermaid code blocks...')
+    console.log('[Mermaid] Found', codeMermaidEle.length, 'potential mermaid code block(s)')
+    
+    if (codeMermaidEle.length === 0) {
+      // Also try to find ALL code blocks to see what's available
+      const allCodeBlocks = document.querySelectorAll('#article-container pre code, #article-container code')
+      console.log('[Mermaid] Total code blocks found:', allCodeBlocks.length)
+      allCodeBlocks.forEach((code, idx) => {
+        if (idx < 5) { // Only log first 5
+          console.log(`[Mermaid] Code block ${idx}:`, {
+            classes: code.className,
+            parent: code.parentElement?.tagName,
+            parentClasses: code.parentElement?.className,
+            text: code.textContent.substring(0, 50)
+          })
+        }
+      })
+      return
+    }
+    
+    console.log(`[Mermaid] Processing ${codeMermaidEle.length} mermaid code block(s)`)
+
+    codeMermaidEle.forEach((ele, idx) => {
+      // Skip if already processed
+      if (ele.closest('.mermaid-wrap')) {
+        console.log(`[Mermaid] Block ${idx} already processed, skipping`)
+        return
+      }
+      
+      // Get the actual code content
+      const codeContent = ele.textContent.trim()
+      if (!codeContent) {
+        console.log(`[Mermaid] Block ${idx} has no content, skipping`)
+        return
+      }
+      
+      console.log(`[Mermaid] Processing block ${idx}:`, {
+        content: codeContent.substring(0, 50) + '...',
+        codeElement: ele.tagName,
+        codeClasses: ele.className,
+        parent: ele.parentElement?.tagName,
+        parentClasses: ele.parentElement?.className
+      })
+      
+      // Find the parent pre element (might be direct parent or ancestor)
+      let preElement = ele.closest('pre')
+      if (!preElement && ele.parentElement && ele.parentElement.tagName === 'PRE') {
+        preElement = ele.parentElement
+      }
+      
+      // Also check for figure.highlight wrapper
+      let figureElement = ele.closest('figure.highlight')
+      let targetElement = figureElement || preElement || ele.parentElement
+      
+      // Create mermaid wrapper
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = codeContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      
+      // Replace the target element
+      if (targetElement) {
+        console.log(`[Mermaid] Replacing element:`, targetElement.tagName, targetElement.className)
+        targetElement.replaceWith(newEle)
+      } else {
+        // Fallback: wrap the code element
+        console.log(`[Mermaid] Fallback: wrapping code element`)
+        ele.parentElement.insertBefore(newEle, ele)
+        ele.remove()
+      }
+    })
+  }
+
+  const loadMermaid = () => {
+    const codeWriteEnabled = false
+    console.log('[Mermaid] loadMermaid called, code_write:', codeWriteEnabled)
+    
+    // Wait a bit for PrismJS to finish rendering code blocks
+    const processMermaid = () => {
+      console.log('[Mermaid] processMermaid called')
+      
+      // When code_write is false, we need to convert code blocks to mermaid
+      if (!codeWriteEnabled) {
+        console.log('[Mermaid] Converting code blocks to mermaid...')
+        codeToMermaid()
+        // Try again after a short delay to catch any late-rendered code blocks
+        setTimeout(() => {
+          console.log('[Mermaid] Retrying code block conversion...')
+          codeToMermaid()
+        }, 100)
+      }
+      
+      const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+      console.log('[Mermaid] Found', $mermaid.length, 'mermaid-wrap elements')
+      
+      if ($mermaid.length === 0) {
+        console.log('[Mermaid] No mermaid-wrap elements found, will retry')
+        return false
+      }
+      
+      const runMermaidFn = () => {
+        console.log('[Mermaid] runMermaidFn called')
+        // Re-check for mermaid elements in case of dynamic content
+        if (!codeWriteEnabled) {
+          codeToMermaid()
+        }
+        const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+        if ($mermaid.length === 0) {
+          console.log('[Mermaid] No mermaid-wrap elements found in runMermaidFn')
+          return
+        }
+        console.log('[Mermaid] Running mermaid render on', $mermaid.length, 'elements')
+        runMermaid($mermaid)
+      }
+      
+      btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+      
+      if (window.loadMermaid && window.mermaid) {
+        console.log('[Mermaid] Mermaid already loaded, running render')
+        runMermaidFn()
+      } else {
+        console.log('[Mermaid] Loading mermaid script...')
+        btf.getScript('https://unpkg.com/mermaid@11.12.0/dist/mermaid.min.js').then(() => {
+          console.log('[Mermaid] Mermaid script loaded successfully')
+          runMermaidFn()
+        }).catch(err => {
+          console.error('[Mermaid] Failed to load Mermaid:', err)
+        })
+      }
+      return true
+    }
+    
+    // Try processing immediately
+    if (!processMermaid()) {
+      // If no mermaid blocks found, try again after a delay (for lazy-loaded content)
+      console.log('[Mermaid] No mermaid blocks found initially, retrying after 500ms')
+      setTimeout(() => {
+        processMermaid()
+      }, 500)
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const applyThemeDefaultsConfig = theme => {
+    if (theme === 'dark-mode') {
+      Chart.defaults.color = "rgba(255, 255, 255, 0.8)"
+      Chart.defaults.borderColor = "rgba(255, 255, 255, 0.2)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    } else {
+      Chart.defaults.color = "rgba(0, 0, 0, 0.8)"
+      Chart.defaults.borderColor = "rgba(0, 0, 0, 0.1)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    }
+  }
+
+  // Recursively traverse the config object and automatically apply theme-specific color schemes
+  const applyThemeConfig = (obj, theme) => {
+    if (typeof obj !== 'object' || obj === null) return
+
+    Object.keys(obj).forEach(key => {
+      const value = obj[key]
+      // If the property is an object and has theme-specific options, apply them
+      if (typeof value === 'object' && value !== null) {
+        if (value[theme]) {
+          obj[key] = value[theme] // Apply the value for the current theme
+        } else {
+          // Recursively process child objects
+          applyThemeConfig(value, theme)
+        }
+      }
+    })
+  }
+
+  const runChartJS = ele => {
+    window.loadChartJS = true
+
+    Array.from(ele).forEach((item, index) => {
+      const chartSrc = item.firstElementChild
+      const chartID = item.getAttribute('data-chartjs-id') || ('chartjs-' + index) // Use custom ID or default ID
+      const width = item.getAttribute('data-width')
+      const existingCanvas = document.getElementById(chartID)
+
+      // If a canvas already exists, remove it to avoid rendering duplicates
+      if (existingCanvas) {
+          existingCanvas.parentNode.remove()
+      }
+
+      const chartDefinition = chartSrc.textContent
+      const canvas = document.createElement('canvas')
+      canvas.id = chartID
+
+      const div = document.createElement('div')
+      div.className = 'chartjs-wrap'
+
+      if (width) {
+        div.style.width = width
+      }
+
+      div.appendChild(canvas)
+      chartSrc.insertAdjacentElement('afterend', div)
+
+      const ctx = document.getElementById(chartID).getContext('2d')
+
+      const config = JSON.parse(chartDefinition)
+
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark-mode' : 'light-mode'
+
+      // Set default styles (initial setup)
+      applyThemeDefaultsConfig(theme)
+
+      // Automatically traverse the config and apply dual-mode color schemes
+      applyThemeConfig(config, theme)
+
+      new Chart(ctx, config)
+    })
+  }
+
+  const loadChartJS = () => {
+    const chartJSEle = document.querySelectorAll('#article-container .chartjs-container')
+    if (chartJSEle.length === 0) return
+
+    window.loadChartJS ? runChartJS(chartJSEle) : btf.getScript('https://unpkg.com/chart.js@4.5.0/dist/chart.umd.js').then(() => runChartJS(chartJSEle))
+  }
+
+  // Listen for theme change events
+  btf.addGlobalFn('themeChange', loadChartJS, 'chartjs')
+  btf.addGlobalFn('encrypt', loadChartJS, 'chartjs')
+
+  window.pjax ? loadChartJS() : document.addEventListener('DOMContentLoaded', loadChartJS)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'Huangzhongqi978/blog-commnts',
+      'data-repo-id': 'R_kgDOQOt6kA',
+      'data-category-id': 'DIC_kwDOQOt6kM4CxaSm',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script src="/js/mouse-trail.js"></script><script src="/js/background-check.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script id="click-show-text" src="https://unpkg.com/butterfly-extsrc@1.1.6/dist/click-show-text.min.js" data-mobile="false" data-text="好棒！,加油！,很棒！,点赞！,太棒了！,优秀！,精彩！,赞！" data-fontsize="15px" data-random="true" async="async"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.1"></script></div></div></body></html>
